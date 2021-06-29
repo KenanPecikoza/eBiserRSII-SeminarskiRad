@@ -26,6 +26,7 @@ namespace eBiser.WindowsUI.AkcijePomoci
         {
             var result = await _apiService.Get<List<Data.AkcijePomoci>>(null);
             dgvAkcijePomoci.DataSource = result;
+            dgvAkcijePomoci.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCells;
         }
 
         private void dgvAkcijePomoci_CellDoubleClick(object sender, DataGridViewCellEventArgs e)

@@ -53,5 +53,21 @@ namespace eBiser.WindowsUI.Sastanak
         {
             this.Close();
         }
+
+        private void dgvSastanci_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
+        {
+            try
+            {
+                int id = Int32.Parse(dgvSastanci.SelectedRows[0].Cells[0].Value.ToString());
+                frmSastanakUpsert frmSastanakUpsert = new frmSastanakUpsert(id);
+                frmSastanakUpsert.Show();
+                this.Close();
+            }
+            catch (Exception)
+            {
+
+            }
+
+        }
     }
 }

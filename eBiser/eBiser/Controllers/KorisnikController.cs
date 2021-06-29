@@ -59,9 +59,9 @@ namespace eBiser.Controllers
         }
         [Authorize(Roles = "Osoblje")]
         [HttpGet("clan")]
-        public IActionResult GetClanovi()
+        public IActionResult GetClanovi([FromQuery] KorisniciSearchRequest search)
         {
-            return Ok(_korisniciService.GetCLanovi());
+            return Ok(_korisniciService.GetCLanovi(search));
         }
         [Authorize(Roles = "Osoblje")]
         [HttpGet("osoblje/{id}")]

@@ -16,7 +16,7 @@ namespace eBiser.Services
         Data.DonatorDTO GetDonator(int id);
         List<Data.DonatorDTO> GetDonatori();
         Data.ClanDTO GetClan(int id);
-        List<Data.ClanDTO> GetCLanovi();
+        List<Data.ClanDTO> GetCLanovi(KorisniciSearchRequest search);
         Data.OsobljeDTO GetOsoblje(int id);
         List<Data.OsobljeDTO> GetOsoblje(OsobljeSearchRequest search);
     }

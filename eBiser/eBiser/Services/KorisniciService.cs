@@ -80,6 +80,14 @@ namespace eBiser.Services
             {
                 query = _db.KorisniciSistemas.Where(x => x.Prezime.ToLower().StartsWith(search.Prezime.ToLower()));
             }
+            if (!string.IsNullOrWhiteSpace(search?.Email))
+            {
+                query = _db.KorisniciSistemas.Where(x => x.Email.ToLower().StartsWith(search.Email.ToLower()));
+            }
+            if (search.Aktivan!=null)
+            {
+                query = _db.KorisniciSistemas.Where(x => x.Aktivan==search.Aktivan);
+            }
             var list = query.ToList();
             var result = _mapper.Map<List<Data.KorisniciSistema>>(list);
             foreach (var i in result)
@@ -225,11 +233,40 @@ namespace eBiser.Services
             }
             return returns;
         }
-        public List<Data.ClanDTO> GetCLanovi()
+        public List<Data.ClanDTO> GetCLanovi(KorisniciSearchRequest search)
         {
-            var list = _db.Clanovis.Include(x=> x.Korisnik).ToList();
-
+            var query = _db.Clanovis.Include(x => x.Korisnik).AsQueryable();
+            if (!string.IsNullOrWhiteSpace(search?.Ime))
+            {
+                query = _db.Clanovis.Include(x => x.Korisnik).Where(x => x.Korisnik.Ime.ToLower().StartsWith(search.Ime.ToLower()));
+            }
+            if (!string.IsNullOrWhiteSpace(search?.Prezime))
+            {
+                query = _db.Clanovis.Include(x => x.Korisnik).Where(x => x.Korisnik.Prezime.ToLower().StartsWith(search.Prezime.ToLower()));
+            }
+            if (!string.IsNullOrWhiteSpace(search?.Email))
+            {
+                query = _db.Clanovis.Include(x => x.Korisnik).Where(x => x.Korisnik.Email.ToLower().StartsWith(search.Email.ToLower()));
+            }
+            if (search.Aktivan != null)
+            {
+                query = _db.Clanovis.Include(x => x.Korisnik).Where(x => x.Korisnik.Aktivan == search.Aktivan);
+            }
+            var list = query.ToList();
             var returns = _mapper.Map<List<Data.ClanDTO>>(list);
+            int brojClanarina = 0;
+            foreach (var i in returns)
+            {
+                brojClanarina = 0;
+                try
+                {
+                    brojClanarina = _db.Clanarinas.Where(x => x.ClanId == i.Id).Count();
+                    i.Clanarine = "12/" + brojClanarina.ToString();
+                }
+                catch (Exception)
+                {
+                }
+            }
             return returns;
         }
         public Data.OsobljeDTO GetOsoblje(int id)
@@ -252,6 +289,14 @@ namespace eBiser.Services
             if (search.DjelatnostId > 0)
             {
                 query = _db.Osobljes.Include(x => x.Korisnik).Include(x => x.Djelatnost).Where(x => x.DjelatnostId == search.DjelatnostId);
+            }
+            if (!string.IsNullOrWhiteSpace(search?.Email))
+            {
+                query = _db.Osobljes.Include(x => x.Korisnik).Include(x => x.Djelatnost).Where(x => x.Korisnik.Email.ToLower().StartsWith(search.Email.ToLower()));
+            }
+            if (search.Aktivan != null)
+            {
+                query = _db.Osobljes.Include(x => x.Korisnik).Include(x => x.Djelatnost).Where(x => x.Korisnik.Aktivan == search.Aktivan);
             }
             var list = query.ToList();
             var returns = _mapper.Map<List<Data.OsobljeDTO>>(list);

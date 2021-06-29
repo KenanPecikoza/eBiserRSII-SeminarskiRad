@@ -85,6 +85,7 @@ namespace eBiser.WindowsUI.Sastanak
             this.dgvSastanci.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvSastanci.Size = new System.Drawing.Size(471, 429);
             this.dgvSastanci.TabIndex = 0;
+            this.dgvSastanci.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvSastanci_CellDoubleClick);
             // 
             // Id
             // 
