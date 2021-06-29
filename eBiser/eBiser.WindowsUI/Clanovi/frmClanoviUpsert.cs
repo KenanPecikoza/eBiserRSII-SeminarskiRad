@@ -35,6 +35,8 @@ namespace eBiser.WindowsUI.Clanovi
         {
             dgvClanovi.AutoGenerateColumns = false;
             dgvClanovi.DataSource = await _apiService.Get<List<Data.ClanDTO>>(null);
+            dgvClanovi.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCells;
+
         }
         private async Task LoadFormaClan(int? id)
         {

@@ -54,6 +54,7 @@ namespace eBiser.WindowsUI.IzlaznaSerdstva
                 var _id = Int32.Parse(dgvIzlaznaSredstva.SelectedRows[0].Cells[0].Value.ToString());
                 frmIzlaznaSredstvaUpsert frmIzlazna = new frmIzlaznaSredstvaUpsert(_id);
                 frmIzlazna.Show();
+                this.Close();
             }
             catch (Exception)
             {
@@ -65,6 +66,8 @@ namespace eBiser.WindowsUI.IzlaznaSerdstva
         {
             frmIzlaznaSredstvaUpsert frmIzlazna = new frmIzlaznaSredstvaUpsert();
             frmIzlazna.Show();
+            this.Close();
+
         }
     }
 }

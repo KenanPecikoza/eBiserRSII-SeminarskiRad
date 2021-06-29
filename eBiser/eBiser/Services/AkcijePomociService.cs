@@ -25,7 +25,10 @@ namespace eBiser.Services
             {
                 query = query.Where(x => x.Prezime.ToLower().StartsWith(search.Prezime.ToLower()));
             }
-            //query = query.Where(x => x.Aktivno == search.Aktivno);
+            if (search.Aktivno!=null)
+            {
+                 query = query.Where(x => x.Aktivno == search.Aktivno);
+            }
             var list = query.ToList();
             return _mapper.Map<List<Data.AkcijePomoci>>(list);
         }

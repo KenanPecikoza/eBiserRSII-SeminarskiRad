@@ -10,5 +10,6 @@ namespace eBiser.Data.Requests
         public string Prezime { get; set; }
         public string Email { get; set; }
         public int KorisnikId { get; set; }
+        public int DjelatnostId { get; set; }
     }
 }

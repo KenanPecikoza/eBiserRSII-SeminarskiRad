@@ -47,6 +47,7 @@ namespace eBiser.WindowsUI.Clanarine
                 int Id = Int32.Parse(dgvClanarine.SelectedRows[0].Cells[0].Value.ToString());
                 frmClanarineUpsert frmClanarineUpsert = new frmClanarineUpsert(Id);
                 frmClanarineUpsert.Show();
+                this.Close();
             }
             catch (Exception)
             {

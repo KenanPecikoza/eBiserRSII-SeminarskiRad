@@ -101,6 +101,7 @@ namespace eBiser.WindowsUI.Obavijest
         {
             frmObavijestUpsert obavijestUpsert = new frmObavijestUpsert();
             obavijestUpsert.Show();
+            this.Close();
         }
 
         private async void cBoxKategorija_SelectedIndexChanged(object sender, EventArgs e)

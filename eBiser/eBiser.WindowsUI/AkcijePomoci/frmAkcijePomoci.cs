@@ -34,6 +34,7 @@ namespace eBiser.WindowsUI.AkcijePomoci
             {
                 frmAkcijePomociUpsert frmAkcijePomoci = new frmAkcijePomociUpsert(Int32.Parse(dgvAkcijePomoci.SelectedRows[0].Cells[0].Value.ToString()));
                 frmAkcijePomoci.Show();
+                this.Close();
 
             }
             catch (Exception)

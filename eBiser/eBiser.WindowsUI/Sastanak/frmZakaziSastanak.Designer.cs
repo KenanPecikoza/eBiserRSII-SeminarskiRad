@@ -80,6 +80,7 @@ namespace eBiser.WindowsUI.Sastanak
             this.btnCancel.TabIndex = 29;
             this.btnCancel.Text = "Nazad";
             this.btnCancel.UseVisualStyleBackColor = false;
+            this.btnCancel.Click += new System.EventHandler(this.btnCancel_Click);
             // 
             // btnZakazi
             // 

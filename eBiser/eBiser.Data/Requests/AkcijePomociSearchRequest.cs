@@ -8,7 +8,7 @@ namespace eBiser.Data.Requests
     {
         public string  Ime { get; set; }
         public string Prezime { get; set; }
-        public bool Aktivno { get; set; }
+        public bool? Aktivno { get; set; }
 
     }
 }

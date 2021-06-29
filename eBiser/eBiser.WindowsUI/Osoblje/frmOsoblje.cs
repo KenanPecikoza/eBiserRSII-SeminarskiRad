@@ -15,6 +15,7 @@ namespace eBiser.WindowsUI.Osoblje
     {
         private readonly APIService _aPIService = new APIService("Korisnik/Osoblje");
         private readonly APIService _apiServiceDjelatnost = new APIService("DjelatnostOsoblje");
+        KorisniciSearchRequest search = null;
 
         public frmOsoblje()
         {
@@ -28,22 +29,29 @@ namespace eBiser.WindowsUI.Osoblje
             cBoxNazivDjelatnosti.ValueMember = "Id";// u prorertis postaviti 
 
         }
+        private async Task LoadDGV()
+        {
+            dgvOsoblje.AutoGenerateColumns = false;
+            var result = await _aPIService.Get<List<Data.OsobljeDTO>>(search);
+            dgvOsoblje.DataSource = result;
+            dgvOsoblje.ClearSelection();
+            dgvOsoblje.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCells;
+        }
+
 
 
         private async void frmOsoblje_Load(object sender, EventArgs e)
         {
-            dgvOsoblje.AutoGenerateColumns = false;
-            var result = await _aPIService.Get<List<Data.OsobljeDTO>>(null);
-            dgvOsoblje.DataSource = result;
-            dgvOsoblje.ClearSelection();
-            dgvOsoblje.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCells;
 
+            await LoadDGV();
             await LoadDjelatnosti();
         }
 
-        KorisniciSearchRequest search = new KorisniciSearchRequest();
+
+
         private async void btnPretrazi_Click(object sender, EventArgs e)
         {
+            search = new KorisniciSearchRequest();
             search.Ime = txtIme.Text;
             search.Prezime = txtPrezime.Text;
             var result = await _aPIService.Get<List<Data.OsobljeDTO>>(search);
@@ -60,11 +68,13 @@ namespace eBiser.WindowsUI.Osoblje
             frmOsobljeUpsert.Show();
 
         }
-        private void cBoxNazivDjelatnosti_SelectedIndexChanged(object sender, EventArgs e)
+        private async void cBoxNazivDjelatnosti_SelectedIndexChanged(object sender, EventArgs e)
         {
             var selectedValue = cBoxNazivDjelatnosti.SelectedValue;
             int.TryParse(selectedValue.ToString(), out int DjelatnostId);
-            //search.DjelatnostId = DjelatnostId;
+            search = new KorisniciSearchRequest();
+            search.DjelatnostId = DjelatnostId;
+            await LoadDGV();
 
         }
 

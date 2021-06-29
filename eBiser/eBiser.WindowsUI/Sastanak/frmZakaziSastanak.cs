@@ -30,5 +30,10 @@ namespace eBiser.WindowsUI.Sastanak
             upsertRequest.Naslov = txtNalov.Text;
             await _apiService.Insert<Data.Sastanak>(upsertRequest);
         }
+
+        private void btnCancel_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
     }
 }

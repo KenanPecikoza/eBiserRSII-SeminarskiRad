@@ -41,6 +41,8 @@ namespace eBiser.WindowsUI.AkcijePomoci
             var result = await _apiService.Get<List<Data.AkcijePomoci>>(null);
             dgvAkcijePomoci.AutoGenerateColumns = false;
             dgvAkcijePomoci.DataSource = result;
+            dgvAkcijePomoci.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCells;
+
         }
 
         private async void frmAkcijePomociUpsert_Load(object sender, EventArgs e)
@@ -85,11 +87,31 @@ namespace eBiser.WindowsUI.AkcijePomoci
 
             if (_id.HasValue)
             {
-                await _apiService.Update<ClanarinaUpsertRequest>(_id ??0, request);
+                try
+                {
+                    await _apiService.Update<Data.AkcijePomoci>(_id ??0, request);
+                    MessageBox.Show("Uspjesno uređena akcija pomoći");
+
+                }
+                catch (Exception)
+                {
+                    MessageBox.Show("Nije uspjelo uređenje akcija pomoći");
+                }
+
             }
             else
             {
-                await _apiService.Insert<ClanarinaUpsertRequest>(request);
+                try
+                {
+                    await _apiService.Insert<Data.AkcijePomoci>(request);
+                    MessageBox.Show("Uspjesno dodana akcija pomoći");
+
+                }
+                catch (Exception)
+                {
+                    MessageBox.Show("Nije uspjelo dodavanje akcije pomoći");
+
+                }
             }
             await PopuniDGV();
         }
