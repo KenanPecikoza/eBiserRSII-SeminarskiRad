@@ -8,6 +8,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using static eBiser.Data.Requests.KorisniciSearchRequest;
 
 namespace eBiser.WindowsUI.Osoblje
 {
@@ -15,7 +16,7 @@ namespace eBiser.WindowsUI.Osoblje
     {
         private readonly APIService _aPIService = new APIService("Korisnik/Osoblje");
         private readonly APIService _apiServiceDjelatnost = new APIService("DjelatnostOsoblje");
-        KorisniciSearchRequest search = null;
+        OsobljeSearchRequest search = null;
 
         public frmOsoblje()
         {
@@ -51,7 +52,7 @@ namespace eBiser.WindowsUI.Osoblje
 
         private async void btnPretrazi_Click(object sender, EventArgs e)
         {
-            search = new KorisniciSearchRequest();
+            search = new OsobljeSearchRequest();
             search.Ime = txtIme.Text;
             search.Prezime = txtPrezime.Text;
             var result = await _aPIService.Get<List<Data.OsobljeDTO>>(search);
@@ -72,7 +73,7 @@ namespace eBiser.WindowsUI.Osoblje
         {
             var selectedValue = cBoxNazivDjelatnosti.SelectedValue;
             int.TryParse(selectedValue.ToString(), out int DjelatnostId);
-            search = new KorisniciSearchRequest();
+            search = new OsobljeSearchRequest();
             search.DjelatnostId = DjelatnostId;
             await LoadDGV();
 

@@ -11,6 +11,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using static eBiser.Data.Requests.KorisniciInserttRequest;
+using static eBiser.Data.Requests.KorisniciUpdateRequest;
 
 namespace eBiser.WindowsUI.Osoblje
 {
@@ -80,28 +81,49 @@ namespace eBiser.WindowsUI.Osoblje
             _id = null;
         }
 
-        OsobljeUpsertRequest request = new OsobljeUpsertRequest();
+        OsobljeUpdateRequest updateRequest = new OsobljeUpdateRequest();
+        OsobljeUpsertRequest insertRequest = new OsobljeUpsertRequest();
         private async void btnSnimi_Click(object sender, EventArgs e)
         {
-            request.DatumPocetkaAngazmana = dtmDatumPocetka.Value;
-            request.Ime = txtIme.Text;
-            request.Prezime = txtPrezime.Text;
-            request.DjelatnostId = Int32.Parse(cBoxNazivDjelatnosti.SelectedValue.ToString());
-            request.Photo = photoHelper.ImageToByteArray(pictureBox.Image);
-            request.PhotoThumb = photoHelper.ImageToByteArray(pictureBox.Image);
-            request.KorisnickoIme = txtKorisnickoIme.Text;
+
             if (_id.HasValue && _Korisnikid.HasValue)
             {
-                 await _apiService.Update<Data.KorisniciSistema>(_Korisnikid ?? 0, request);
+                updateRequest.Ime = txtIme.Text;
+                updateRequest.Prezime = txtPrezime.Text;
+                updateRequest.DjelatnostId = Int32.Parse(cBoxNazivDjelatnosti.SelectedValue.ToString());
+                updateRequest.Photo = photoHelper.ImageToByteArray(pictureBox.Image);
+                updateRequest.PhotoThumb = photoHelper.ImageToByteArray(pictureBox.Image);
+                updateRequest.KorisnickoIme = txtKorisnickoIme.Text;
+                updateRequest.DatumPocetkaAngazmana = dtmDatumPocetka.Value;
+                updateRequest.DatumRodjenja = DateTime.Now;
+                updateRequest.DjelatnostId = Int32.Parse(cBoxNazivDjelatnosti.SelectedValue.ToString());
+                updateRequest.Email = "test@test.com";
+                await _apiService.Update<Data.KorisniciSistema>(_Korisnikid ?? 0, updateRequest);
                 MessageBox.Show("Uspjesno uređen član osoblja ");
             }
             else
             {
-                //request.KorisnickoIme = request.Ime + "." + request.Prezime;
-                //request.Password = txtIme.Text+"."+txtPrezime.Text;
-                //request.PasswordPotvrda = txtIme.Text + "." + txtPrezime.Text;
-                 await _apiService.Insert<Data.KorisniciSistema>(request);
-                MessageBox.Show("Uspjesno dodan član osoblja ");
+                insertRequest.Ime = txtIme.Text;
+                insertRequest.Prezime = txtPrezime.Text;
+                insertRequest.Photo = photoHelper.ImageToByteArray(pictureBox.Image);
+                insertRequest.PhotoThumb = photoHelper.ImageToByteArray(pictureBox.Image);
+                insertRequest.KorisnickoIme = txtKorisnickoIme.Text;
+                insertRequest.Password = txtIme.Text + txtPrezime.Text + "1$Aa";
+                insertRequest.PasswordPotvrda = txtIme.Text + txtPrezime.Text + "1$Aa";
+                insertRequest.DatumPocetkaAngazmana = dtmDatumPocetka.Value;
+                insertRequest.Email = "test@test.com";
+                insertRequest.DatumRodjenja = DateTime.Now;
+                insertRequest.DjelatnostId = Int32.Parse(cBoxNazivDjelatnosti.SelectedValue.ToString());
+                try
+                {
+                    await _apiService.Insert<Data.ClanDTO>(insertRequest);
+                    MessageBox.Show("Uspjesno dodan član");
+
+                }
+                catch (Exception)
+                {
+                    MessageBox.Show("Podaci ne odgovaraju");
+                }
             }
             await LoadDGV();
 
@@ -114,8 +136,16 @@ namespace eBiser.WindowsUI.Osoblje
             {
                 var fileName = openFileDialog.FileName;
                 var file = File.ReadAllBytes(fileName);
-                request.Photo = file;
-                request.PhotoThumb = file;
+                if (_id.HasValue && _Korisnikid.HasValue)
+                {
+                    updateRequest.Photo = file;
+                    updateRequest.PhotoThumb = file;
+                }
+                else
+                {
+                    insertRequest.Photo = file;
+                    insertRequest.PhotoThumb = file;
+                }
                 txtFotografija.Text = fileName;
                 Image image = Image.FromFile(fileName);
                 pictureBox.Image = image;

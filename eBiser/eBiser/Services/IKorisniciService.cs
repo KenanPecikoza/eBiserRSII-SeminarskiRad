@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using static eBiser.Data.Requests.KorisniciSearchRequest;
 
 namespace eBiser.Services
 {
@@ -17,6 +18,6 @@ namespace eBiser.Services
         Data.ClanDTO GetClan(int id);
         List<Data.ClanDTO> GetCLanovi();
         Data.OsobljeDTO GetOsoblje(int id);
-        List<Data.OsobljeDTO> GetOsoblje();
+        List<Data.OsobljeDTO> GetOsoblje(OsobljeSearchRequest search);
     }
 }

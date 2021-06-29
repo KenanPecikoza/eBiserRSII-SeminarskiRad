@@ -8,6 +8,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using static eBiser.Data.Requests.KorisniciInserttRequest;
+using static eBiser.Data.Requests.KorisniciSearchRequest;
 using static eBiser.Data.Requests.KorisniciUpdateRequest;
 
 namespace eBiser.Controllers
@@ -70,9 +71,9 @@ namespace eBiser.Controllers
         }
         [Authorize(Roles = "Osoblje")]
         [HttpGet("osoblje")]
-        public IActionResult GetOsoblje()
+        public IActionResult GetOsoblje([FromQuery] OsobljeSearchRequest search)
         {
-            return Ok(_korisniciService.GetOsoblje());
+            return Ok(_korisniciService.GetOsoblje(search));
         }
 
         [Authorize(Roles = "Donator,Osoblje")]

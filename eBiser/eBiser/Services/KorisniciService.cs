@@ -9,6 +9,7 @@ using System.Security.Cryptography;
 using System.Text;
 using System.Threading.Tasks;
 using static eBiser.Data.Requests.KorisniciInserttRequest;
+using static eBiser.Data.Requests.KorisniciSearchRequest;
 using static eBiser.Data.Requests.KorisniciUpdateRequest;
 
 namespace eBiser.Services
@@ -237,9 +238,22 @@ namespace eBiser.Services
             var returns = _mapper.Map<Data.OsobljeDTO>(entity);
             return returns;
         }
-        public List<Data.OsobljeDTO> GetOsoblje()
+        public List<Data.OsobljeDTO> GetOsoblje(OsobljeSearchRequest search)
         {
-            var list = _db.Osobljes.Include(x => x.Korisnik).Include(x => x.Djelatnost);
+            var query = _db.Osobljes.Include(x => x.Korisnik).Include(x => x.Djelatnost).AsQueryable();
+            if (!string.IsNullOrWhiteSpace(search?.Ime))
+            {
+                query = _db.Osobljes.Include(x => x.Korisnik).Include(x => x.Djelatnost).Where(x => x.Korisnik.Ime.ToLower().StartsWith(search.Ime.ToLower()));
+            }
+            if (!string.IsNullOrWhiteSpace(search?.Prezime))
+            {
+                query = _db.Osobljes.Include(x => x.Korisnik).Include(x => x.Djelatnost).Where(x => x.Korisnik.Prezime.ToLower().StartsWith(search.Prezime.ToLower()));
+            }
+            if (search.DjelatnostId > 0)
+            {
+                query = _db.Osobljes.Include(x => x.Korisnik).Include(x => x.Djelatnost).Where(x => x.DjelatnostId == search.DjelatnostId);
+            }
+            var list = query.ToList();
             var returns = _mapper.Map<List<Data.OsobljeDTO>>(list);
             return returns;
         }
