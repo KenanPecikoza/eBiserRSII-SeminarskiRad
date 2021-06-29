@@ -11,6 +11,7 @@ namespace eBiser.Data.Requests
         public DateTime? PretragaPoDatumuOd { get; set; }
         public DateTime? PretragaPoDatumuDo { get; set; }
         public int? KategorijaId { get; set; }
+        public bool? Aktivna { get; set; }
 
     }
 }

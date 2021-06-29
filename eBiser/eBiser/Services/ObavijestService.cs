@@ -38,6 +38,10 @@ namespace eBiser.Services
             {
                 query = query.Where(x=> x.KategorijaId==search.KategorijaId);
             }
+            if (search.Aktivna != null)
+            {
+                query = query.Where(x => x.Aktivna == search.Aktivna);
+            }
             var list = _mapper.Map<List<Data.Obavijest>>(query.ToList());
             
             foreach (var i in list)
