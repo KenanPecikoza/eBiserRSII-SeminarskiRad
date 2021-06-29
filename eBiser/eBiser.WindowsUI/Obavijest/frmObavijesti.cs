@@ -83,10 +83,17 @@ namespace eBiser.WindowsUI.Obavijest
 
         private void dgvObavijesti_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
-            var obavijestId = Int32.Parse(dgvObavijesti.SelectedRows[0].Cells[0].Value.ToString());
-            frmObavijestUpsert obavijestUpsert = new frmObavijestUpsert(obavijestId);
-            obavijestUpsert.Show();
-            this.Close();
+            try
+            {
+                var obavijestId = Int32.Parse(dgvObavijesti.SelectedRows[0].Cells[0].Value.ToString());
+                frmObavijestUpsert obavijestUpsert = new frmObavijestUpsert(obavijestId);
+                obavijestUpsert.Show();
+                this.Close();
+            }
+            catch (Exception)
+            {
+
+            }
 
         }
 

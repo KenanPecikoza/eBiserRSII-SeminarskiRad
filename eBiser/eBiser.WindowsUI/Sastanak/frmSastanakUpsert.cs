@@ -86,8 +86,15 @@ namespace eBiser.WindowsUI.Sastanak
 
         private async void dgvSastanci_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-            _id = Int32.Parse(dgvSastanci.SelectedRows[0].Cells[0].Value.ToString());
-            await LoadForm(_id);
+            try
+            {
+                _id = Int32.Parse(dgvSastanci.SelectedRows[0].Cells[0].Value.ToString());
+                await LoadForm(_id);
+            }
+            catch (Exception)
+            {
+
+            }
         }
 
         private void txtZapisnik_Validating(object sender, CancelEventArgs e)

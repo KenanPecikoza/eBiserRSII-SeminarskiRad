@@ -148,8 +148,16 @@ namespace eBiser.WindowsUI.Clanovi
 
         private async void dgvClanovi_CellClick(object sender, DataGridViewCellEventArgs e)
         {
+            try
+            {
+
             _id = Int32.Parse(dgvClanovi.SelectedRows[0].Cells[0].Value.ToString());
             await LoadFormaClan(_id);
+            }
+            catch (Exception)
+            {
+
+            }
         }
 
         private void btnPonisti_Click(object sender, EventArgs e)

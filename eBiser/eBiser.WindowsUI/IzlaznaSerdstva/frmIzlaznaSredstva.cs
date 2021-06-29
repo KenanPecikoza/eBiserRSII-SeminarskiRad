@@ -49,9 +49,16 @@ namespace eBiser.WindowsUI.IzlaznaSerdstva
 
         private void dgvIzlaznaSredstva_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
-            var _id = Int32.Parse(dgvIzlaznaSredstva.SelectedRows[0].Cells[0].Value.ToString());
-            frmIzlaznaSredstvaUpsert frmIzlazna = new frmIzlaznaSredstvaUpsert(_id);
-            frmIzlazna.Show();
+            try
+            {
+                var _id = Int32.Parse(dgvIzlaznaSredstva.SelectedRows[0].Cells[0].Value.ToString());
+                frmIzlaznaSredstvaUpsert frmIzlazna = new frmIzlaznaSredstvaUpsert(_id);
+                frmIzlazna.Show();
+            }
+            catch (Exception)
+            {
+
+            }
         }
 
         private void btnDodaj_Click(object sender, EventArgs e)

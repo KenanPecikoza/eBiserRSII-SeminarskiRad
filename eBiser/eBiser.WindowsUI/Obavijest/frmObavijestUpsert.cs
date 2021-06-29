@@ -128,8 +128,16 @@ namespace eBiser.WindowsUI.Obavijest
 
         private async void dgvObavijesti_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-            _id = Int32.Parse(dgvObavijesti.SelectedRows[0].Cells[0].Value.ToString());
-            await LoadFormaObavijest(_id??0);
+            try
+            {
+                _id = Int32.Parse(dgvObavijesti.SelectedRows[0].Cells[0].Value.ToString());
+                await LoadFormaObavijest(_id ?? 0);
+            }
+            catch (Exception)
+            {
+
+            }
+
         }
 
         private void txtNaslov_Validating(object sender, CancelEventArgs e)

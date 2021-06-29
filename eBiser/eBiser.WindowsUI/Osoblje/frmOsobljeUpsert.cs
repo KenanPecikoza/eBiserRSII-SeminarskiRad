@@ -130,11 +130,18 @@ namespace eBiser.WindowsUI.Osoblje
 
         private async void dgvOsoblje_CellClick_1(object sender, DataGridViewCellEventArgs e)
         {
-            var id = Int32.Parse(dgvOsoblje.SelectedRows[0].Cells[0].Value.ToString());
-            var korisnikid = Int32.Parse(dgvOsoblje.SelectedRows[0].Cells[1].Value.ToString());
-            _id = id;
-            _Korisnikid = korisnikid;
-            await LoadForm(_id??0);
+            try
+            {
+                var id = Int32.Parse(dgvOsoblje.SelectedRows[0].Cells[0].Value.ToString());
+                var korisnikid = Int32.Parse(dgvOsoblje.SelectedRows[0].Cells[1].Value.ToString());
+                _id = id;
+                _Korisnikid = korisnikid;
+                await LoadForm(_id??0);
+            }
+            catch (Exception)
+            {
+
+            }
         }
 
         private void btnIzadji_Click_1(object sender, EventArgs e)

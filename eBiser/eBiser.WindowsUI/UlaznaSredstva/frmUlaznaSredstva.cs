@@ -49,9 +49,16 @@ namespace eBiser.WindowsUI.UlaznaSredstva
 
         private void dgvUlaznaSredstva_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
-            var _id = Int32.Parse(dgvUlaznaSredstva.SelectedRows[0].Cells[0].Value.ToString());
-            frmUlaznaSredstvaUpsert frmUlazna = new frmUlaznaSredstvaUpsert(_id);
-            frmUlazna.Show();
+            try
+            {
+                var _id = Int32.Parse(dgvUlaznaSredstva.SelectedRows[0].Cells[0].Value.ToString());
+                frmUlaznaSredstvaUpsert frmUlazna = new frmUlaznaSredstvaUpsert(_id);
+                frmUlazna.Show();
+            }
+            catch (Exception)
+            {
+
+            }
         }
 
         private void btnDodaj_Click(object sender, EventArgs e)

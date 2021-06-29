@@ -31,10 +31,7 @@ namespace eBiser.WindowsUI.Donacije
         private async void frmDonacije_Load(object sender, EventArgs e)
         {
             await LoadDGV();
-            //var result = await _apiService.Get<List<Data.Donacije>>(null);
-            ////dgvDonacije.AutoGenerateColumns = false;
-            //dgvDonacije.DataSource = result;
-            //dgvDonacije.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCells;
+
         }
 
         private async void btnPretraziSadrzaj_Click(object sender, EventArgs e)
@@ -48,10 +45,18 @@ namespace eBiser.WindowsUI.Donacije
 
         private void dgvDonacije_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
-            int id = Int32.Parse(dgvDonacije.SelectedRows[0].Cells[0].Value.ToString());
-            frmDonacijeUpsert clanoviUpsert = new frmDonacijeUpsert(id);
-            clanoviUpsert.Show();
-            this.Close();
+            try
+            {
+                int id = Int32.Parse(dgvDonacije.SelectedRows[0].Cells[0].Value.ToString());
+                frmDonacijeUpsert clanoviUpsert = new frmDonacijeUpsert(id);
+                clanoviUpsert.Show();
+                this.Close();
+
+            }
+            catch (Exception)
+            {
+
+            }
         }
     }
 }

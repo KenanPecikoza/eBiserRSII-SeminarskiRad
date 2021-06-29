@@ -30,8 +30,16 @@ namespace eBiser.WindowsUI.AkcijePomoci
 
         private void dgvAkcijePomoci_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
-            frmAkcijePomociUpsert frmAkcijePomoci = new frmAkcijePomociUpsert(Int32.Parse(dgvAkcijePomoci.SelectedRows[0].Cells[0].Value.ToString()));
-            frmAkcijePomoci.Show();
+            try
+            {
+                frmAkcijePomociUpsert frmAkcijePomoci = new frmAkcijePomociUpsert(Int32.Parse(dgvAkcijePomoci.SelectedRows[0].Cells[0].Value.ToString()));
+                frmAkcijePomoci.Show();
+
+            }
+            catch (Exception)
+            {
+
+            }
         }
 
         private void btnIzadji_Click(object sender, EventArgs e)

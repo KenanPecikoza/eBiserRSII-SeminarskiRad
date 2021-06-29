@@ -70,10 +70,18 @@ namespace eBiser.WindowsUI.Osoblje
 
         private void dgvOsoblje_CellDoubleClick_1(object sender, DataGridViewCellEventArgs e)
         {
-            var id = Int32.Parse(dgvOsoblje.SelectedRows[0].Cells[0].Value.ToString());
-            frmOsobljeUpsert frmOsobljeUpsert = new frmOsobljeUpsert(id);
-            frmOsobljeUpsert.Show();
-            this.Close();
+            try
+            {
+                var id = Int32.Parse(dgvOsoblje.SelectedRows[0].Cells[0].Value.ToString());
+                frmOsobljeUpsert frmOsobljeUpsert = new frmOsobljeUpsert(id);
+                frmOsobljeUpsert.Show();
+                this.Close();
+            }
+            catch (Exception)
+            {
+
+            }
+
         }
 
         private void button1_Click(object sender, EventArgs e)

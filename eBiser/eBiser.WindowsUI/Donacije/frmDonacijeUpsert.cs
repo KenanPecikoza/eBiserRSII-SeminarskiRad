@@ -73,8 +73,15 @@ namespace eBiser.WindowsUI.Donacije
 
         private async void dgvDonacije_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-            _id = Int32.Parse(dgvDonacije.SelectedRows[0].Cells[0].Value.ToString());
-            await LoadForma(_id ?? 0);
+            try
+            {
+                _id = Int32.Parse(dgvDonacije.SelectedRows[0].Cells[0].Value.ToString());
+                await LoadForma(_id ?? 0);
+            }
+            catch (Exception)
+            {
+
+            }
         }
         private async void btnPrihvati_Click(object sender, EventArgs e)
         {

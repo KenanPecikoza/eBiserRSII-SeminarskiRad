@@ -48,11 +48,18 @@ namespace eBiser.WindowsUI.Clanovi
 
         private void dgvClanovi_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
-            int id = Int32.Parse(dgvClanovi.SelectedRows[0].Cells[0].Value.ToString());
-            int korisnikId = Int32.Parse(dgvClanovi.SelectedRows[0].Cells[1].Value.ToString());
-            frmClanoviUpsert clanoviUpsert = new frmClanoviUpsert( id, korisnikId);
-            clanoviUpsert.Show();
-            this.Close();
+            try
+            {
+                int id = Int32.Parse(dgvClanovi.SelectedRows[0].Cells[0].Value.ToString());
+                int korisnikId = Int32.Parse(dgvClanovi.SelectedRows[0].Cells[1].Value.ToString());
+                frmClanoviUpsert clanoviUpsert = new frmClanoviUpsert( id, korisnikId);
+                clanoviUpsert.Show();
+                this.Close();
+            }
+            catch (Exception)
+            {
+
+            }
         }
 
         private void btnIzadji_Click(object sender, EventArgs e)

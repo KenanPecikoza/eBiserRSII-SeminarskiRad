@@ -89,8 +89,16 @@ namespace eBiser.WindowsUI.Clanarine
         }
         private async void dgvClanarine1_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-            _id = Int32.Parse(dgvClanarine1.SelectedRows[0].Cells[0].Value.ToString());
-            await LoadForma(_id ?? 0);//bug zbog podataka 
+            try
+            {
+                _id = Int32.Parse(dgvClanarine1.SelectedRows[0].Cells[0].Value.ToString());
+                await LoadForma(_id ?? 0);//bug zbog podataka 
+
+            }
+            catch (Exception)
+            {
+
+            }
         }
         private void btnPonisti_Click(object sender, EventArgs e)
         {

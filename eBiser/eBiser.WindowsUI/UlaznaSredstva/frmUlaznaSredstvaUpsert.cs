@@ -93,8 +93,16 @@ namespace eBiser.WindowsUI.UlaznaSredstva
 
         private async void dgvUlaznaSredstva_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-            _id = Int32.Parse(dgvUlaznaSredstva.SelectedRows[0].Cells[0].Value.ToString());
-            await LoadForm(_id);
+            try
+            {
+                _id = Int32.Parse(dgvUlaznaSredstva.SelectedRows[0].Cells[0].Value.ToString());
+                await LoadForm(_id);
+
+            }
+            catch (Exception)
+            {
+
+            }
         }
 
         private void btnAddPhoto_Click(object sender, EventArgs e)

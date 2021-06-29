@@ -42,9 +42,16 @@ namespace eBiser.WindowsUI.Clanarine
 
         private void dgvClanarine_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
-            int Id = Int32.Parse(dgvClanarine.SelectedRows[0].Cells[0].Value.ToString());
-            frmClanarineUpsert frmClanarineUpsert = new frmClanarineUpsert(Id);
-            frmClanarineUpsert.Show();
+            try
+            {
+                int Id = Int32.Parse(dgvClanarine.SelectedRows[0].Cells[0].Value.ToString());
+                frmClanarineUpsert frmClanarineUpsert = new frmClanarineUpsert(Id);
+                frmClanarineUpsert.Show();
+            }
+            catch (Exception)
+            {
+
+            }
         }
 
         private void btnClose_Click(object sender, EventArgs e)

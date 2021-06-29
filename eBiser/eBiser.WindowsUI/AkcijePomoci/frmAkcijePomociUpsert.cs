@@ -142,8 +142,16 @@ namespace eBiser.WindowsUI.AkcijePomoci
 
         private async void dgvAkcijePomoci_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-            _id = Int32.Parse(dgvAkcijePomoci.SelectedRows[0].Cells[0].Value.ToString());
-            await PopuniFormu(_id);
+            try
+            {
+                _id = Int32.Parse(dgvAkcijePomoci.SelectedRows[0].Cells[0].Value.ToString());
+                await PopuniFormu(_id);
+
+            }
+            catch (Exception)
+            {
+
+            }
         }
     }
 }

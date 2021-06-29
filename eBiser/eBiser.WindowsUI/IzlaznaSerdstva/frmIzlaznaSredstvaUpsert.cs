@@ -100,8 +100,15 @@ namespace eBiser.WindowsUI.IzlaznaSerdstva
 
         private async void dgvIzlaznaSredstva_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-            _id = Int32.Parse(dgvIzlaznaSredstva.SelectedRows[0].Cells[0].Value.ToString());
-            await LoadForm(_id);
+            try
+            {
+                _id = Int32.Parse(dgvIzlaznaSredstva.SelectedRows[0].Cells[0].Value.ToString());
+                await LoadForm(_id);
+            }
+            catch (Exception)
+            {
+
+            }
         }
 
         private void btnAddPhoto_Click(object sender, EventArgs e)
