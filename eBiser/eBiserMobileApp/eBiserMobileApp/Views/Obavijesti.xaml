@@ -1,0 +1,62 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
+             xmlns:vm="clr-namespace:eBiserMobileApp.ViewModels" 
+             xmlns:converters="clr-namespace:eBiserMobileApp.Converters" 
+             xmlns:customcontrol="clr-namespace:eBiserMobileApp.Controls"
+             x:Class="eBiserMobileApp.Views.Obavijesti">
+    <ContentPage.BindingContext>
+        <vm:ObavijestiViewModel ></vm:ObavijestiViewModel>
+    </ContentPage.BindingContext>
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <converters:ImageConverter x:Key="imgConv"></converters:ImageConverter>
+        </ResourceDictionary>
+    </ContentPage.Resources>
+    <ContentPage.Content>
+            <StackLayout>
+                <Label Text="Obavijesti"
+                    VerticalOptions="CenterAndExpand" 
+                    HorizontalOptions="CenterAndExpand" />
+                <Picker Margin="20,0,20,0"  ItemsSource="{Binding ObavijestiKategorije}" SelectedItem="{Binding SelectedKategorija}" ItemDisplayBinding="{Binding NazivKategorije}"></Picker>
+                <ListView
+                    Margin="20,0,20,0"
+                    ItemsSource="{Binding Obavijesti}"
+                    ItemSelected="ListView_OnItemSelected">
+                    <ListView.ItemTemplate>
+                        <DataTemplate>
+                            <ViewCell>
+                                <Frame HasShadow="True"
+                                    BorderColor="DarkGray"
+                                    CornerRadius="5"
+                                    Margin="0,3,0,0"
+                                    >
+                                    <StackLayout>
+                                        <StackLayout Padding="10" 
+                                                 Orientation="Horizontal">
+                                            <Image  WidthRequest="50" HeightRequest="50" HorizontalOptions="Start" VerticalOptions="Start" Source="{Binding Fotografije[0],Converter={StaticResource imgConv}}"></Image>
+                                            <Label Text="{Binding Naslov}" 
+                                                LineBreakMode="NoWrap" 
+                                                Style="{DynamicResource ListItemTextStyle}" 
+                                                FontSize="16" VerticalOptions="Center"/>
+                                        </StackLayout>
+                                        <Label Text="{Binding Sadržaj}" 
+                                            LineBreakMode="NoWrap" 
+                                            Style="{DynamicResource ListItemTextStyle}" 
+                                            FontSize="16" />
+                                        <Label Text="Ocjena"/>
+                                        <customcontrol:RattingBar    HorizontalOptions="Start"  ImageWidth="25" ImageHeight="25"   FlowDirection="LeftToRight"  SelectedStarValue="{Binding Ocjena}"   FillStarImage="Images/fillstar.png" EmptyStarImage="Images/emptystar.png" />
+                                    </StackLayout>
+
+                                </Frame>
+                           
+                            </ViewCell>
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
+                </ListView>
+                <!--<Button Margin="20,0,20,5" Text="Doniraj" CornerRadius="10"></Button>-->
+            
+            </StackLayout>
+            
+    </ContentPage.Content>
+</ContentPage>

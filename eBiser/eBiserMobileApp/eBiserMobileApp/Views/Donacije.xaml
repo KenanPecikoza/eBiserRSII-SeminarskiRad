@@ -1,0 +1,57 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" xmlns:vm="clr-namespace:eBiserMobileApp.ViewModels"
+             x:Class="eBiserMobileApp.Views.Donacije">
+    <ContentPage.BindingContext>
+        <vm:DonacijeViewModel ></vm:DonacijeViewModel>
+    </ContentPage.BindingContext>
+    <ContentPage.Content>
+        <StackLayout>
+            <ListView
+                Margin="20,0,20,0"
+                ItemsSource="{Binding Donacije}"
+                ItemSelected="ListView_OnItemSelected">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell>
+                            <Frame HasShadow="True"
+                                BorderColor="DarkGray"
+                                CornerRadius="5"
+                                Margin="0,3,0,0"
+                                >
+                                <StackLayout>
+                                    <StackLayout Padding="10" 
+                                                 Orientation="Horizontal">
+                                        <Label Text="{Binding Naziv }" 
+                                                LineBreakMode="NoWrap" 
+                                                Style="{DynamicResource ListItemTextStyle}" 
+                                                FontSize="16" VerticalOptions="Center"/>
+                                    </StackLayout>
+                                    <Label Text="{Binding OpisDonacije}" 
+                                            LineBreakMode="NoWrap" 
+                                            Style="{DynamicResource ListItemTextStyle}" 
+                                            FontSize="16" />
+                                    <Label Text="{Binding Obrazlozenje}" 
+                                            LineBreakMode="NoWrap" 
+                                            Style="{DynamicResource ListItemTextStyle}" 
+                                            FontSize="16" />
+                                    <StackLayout Orientation="Horizontal">
+                                        <Label IsVisible="{Binding Prihvacena}" VerticalOptions="Center" Text="Prihvaćena"></Label>
+                                        <CheckBox IsVisible="{Binding Prihvacena}" IsEnabled="False" VerticalOptions="Center" x:Name="Prihvaćena" IsChecked="{Binding Prihvacena}"/>
+                                        <Label IsVisible="{Binding NaCekanju}" VerticalOptions="Center"  Text="Na čekanju"></Label>
+                                        <CheckBox IsVisible="{Binding NaCekanju}" IsEnabled="False" VerticalOptions="Center" x:Name="NaCekanju" IsChecked="{Binding NaCekanju}"/>                                        
+                                        <Label IsVisible="{Binding Odbijena}" VerticalOptions="Center"  Text="Odbijena"></Label>
+                                        <CheckBox IsVisible="{Binding Odbijena}" IsEnabled="False" VerticalOptions="Center" x:Name="Odbijena" IsChecked="{Binding Odbijena}"/>
+                                    </StackLayout>
+
+                                </StackLayout>
+                                
+                            </Frame>
+                               
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

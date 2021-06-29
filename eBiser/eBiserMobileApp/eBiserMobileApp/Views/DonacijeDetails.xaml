@@ -1,0 +1,46 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
+             xmlns:vm="clr-namespace:eBiserMobileApp.ViewModels"
+             x:Class="eBiserMobileApp.Views.DonacijeDetails">
+    <ContentPage.BindingContext>
+        <vm:DonacijaDetailsViewModel ></vm:DonacijaDetailsViewModel>
+    </ContentPage.BindingContext>
+    <ContentPage.Content>
+
+        <StackLayout VerticalOptions="Start" >
+            <StackLayout Margin="20,0,20,0">
+                    <Label VerticalOptions="Center" 
+                   HorizontalOptions="Start"
+                   Text="Naslov" />
+                    <Entry 
+                    Text="{Binding Donacije.Naziv}"
+                    Placeholder="Naslov"
+                    IsEnabled="False"
+                    >
+                    </Entry>
+
+                    <Label VerticalOptions="Center" 
+                   HorizontalOptions="Start"
+                   Text="Opis" />
+                    <Editor 
+                    Text="{Binding Donacije.OpisDonacije}"
+                    Placeholder="Opis"
+                    HeightRequest="150"
+                    IsEnabled="False"
+                    >
+                    </Editor>
+                    <Label VerticalOptions="Center" 
+                   HorizontalOptions="Start"
+                   Text="Obrazloženje" />
+                    <Editor 
+                    Text="{Binding Donacije.Obrazlozenje}"
+                    Placeholder="Obrazloženje"
+                    HeightRequest="150"
+                     IsEnabled="False"
+                    >
+                    </Editor>
+                </StackLayout>
+            </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

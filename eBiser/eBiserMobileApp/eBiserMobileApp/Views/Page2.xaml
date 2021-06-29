@@ -1,0 +1,21 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
+             xmlns:vm="clr-namespace:eBiserMobileApp.ViewModels"
+             x:Class="eBiserMobileApp.Views.Page2">
+    <ContentPage.BindingContext>
+        <vm:ValidationViewModel ></vm:ValidationViewModel>
+    </ContentPage.BindingContext>
+    <ContentPage.Content>
+        <StackLayout  VerticalOptions="CenterAndExpand" 
+                HorizontalOptions="CenterAndExpand">
+            <Label Text="Email" />
+            <Entry Text="{Binding Email}" Placeholder="Email">
+            </Entry>
+            <Label Text="{Binding EmailPoruka}"  IsEnabled="{Binding Tacan }" Style="{StaticResource ErrorTextStyle}"/>
+
+            <Button Margin="0,10,0,0" CornerRadius="5" VerticalOptions="Center"
+                    Text="SingUp" Command="{Binding OnClickCommand}"/>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

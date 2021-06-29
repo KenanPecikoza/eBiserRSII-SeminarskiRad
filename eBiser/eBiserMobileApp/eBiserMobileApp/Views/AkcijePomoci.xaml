@@ -1,0 +1,63 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
+             xmlns:vm="clr-namespace:eBiserMobileApp.ViewModels" 
+             xmlns:converters="clr-namespace:eBiserMobileApp.Converters"
+             x:Class="eBiserMobileApp.Views.AkcijePomoci">
+    <ContentPage.BindingContext>
+        <vm:AkcijePomociViewModel ></vm:AkcijePomociViewModel>
+    </ContentPage.BindingContext>
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <converters:ImageConverter x:Key="imgConv"></converters:ImageConverter>
+        </ResourceDictionary>
+    </ContentPage.Resources>
+    <ContentPage.Content>
+        <StackLayout>
+            <ListView
+                ItemsSource="{Binding AkcijePomoci}"
+                ItemSelected="ListView_OnItemSelected">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell>
+                            <Frame HasShadow="True"
+                                BorderColor="DarkGray"
+                                CornerRadius="5"
+                                Margin="20,10,20,0"
+                                HorizontalOptions="Fill">
+                                <StackLayout>
+                                    <StackLayout Padding="0" 
+                                             Orientation="Horizontal">
+                                        <Image  WidthRequest="150" BackgroundColor="Red" HeightRequest="100" HorizontalOptions="Start" VerticalOptions="Start" Aspect="Fill" Source="{Binding Fotografija,Converter={StaticResource imgConv}}" ></Image>
+                                        <StackLayout Orientation="Vertical">
+                                            <Label Text="Ime" ></Label>
+                                            <Label Text="{Binding Ime}" 
+                                            LineBreakMode="NoWrap" 
+                                            Style="{DynamicResource ListItemTextStyle}" 
+                                            FontSize="16" VerticalOptions="Center"/>
+                                            <StackLayout Orientation="Horizontal">
+                                                <Label Text="Sakupljeno"></Label>
+                                                <Label Text="{Binding Skupljeno}"></Label>
+                                            </StackLayout>
+                                            <StackLayout Orientation="Horizontal">
+                                                <Label Text="Traženo"></Label>
+                                                <Label Text="{Binding TraženaCifra}"></Label>
+                                            </StackLayout>
+                                        </StackLayout>
+                                    </StackLayout>
+                                    <StackLayout>
+                                        <ProgressBar HeightRequest="15"  Progress="{Binding Progres }"></ProgressBar>
+                                    </StackLayout>
+                                </StackLayout>
+                            </Frame>
+
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+            <Button Margin="20,0,20,5" Text="Kontaktiraj" Command="{Binding ContactCommand}" CornerRadius="10"></Button>
+
+                
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

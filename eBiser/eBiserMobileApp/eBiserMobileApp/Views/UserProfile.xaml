@@ -1,0 +1,94 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
+             xmlns:converters="clr-namespace:eBiserMobileApp.Converters" 
+             xmlns:vm="clr-namespace:eBiserMobileApp.ViewModels"
+             x:Class="eBiserMobileApp.Views.UserProfile">
+    <ContentPage.BindingContext>
+        <vm:UserProfileViewModel ></vm:UserProfileViewModel>
+    </ContentPage.BindingContext>
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <converters:ImageConverter x:Key="imgConv"></converters:ImageConverter>
+        </ResourceDictionary>
+    </ContentPage.Resources>
+     
+    <ContentPage.Content>
+
+        <StackLayout >
+            <ScrollView>
+                <StackLayout Margin="20,40,20,0">
+                    <StackLayout Orientation="Horizontal">
+                        <StackLayout HorizontalOptions="CenterAndExpand">
+                            <Image WidthRequest="150" 
+                            BackgroundColor="Red" 
+                            HeightRequest="150" 
+                            Aspect="Fill" 
+                            Source="{Binding Fotografija,Converter={StaticResource imgConv}}" ></Image>
+                        </StackLayout>
+                        <StackLayout HorizontalOptions="End" IsVisible="{Binding IsClanarine}">
+                            <Label Text="Clanarine"/>
+                            <Label Text="{Binding Clanarine}"/>
+                        </StackLayout  >
+
+                    </StackLayout>
+                    <StackLayout>
+                        <Label VerticalOptions="Center" 
+                   HorizontalOptions="Start"
+                   Text="Ime" />
+                        <Entry 
+                    Text="{Binding Ime}"
+                    Placeholder="Ime"
+                    >
+                        </Entry>
+                        <Label VerticalOptions="Center" 
+                   HorizontalOptions="Start"
+                   Text="Prezime" />
+                        <Entry 
+                    Text="{Binding Prezime}"
+                    Placeholder="Prezime"
+                    >
+                        </Entry>
+                        <Label VerticalOptions="Center" 
+                   HorizontalOptions="Start"
+                   Text="Korisnicko ime" />
+                        <Entry 
+                    Text="{Binding KorisnickoIme}"
+                    Placeholder="Korisnicko ime"
+                    IsEnabled="False"
+                    >
+                        </Entry>
+                        <Label VerticalOptions="Center" 
+                   HorizontalOptions="Start"
+                   Text="Email" />
+                        <Entry 
+                    Text="{Binding Email}"
+                    Placeholder="Email"
+                    IsEnabled="False"
+                    >
+                        </Entry>
+                    </StackLayout >
+
+
+                    <!--<Label VerticalOptions="Center" 
+                    HorizontalOptions="Start"
+                    Text="Opis profila" />
+                    <Entry 
+                        Text="{Binding OpisProfila}"
+                        Placeholder="OpisProfirla"
+                        >
+                    </Entry>-->
+                    <StackLayout Orientation="Horizontal" HorizontalOptions="Center">
+                        
+                    <Button Margin="0,0,0,10" CornerRadius="5" VerticalOptions="Center"
+                    Text="Restart password" Clicked="Button_Clicked"/>
+                    <Button  Margin="0,0,0,10" CornerRadius="5" VerticalOptions="Center"
+                    Text="Odjavi se" Command="{Binding LogOutCommand }"/>
+                    </StackLayout>
+                </StackLayout>
+
+            </ScrollView>
+            
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

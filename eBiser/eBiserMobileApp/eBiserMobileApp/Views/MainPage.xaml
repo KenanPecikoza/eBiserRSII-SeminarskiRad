@@ -1,0 +1,42 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Shell xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:local="clr-namespace:eBiserMobileApp.Views"
+             x:Class="eBiserMobileApp.Views.MainPage">
+    
+    <!--<Shell.SearchHandler>
+        --><!--<controls:ObavijestiSearch Placeholder="Enter search term"
+                                      ShowsResults="true">
+            <controls>
+                <DataTemplate>
+                    <Grid Padding="10"
+                          ColumnDefinitions="0.15*,0.85*">
+                        <Image Source="{Binding ImageUrl}"
+                               HeightRequest="40"
+                               WidthRequest="40" />
+                        <Label Grid.Column="1"
+                               Text="{Binding Name}"
+                               FontAttributes="Bold"
+                               VerticalOptions="Center" />
+                    </Grid>
+                </DataTemplate>
+            </controls>
+        </controls:ObavijestiSearch>--><!--
+    </Shell.SearchHandler>-->
+    <FlyoutItem Title="MyTabApp"
+                  Shell.TabBarIsVisible="True"
+                  FlyoutDisplayOptions="AsMultipleItems" 
+                >
+        <ShellContent Title="Obavijesti" Icon="" IsTabStop="True" ContentTemplate="{DataTemplate local:Obavijesti }"/>
+
+        <ShellContent Title="Akcije pomoći" Icon="" IsTabStop="True" ContentTemplate="{DataTemplate local:AkcijePomoci }"/>
+        
+        <ShellContent Title="Korisnički Profil" Icon="" IsTabStop="True" ContentTemplate="{DataTemplate local:UserProfile}"/>
+        
+        <ShellContent Title="Doniraj" Icon="" IsTabStop="True" ContentTemplate="{DataTemplate local:Doniraj}"/>
+        
+        <ShellContent Title="Moje donacije" Icon="" IsTabStop="True" ContentTemplate="{DataTemplate local:Donacije}"/>
+        
+    </FlyoutItem> 
+        <ShellContent Title="O nama" Icon="" IsTabStop="True" />
+</Shell>

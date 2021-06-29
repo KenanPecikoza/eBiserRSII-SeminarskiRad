@@ -1,0 +1,88 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" xmlns:vm="clr-namespace:eBiserMobileApp.ViewModels"
+             xmlns:converters="clr-namespace:eBiserMobileApp.Converters" 
+             xmlns:customcontrol="clr-namespace:eBiserMobileApp.Controls"
+             x:Class="eBiserMobileApp.Views.ObavijestDetails">
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <converters:ImageConverter x:Key="imgConv"></converters:ImageConverter>
+        </ResourceDictionary>
+    </ContentPage.Resources>
+    <ContentPage.BindingContext>
+        <vm:ObavijestiDetailViewModel ></vm:ObavijestiDetailViewModel>
+    </ContentPage.BindingContext>
+    <ContentPage.Content>
+        <ScrollView>
+            <StackLayout VerticalOptions="Start" >
+                <Label HorizontalOptions="Center" Text="{Binding obavijest.Naslov}"></Label>
+                <CarouselView HeightRequest="190" ItemsSource="{Binding obavijest.Fotografije}">
+                    <CarouselView.ItemTemplate>
+                        <DataTemplate>
+                            <StackLayout>
+                                <Frame HasShadow="True"
+                                    BorderColor="DarkGray"
+                                    CornerRadius="5"
+                                    Margin="20,0"
+                                    HeightRequest="150"
+                                    HorizontalOptions="Fill"
+                                    >
+                                    <StackLayout>
+                                        <Image HeightRequest="150" Source="{Binding Path=.,Converter={StaticResource imgConv}}"
+                                                Aspect="AspectFit"
+                                                HorizontalOptions="FillAndExpand" 
+                                                VerticalOptions="FillAndExpand"
+                                         />
+                                    </StackLayout>
+                                </Frame>
+                            </StackLayout>
+                        </DataTemplate>
+                    </CarouselView.ItemTemplate>
+                </CarouselView>
+                <Label HorizontalOptions="Start" VerticalOptions="Start" Text="{Binding obavijest.Sadržaj}"></Label>
+                <StackLayout >
+                    <StackLayout></StackLayout>
+                    <customcontrol:RattingBar IsEnabled="False" x:Name="customRattingBar1" HorizontalOptions="Center"  ImageWidth="25" ImageHeight="25"   FlowDirection="LeftToRight"   SelectedStarValue="{Binding obavijest.Ocjena}"   FillStarImage="Images/fillstar.png" EmptyStarImage="Images/emptystar.png"   />
+                    <Label HorizontalOptions="Center">Trenutna ocjena</Label>
+                </StackLayout>
+                <StackLayout >
+                    <StackLayout></StackLayout>
+                    <customcontrol:RattingBar x:Name="customRattingBar" HorizontalOptions="Center"  ImageWidth="25" ImageHeight="25"   FlowDirection="LeftToRight"   SelectedStarValue="5"   FillStarImage="Images/fillstar.png" EmptyStarImage="Images/emptystar.png"   />
+                    <Button Command="{Binding clickCommand}"  CommandParameter="{x:Reference Name=customRattingBar}" Text="Ocijeni" />
+                </StackLayout>
+                <CarouselView HeightRequest="190" ItemsSource="{Binding Obavijesti }">
+                    <CarouselView.ItemTemplate>
+                        <DataTemplate>
+                            <StackLayout>
+                                <Label Text="Preporuke za vas"/>
+                                <Frame HasShadow="True"
+                                    BorderColor="DarkGray"
+                                    CornerRadius="5"
+                                    Margin="0,3,0,0"
+                                    >
+                                    <StackLayout>
+                                        <StackLayout Padding="10" 
+                                                 Orientation="Horizontal">
+                                            <Image  WidthRequest="50" HeightRequest="50" HorizontalOptions="Start" VerticalOptions="Start" Source="{Binding Fotografije[0],Converter={StaticResource imgConv}}"></Image>
+                                            <Label Text="{Binding Naslov}" 
+                                                LineBreakMode="NoWrap" 
+                                                Style="{DynamicResource ListItemTextStyle}" 
+                                                FontSize="16" VerticalOptions="Center"/>
+                                        </StackLayout>
+                                        <Label Text="{Binding Sadržaj}" 
+                                            LineBreakMode="NoWrap" 
+                                            Style="{DynamicResource ListItemTextStyle}" 
+                                            FontSize="16" />
+                                        <Label Text="Ocjena"/>
+                                        <customcontrol:RattingBar    HorizontalOptions="Start"  ImageWidth="25" ImageHeight="25"   FlowDirection="LeftToRight"  SelectedStarValue="{Binding Ocjena}"   FillStarImage="Images/fillstar.png" EmptyStarImage="Images/emptystar.png" />
+                                    </StackLayout>
+
+                                </Frame>
+                            </StackLayout>
+                        </DataTemplate>
+                    </CarouselView.ItemTemplate>
+                </CarouselView>
+            </StackLayout>
+        </ScrollView>
+    </ContentPage.Content>
+</ContentPage>

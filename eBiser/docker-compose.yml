@@ -1,0 +1,36 @@
+version: '3'
+services:
+#mssql docker
+  ebiser-sql:
+    image: mcr.microsoft.com/mssql/server:2017-latest-ubuntu
+    restart: unless-stopped
+    environment:
+      - ACCEPT_EULA=Y
+      - SA_PASSWORD=QWElkj132!
+      - MSSQL_PID=Developer
+    ports:
+      - 1401:1433
+    networks:
+      - ebisernet
+
+  ebiser-api:
+    restart: unless-stopped
+    build:
+      context: .
+    environment:
+      - ConnectionStrings:eBiser=Server=ebiser-sql,1433;Database=eBiser;User=sa;Password=QWElkj132!;ConnectRetryCount=0
+    ports:
+      - 57869:80
+    networks:
+      - ebisernet      
+    links:
+      - ebiser-sql
+    depends_on:
+      - ebiser-sql
+
+networks:
+  ebisernet:
+    driver: bridge       
+
+
+    
