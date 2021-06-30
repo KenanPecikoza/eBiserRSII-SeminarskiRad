@@ -14,7 +14,7 @@ namespace eBiser.Services
         Data.KorisniciSistema Insert(KorisniciInserttRequest request);
         Data.KorisniciSistema Update(int id, KorisniciUpdateRequest request);
         Data.DonatorDTO GetDonator(int id);
-        List<Data.DonatorDTO> GetDonatori();
+        List<Data.DonatorDTO> GetDonatori(KorisniciSearchRequest search);
         Data.ClanDTO GetClan(int id);
         List<Data.ClanDTO> GetCLanovi(KorisniciSearchRequest search);
         Data.OsobljeDTO GetOsoblje(int id);

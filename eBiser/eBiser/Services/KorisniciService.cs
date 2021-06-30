@@ -211,9 +211,26 @@ namespace eBiser.Services
             var returns = _mapper.Map<Data.DonatorDTO>(entity);
             return returns;
         }
-        public List<Data.DonatorDTO> GetDonatori()
+        public List<Data.DonatorDTO> GetDonatori(KorisniciSearchRequest search)
         {
-            var list = _db.Donatoris.Include(x => x.Korisnik);
+            var query = _db.Donatoris.Include(x => x.Korisnik).AsQueryable();
+            if (!string.IsNullOrWhiteSpace(search?.Ime))
+            {
+                query = _db.Donatoris.Include(x => x.Korisnik).Where(x => x.Korisnik.Ime.ToLower().StartsWith(search.Ime.ToLower()));
+            }
+            if (!string.IsNullOrWhiteSpace(search?.Prezime))
+            {
+                query = _db.Donatoris.Include(x => x.Korisnik).Where(x => x.Korisnik.Prezime.ToLower().StartsWith(search.Prezime.ToLower()));
+            }
+            if (!string.IsNullOrWhiteSpace(search?.Email))
+            {
+                query = _db.Donatoris.Include(x => x.Korisnik).Where(x => x.Korisnik.Email.ToLower().StartsWith(search.Email.ToLower()));
+            }
+            if (search.Aktivan != null)
+            {
+                query = _db.Donatoris.Include(x => x.Korisnik).Where(x => x.Korisnik.Aktivan == search.Aktivan);
+            }
+            var list = query.ToList();
             var returns = _mapper.Map<List<Data.DonatorDTO>>(list);
             return returns;
         }

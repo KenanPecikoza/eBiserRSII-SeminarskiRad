@@ -46,9 +46,9 @@ namespace eBiser.Controllers
         [Authorize(Roles = "Osoblje")]
 
         [HttpGet("donatori")]
-        public IActionResult GetDonatori()
+        public IActionResult GetDonatori([FromQuery] KorisniciSearchRequest search)
         {
-            return Ok(_korisniciService.GetDonatori());
+            return Ok(_korisniciService.GetDonatori(search));
         }
 
         [Authorize(Roles = "Clan,Osoblje")]
