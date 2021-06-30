@@ -1,0 +1,48 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xs:schema id="UlaznaSredstva" targetNamespace="http://tempuri.org/UlaznaSredstva.xsd" xmlns:mstns="http://tempuri.org/UlaznaSredstva.xsd" xmlns="http://tempuri.org/UlaznaSredstva.xsd" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" xmlns:msprop="urn:schemas-microsoft-com:xml-msprop" attributeFormDefault="qualified" elementFormDefault="qualified">
+  <xs:annotation>
+    <xs:appinfo source="urn:schemas-microsoft-com:xml-msdatasource">
+      <DataSource DefaultConnectionIndex="0" FunctionsComponentName="QueriesTableAdapter" Modifier="AutoLayout, AnsiClass, Class, Public" SchemaSerializationMode="IncludeSchema" xmlns="urn:schemas-microsoft-com:xml-msdatasource">
+        <Connections>
+          <Connection AppSettingsObjectName="Settings" AppSettingsPropertyName="eBiserConnectionString" ConnectionStringObject="" IsAppSettingsProperty="true" Modifier="Assembly" Name="eBiserConnectionString (Settings)" ParameterPrefix="@" PropertyReference="ApplicationSettings.eBiser.WindowsUI.Properties.Settings.GlobalReference.Default.eBiserConnectionString" Provider="System.Data.SqlClient" />
+        </Connections>
+        <Tables />
+        <Sources />
+      </DataSource>
+    </xs:appinfo>
+  </xs:annotation>
+  <xs:element name="UlaznaSredstva" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:EnableTableAdapterManager="true" msprop:Generator_DataSetName="UlaznaSredstva" msprop:Generator_UserDSName="UlaznaSredstva">
+    <xs:complexType>
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:element name="UlaznaSredstva" msprop:Generator_TableClassName="UlaznaSredstvaDataTable" msprop:Generator_TableVarName="tableUlaznaSredstva" msprop:Generator_TablePropName="_UlaznaSredstva" msprop:Generator_RowDeletingName="UlaznaSredstvaRowDeleting" msprop:Generator_RowChangingName="UlaznaSredstvaRowChanging" msprop:Generator_RowEvHandlerName="UlaznaSredstvaRowChangeEventHandler" msprop:Generator_RowDeletedName="UlaznaSredstvaRowDeleted" msprop:Generator_UserTableName="UlaznaSredstva" msprop:Generator_RowChangedName="UlaznaSredstvaRowChanged" msprop:Generator_RowEvArgName="UlaznaSredstvaRowChangeEvent" msprop:Generator_RowClassName="UlaznaSredstvaRow">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="Id" msdata:ReadOnly="true" msdata:AutoIncrement="true" msdata:AutoIncrementSeed="-1" msdata:AutoIncrementStep="-1" msprop:Generator_ColumnVarNameInTable="columnId" msprop:Generator_ColumnPropNameInRow="Id" msprop:Generator_ColumnPropNameInTable="IdColumn" msprop:Generator_UserColumnName="Id" type="xs:int" />
+              <xs:element name="Količina" msprop:Generator_ColumnVarNameInTable="columnKoličina" msprop:Generator_ColumnPropNameInRow="Količina" msprop:Generator_ColumnPropNameInTable="KoličinaColumn" msprop:Generator_UserColumnName="Količina" type="xs:double" />
+              <xs:element name="Datum" msprop:Generator_ColumnVarNameInTable="columnDatum" msprop:Generator_ColumnPropNameInRow="Datum" msprop:Generator_ColumnPropNameInTable="DatumColumn" msprop:Generator_UserColumnName="Datum" type="xs:dateTime" />
+              <xs:element name="Opis" msprop:Generator_ColumnVarNameInTable="columnOpis" msprop:Generator_ColumnPropNameInRow="Opis" msprop:Generator_ColumnPropNameInTable="OpisColumn" msprop:Generator_UserColumnName="Opis" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="2147483647" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="Naslov" msprop:Generator_ColumnVarNameInTable="columnNaslov" msprop:Generator_ColumnPropNameInRow="Naslov" msprop:Generator_ColumnPropNameInTable="NaslovColumn" msprop:Generator_UserColumnName="Naslov" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="2147483647" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="OsobljeId" msprop:Generator_ColumnVarNameInTable="columnOsobljeId" msprop:Generator_ColumnPropNameInRow="OsobljeId" msprop:Generator_ColumnPropNameInTable="OsobljeIdColumn" msprop:Generator_UserColumnName="OsobljeId" type="xs:int" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:choice>
+    </xs:complexType>
+    <xs:unique name="Constraint1" msdata:PrimaryKey="true">
+      <xs:selector xpath=".//mstns:UlaznaSredstva" />
+      <xs:field xpath="mstns:Id" />
+    </xs:unique>
+  </xs:element>
+</xs:schema>

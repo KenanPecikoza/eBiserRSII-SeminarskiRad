@@ -8,6 +8,7 @@ using eBiser.WindowsUI.IzlaznaSerdstva;
 using eBiser.WindowsUI.Login;
 using eBiser.WindowsUI.Obavijest;
 using eBiser.WindowsUI.Osoblje;
+using eBiser.WindowsUI.Report;
 using eBiser.WindowsUI.Sastanak;
 using eBiser.WindowsUI.UlaznaSredstva;
 using System;
@@ -222,6 +223,12 @@ namespace eBiser.WinUi
         private void btnPrikazi_Click(object sender, EventArgs e)
         {
             frmObavijestiOcjene frmObavijestiOcjene = new frmObavijestiOcjene();
+            frmObavijestiOcjene.Show();
+        }
+
+        private void btnFinansijskiIzvještajPrikaži_Click(object sender, EventArgs e)
+        {
+            frmIzvjestaj frmObavijestiOcjene = new frmIzvjestaj();
             frmObavijestiOcjene.Show();
         }
     }

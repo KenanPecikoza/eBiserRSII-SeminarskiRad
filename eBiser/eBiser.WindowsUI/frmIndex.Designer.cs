@@ -68,6 +68,8 @@ namespace eBiser.WinUi
             this.btnDonatoriDodaj = new System.Windows.Forms.Button();
             this.groupBox10 = new System.Windows.Forms.GroupBox();
             this.btnPrikazi = new System.Windows.Forms.Button();
+            this.groupBox11 = new System.Windows.Forms.GroupBox();
+            this.btnFinansijskiIzvještajPrikaži = new System.Windows.Forms.Button();
             this.statusStrip.SuspendLayout();
             this.groupBox1.SuspendLayout();
             this.Clanarine.SuspendLayout();
@@ -80,6 +82,7 @@ namespace eBiser.WinUi
             this.groupBox8.SuspendLayout();
             this.groupBox9.SuspendLayout();
             this.groupBox10.SuspendLayout();
+            this.groupBox11.SuspendLayout();
             this.SuspendLayout();
             // 
             // statusStrip
@@ -493,9 +496,9 @@ namespace eBiser.WinUi
             this.groupBox10.AutoSize = true;
             this.groupBox10.Controls.Add(this.btnPrikazi);
             this.groupBox10.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.groupBox10.Location = new System.Drawing.Point(660, 173);
+            this.groupBox10.Location = new System.Drawing.Point(666, 173);
             this.groupBox10.Name = "groupBox10";
-            this.groupBox10.Size = new System.Drawing.Size(315, 128);
+            this.groupBox10.Size = new System.Drawing.Size(309, 128);
             this.groupBox10.TabIndex = 6;
             this.groupBox10.TabStop = false;
             this.groupBox10.Text = "Ocjene obavijesti";
@@ -512,11 +515,36 @@ namespace eBiser.WinUi
             this.btnPrikazi.UseVisualStyleBackColor = true;
             this.btnPrikazi.Click += new System.EventHandler(this.btnPrikazi_Click);
             // 
+            // groupBox11
+            // 
+            this.groupBox11.AutoSize = true;
+            this.groupBox11.Controls.Add(this.btnFinansijskiIzvještajPrikaži);
+            this.groupBox11.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.groupBox11.Location = new System.Drawing.Point(660, 307);
+            this.groupBox11.Name = "groupBox11";
+            this.groupBox11.Size = new System.Drawing.Size(315, 128);
+            this.groupBox11.TabIndex = 7;
+            this.groupBox11.TabStop = false;
+            this.groupBox11.Text = "Finansijski Izvještaj";
+            // 
+            // btnFinansijskiIzvještajPrikaži
+            // 
+            this.btnFinansijskiIzvještajPrikaži.AutoSize = true;
+            this.btnFinansijskiIzvještajPrikaži.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnFinansijskiIzvještajPrikaži.Location = new System.Drawing.Point(88, 39);
+            this.btnFinansijskiIzvještajPrikaži.Name = "btnFinansijskiIzvještajPrikaži";
+            this.btnFinansijskiIzvještajPrikaži.Size = new System.Drawing.Size(135, 48);
+            this.btnFinansijskiIzvještajPrikaži.TabIndex = 1;
+            this.btnFinansijskiIzvještajPrikaži.Text = "Prikaži";
+            this.btnFinansijskiIzvještajPrikaži.UseVisualStyleBackColor = true;
+            this.btnFinansijskiIzvještajPrikaži.Click += new System.EventHandler(this.btnFinansijskiIzvještajPrikaži_Click);
+            // 
             // frmIndex
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1072, 747);
+            this.Controls.Add(this.groupBox11);
             this.Controls.Add(this.groupBox10);
             this.Controls.Add(this.groupBox9);
             this.Controls.Add(this.groupBox8);
@@ -558,6 +586,8 @@ namespace eBiser.WinUi
             this.groupBox9.PerformLayout();
             this.groupBox10.ResumeLayout(false);
             this.groupBox10.PerformLayout();
+            this.groupBox11.ResumeLayout(false);
+            this.groupBox11.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -602,6 +632,8 @@ namespace eBiser.WinUi
         private System.Windows.Forms.Button btnDonatoriDodaj;
         private System.Windows.Forms.GroupBox groupBox10;
         private System.Windows.Forms.Button btnPrikazi;
+        private System.Windows.Forms.GroupBox groupBox11;
+        private System.Windows.Forms.Button btnFinansijskiIzvještajPrikaži;
     }
 }
 
