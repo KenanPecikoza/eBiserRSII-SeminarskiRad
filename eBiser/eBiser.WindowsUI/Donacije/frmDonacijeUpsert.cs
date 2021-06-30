@@ -88,7 +88,15 @@ namespace eBiser.WindowsUI.Donacije
             if (_id.HasValue)
             {
                 NapuniRequest(true);
-                await _apiServiceDonacije.Update<Data.Donacije>(_id ?? 0, request);
+                try
+                {
+                     await _apiServiceDonacije.Update<Data.Donacije>(_id ?? 0, request);
+                    MessageBox.Show("Donacija je prihvaćena");
+                }
+                catch (Exception)
+                {
+                    MessageBox.Show("Prihvatanje donacije nije uspjelo");
+                }
             }
         }
 
@@ -97,7 +105,17 @@ namespace eBiser.WindowsUI.Donacije
             if (_id.HasValue)
             {
                 NapuniRequest(false);
-                await _apiServiceDonacije.Update<Data.Donacije>(_id ?? 0, request);
+                try
+                {
+                   await _apiServiceDonacije.Update<Data.Donacije>(_id ?? 0, request);
+                    MessageBox.Show("Donacija je odbijena");
+
+                }
+                catch (Exception)
+                {
+                    MessageBox.Show("Donacija nije odbijena");
+
+                }
             }
         }
 

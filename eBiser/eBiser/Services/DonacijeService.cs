@@ -40,6 +40,10 @@ namespace eBiser.Services
             {
                 query = query.Where(x => x.DatumPrijave <= search.DatumPrijave);
             }
+            if (search?.NaCekanju != null)
+            {
+                query = query.Where(x => x.NaCekanju == search.NaCekanju);
+            }
 
             var list = _mapper.Map<List<Data.Donacije>>(query.ToList());
             return _mapper.Map<List<Data.Donacije>>(list);

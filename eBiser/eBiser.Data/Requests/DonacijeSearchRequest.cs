@@ -10,5 +10,6 @@ namespace eBiser.Data.Requests
         public string Naziv { get; set; }
         public string OpisDonacije { get; set; }
         public  DateTime? DatumPrijave { get; set; }
+        public bool? NaCekanju { get; set; }
     }
 }

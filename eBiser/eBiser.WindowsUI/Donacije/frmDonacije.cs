@@ -40,6 +40,7 @@ namespace eBiser.WindowsUI.Donacije
             request.DatumPrijave = dtmPretragaDatum.Value;
             request.Naziv = txtPretragaPoNaslovu.Text;
             request.OpisDonacije = txtPretragaPoSadrzaju.Text;
+            request.NaCekanju = chBox.Checked;
             await LoadDGV();
         }
 

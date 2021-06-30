@@ -39,6 +39,7 @@ namespace eBiser.WindowsUI.Donacije
             this.btnPretraziSadrzaj = new System.Windows.Forms.Button();
             this.PretragaPoSadrzaju = new System.Windows.Forms.Label();
             this.txtPretragaPoSadrzaju = new System.Windows.Forms.TextBox();
+            this.chBox = new System.Windows.Forms.CheckBox();
             ((System.ComponentModel.ISupportInitialize)(this.dgvDonacije)).BeginInit();
             this.groupBox1.SuspendLayout();
             this.groupBox3.SuspendLayout();
@@ -73,6 +74,7 @@ namespace eBiser.WindowsUI.Donacije
             // 
             // groupBox3
             // 
+            this.groupBox3.Controls.Add(this.chBox);
             this.groupBox3.Controls.Add(this.dtmPretragaDatum);
             this.groupBox3.Controls.Add(this.PretragaPoDatumu);
             this.groupBox3.Controls.Add(this.PretragaPoNaslovu);
@@ -155,6 +157,16 @@ namespace eBiser.WindowsUI.Donacije
             this.txtPretragaPoSadrzaju.Size = new System.Drawing.Size(349, 26);
             this.txtPretragaPoSadrzaju.TabIndex = 14;
             // 
+            // chBox
+            // 
+            this.chBox.AutoSize = true;
+            this.chBox.Location = new System.Drawing.Point(386, 105);
+            this.chBox.Name = "chBox";
+            this.chBox.Size = new System.Drawing.Size(107, 24);
+            this.chBox.TabIndex = 18;
+            this.chBox.Text = "Na čekanju";
+            this.chBox.UseVisualStyleBackColor = true;
+            // 
             // frmDonacije
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
@@ -187,5 +199,6 @@ namespace eBiser.WindowsUI.Donacije
         private System.Windows.Forms.Button btnPretraziSadrzaj;
         private System.Windows.Forms.Label PretragaPoSadrzaju;
         private System.Windows.Forms.TextBox txtPretragaPoSadrzaju;
+        private System.Windows.Forms.CheckBox chBox;
     }
 }

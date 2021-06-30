@@ -6,7 +6,6 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Input;
 using Xamarin.Forms;
-using static eBiser.Data.Requests.KorisniciInserttRequest;
 
 namespace eBiserMobileApp.ViewModels
 {
@@ -44,7 +43,8 @@ namespace eBiserMobileApp.ViewModels
             request.NaCekanju = true;
             try
             {
-                var donacija = await _apiService.Insert<Donacije>(request);
+                var donacija = await _apiService.Insert<eBiser.Data.Donacije>(request);
+                await Application.Current.MainPage.Navigation.PushAsync(new Views.Donacije());
                 await Application.Current.MainPage.DisplayAlert("Uspješno", "Uspješno ste dodali prijedlog donacije očekujte odgovor uskoro", "OK");
             }
             catch (Exception )
