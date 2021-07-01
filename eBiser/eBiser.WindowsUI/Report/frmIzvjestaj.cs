@@ -21,12 +21,14 @@ namespace eBiser.WindowsUI.Report
         SqlConnection connection = new SqlConnection("Data Source=localhost,1401;Initial Catalog=eBiser;Persist Security Info=True;User ID=sa;Password=QWElkj132!");
         private void frmIzvjestaj_Load(object sender, EventArgs e)
         {
-            SqlCommand command = new SqlCommand("Select * from IzlaznaSredstva", connection);
-            SqlDataAdapter d = new SqlDataAdapter(command);
+            SqlCommand commandIzlazna = new SqlCommand("Select * from IzlaznaSredstva", connection);
+            SqlCommand commandUlazna = new SqlCommand("Select * from UlaznaSredstva", connection);
+            SqlDataAdapter dI = new SqlDataAdapter(commandIzlazna);
+            SqlDataAdapter dU = new SqlDataAdapter(commandUlazna);
             DataTable dtU = new DataTable();
             DataTable dtI = new DataTable();
-            d.Fill(dtU);
-            d.Fill(dtI);
+            dU.Fill(dtU);
+            dI.Fill(dtI);
 
             reportViewer1.LocalReport.DataSources.Clear();
 
