@@ -19,10 +19,10 @@ namespace eBiser.WindowsUI.Report
             InitializeComponent();
         }
         SqlConnection connection = new SqlConnection("Data Source=localhost,1401;Initial Catalog=eBiser;Persist Security Info=True;User ID=sa;Password=QWElkj132!");
-        private void frmIzvjestaj_Load(object sender, EventArgs e)
+        private void Izvjestaj(string godina)
         {
-            SqlCommand commandIzlazna = new SqlCommand("Select * from IzlaznaSredstva", connection);
-            SqlCommand commandUlazna = new SqlCommand("Select * from UlaznaSredstva", connection);
+            SqlCommand commandIzlazna = new SqlCommand($"Select * from IzlaznaSredstva WHERE YEAR([Datum])={godina}", connection);
+            SqlCommand commandUlazna = new SqlCommand($"Select * from UlaznaSredstva WHERE YEAR([Datum])={godina}", connection);
             SqlDataAdapter dI = new SqlDataAdapter(commandIzlazna);
             SqlDataAdapter dU = new SqlDataAdapter(commandUlazna);
             DataTable dtU = new DataTable();
@@ -40,6 +40,19 @@ namespace eBiser.WindowsUI.Report
 
 
             this.reportViewer1.RefreshReport();
+        }
+
+
+
+
+        private void frmIzvjestaj_Load(object sender, EventArgs e)
+        {
+            Izvjestaj(DateTime.Now.Year.ToString());
+        }
+
+        private void btnOsvježi_Click(object sender, EventArgs e)
+        {
+            Izvjestaj(numericUpDown1.Value.ToString());
         }
     }
 }

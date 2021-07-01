@@ -189,7 +189,7 @@ namespace eBiser.WindowsUI.Clanarine
             // numMjesec
             // 
             this.numMjesec.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.numMjesec.Location = new System.Drawing.Point(470, 45);
+            this.numMjesec.Location = new System.Drawing.Point(382, 45);
             this.numMjesec.Maximum = new decimal(new int[] {
             12,
             0,
@@ -212,7 +212,7 @@ namespace eBiser.WindowsUI.Clanarine
             // numGodina
             // 
             this.numGodina.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.numGodina.Location = new System.Drawing.Point(382, 45);
+            this.numGodina.Location = new System.Drawing.Point(470, 45);
             this.numGodina.Maximum = new decimal(new int[] {
             3500,
             0,

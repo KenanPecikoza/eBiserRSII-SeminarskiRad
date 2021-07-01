@@ -43,6 +43,7 @@ namespace eBiser.WindowsUI.Obavijest
             this.cbxAktivna = new System.Windows.Forms.CheckBox();
             this.txtSadržaj = new System.Windows.Forms.TextBox();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.btnOcjene = new System.Windows.Forms.Button();
             this.label6 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
             this.cBoxKategorija = new System.Windows.Forms.ComboBox();
@@ -53,7 +54,6 @@ namespace eBiser.WindowsUI.Obavijest
             this.btnAddPhoto = new System.Windows.Forms.Button();
             this.label4 = new System.Windows.Forms.Label();
             this.errorProvider = new System.Windows.Forms.ErrorProvider(this.components);
-            this.btnOcjene = new System.Windows.Forms.Button();
             this.Obavijesti.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvObavijesti)).BeginInit();
             this.groupBox1.SuspendLayout();
@@ -204,6 +204,18 @@ namespace eBiser.WindowsUI.Obavijest
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Obavijest";
             // 
+            // btnOcjene
+            // 
+            this.btnOcjene.BackColor = System.Drawing.Color.Blue;
+            this.btnOcjene.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnOcjene.ForeColor = System.Drawing.Color.White;
+            this.btnOcjene.Location = new System.Drawing.Point(459, 455);
+            this.btnOcjene.Name = "btnOcjene";
+            this.btnOcjene.Size = new System.Drawing.Size(86, 41);
+            this.btnOcjene.TabIndex = 18;
+            this.btnOcjene.Text = "Ocjene";
+            this.btnOcjene.UseVisualStyleBackColor = false;
+            // 
             // label6
             // 
             this.label6.AutoSize = true;
@@ -272,7 +284,7 @@ namespace eBiser.WindowsUI.Obavijest
             this.btnAddPhoto.BackColor = System.Drawing.Color.Blue;
             this.btnAddPhoto.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnAddPhoto.ForeColor = System.Drawing.Color.White;
-            this.btnAddPhoto.Location = new System.Drawing.Point(326, 229);
+            this.btnAddPhoto.Location = new System.Drawing.Point(317, 218);
             this.btnAddPhoto.Name = "btnAddPhoto";
             this.btnAddPhoto.Size = new System.Drawing.Size(86, 41);
             this.btnAddPhoto.TabIndex = 10;
@@ -293,18 +305,6 @@ namespace eBiser.WindowsUI.Obavijest
             // errorProvider
             // 
             this.errorProvider.ContainerControl = this;
-            // 
-            // btnOcjene
-            // 
-            this.btnOcjene.BackColor = System.Drawing.Color.Blue;
-            this.btnOcjene.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnOcjene.ForeColor = System.Drawing.Color.White;
-            this.btnOcjene.Location = new System.Drawing.Point(459, 455);
-            this.btnOcjene.Name = "btnOcjene";
-            this.btnOcjene.Size = new System.Drawing.Size(86, 41);
-            this.btnOcjene.TabIndex = 18;
-            this.btnOcjene.Text = "Ocjene";
-            this.btnOcjene.UseVisualStyleBackColor = false;
             // 
             // frmObavijestUpsert
             // 

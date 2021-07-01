@@ -315,7 +315,7 @@
           </TablixMembers>
         </TablixRowHierarchy>
         <DataSetName>IzlaznaSredstva</DataSetName>
-        <Top>0.56187in</Top>
+        <Top>0.38889in</Top>
         <Left>0.37375in</Left>
         <Height>0.5in</Height>
         <Width>5.625in</Width>
@@ -629,7 +629,7 @@
           </TablixMembers>
         </TablixRowHierarchy>
         <DataSetName>UlaznaSredstva</DataSetName>
-        <Top>2.79562in</Top>
+        <Top>1.91667in</Top>
         <Left>0.37375in</Left>
         <Height>0.5in</Height>
         <Width>5.625in</Width>
@@ -734,7 +734,7 @@
           </TablixMembers>
         </TablixRowHierarchy>
         <DataSetName>IzlaznaSredstva</DataSetName>
-        <Top>5.28394in</Top>
+        <Top>3.41319in</Top>
         <Left>0.37375in</Left>
         <Height>0.25in</Height>
         <Width>5.625in</Width>
@@ -762,7 +762,7 @@
           </Paragraph>
         </Paragraphs>
         <rd:DefaultName>Textbox1</rd:DefaultName>
-        <Top>0.15562in</Top>
+        <Top>0.06944in</Top>
         <Left>0.37375in</Left>
         <Height>0.25in</Height>
         <Width>5.625in</Width>
@@ -794,7 +794,7 @@
           </Paragraph>
         </Paragraphs>
         <rd:DefaultName>Textbox1</rd:DefaultName>
-        <Top>2.3952in</Top>
+        <Top>1.59722in</Top>
         <Left>0.37375in</Left>
         <Height>0.25in</Height>
         <Width>5.625in</Width>
@@ -826,7 +826,7 @@
           </Paragraph>
         </Paragraphs>
         <rd:DefaultName>Textbox1</rd:DefaultName>
-        <Top>4.8627in</Top>
+        <Top>3.09375in</Top>
         <Left>0.37375in</Left>
         <Height>0.25in</Height>
         <Width>5.625in</Width>
@@ -858,7 +858,7 @@
           </Paragraph>
         </Paragraphs>
         <rd:DefaultName>Textbox1</rd:DefaultName>
-        <Top>3.55145in</Top>
+        <Top>2.48611in</Top>
         <Left>0.37375in</Left>
         <Height>0.25in</Height>
         <Width>5.625in</Width>
@@ -880,7 +880,7 @@
           <Paragraph>
             <TextRuns>
               <TextRun>
-                <Value>Ulazna sredstva zbir</Value>
+                <Value>Izlazna sredstva zbir</Value>
                 <Style />
               </TextRun>
             </TextRuns>
@@ -890,7 +890,7 @@
           </Paragraph>
         </Paragraphs>
         <rd:DefaultName>Textbox1</rd:DefaultName>
-        <Top>1.17708in</Top>
+        <Top>0.95833in</Top>
         <Left>0.37375in</Left>
         <Height>0.25in</Height>
         <Width>5.625in</Width>
@@ -909,10 +909,10 @@
         <TablixBody>
           <TablixColumns>
             <TablixColumn>
-              <Width>3.375in</Width>
+              <Width>3.4375in</Width>
             </TablixColumn>
             <TablixColumn>
-              <Width>2.125in</Width>
+              <Width>2.1875in</Width>
             </TablixColumn>
           </TablixColumns>
           <TablixRows>
@@ -999,10 +999,10 @@
           </TablixMembers>
         </TablixRowHierarchy>
         <DataSetName>IzlaznaSredstva</DataSetName>
-        <Top>1.72854in</Top>
-        <Left>0.49875in</Left>
+        <Top>1.27778in</Top>
+        <Left>0.37375in</Left>
         <Height>0.25in</Height>
-        <Width>5.5in</Width>
+        <Width>5.625in</Width>
         <ZIndex>8</ZIndex>
         <Style>
           <Border>
@@ -1104,7 +1104,7 @@
           </TablixMembers>
         </TablixRowHierarchy>
         <DataSetName>UlaznaSredstva</DataSetName>
-        <Top>4.18687in</Top>
+        <Top>2.80556in</Top>
         <Left>0.37375in</Left>
         <Height>0.21875in</Height>
         <Width>5.625in</Width>
@@ -1123,7 +1123,7 @@
   <Width>6.47792in</Width>
   <Page>
     <PageHeader>
-      <Height>0.4375in</Height>
+      <Height>0.33333in</Height>
       <PrintOnFirstPage>true</PrintOnFirstPage>
       <PrintOnLastPage>true</PrintOnLastPage>
       <ReportItems>
@@ -1144,7 +1144,6 @@
             </Paragraph>
           </Paragraphs>
           <rd:DefaultName>Textbox1</rd:DefaultName>
-          <Top>0.10292in</Top>
           <Left>0.98833in</Left>
           <Height>0.25in</Height>
           <Width>4.46875in</Width>
