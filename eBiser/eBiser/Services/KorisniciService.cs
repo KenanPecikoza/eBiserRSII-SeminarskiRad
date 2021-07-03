@@ -146,6 +146,16 @@ namespace eBiser.Services
             {
                 throw new Exception("Passwordi se ne slažu");
             }
+            var email=  _db.KorisniciSistemas.Where(x => x.Email == request.Email).FirstOrDefault();
+            if (email!=null)
+            {
+                throw new Exception("Email adresa se već koristi");
+            }
+            var korinsckoIme=  _db.KorisniciSistemas.Where(x => x.KorisnickoIme == request.KorisnickoIme).FirstOrDefault();
+            if (korinsckoIme!=null)
+            {
+                throw new Exception("Korisničko ime se već koristi");
+            }
             entity.PasswordSalt = GenerateSalt();
             entity.PasswordHash = GenerateHash(entity.PasswordSalt, request.Password);
             string TipKorisnika = _db.KorisnikSistemaTips.Where(x => x.Id == entity.KorisnikSistemaTipId).Select(x=> x.Naziv).FirstOrDefault();

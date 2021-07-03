@@ -20,7 +20,7 @@ namespace eBiser.Fillters
             }
             else
             {
-                context.ModelState.AddModelError("ERROR", "Greska na serveru");
+                context.ModelState.AddModelError("ERROR", context.Exception.Message);
                 context.HttpContext.Response.StatusCode = (int)HttpStatusCode.InternalServerError;
             }
 
