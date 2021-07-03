@@ -215,6 +215,7 @@ namespace eBiser.WindowsUI.Obavijest
             this.btnOcjene.TabIndex = 18;
             this.btnOcjene.Text = "Ocjene";
             this.btnOcjene.UseVisualStyleBackColor = false;
+            this.btnOcjene.Click += new System.EventHandler(this.btnOcjene_Click);
             // 
             // label6
             // 

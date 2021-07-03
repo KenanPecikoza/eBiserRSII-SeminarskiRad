@@ -13,20 +13,22 @@ namespace eBiser.WindowsUI.Obavijest
 {
     public partial class frmObavijestiOcjene : Form
     {
-        public frmObavijestiOcjene()
+        public frmObavijestiOcjene(int? ObavijestId=null)
         {
+            _obavijestId = ObavijestId;
             InitializeComponent();
         }
+
         private readonly APIService _apiServiceObavijest = new APIService("Obavijest");
         private readonly APIService _apiServiceObavijestOcjena = new APIService("ObavijestOcjena");
-
-        private async Task LoadClanarine(int ObavijestId)
+        private int? _obavijestId = null;
+        private async Task LoadOcjene(int ObavijestId)
         {
             var data = await _apiServiceObavijestOcjena.Get<List<Data.ObavijestOcjena>>(new ObavijestOcjenaSearchRequest()
             {
                 ObavijestId = ObavijestId
             });
-            //dgvOcjene.AutoGenerateColumns = false;
+            dgvOcjene.AutoGenerateColumns = false;
             dgvOcjene.DataSource = data;
             dgvOcjene.ClearSelection();
             dgvOcjene.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCells;
@@ -34,10 +36,15 @@ namespace eBiser.WindowsUI.Obavijest
         }
         private async void frmObavijestiOcjene_Load(object sender, EventArgs e)
         {
+
             var items = await _apiServiceObavijest.Get<List<Data.Obavijest>>(null);
             cBoxClan.DataSource = items;
             cBoxClan.DisplayMember = "Naslov";
             cBoxClan.ValueMember = "Id";
+            if (_obavijestId.HasValue)
+            {
+                cBoxClan.SelectedValue = _obavijestId;
+            }
         }
 
         private async void cBoxClan_SelectedIndexChanged(object sender, EventArgs e)
@@ -46,7 +53,7 @@ namespace eBiser.WindowsUI.Obavijest
 
             if (int.TryParse(selectedValue.ToString(), out int ObavijestId))
             {
-                await LoadClanarine(ObavijestId);
+                await LoadOcjene(ObavijestId);
             }
         }
     }

@@ -165,5 +165,12 @@ namespace eBiser.WindowsUI.Obavijest
                 errorProvider.SetError(txtNaslov, null);
             }
         }
+
+        private void btnOcjene_Click(object sender, EventArgs e)
+        {
+            frmObavijestiOcjene frmObavijestiOcjene = new frmObavijestiOcjene(_id);
+            frmObavijestiOcjene.Show();
+
+        }
     }
 }
