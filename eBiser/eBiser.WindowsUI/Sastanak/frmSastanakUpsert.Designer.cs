@@ -32,11 +32,6 @@ namespace eBiser.WindowsUI.Sastanak
             this.components = new System.ComponentModel.Container();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.dgvSastanci = new System.Windows.Forms.DataGridView();
-            this.Id = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.DatumOdrzavanja = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ImeIPrezime = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Odrzan = new System.Windows.Forms.DataGridViewCheckBoxColumn();
-            this.Zapisnik = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.btnPonisti = new System.Windows.Forms.Button();
             this.btnSnimi = new System.Windows.Forms.Button();
@@ -47,6 +42,11 @@ namespace eBiser.WindowsUI.Sastanak
             this.dtmDatumOdzavanja = new System.Windows.Forms.DateTimePicker();
             this.label1 = new System.Windows.Forms.Label();
             this.errorProvider = new System.Windows.Forms.ErrorProvider(this.components);
+            this.Id = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.DatumOdrzavanja = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ImeIPrezime = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Odrzan = new System.Windows.Forms.DataGridViewCheckBoxColumn();
+            this.Zapisnik = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvSastanci)).BeginInit();
             this.groupBox2.SuspendLayout();
@@ -85,46 +85,6 @@ namespace eBiser.WindowsUI.Sastanak
             this.dgvSastanci.Size = new System.Drawing.Size(805, 297);
             this.dgvSastanci.TabIndex = 0;
             this.dgvSastanci.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvSastanci_CellClick);
-            // 
-            // Id
-            // 
-            this.Id.DataPropertyName = "Id";
-            this.Id.HeaderText = "Id";
-            this.Id.Name = "Id";
-            this.Id.ReadOnly = true;
-            this.Id.Visible = false;
-            // 
-            // DatumOdrzavanja
-            // 
-            this.DatumOdrzavanja.DataPropertyName = "DatumOdrzavanja";
-            this.DatumOdrzavanja.HeaderText = "Datum održavanja";
-            this.DatumOdrzavanja.Name = "DatumOdrzavanja";
-            this.DatumOdrzavanja.ReadOnly = true;
-            this.DatumOdrzavanja.Width = 149;
-            // 
-            // ImeIPrezime
-            // 
-            this.ImeIPrezime.DataPropertyName = "ImeIPrezime";
-            this.ImeIPrezime.HeaderText = "Ime i prezime";
-            this.ImeIPrezime.Name = "ImeIPrezime";
-            this.ImeIPrezime.ReadOnly = true;
-            this.ImeIPrezime.Width = 117;
-            // 
-            // Odrzan
-            // 
-            this.Odrzan.DataPropertyName = "Odrzan";
-            this.Odrzan.HeaderText = "Održan";
-            this.Odrzan.Name = "Odrzan";
-            this.Odrzan.ReadOnly = true;
-            this.Odrzan.Width = 67;
-            // 
-            // Zapisnik
-            // 
-            this.Zapisnik.DataPropertyName = "Zapisnik";
-            this.Zapisnik.HeaderText = "Zapisnik";
-            this.Zapisnik.Name = "Zapisnik";
-            this.Zapisnik.ReadOnly = true;
-            this.Zapisnik.Width = 93;
             // 
             // groupBox2
             // 
@@ -225,6 +185,47 @@ namespace eBiser.WindowsUI.Sastanak
             // 
             this.errorProvider.ContainerControl = this;
             // 
+            // Id
+            // 
+            this.Id.DataPropertyName = "Id";
+            this.Id.HeaderText = "Id";
+            this.Id.Name = "Id";
+            this.Id.ReadOnly = true;
+            this.Id.Visible = false;
+            this.Id.Width = 48;
+            // 
+            // DatumOdrzavanja
+            // 
+            this.DatumOdrzavanja.DataPropertyName = "DatumOdrzavanja";
+            this.DatumOdrzavanja.HeaderText = "Datum održavanja";
+            this.DatumOdrzavanja.Name = "DatumOdrzavanja";
+            this.DatumOdrzavanja.ReadOnly = true;
+            this.DatumOdrzavanja.Width = 149;
+            // 
+            // ImeIPrezime
+            // 
+            this.ImeIPrezime.DataPropertyName = "ImeIPrezime";
+            this.ImeIPrezime.HeaderText = "Ime i prezime zapisničara";
+            this.ImeIPrezime.Name = "ImeIPrezime";
+            this.ImeIPrezime.ReadOnly = true;
+            this.ImeIPrezime.Width = 193;
+            // 
+            // Odrzan
+            // 
+            this.Odrzan.DataPropertyName = "Odrzan";
+            this.Odrzan.HeaderText = "Održan";
+            this.Odrzan.Name = "Odrzan";
+            this.Odrzan.ReadOnly = true;
+            this.Odrzan.Width = 67;
+            // 
+            // Zapisnik
+            // 
+            this.Zapisnik.DataPropertyName = "Zapisnik";
+            this.Zapisnik.HeaderText = "Zapisnik";
+            this.Zapisnik.Name = "Zapisnik";
+            this.Zapisnik.ReadOnly = true;
+            this.Zapisnik.Width = 93;
+            // 
             // frmSastanakUpsert
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
@@ -250,11 +251,6 @@ namespace eBiser.WindowsUI.Sastanak
 
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.DataGridView dgvSastanci;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Id;
-        private System.Windows.Forms.DataGridViewTextBoxColumn DatumOdrzavanja;
-        private System.Windows.Forms.DataGridViewTextBoxColumn ImeIPrezime;
-        private System.Windows.Forms.DataGridViewCheckBoxColumn Odrzan;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Zapisnik;
         private System.Windows.Forms.GroupBox groupBox2;
         private System.Windows.Forms.Button btnSnimi;
         private System.Windows.Forms.Label label3;
@@ -265,5 +261,10 @@ namespace eBiser.WindowsUI.Sastanak
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Button btnPonisti;
         private System.Windows.Forms.ErrorProvider errorProvider;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Id;
+        private System.Windows.Forms.DataGridViewTextBoxColumn DatumOdrzavanja;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ImeIPrezime;
+        private System.Windows.Forms.DataGridViewCheckBoxColumn Odrzan;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Zapisnik;
     }
 }

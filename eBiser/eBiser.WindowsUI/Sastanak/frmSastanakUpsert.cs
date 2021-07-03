@@ -41,11 +41,11 @@ namespace eBiser.WindowsUI.Sastanak
         }
         private async Task LoadDGV()
         {
+            dgvSastanci.AutoGenerateColumns = false;
             var result = await _apiService.Get<List<Data.Sastanak>>(null);
             dgvSastanci.DataSource = result;
             dgvSastanci.ClearSelection();
             dgvSastanci.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCells;
-
         }
 
         private async void frmSastanakUpsert_Load(object sender, EventArgs e)

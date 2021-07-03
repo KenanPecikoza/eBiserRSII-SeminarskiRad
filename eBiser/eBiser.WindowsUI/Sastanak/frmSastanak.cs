@@ -21,8 +21,7 @@ namespace eBiser.WindowsUI.Sastanak
         }
         private async Task LoadDGV()
         {
-            //dgvSastanci.AutoGenerateColumns = false;
-            //dgvSastanci.AutoSize = true;
+            dgvSastanci.AutoGenerateColumns = false;
             var result = await _apiService.Get<List<Data.Sastanak>>(null);
             dgvSastanci.DataSource = result;
             dgvSastanci.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCells;
