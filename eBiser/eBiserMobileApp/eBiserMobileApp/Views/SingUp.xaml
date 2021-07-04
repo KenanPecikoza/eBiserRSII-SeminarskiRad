@@ -44,6 +44,12 @@
                         <Label Text="{Binding MinBrojKaraterka2}"  IsVisible="{Binding KorisnickoImeIsTrue}" Style="{StaticResource ErrorTextStyle}"/>
                         <Label Text="{Binding KorisnickoImeMessageUsed}"  IsVisible="{Binding KorisnickoImeIsUsd}" Style="{StaticResource ErrorTextStyle}"/>
 
+                        <Label VerticalOptions="Center" 
+                        HorizontalOptions="Start"
+                        Text="Datum rođenja" />
+                        <DatePicker  Date="{Binding DatumRodjenja}" >
+                        </DatePicker>
+
 
                         <Label VerticalOptions="Center" 
                         HorizontalOptions="Start"
@@ -55,6 +61,19 @@
                         </Entry>
                         <Label Text="{Binding EmailMessage}"  IsVisible="{Binding EmailIsTrue}" Style="{StaticResource ErrorTextStyle}"/>
                         <Label Text="{Binding EmailMessageUsed}"  IsVisible="{Binding EmailIsUsed}" Style="{StaticResource ErrorTextStyle}"/>
+
+                        <Label VerticalOptions="Center" 
+                        HorizontalOptions="Start"
+                        Text="Broj telefona" />
+                        <Entry 
+                         Text="{Binding BrojTelefona}"
+                         Placeholder="Broj telefona"
+                         >
+                        </Entry>
+                        <Label Text="{Binding BrojTelefonaMessage }"  IsVisible="{Binding BrojTelefonaIsTrue }" Style="{StaticResource ErrorTextStyle}"/>
+
+
+
                         <Label VerticalOptions="Center" 
                         HorizontalOptions="Start"
                         Text="Password" />
@@ -76,6 +95,7 @@
                         </Entry>
                         <Label Text="{Binding PasswordMatchMessage}"  IsVisible="{Binding PasswordMatch}" Style="{StaticResource ErrorTextStyle}"/>
 
+                        
 
 
                         <Label VerticalOptions="Center" 
@@ -83,9 +103,12 @@
                         Text="Opis profila" />
                         <Entry 
                          Text="{Binding OpisProfila}"
-                         Placeholder="OpisProfirla"
+                         Placeholder="OpisProfila"
                          >
                         </Entry>
+
+
+
                         <Label Text="{Binding MinBrojKaraterka2}"  IsVisible="{Binding OpisProfilaIsTrue}" Style="{StaticResource ErrorTextStyle}"/>
 
                              <Button Margin="0,10,0,0" CornerRadius="5" VerticalOptions="Center"

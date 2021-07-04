@@ -22,10 +22,9 @@ namespace eBiserMobileApp.ViewModels
         {
             SingUpComand = new Command(async () => await SingUp());
             LoginCommand = new Command(async () => await Login());
-
+            DatumRodjenja = DateTime.Now;
         }
         public ICommand SingUpComand { get; set; }
-
         string _ime = string.Empty;
         public string Ime
         {
@@ -38,14 +37,12 @@ namespace eBiserMobileApp.ViewModels
             get { return _minBrojKaraterka2; }
             set { SetProperty(ref _minBrojKaraterka2, value); }
         }
-
         bool _imeIsTrue =false;
         public bool ImeIsTrue
         {
             get { return _imeIsTrue; }
             set { SetProperty(ref _imeIsTrue, value); }
         }
-
         string _prezime = string.Empty;
         public string Prezime
         {
@@ -58,9 +55,6 @@ namespace eBiserMobileApp.ViewModels
             get { return _prezimeIstrue; }
             set { SetProperty(ref _prezimeIstrue, value); }
         }
-
-
-
         string _korisnickoIme = string.Empty;
         public string KorisnickoIme
         {
@@ -80,9 +74,6 @@ namespace eBiserMobileApp.ViewModels
             get { return _korisnickoImeIsUsed; }
             set { SetProperty(ref _korisnickoImeIsUsed, value); }
         }
-
-
-
 
         string _passwordDonator = string.Empty;
         public string PasswordDonator
@@ -120,9 +111,6 @@ namespace eBiserMobileApp.ViewModels
             get { return _PasswordStrongIsTrue; }
             set { SetProperty(ref _PasswordStrongIsTrue, value); }
         }
-
-
-
         string _opisProfila = string.Empty;
         public string OpisProfila
         {
@@ -135,7 +123,6 @@ namespace eBiserMobileApp.ViewModels
             get { return _OpisProfilaIsTrue; }
             set { SetProperty(ref _OpisProfilaIsTrue, value); }
         }
-
         string _email = string.Empty;
         public string Email
         {
@@ -154,9 +141,6 @@ namespace eBiserMobileApp.ViewModels
             get { return _EmailIsUsed; }
             set { SetProperty(ref _EmailIsUsed, value); }
         }
-
-
-
         string _emailMessage = string.Empty;
         public string EmailMessage
         {
@@ -173,8 +157,8 @@ namespace eBiserMobileApp.ViewModels
         string _korisnickoImeMessageUsed = string.Empty;
         public string KorisnickoImeMessageUsed
         {
-            get { return _emailMessageUsed; }
-            set { SetProperty(ref _emailMessageUsed, value); }
+            get { return _korisnickoImeMessageUsed; }
+            set { SetProperty(ref _korisnickoImeMessageUsed, value); }
         }
 
 
@@ -184,6 +168,30 @@ namespace eBiserMobileApp.ViewModels
             get { return _datumRodjenja; }
             set { SetProperty(ref _datumRodjenja, value); }
         }
+
+
+
+
+        string _brojTelefona = string.Empty;
+        public string BrojTelefona
+        {
+            get { return _brojTelefona; }
+            set { SetProperty(ref _brojTelefona, value); }
+        }
+        bool _BrojTelefonaTrue = false;
+        public bool BrojTelefonaIsTrue
+        {
+            get { return _BrojTelefonaTrue; }
+            set { SetProperty(ref _BrojTelefonaTrue, value); }
+        }
+
+        string _brojTelefonaMessage = string.Empty;
+        public string BrojTelefonaMessage
+        {
+            get { return _brojTelefonaMessage; }
+            set { SetProperty(ref _brojTelefonaMessage, value); }
+        }
+
 
 
         DonatorUpsertRequest upsertRequest = new DonatorUpsertRequest();
@@ -242,9 +250,7 @@ namespace eBiserMobileApp.ViewModels
                 {
                     KorisnickoImeIsUsd = false;
                 }
-
                 upsertRequest.KorisnickoIme = KorisnickoIme;
-
                 if (OpisProfila.Length <2)
                 {
                     MinBrojKaraterka2 = "Minimalan broj karaktera je 2";
@@ -281,9 +287,26 @@ namespace eBiserMobileApp.ViewModels
                 }
                 else
                 {
-                    
+                    EmailIsUsed = false;                 
                 }
                 upsertRequest.Email = Email;
+
+                Regex regexPhone = new Regex(@"[0-9]\d{2}\d{3}\d{3,4}");
+                Match matchPhone = regex.Match(BrojTelefona);
+                if (!match.Success)
+                {
+                    BrojTelefonaMessage = "Format broja nije ispravan (061 111 111/1111)";
+                    BrojTelefonaIsTrue = true;
+                    NeTacan = true;
+                }
+                else
+                {
+                    BrojTelefonaIsTrue = false;
+                }
+
+                upsertRequest.BrojTelefona = BrojTelefona;
+
+
 
 
 
@@ -299,8 +322,6 @@ namespace eBiserMobileApp.ViewModels
                 {
                     PasswordMatch = false;
                 }
-
-
                 var hasNumber = new Regex(@"[0-9]+");
                 var hasUpperChar = new Regex(@"[A-Z]+");
                 var hasMiniMaxChars = new Regex(@".{8,}");
@@ -351,7 +372,6 @@ namespace eBiserMobileApp.ViewModels
                 upsertRequest.DatumRodjenja = DatumRodjenja;
                 try
                 {
-                    upsertRequest.BrojTelefona = "111222333";/// obrisati 
                     DonatorDTO korisnik = await _apiServiceDonator.SingUp<DonatorDTO>(upsertRequest);
                     LoginCommand.Execute(null);
                 }
@@ -378,7 +398,8 @@ namespace eBiserMobileApp.ViewModels
             {
                 KorisniciSistema korisnik = await _apiService.Login<KorisniciSistema>(request);
                 APIService.Token = korisnik.Token;
-                APIService.Id = korisnik.Id;
+                APIService.TipId = korisnik.Id;
+                APIService.Id = korisnik.KorisnikId;
                 Application.Current.MainPage = new MainPage();
             }
             catch (Exception )
