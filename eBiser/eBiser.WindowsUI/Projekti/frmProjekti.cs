@@ -1,4 +1,5 @@
-﻿using System;
+﻿using eBiser.Data.Requests;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -20,12 +21,14 @@ namespace eBiser.WindowsUI.Projekti
         }
         private async Task LoadDGV()
         {
-            //dgvProjekti.AutoGenerateColumns = false;
-            var result = await _aPIService.Get<List<Data.Projekti>>(null);
+            dgvProjekti.AutoGenerateColumns = false;
+            var result = await _aPIService.Get<List<Data.Projekti>>(searchRequest);
             dgvProjekti.DataSource = result;
             dgvProjekti.ClearSelection();
             dgvProjekti.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCells;
+            searchRequest = null;
         }
+        ProjektiSearchRequest searchRequest = null;
 
         private async void frmProjekti_Load(object sender, EventArgs e)
         {
@@ -47,6 +50,16 @@ namespace eBiser.WindowsUI.Projekti
             }
 
 
+        }
+
+        private async void BtnPrikazi_Click(object sender, EventArgs e)
+        {
+            searchRequest = new ProjektiSearchRequest();
+            searchRequest.DatumPrijave = dtmPrijave.Value;
+            searchRequest.DatumIzvrsenja = dtmIzvrsenja.Value;
+            searchRequest.NazivProjekta = txtNazivProjekta.Text;
+            searchRequest.Prihvaćen = checkBox1.Checked;
+            await LoadDGV();
         }
     }
 }

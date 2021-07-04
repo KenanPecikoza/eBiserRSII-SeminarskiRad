@@ -71,7 +71,7 @@ namespace eBiser.WinUi
             this.groupBox11 = new System.Windows.Forms.GroupBox();
             this.btnFinansijskiIzvještajPrikaži = new System.Windows.Forms.Button();
             this.btnPrikaziProjekte = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
+            this.btnDodajProjekt = new System.Windows.Forms.Button();
             this.statusStrip.SuspendLayout();
             this.groupBox1.SuspendLayout();
             this.Clanarine.SuspendLayout();
@@ -553,23 +553,24 @@ namespace eBiser.WinUi
             this.btnPrikaziProjekte.UseVisualStyleBackColor = true;
             this.btnPrikaziProjekte.Click += new System.EventHandler(this.btnPrikaziProjekte_Click);
             // 
-            // button2
+            // btnDodajProjekt
             // 
-            this.button2.AutoSize = true;
-            this.button2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button2.Location = new System.Drawing.Point(1493, 325);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(197, 71);
-            this.button2.TabIndex = 2;
-            this.button2.Text = "Dodaj";
-            this.button2.UseVisualStyleBackColor = true;
+            this.btnDodajProjekt.AutoSize = true;
+            this.btnDodajProjekt.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnDodajProjekt.Location = new System.Drawing.Point(1493, 325);
+            this.btnDodajProjekt.Name = "btnDodajProjekt";
+            this.btnDodajProjekt.Size = new System.Drawing.Size(197, 71);
+            this.btnDodajProjekt.TabIndex = 2;
+            this.btnDodajProjekt.Text = "Dodaj";
+            this.btnDodajProjekt.UseVisualStyleBackColor = true;
+            this.btnDodajProjekt.Click += new System.EventHandler(this.btnDodajProjekt_Click);
             // 
             // frmIndex
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1764, 934);
-            this.Controls.Add(this.button2);
+            this.Controls.Add(this.btnDodajProjekt);
             this.Controls.Add(this.btnPrikaziProjekte);
             this.Controls.Add(this.groupBox11);
             this.Controls.Add(this.groupBox10);
@@ -662,7 +663,7 @@ namespace eBiser.WinUi
         private System.Windows.Forms.GroupBox groupBox11;
         private System.Windows.Forms.Button btnFinansijskiIzvještajPrikaži;
         private System.Windows.Forms.Button btnPrikaziProjekte;
-        private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.Button btnDodajProjekt;
     }
 }
 

@@ -31,6 +31,8 @@ namespace eBiser.WindowsUI.Osoblje
         {
             this.components = new System.ComponentModel.Container();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.txtEmail = new System.Windows.Forms.TextBox();
+            this.label5 = new System.Windows.Forms.Label();
             this.txtKorisnickoIme = new System.Windows.Forms.TextBox();
             this.label4 = new System.Windows.Forms.Label();
             this.cBoxNazivDjelatnosti = new System.Windows.Forms.ComboBox();
@@ -57,8 +59,6 @@ namespace eBiser.WindowsUI.Osoblje
             this.DatumPočetkaAngazmana = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.openFileDialog = new System.Windows.Forms.OpenFileDialog();
             this.errorProvider = new System.Windows.Forms.ErrorProvider(this.components);
-            this.txtEmail = new System.Windows.Forms.TextBox();
-            this.label5 = new System.Windows.Forms.Label();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox)).BeginInit();
             this.groupBox2.SuspendLayout();
@@ -91,6 +91,23 @@ namespace eBiser.WindowsUI.Osoblje
             this.groupBox1.Size = new System.Drawing.Size(616, 457);
             this.groupBox1.TabIndex = 0;
             this.groupBox1.TabStop = false;
+            // 
+            // txtEmail
+            // 
+            this.txtEmail.Location = new System.Drawing.Point(12, 201);
+            this.txtEmail.Name = "txtEmail";
+            this.txtEmail.Size = new System.Drawing.Size(283, 26);
+            this.txtEmail.TabIndex = 18;
+            this.txtEmail.Validating += new System.ComponentModel.CancelEventHandler(this.txtEmail_Validating);
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(8, 178);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(48, 20);
+            this.label5.TabIndex = 17;
+            this.label5.Text = "Email";
             // 
             // txtKorisnickoIme
             // 
@@ -331,23 +348,6 @@ namespace eBiser.WindowsUI.Osoblje
             // errorProvider
             // 
             this.errorProvider.ContainerControl = this;
-            // 
-            // txtEmail
-            // 
-            this.txtEmail.Location = new System.Drawing.Point(12, 201);
-            this.txtEmail.Name = "txtEmail";
-            this.txtEmail.Size = new System.Drawing.Size(283, 26);
-            this.txtEmail.TabIndex = 18;
-            this.txtEmail.Validating += new System.ComponentModel.CancelEventHandler(this.txtEmail_Validating);
-            // 
-            // label5
-            // 
-            this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(8, 178);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(48, 20);
-            this.label5.TabIndex = 17;
-            this.label5.Text = "Email";
             // 
             // frmOsobljeUpsert
             // 

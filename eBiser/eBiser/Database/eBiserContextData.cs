@@ -434,7 +434,9 @@ namespace eBiser.Database
                 RokIzvrsenja = "3 mjeseca",
                 CijenaProjekta = 1222,
                 OdobrenaSredstva = 1200,
-                DatumPrijave = DateTime.Now
+                DatumPrijave = DateTime.Now.Date,
+                DatumIzvrsenja=DateTime.Now.Date,
+                NazivProjekta="Projekat1"
             });
 
 

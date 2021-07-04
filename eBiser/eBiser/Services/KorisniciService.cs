@@ -74,19 +74,19 @@ namespace eBiser.Services
             var query = _db.KorisniciSistemas.Include(x=> x.KorisnikSistemaTip).AsQueryable();
             if (!string.IsNullOrWhiteSpace(search?.Ime))
             {
-                query = _db.KorisniciSistemas.Where(x => x.Ime.ToLower().StartsWith(search.Ime.ToLower()));
+                query =query.Where(x => x.Ime.ToLower().StartsWith(search.Ime.ToLower()));
             }
             if (!string.IsNullOrWhiteSpace(search?.Prezime))
             {
-                query = _db.KorisniciSistemas.Where(x => x.Prezime.ToLower().StartsWith(search.Prezime.ToLower()));
+                query = query.Where(x => x.Prezime.ToLower().StartsWith(search.Prezime.ToLower()));
             }
             if (!string.IsNullOrWhiteSpace(search?.Email))
             {
-                query = _db.KorisniciSistemas.Where(x => x.Email.ToLower().StartsWith(search.Email.ToLower()));
+                query = query.Where(x => x.Email.ToLower().StartsWith(search.Email.ToLower()));
             }
             if (search.Aktivan!=null)
             {
-                query = _db.KorisniciSistemas.Where(x => x.Aktivan==search.Aktivan);
+                query = query.Where(x => x.Aktivan==search.Aktivan);
             }
             var list = query.ToList();
             var result = _mapper.Map<List<Data.KorisniciSistema>>(list);
@@ -173,7 +173,6 @@ namespace eBiser.Services
             {
                 var req = _mapper.Map<Donatori>(request);
                 entity.KorisnikSistemaTip = _db.KorisnikSistemaTips.FirstOrDefault(x => x.Naziv == "Donator");
-
                 req.Korisnik = entity;
                 _db.Add(req);
             }
@@ -181,7 +180,6 @@ namespace eBiser.Services
             {
                 var req = _mapper.Map<Osoblje>(request);
                 entity.KorisnikSistemaTip = _db.KorisnikSistemaTips.FirstOrDefault(x => x.Naziv == "Osoblje");
-
                 req.Korisnik = entity;
                 _db.Add(req);
             }
@@ -226,23 +224,23 @@ namespace eBiser.Services
             var query = _db.Donatoris.Include(x => x.Korisnik).AsQueryable();
             if (!string.IsNullOrWhiteSpace(search?.Ime))
             {
-                query = _db.Donatoris.Include(x => x.Korisnik).Where(x => x.Korisnik.Ime.ToLower().StartsWith(search.Ime.ToLower()));
+                query = query.Where(x => x.Korisnik.Ime.ToLower().StartsWith(search.Ime.ToLower()));
             }
             if (!string.IsNullOrWhiteSpace(search?.Prezime))
             {
-                query = _db.Donatoris.Include(x => x.Korisnik).Where(x => x.Korisnik.Prezime.ToLower().StartsWith(search.Prezime.ToLower()));
+                query = query.Where(x => x.Korisnik.Prezime.ToLower().StartsWith(search.Prezime.ToLower()));
             }
             if (!string.IsNullOrWhiteSpace(search?.Email))
             {
-                query = _db.Donatoris.Include(x => x.Korisnik).Where(x => x.Korisnik.Email == search.Email);
+                query = query.Where(x => x.Korisnik.Email == search.Email);
             }
             if (!string.IsNullOrWhiteSpace(search?.KorisnickoIme))
             {
-                query = _db.Donatoris.Include(x => x.Korisnik).Where(x => x.Korisnik.KorisnickoIme == search.KorisnickoIme);
+                query = query.Where(x => x.Korisnik.KorisnickoIme == search.KorisnickoIme);
             }
             if (search.Aktivan != null)
             {
-                query = _db.Donatoris.Include(x => x.Korisnik).Where(x => x.Korisnik.Aktivan == search.Aktivan);
+                query = query.Where(x => x.Korisnik.Aktivan == search.Aktivan);
             }
             var list = query.ToList();
             var returns = _mapper.Map<List<Data.DonatorDTO>>(list);
@@ -269,23 +267,23 @@ namespace eBiser.Services
             var query = _db.Clanovis.Include(x => x.Korisnik).AsQueryable();
             if (!string.IsNullOrWhiteSpace(search?.Ime))
             {
-                query = _db.Clanovis.Include(x => x.Korisnik).Where(x => x.Korisnik.Ime.ToLower().StartsWith(search.Ime.ToLower()));
+                query = query.Where(x => x.Korisnik.Ime.ToLower().StartsWith(search.Ime.ToLower()));
             }
             if (!string.IsNullOrWhiteSpace(search?.Prezime))
             {
-                query = _db.Clanovis.Include(x => x.Korisnik).Where(x => x.Korisnik.Prezime.ToLower().StartsWith(search.Prezime.ToLower()));
+                query = query.Where(x => x.Korisnik.Prezime.ToLower().StartsWith(search.Prezime.ToLower()));
             }
             if (!string.IsNullOrWhiteSpace(search?.Email))
             {
-                query = _db.Clanovis.Include(x => x.Korisnik).Where(x => x.Korisnik.Email == search.Email);
+                query = query.Where(x => x.Korisnik.Email == search.Email);
             }
             if (!string.IsNullOrWhiteSpace(search?.KorisnickoIme))
             {
-                query = _db.Clanovis.Include(x => x.Korisnik).Where(x => x.Korisnik.KorisnickoIme == search.KorisnickoIme);
+                query = query.Where(x => x.Korisnik.KorisnickoIme == search.KorisnickoIme);
             }
             if (search.Aktivan != null)
             {
-                query = _db.Clanovis.Include(x => x.Korisnik).Where(x => x.Korisnik.Aktivan == search.Aktivan);
+                query = query.Where(x => x.Korisnik.Aktivan == search.Aktivan);
             }
             var list = query.ToList();
             var returns = _mapper.Map<List<Data.ClanDTO>>(list);
@@ -315,27 +313,27 @@ namespace eBiser.Services
             var query = _db.Osobljes.Include(x => x.Korisnik).Include(x => x.Djelatnost).AsQueryable();
             if (!string.IsNullOrWhiteSpace(search?.Ime))
             {
-                query = _db.Osobljes.Include(x => x.Korisnik).Include(x => x.Djelatnost).Where(x => x.Korisnik.Ime.ToLower().StartsWith(search.Ime.ToLower()));
+                query =query.Include(x => x.Djelatnost).Where(x => x.Korisnik.Ime.ToLower().StartsWith(search.Ime.ToLower()));
             }
             if (!string.IsNullOrWhiteSpace(search?.Prezime))
             {
-                query = _db.Osobljes.Include(x => x.Korisnik).Include(x => x.Djelatnost).Where(x => x.Korisnik.Prezime.ToLower().StartsWith(search.Prezime.ToLower()));
+                query =query.Include(x => x.Djelatnost).Where(x => x.Korisnik.Prezime.ToLower().StartsWith(search.Prezime.ToLower()));
             }
             if (search.DjelatnostId > 0)
             {
-                query = _db.Osobljes.Include(x => x.Korisnik).Include(x => x.Djelatnost).Where(x => x.DjelatnostId == search.DjelatnostId);
+                query =query.Include(x => x.Djelatnost).Where(x => x.DjelatnostId == search.DjelatnostId);
             }
             if (!string.IsNullOrWhiteSpace(search?.Email))
             {
-                query = _db.Osobljes.Include(x => x.Korisnik).Where(x => x.Korisnik.Email == search.Email);
+                query =query.Where(x => x.Korisnik.Email == search.Email);
             }
             if (!string.IsNullOrWhiteSpace(search?.KorisnickoIme))
             {
-                query = _db.Osobljes.Include(x => x.Korisnik).Where(x => x.Korisnik.KorisnickoIme == search.KorisnickoIme);
+                query =query.Where(x => x.Korisnik.KorisnickoIme == search.KorisnickoIme);
             }
             if (search.Aktivan != null)
             {
-                query = _db.Osobljes.Include(x => x.Korisnik).Include(x => x.Djelatnost).Where(x => x.Korisnik.Aktivan == search.Aktivan);
+                query =query.Include(x => x.Djelatnost).Where(x => x.Korisnik.Aktivan == search.Aktivan);
             }
             var list = query.ToList();
             var returns = _mapper.Map<List<Data.OsobljeDTO>>(list);

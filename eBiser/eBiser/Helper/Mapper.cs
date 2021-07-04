@@ -24,7 +24,8 @@ namespace eBiser.Helper
                 .ForMember(d => d.ImeIPrezime, opt => opt.MapFrom(src => src.Clan.Korisnik.Ime + " " + src.Clan.Korisnik.Prezime)).ReverseMap();
             CreateMap<Clanarina, ClanarinaUpsertRequest>().ReverseMap();
             CreateMap<Projekti, ProjektiUpsertRequest>().ReverseMap();
-            CreateMap<Projekti, Data.Projekti>();
+            CreateMap<Projekti, Data.Projekti>()
+                .ForMember(d=> d.ImeIPrezime, opt => opt.MapFrom(src=> src.Osoblje.Korisnik.Ime+" "+ src.Osoblje.Korisnik.Ime));
             CreateMap<AkcijePomoci, AkcijePomociUpsertRequest>().ReverseMap();
 
 

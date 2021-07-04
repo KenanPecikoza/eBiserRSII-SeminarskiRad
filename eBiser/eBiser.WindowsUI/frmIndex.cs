@@ -238,5 +238,11 @@ namespace eBiser.WinUi
             frmProjekti projekti = new frmProjekti();
             projekti.Show();
         }
+
+        private void btnDodajProjekt_Click(object sender, EventArgs e)
+        {
+            frmProjektiUpsert frmProjektiUpsert = new frmProjektiUpsert();
+            frmProjektiUpsert.Show();
+        }
     }
 }

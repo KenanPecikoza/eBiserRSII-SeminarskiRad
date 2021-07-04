@@ -32,11 +32,22 @@ namespace eBiser.WindowsUI.Projekti
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.dgvProjekti = new System.Windows.Forms.DataGridView();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
+            this.checkBox1 = new System.Windows.Forms.CheckBox();
+            this.dtmIzvrsenja = new System.Windows.Forms.DateTimePicker();
+            this.label3 = new System.Windows.Forms.Label();
+            this.dtmPrijave = new System.Windows.Forms.DateTimePicker();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
-            this.txtPretragaIme = new System.Windows.Forms.TextBox();
+            this.txtNazivProjekta = new System.Windows.Forms.TextBox();
             this.BtnPrikazi = new System.Windows.Forms.Button();
-            this.txtPretragaPrezime = new System.Windows.Forms.TextBox();
+            this.Id = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.NazivProjekta = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.CijenaProjekta = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.DatumPrijave = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Prihvaćen = new System.Windows.Forms.DataGridViewCheckBoxColumn();
+            this.RokIzvršenja = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.DatumIzvrsenja = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.KreatorProjekta = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvProjekti)).BeginInit();
             this.groupBox3.SuspendLayout();
@@ -45,9 +56,9 @@ namespace eBiser.WindowsUI.Projekti
             // groupBox1
             // 
             this.groupBox1.Controls.Add(this.dgvProjekti);
-            this.groupBox1.Location = new System.Drawing.Point(12, 109);
+            this.groupBox1.Location = new System.Drawing.Point(12, 171);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(657, 505);
+            this.groupBox1.Size = new System.Drawing.Size(628, 443);
             this.groupBox1.TabIndex = 0;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Projekti";
@@ -57,27 +68,74 @@ namespace eBiser.WindowsUI.Projekti
             this.dgvProjekti.AllowUserToAddRows = false;
             this.dgvProjekti.AllowUserToDeleteRows = false;
             this.dgvProjekti.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvProjekti.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.Id,
+            this.NazivProjekta,
+            this.CijenaProjekta,
+            this.DatumPrijave,
+            this.Prihvaćen,
+            this.RokIzvršenja,
+            this.DatumIzvrsenja,
+            this.KreatorProjekta});
             this.dgvProjekti.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dgvProjekti.Location = new System.Drawing.Point(3, 22);
             this.dgvProjekti.Name = "dgvProjekti";
             this.dgvProjekti.ReadOnly = true;
             this.dgvProjekti.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvProjekti.Size = new System.Drawing.Size(651, 480);
+            this.dgvProjekti.Size = new System.Drawing.Size(622, 418);
             this.dgvProjekti.TabIndex = 0;
             this.dgvProjekti.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvProjekti_CellDoubleClick);
             // 
             // groupBox3
             // 
+            this.groupBox3.Controls.Add(this.checkBox1);
+            this.groupBox3.Controls.Add(this.dtmIzvrsenja);
+            this.groupBox3.Controls.Add(this.label3);
+            this.groupBox3.Controls.Add(this.dtmPrijave);
             this.groupBox3.Controls.Add(this.label1);
             this.groupBox3.Controls.Add(this.label2);
-            this.groupBox3.Controls.Add(this.txtPretragaIme);
+            this.groupBox3.Controls.Add(this.txtNazivProjekta);
             this.groupBox3.Controls.Add(this.BtnPrikazi);
-            this.groupBox3.Controls.Add(this.txtPretragaPrezime);
             this.groupBox3.Location = new System.Drawing.Point(12, 12);
             this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Size = new System.Drawing.Size(657, 91);
+            this.groupBox3.Size = new System.Drawing.Size(628, 153);
             this.groupBox3.TabIndex = 2;
             this.groupBox3.TabStop = false;
+            // 
+            // checkBox1
+            // 
+            this.checkBox1.AutoSize = true;
+            this.checkBox1.Location = new System.Drawing.Point(321, 91);
+            this.checkBox1.Name = "checkBox1";
+            this.checkBox1.Size = new System.Drawing.Size(97, 24);
+            this.checkBox1.TabIndex = 9;
+            this.checkBox1.Text = "Prihvaćen";
+            this.checkBox1.UseVisualStyleBackColor = true;
+            // 
+            // dtmIzvrsenja
+            // 
+            this.dtmIzvrsenja.Location = new System.Drawing.Point(9, 91);
+            this.dtmIzvrsenja.Name = "dtmIzvrsenja";
+            this.dtmIzvrsenja.Size = new System.Drawing.Size(296, 26);
+            this.dtmIzvrsenja.TabIndex = 8;
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label3.Location = new System.Drawing.Point(5, 68);
+            this.label3.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(182, 20);
+            this.label3.TabIndex = 7;
+            this.label3.Text = "Datum izvšenja projekta:";
+            // 
+            // dtmPrijave
+            // 
+            this.dtmPrijave.Location = new System.Drawing.Point(321, 38);
+            this.dtmPrijave.Name = "dtmPrijave";
+            this.dtmPrijave.Size = new System.Drawing.Size(296, 26);
+            this.dtmPrijave.TabIndex = 6;
             // 
             // label1
             // 
@@ -86,57 +144,108 @@ namespace eBiser.WindowsUI.Projekti
             this.label1.Location = new System.Drawing.Point(5, 16);
             this.label1.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(40, 20);
+            this.label1.Size = new System.Drawing.Size(112, 20);
             this.label1.TabIndex = 5;
-            this.label1.Text = "Ime:";
+            this.label1.Text = "Naziv projekta:";
             // 
             // label2
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(290, 16);
+            this.label2.Location = new System.Drawing.Point(317, 15);
             this.label2.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(70, 20);
+            this.label2.Size = new System.Drawing.Size(171, 20);
             this.label2.TabIndex = 5;
-            this.label2.Text = "Prezime:";
+            this.label2.Text = "Datum prijave projekta:";
             // 
-            // txtPretragaIme
+            // txtNazivProjekta
             // 
-            this.txtPretragaIme.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtPretragaIme.Location = new System.Drawing.Point(9, 38);
-            this.txtPretragaIme.Margin = new System.Windows.Forms.Padding(2);
-            this.txtPretragaIme.Name = "txtPretragaIme";
-            this.txtPretragaIme.Size = new System.Drawing.Size(259, 26);
-            this.txtPretragaIme.TabIndex = 2;
+            this.txtNazivProjekta.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtNazivProjekta.Location = new System.Drawing.Point(9, 38);
+            this.txtNazivProjekta.Margin = new System.Windows.Forms.Padding(2);
+            this.txtNazivProjekta.Name = "txtNazivProjekta";
+            this.txtNazivProjekta.Size = new System.Drawing.Size(296, 26);
+            this.txtNazivProjekta.TabIndex = 2;
             // 
             // BtnPrikazi
             // 
             this.BtnPrikazi.BackColor = System.Drawing.Color.MidnightBlue;
             this.BtnPrikazi.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.BtnPrikazi.ForeColor = System.Drawing.Color.White;
-            this.BtnPrikazi.Location = new System.Drawing.Point(566, 31);
+            this.BtnPrikazi.Location = new System.Drawing.Point(531, 107);
             this.BtnPrikazi.Margin = new System.Windows.Forms.Padding(2);
             this.BtnPrikazi.Name = "BtnPrikazi";
             this.BtnPrikazi.Size = new System.Drawing.Size(86, 41);
             this.BtnPrikazi.TabIndex = 3;
             this.BtnPrikazi.Text = "Pretraži";
             this.BtnPrikazi.UseVisualStyleBackColor = false;
+            this.BtnPrikazi.Click += new System.EventHandler(this.BtnPrikazi_Click);
             // 
-            // txtPretragaPrezime
+            // Id
             // 
-            this.txtPretragaPrezime.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtPretragaPrezime.Location = new System.Drawing.Point(294, 38);
-            this.txtPretragaPrezime.Margin = new System.Windows.Forms.Padding(2);
-            this.txtPretragaPrezime.Name = "txtPretragaPrezime";
-            this.txtPretragaPrezime.Size = new System.Drawing.Size(259, 26);
-            this.txtPretragaPrezime.TabIndex = 2;
+            this.Id.DataPropertyName = "Id";
+            this.Id.HeaderText = "Id";
+            this.Id.Name = "Id";
+            this.Id.ReadOnly = true;
+            this.Id.Visible = false;
+            // 
+            // NazivProjekta
+            // 
+            this.NazivProjekta.DataPropertyName = "NazivProjekta";
+            this.NazivProjekta.HeaderText = "Naziv projekta";
+            this.NazivProjekta.Name = "NazivProjekta";
+            this.NazivProjekta.ReadOnly = true;
+            // 
+            // CijenaProjekta
+            // 
+            this.CijenaProjekta.DataPropertyName = "CijenaProjekta";
+            this.CijenaProjekta.HeaderText = "Cijena projekta";
+            this.CijenaProjekta.Name = "CijenaProjekta";
+            this.CijenaProjekta.ReadOnly = true;
+            // 
+            // DatumPrijave
+            // 
+            this.DatumPrijave.DataPropertyName = "DatumPrijave";
+            this.DatumPrijave.HeaderText = "Datum prijave projekta";
+            this.DatumPrijave.Name = "DatumPrijave";
+            this.DatumPrijave.ReadOnly = true;
+            // 
+            // Prihvaćen
+            // 
+            this.Prihvaćen.DataPropertyName = "Prihvaćen";
+            this.Prihvaćen.HeaderText = "Prihvaćen";
+            this.Prihvaćen.Name = "Prihvaćen";
+            this.Prihvaćen.ReadOnly = true;
+            this.Prihvaćen.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.Prihvaćen.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
+            // 
+            // RokIzvršenja
+            // 
+            this.RokIzvršenja.DataPropertyName = "RokIzvrsenja";
+            this.RokIzvršenja.HeaderText = "Rok izvršenja";
+            this.RokIzvršenja.Name = "RokIzvršenja";
+            this.RokIzvršenja.ReadOnly = true;
+            // 
+            // DatumIzvrsenja
+            // 
+            this.DatumIzvrsenja.DataPropertyName = "DatumIzvrsenja";
+            this.DatumIzvrsenja.HeaderText = "Datum izvršenja";
+            this.DatumIzvrsenja.Name = "DatumIzvrsenja";
+            this.DatumIzvrsenja.ReadOnly = true;
+            // 
+            // KreatorProjekta
+            // 
+            this.KreatorProjekta.DataPropertyName = "ImeIPrezime";
+            this.KreatorProjekta.HeaderText = "Kreator projekta";
+            this.KreatorProjekta.Name = "KreatorProjekta";
+            this.KreatorProjekta.ReadOnly = true;
             // 
             // frmProjekti
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(684, 626);
+            this.ClientSize = new System.Drawing.Size(656, 631);
             this.Controls.Add(this.groupBox3);
             this.Controls.Add(this.groupBox1);
             this.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -159,8 +268,19 @@ namespace eBiser.WindowsUI.Projekti
         private System.Windows.Forms.GroupBox groupBox3;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.TextBox txtPretragaIme;
+        private System.Windows.Forms.TextBox txtNazivProjekta;
         private System.Windows.Forms.Button BtnPrikazi;
-        private System.Windows.Forms.TextBox txtPretragaPrezime;
+        private System.Windows.Forms.DateTimePicker dtmPrijave;
+        private System.Windows.Forms.CheckBox checkBox1;
+        private System.Windows.Forms.DateTimePicker dtmIzvrsenja;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Id;
+        private System.Windows.Forms.DataGridViewTextBoxColumn NazivProjekta;
+        private System.Windows.Forms.DataGridViewTextBoxColumn CijenaProjekta;
+        private System.Windows.Forms.DataGridViewTextBoxColumn DatumPrijave;
+        private System.Windows.Forms.DataGridViewCheckBoxColumn Prihvaćen;
+        private System.Windows.Forms.DataGridViewTextBoxColumn RokIzvršenja;
+        private System.Windows.Forms.DataGridViewTextBoxColumn DatumIzvrsenja;
+        private System.Windows.Forms.DataGridViewTextBoxColumn KreatorProjekta;
     }
 }
