@@ -42,7 +42,7 @@ namespace eBiser.WindowsUI.Obavijest
             txtSadržaj.Text = entity.Sadržaj;
             txtNaslov.Text = entity.Naslov;
             cbxAktivna.Checked = entity.Aktivna;
-            cBoxKategorija.SelectedItem = entity.KategorijaId;
+            cBoxKategorija.SelectedValue = entity.KategorijaId;
 
             foreach (var p in entity.Fotografije)
             {
@@ -80,7 +80,6 @@ namespace eBiser.WindowsUI.Obavijest
                     request.Fotografije.ToList();
                 }
             }
-            // napraiti razliku između uredi i dodaj možda sa dgv
         }
 
         private async void btnSnimi_Click(object sender, EventArgs e)
@@ -113,7 +112,7 @@ namespace eBiser.WindowsUI.Obavijest
             var kategorije = await _apiServiceKategorija.Get<List<Data.ObavijestKategorija>>(null);
             cBoxKategorija.DataSource = kategorije;
             cBoxKategorija.DisplayMember = "NazivKategorije";
-            cBoxKategorija.ValueMember = "Id";// u prorertis postaviti 
+            cBoxKategorija.ValueMember = "Id";
             if (_id.HasValue)
             {
                 await LoadFormaObavijest(_id ?? 0);

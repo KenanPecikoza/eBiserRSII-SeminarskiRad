@@ -128,7 +128,7 @@ namespace eBiser.WindowsUI.Osoblje
             // 
             // cBoxNazivDjelatnosti
             // 
-            this.cBoxNazivDjelatnosti.DisplayMember = "Id";
+            this.cBoxNazivDjelatnosti.DisplayMember = "NazivDjelatnosti";
             this.cBoxNazivDjelatnosti.FormattingEnabled = true;
             this.cBoxNazivDjelatnosti.Location = new System.Drawing.Point(10, 255);
             this.cBoxNazivDjelatnosti.Name = "cBoxNazivDjelatnosti";

@@ -36,7 +36,7 @@ namespace eBiser.WindowsUI.Sastanak
         {
             var result = await _apiService.GetById<Data.Sastanak>(Id);
             txtZapisnik.Text = result.Zapisnik;
-            cBoxZapisnicar.SelectedItem = result.OsobljeId-1;
+            cBoxZapisnicar.SelectedValue = result.OsobljeId;
             dtmDatumOdzavanja.Value = result.DatumOdrzavanja;
         }
         private async Task LoadDGV()

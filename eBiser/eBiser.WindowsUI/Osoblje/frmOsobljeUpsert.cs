@@ -36,7 +36,7 @@ namespace eBiser.WindowsUI.Osoblje
             var result = await _apiService.GetById<Data.OsobljeDTO>(id);
             txtIme.Text = result.Ime;
             txtPrezime.Text = result.Prezime;
-            cBoxNazivDjelatnosti.SelectedIndex = result.DjelatnostId-1;
+            cBoxNazivDjelatnosti.SelectedValue = result.DjelatnostId;
             dtmDatumPocetka.Value = result.DatumPocetkaAngazmana;
             pictureBox.Image = photoHelper.ByteArrayToImage(result.Photo);
             pictureBox.SizeMode = PictureBoxSizeMode.StretchImage;
@@ -51,14 +51,13 @@ namespace eBiser.WindowsUI.Osoblje
             dgvOsoblje.ClearSelection();
             dgvOsoblje.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCells;
 
-            //dgvOsoblje.ScrollBars = ScrollBars.Both;
         }
         private async Task LoadDjelatnosti()
         {
             var djelatnosti = await _apiServiceDjelatnost.Get<List<Data.DjelatnostOsoblje>>(null);
             cBoxNazivDjelatnosti.DataSource = djelatnosti;
             cBoxNazivDjelatnosti.DisplayMember = "NazivDjelatnosti";
-            cBoxNazivDjelatnosti.ValueMember = "Id";// u prorertis postaviti 
+            cBoxNazivDjelatnosti.ValueMember = "Id";
         }
 
 
@@ -121,7 +120,7 @@ namespace eBiser.WindowsUI.Osoblje
                 try
                 {
                     await _apiService.Insert<Data.ClanDTO>(insertRequest);
-                    MessageBox.Show("Uspjesno dodan član");
+                    MessageBox.Show("Uspjesno dodan član osoblja");
 
                 }
                 catch (Exception)
