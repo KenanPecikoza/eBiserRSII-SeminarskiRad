@@ -52,10 +52,13 @@ namespace eBiser.Services
 
             var users = _db.KorisniciSistemas.ToList();
             var entity = _db.KorisniciSistemas.Include(x => x.KorisnikSistemaTip).FirstOrDefault(x=> x.KorisnickoIme==request.KorisnickoIme);
+            if (entity==null)
+            {
+                entity = _db.KorisniciSistemas.Include(x => x.KorisnikSistemaTip).FirstOrDefault(x => x.Email == request.KorisnickoIme);
+            }
             #region User existence check
             if (entity == null)
             {
-                
                 throw new ArgumentNullException("Wrong username or password");
             }
             var hash = GenerateHash(entity.PasswordSalt, request.Password);
@@ -91,7 +94,6 @@ namespace eBiser.Services
             var clanDB = _db.Clanovis.Where(x => x.KorisnikId == osoba.KorisnikId).FirstOrDefault();
             if (clanDB != null)
             {
-                //var entity2 = _db.Clanovi.Where(x => x.KorisnikId == id).FirstOrDefault();
                 Data.ClanDTO clan = _mapper.Map<Data.ClanDTO>(clanDB);
                 clan.Token = access_token;
                 return clan;
@@ -122,6 +124,7 @@ namespace eBiser.Services
         {
             var users = _db.KorisniciSistemas.ToList();
             var entity = _db.KorisniciSistemas.Include(x => x.KorisnikSistemaTip).FirstOrDefault(x => x.KorisnikId == id);
+
             var hash = GenerateHash(entity.PasswordSalt, request.Password);
             if (hash != entity.PasswordHash)
             {
