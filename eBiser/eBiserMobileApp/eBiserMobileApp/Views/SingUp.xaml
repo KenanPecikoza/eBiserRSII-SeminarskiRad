@@ -42,6 +42,7 @@
                          >
                         </Entry>
                         <Label Text="{Binding MinBrojKaraterka2}"  IsVisible="{Binding KorisnickoImeIsTrue}" Style="{StaticResource ErrorTextStyle}"/>
+                        <Label Text="{Binding KorisnickoImeMessageUsed}"  IsVisible="{Binding KorisnickoImeIsUsd}" Style="{StaticResource ErrorTextStyle}"/>
 
 
                         <Label VerticalOptions="Center" 
@@ -53,6 +54,7 @@
                          >
                         </Entry>
                         <Label Text="{Binding EmailMessage}"  IsVisible="{Binding EmailIsTrue}" Style="{StaticResource ErrorTextStyle}"/>
+                        <Label Text="{Binding EmailMessageUsed}"  IsVisible="{Binding EmailIsUsed}" Style="{StaticResource ErrorTextStyle}"/>
                         <Label VerticalOptions="Center" 
                         HorizontalOptions="Start"
                         Text="Password" />

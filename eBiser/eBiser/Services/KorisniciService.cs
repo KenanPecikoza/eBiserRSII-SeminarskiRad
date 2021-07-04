@@ -234,7 +234,11 @@ namespace eBiser.Services
             }
             if (!string.IsNullOrWhiteSpace(search?.Email))
             {
-                query = _db.Donatoris.Include(x => x.Korisnik).Where(x => x.Korisnik.Email.ToLower().StartsWith(search.Email.ToLower()));
+                query = _db.Donatoris.Include(x => x.Korisnik).Where(x => x.Korisnik.Email == search.Email);
+            }
+            if (!string.IsNullOrWhiteSpace(search?.KorisnickoIme))
+            {
+                query = _db.Donatoris.Include(x => x.Korisnik).Where(x => x.Korisnik.KorisnickoIme == search.KorisnickoIme);
             }
             if (search.Aktivan != null)
             {
@@ -273,7 +277,11 @@ namespace eBiser.Services
             }
             if (!string.IsNullOrWhiteSpace(search?.Email))
             {
-                query = _db.Clanovis.Include(x => x.Korisnik).Where(x => x.Korisnik.Email.ToLower().StartsWith(search.Email.ToLower()));
+                query = _db.Clanovis.Include(x => x.Korisnik).Where(x => x.Korisnik.Email == search.Email);
+            }
+            if (!string.IsNullOrWhiteSpace(search?.KorisnickoIme))
+            {
+                query = _db.Clanovis.Include(x => x.Korisnik).Where(x => x.Korisnik.KorisnickoIme == search.KorisnickoIme);
             }
             if (search.Aktivan != null)
             {
@@ -319,7 +327,11 @@ namespace eBiser.Services
             }
             if (!string.IsNullOrWhiteSpace(search?.Email))
             {
-                query = _db.Osobljes.Include(x => x.Korisnik).Include(x => x.Djelatnost).Where(x => x.Korisnik.Email.ToLower().StartsWith(search.Email.ToLower()));
+                query = _db.Osobljes.Include(x => x.Korisnik).Where(x => x.Korisnik.Email == search.Email);
+            }
+            if (!string.IsNullOrWhiteSpace(search?.KorisnickoIme))
+            {
+                query = _db.Osobljes.Include(x => x.Korisnik).Where(x => x.Korisnik.KorisnickoIme == search.KorisnickoIme);
             }
             if (search.Aktivan != null)
             {
@@ -330,5 +342,16 @@ namespace eBiser.Services
             return returns;
         }
 
+        public Data.KorisniciSistema GetPotvrda(PotvrdaSearchRequest search)
+        {
+            KorisniciSistema korisniciSistema = _db.KorisniciSistemas.Where(x => x.Email == search.Email).FirstOrDefault();
+            if (korisniciSistema!=null)
+            {
+                return _mapper.Map<Data.KorisniciSistema>(korisniciSistema);
+            }
+            korisniciSistema = _db.KorisniciSistemas.Where(x => x.KorisnickoIme == search.KorisnickoIme).FirstOrDefault();
+            var returns = _mapper.Map<Data.KorisniciSistema>(korisniciSistema);
+            return returns;
+        }
     }
 }

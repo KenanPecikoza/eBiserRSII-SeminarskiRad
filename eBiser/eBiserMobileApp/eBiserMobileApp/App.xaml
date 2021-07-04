@@ -27,6 +27,17 @@
                     </VisualStateGroupList>
                 </Setter>
             </Style>
+
+            <Style TargetType="Label" x:Key="TitleStyle">
+                <Setter Property="TextColor" Value = "{StaticResource Primary}"   />
+                <Setter Property="HorizontalOptions" Value = "Center"   />
+                <Setter Property="FontSize" Value = "Title"   />
+            </Style>
+
+            <Style TargetType="Label" x:Key="ErrorTextStyle">
+                <Setter Property="TextColor" Value = "Red"   />
+                <Setter Property="FontSize" Value = "12"   />
+            </Style>
         </ResourceDictionary>        
     </Application.Resources>
 </Application>

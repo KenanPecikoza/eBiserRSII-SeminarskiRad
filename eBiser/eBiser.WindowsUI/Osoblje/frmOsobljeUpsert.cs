@@ -78,6 +78,7 @@ namespace eBiser.WindowsUI.Osoblje
             pictureBox.SizeMode = PictureBoxSizeMode.StretchImage;
             dgvOsoblje.ClearSelection();
             txtKorisnickoIme.Text = "";
+            txtEmail.Text = "";
             _id = null;
         }
 
@@ -97,7 +98,7 @@ namespace eBiser.WindowsUI.Osoblje
                 updateRequest.DatumPocetkaAngazmana = dtmDatumPocetka.Value;
                 updateRequest.DatumRodjenja = DateTime.Now;
                 updateRequest.DjelatnostId = Int32.Parse(cBoxNazivDjelatnosti.SelectedValue.ToString());
-                updateRequest.Email = "test@test.com";
+                updateRequest.Email =txtEmail.Text;
                 await _apiService.Update<Data.KorisniciSistema>(_Korisnikid ?? 0, updateRequest);
                 MessageBox.Show("Uspjesno uređen član osoblja ");
             }
@@ -111,7 +112,7 @@ namespace eBiser.WindowsUI.Osoblje
                 insertRequest.Password = txtIme.Text + txtPrezime.Text + "1$Aa";
                 insertRequest.PasswordPotvrda = txtIme.Text + txtPrezime.Text + "1$Aa";
                 insertRequest.DatumPocetkaAngazmana = dtmDatumPocetka.Value;
-                insertRequest.Email = "test@test.com";
+                insertRequest.Email = txtEmail.Text;
                 insertRequest.DatumRodjenja = DateTime.Now;
                 insertRequest.DjelatnostId = Int32.Parse(cBoxNazivDjelatnosti.SelectedValue.ToString());
                 try
@@ -206,16 +207,56 @@ namespace eBiser.WindowsUI.Osoblje
             }
         }
 
-        private void txtKorisnickoIme_Validating(object sender, CancelEventArgs e)
+        private async void txtKorisnickoIme_Validating(object sender, CancelEventArgs e)
         {
+
+            List<Data.OsobljeDTO> korisnik = await _apiService.Get<List<Data.OsobljeDTO>>(new KorisniciSearchRequest
+            {
+                KorisnickoIme = txtKorisnickoIme.Text
+            });
+
+
             if (txtKorisnickoIme.Text.ToString().Length < 2)
             {
                 errorProvider.SetError(txtKorisnickoIme, WindowsUI.Properties.Resources.ValidationRequiredField);
                 e.Cancel = true;
             }
+            else if (korisnik.Count>0)
+            {
+
+                errorProvider.SetError(txtKorisnickoIme, WindowsUI.Properties.Resources.UserNameIsUsing);
+                e.Cancel = true;
+            }
             else
             {
                 errorProvider.SetError(txtKorisnickoIme, null);
+            }
+        }
+
+        private async void txtEmail_Validating(object sender, CancelEventArgs e)
+        {
+            List<Data.OsobljeDTO> korisnik = await _apiService.Get<List<Data.OsobljeDTO>>(new KorisniciSearchRequest
+            {
+                Email = txtEmail.Text
+            });
+            if (txtEmail.Text.ToString().Length < 2)
+            {
+                errorProvider.SetError(txtEmail, WindowsUI.Properties.Resources.ValidationRequiredField);
+                e.Cancel = true;
+            }
+            else if (txtEmail.Text.IndexOf("@") == -1)
+            {
+                errorProvider.SetError(txtEmail, WindowsUI.Properties.Resources.ValidationEmailField);
+                e.Cancel = true;
+            }
+            else if (korisnik.Count > 0)
+            {
+                errorProvider.SetError(txtEmail, WindowsUI.Properties.Resources.EmailIsUsing);
+                e.Cancel = true;
+            }
+            else
+            {
+                errorProvider.SetError(txtEmail, null);
             }
         }
     }

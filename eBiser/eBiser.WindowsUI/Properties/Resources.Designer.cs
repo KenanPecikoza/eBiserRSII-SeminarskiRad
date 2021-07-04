@@ -61,6 +61,24 @@ namespace eBiser.WindowsUI.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Email je već u upotrebi.
+        /// </summary>
+        internal static string EmailIsUsing {
+            get {
+                return ResourceManager.GetString("EmailIsUsing", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Korsiničko ime je već u upotrebi.
+        /// </summary>
+        internal static string UserNameIsUsing {
+            get {
+                return ResourceManager.GetString("UserNameIsUsing", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Email mora sadržati &quot;@&quot;.
         /// </summary>
         internal static string ValidationEmailField {

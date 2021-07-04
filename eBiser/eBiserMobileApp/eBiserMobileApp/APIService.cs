@@ -46,6 +46,17 @@ namespace eBiserMobileApp
             return await url.WithOAuthBearerToken(Token).GetJsonAsync<T>();
         }
 
+        public async Task<T> GetProvjera<T>(object search)
+        {
+            var url = $"{apiUrl}/{_route}";
+            if (search != null)
+            {
+                url += "?";
+                url += await search.ToQueryString();
+            }
+            return await url.GetJsonAsync<T>();
+        }
+
         public async Task<T> GetById<T>(object id)
         {
             var url = $"{apiUrl}/{_route}/{id}";
@@ -58,6 +69,13 @@ namespace eBiserMobileApp
             var url = $"{apiUrl}/{_route}";
             return await url.WithOAuthBearerToken(Token).PostJsonAsync(request).ReceiveJson<T>();
         }
+
+        public async Task<T> SingUp<T>(object request)
+        {
+            var url = $"{apiUrl}/{_route}";
+            return await url.PostJsonAsync(request).ReceiveJson<T>();
+        }
+
 
         public async Task<T> Update<T>(int id, object request)
         {

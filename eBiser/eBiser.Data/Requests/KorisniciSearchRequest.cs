@@ -8,6 +8,7 @@ namespace eBiser.Data.Requests
     {
         public string Ime { get; set; }
         public string Prezime { get; set; }
+        public string KorisnickoIme { get; set; }
         public string Email { get; set; }
         public bool? Aktivan { get; set; }
         public class OsobljeSearchRequest : KorisniciSearchRequest

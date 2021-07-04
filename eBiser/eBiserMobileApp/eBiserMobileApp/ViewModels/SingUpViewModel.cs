@@ -15,6 +15,7 @@ namespace eBiserMobileApp.ViewModels
     public class SingUpViewModel :BaseViewModel
     {
         private readonly APIService _apiServiceDonator = new APIService("Korisnik/Donatori");
+        private readonly APIService _apiServicePotvrda = new APIService("Korisnik/Potvrda");
         private readonly APIService _apiService = new APIService("Security");
 
         public SingUpViewModel()
@@ -73,6 +74,12 @@ namespace eBiserMobileApp.ViewModels
             set { SetProperty(ref _korisnickoImeIsTrue, value); }
         }
 
+        bool _korisnickoImeIsUsed = false;
+        public bool KorisnickoImeIsUsd
+        {
+            get { return _korisnickoImeIsUsed; }
+            set { SetProperty(ref _korisnickoImeIsUsed, value); }
+        }
 
 
 
@@ -141,14 +148,34 @@ namespace eBiserMobileApp.ViewModels
             get { return _EmailIsTrue; }
             set { SetProperty(ref _EmailIsTrue, value); }
         }
+        bool _EmailIsUsed = false;
+        public bool EmailIsUsed
+        {
+            get { return _EmailIsUsed; }
+            set { SetProperty(ref _EmailIsUsed, value); }
+        }
+
+
+
         string _emailMessage = string.Empty;
         public string EmailMessage
         {
             get { return _emailMessage; }
             set { SetProperty(ref _emailMessage, value); }
         }
+        string _emailMessageUsed = string.Empty;
+        public string EmailMessageUsed
+        {
+            get { return _emailMessageUsed; }
+            set { SetProperty(ref _emailMessageUsed, value); }
+        }
 
-
+        string _korisnickoImeMessageUsed = string.Empty;
+        public string KorisnickoImeMessageUsed
+        {
+            get { return _emailMessageUsed; }
+            set { SetProperty(ref _emailMessageUsed, value); }
+        }
 
 
         DateTime _datumRodjenja = new DateTime();
@@ -195,12 +222,27 @@ namespace eBiserMobileApp.ViewModels
                     MinBrojKaraterka2 = "Minimalan broj karaktera je 2";
                     KorisnickoImeIsTrue = true;
                     NeTacan = true;
-
                 }
                 else
                 {
                     KorisnickoImeIsTrue = false;
                 }
+                var donatorKorisnickoIme = await _apiServicePotvrda.GetProvjera<DonatorDTO>(new KorisniciSearchRequest
+                {
+                    KorisnickoIme =KorisnickoIme
+                });
+
+                if (donatorKorisnickoIme!=null)
+                {
+                    KorisnickoImeMessageUsed = "Korisničko ime je već u upotrebi";
+                    KorisnickoImeIsUsd = true;
+                    NeTacan = true;
+                }
+                else
+                {
+                    KorisnickoImeIsUsd = false;
+                }
+
                 upsertRequest.KorisnickoIme = KorisnickoIme;
 
                 if (OpisProfila.Length <2)
@@ -227,6 +269,24 @@ namespace eBiserMobileApp.ViewModels
                 {
                     EmailIsTrue = false;
                 }
+                KorisniciSistema donatoremail = await _apiServicePotvrda.GetProvjera<KorisniciSistema>(new KorisniciSearchRequest
+                {
+                    Email = Email
+                });
+                if (donatoremail!=null)
+                {
+                    EmailMessageUsed = "Email je već u upotrebi";
+                    EmailIsUsed = true;
+                    NeTacan = true;
+                }
+                else
+                {
+                    
+                }
+                upsertRequest.Email = Email;
+
+
+
                 upsertRequest.Password = PasswordDonator;
                 upsertRequest.PasswordPotvrda = PasswordDonatorPotvrda;
                 if (PasswordDonator!=_passwordDonatorPotvrda)
@@ -281,8 +341,6 @@ namespace eBiserMobileApp.ViewModels
                 {
                     PasswordStrongIsTrue = false;
                 }
-
-
                 upsertRequest.Email = Email;
                 if (NeTacan)
                 {
@@ -291,16 +349,15 @@ namespace eBiserMobileApp.ViewModels
                 upsertRequest.Aktivan = true;
                 upsertRequest.Verifikovan = false;
                 upsertRequest.DatumRodjenja = DatumRodjenja;
-
                 try
                 {
-                    DonatorDTO korisnik = await _apiServiceDonator.Insert<DonatorDTO>(upsertRequest);
+                    upsertRequest.BrojTelefona = "111222333";/// obrisati 
+                    DonatorDTO korisnik = await _apiServiceDonator.SingUp<DonatorDTO>(upsertRequest);
                     LoginCommand.Execute(null);
                 }
                 catch (Exception )
                 {
                 }
-
             }
             catch (Exception)
             {
@@ -315,8 +372,8 @@ namespace eBiserMobileApp.ViewModels
         KorisnikLoginRequest request = new KorisnikLoginRequest();
         async Task Login()
         {
-            request.KorisnickoIme = "osoblje";
-            request.Password = "osoblje";
+            request.KorisnickoIme = KorisnickoIme;
+            request.Password = PasswordDonator;
             try
             {
                 KorisniciSistema korisnik = await _apiService.Login<KorisniciSistema>(request);

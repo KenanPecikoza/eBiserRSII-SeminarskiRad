@@ -19,5 +19,6 @@ namespace eBiser.Services
         List<Data.ClanDTO> GetCLanovi(KorisniciSearchRequest search);
         Data.OsobljeDTO GetOsoblje(int id);
         List<Data.OsobljeDTO> GetOsoblje(OsobljeSearchRequest search);
+        Data.KorisniciSistema GetPotvrda(PotvrdaSearchRequest search);
     }
 }

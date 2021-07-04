@@ -18,7 +18,7 @@ namespace eBiser.Data.Requests
         [Required]
         [MinLength(2)]
         public string KorisnickoIme { get; set; }
-        //[Required]
+        [Required]
         [RegularExpression(@"(?=.*[a-z])(?=.*[A-Z])(?=.+\d)(?=.*[!@#$%^&*()_+=\[{\]};:<>|.?,-]).{8,}$", ErrorMessage = "Password ne odgovara")]
         public string Password{ get; set; }
         [Required]

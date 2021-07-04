@@ -43,13 +43,21 @@ namespace eBiser.Controllers
         {
             return Ok(_korisniciService.GetDonator(id));
         }
-        [Authorize(Roles = "Osoblje")]
 
+        //[Authorize(Roles = "Osoblje")]
         [HttpGet("donatori")]
         public IActionResult GetDonatori([FromQuery] KorisniciSearchRequest search)
         {
             return Ok(_korisniciService.GetDonatori(search));
         }
+
+
+        [HttpGet("potvrda")]
+        public IActionResult GetPotvrda([FromQuery] PotvrdaSearchRequest search)
+        {
+            return Ok(_korisniciService.GetPotvrda(search));
+        }
+
 
         [Authorize(Roles = "Clan,Osoblje")]
         [HttpGet("clan/{id}")]
@@ -76,7 +84,7 @@ namespace eBiser.Controllers
             return Ok(_korisniciService.GetOsoblje(search));
         }
 
-        [Authorize(Roles = "Donator,Osoblje")]
+        //[Authorize(Roles = "Donator,Osoblje")]
         [HttpPost("donatori")]
         public IActionResult Insert([FromBody] DonatorUpsertRequest request)
         {

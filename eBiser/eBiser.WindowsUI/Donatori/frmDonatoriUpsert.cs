@@ -1,4 +1,5 @@
-﻿using eBiser.WindowsUI.Helper;
+﻿using eBiser.Data.Requests;
+using eBiser.WindowsUI.Helper;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -80,7 +81,7 @@ namespace eBiser.WindowsUI.Donatori
                 if (_id.HasValue && _korisnikId.HasValue)
                 {
                     await _apiService.Update<Data.DonatorDTO>(_korisnikId ?? 0, updateRequest);
-                    MessageBox.Show("Uspjesno uređen član");
+                    MessageBox.Show("Uspjesno uređen donator profil");
                 }
                 else
                 {
@@ -99,7 +100,7 @@ namespace eBiser.WindowsUI.Donatori
                     try
                     {
                         await _apiService.Insert<Data.DonatorDTO>(insertRequest);
-                        MessageBox.Show("Uspjesno dodan član");
+                        MessageBox.Show("Uspjesno dodan donator profil");
 
                     }
                     catch (Exception)
@@ -192,8 +193,15 @@ namespace eBiser.WindowsUI.Donatori
             }
         }
 
-        private void txtEmail_Validating(object sender, CancelEventArgs e)
+        private async void txtEmail_Validating(object sender, CancelEventArgs e)
         {
+
+            List<Data.DonatorDTO> donator = await _apiService.Get<List<Data.DonatorDTO>>(new KorisniciSearchRequest
+            {
+                Email = txtEmail.Text
+            });
+
+
             if (txtEmail.Text.ToString().Length < 2)
             {
                 errorProvider.SetError(txtEmail, WindowsUI.Properties.Resources.ValidationRequiredField);
@@ -204,6 +212,12 @@ namespace eBiser.WindowsUI.Donatori
                 errorProvider.SetError(txtEmail, WindowsUI.Properties.Resources.ValidationEmailField);
                 e.Cancel = true;
             }
+            else if (donator.Count > 0)
+            {
+                errorProvider.SetError(txtEmail, WindowsUI.Properties.Resources.EmailIsUsing);
+                e.Cancel = true;
+            }
+
             else
             {
                 errorProvider.SetError(txtEmail, null);
@@ -224,12 +238,22 @@ namespace eBiser.WindowsUI.Donatori
             }
         }
 
-        private void txtKorisnickoIme_Validating(object sender, CancelEventArgs e)
+        private async void txtKorisnickoIme_Validating(object sender, CancelEventArgs e)
         {
 
+            List<Data.DonatorDTO> donator = await _apiService.Get<List<Data.DonatorDTO>>(new KorisniciSearchRequest
+            {
+                KorisnickoIme = txtKorisnickoIme.Text
+            });
             if (txtKorisnickoIme.Text.ToString().Length < 2)
             {
                 errorProvider.SetError(txtKorisnickoIme, WindowsUI.Properties.Resources.ValidationRequiredField);
+                e.Cancel = true;
+            }
+            else if (donator.Count > 0)
+            {
+
+                errorProvider.SetError(txtKorisnickoIme, WindowsUI.Properties.Resources.UserNameIsUsing);
                 e.Cancel = true;
             }
             else

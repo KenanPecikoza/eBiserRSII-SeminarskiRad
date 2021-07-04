@@ -57,6 +57,8 @@ namespace eBiser.WindowsUI.Osoblje
             this.DatumPočetkaAngazmana = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.openFileDialog = new System.Windows.Forms.OpenFileDialog();
             this.errorProvider = new System.Windows.Forms.ErrorProvider(this.components);
+            this.txtEmail = new System.Windows.Forms.TextBox();
+            this.label5 = new System.Windows.Forms.Label();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox)).BeginInit();
             this.groupBox2.SuspendLayout();
@@ -66,6 +68,8 @@ namespace eBiser.WindowsUI.Osoblje
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.txtEmail);
+            this.groupBox1.Controls.Add(this.label5);
             this.groupBox1.Controls.Add(this.txtKorisnickoIme);
             this.groupBox1.Controls.Add(this.label4);
             this.groupBox1.Controls.Add(this.cBoxNazivDjelatnosti);
@@ -84,7 +88,7 @@ namespace eBiser.WindowsUI.Osoblje
             this.groupBox1.Controls.Add(this.Ime);
             this.groupBox1.Location = new System.Drawing.Point(12, 12);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(616, 394);
+            this.groupBox1.Size = new System.Drawing.Size(616, 457);
             this.groupBox1.TabIndex = 0;
             this.groupBox1.TabStop = false;
             // 
@@ -109,7 +113,7 @@ namespace eBiser.WindowsUI.Osoblje
             // 
             this.cBoxNazivDjelatnosti.DisplayMember = "Id";
             this.cBoxNazivDjelatnosti.FormattingEnabled = true;
-            this.cBoxNazivDjelatnosti.Location = new System.Drawing.Point(12, 201);
+            this.cBoxNazivDjelatnosti.Location = new System.Drawing.Point(10, 255);
             this.cBoxNazivDjelatnosti.Name = "cBoxNazivDjelatnosti";
             this.cBoxNazivDjelatnosti.Size = new System.Drawing.Size(281, 28);
             this.cBoxNazivDjelatnosti.TabIndex = 14;
@@ -129,7 +133,7 @@ namespace eBiser.WindowsUI.Osoblje
             this.btnPonisti.BackColor = System.Drawing.Color.DeepSkyBlue;
             this.btnPonisti.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnPonisti.ForeColor = System.Drawing.Color.White;
-            this.btnPonisti.Location = new System.Drawing.Point(12, 347);
+            this.btnPonisti.Location = new System.Drawing.Point(10, 401);
             this.btnPonisti.Name = "btnPonisti";
             this.btnPonisti.Size = new System.Drawing.Size(86, 41);
             this.btnPonisti.TabIndex = 12;
@@ -142,7 +146,7 @@ namespace eBiser.WindowsUI.Osoblje
             this.btnSnimi.BackColor = System.Drawing.Color.Green;
             this.btnSnimi.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnSnimi.ForeColor = System.Drawing.Color.White;
-            this.btnSnimi.Location = new System.Drawing.Point(524, 347);
+            this.btnSnimi.Location = new System.Drawing.Point(522, 401);
             this.btnSnimi.Name = "btnSnimi";
             this.btnSnimi.Size = new System.Drawing.Size(86, 41);
             this.btnSnimi.TabIndex = 11;
@@ -155,7 +159,7 @@ namespace eBiser.WindowsUI.Osoblje
             this.btnPhotoDodaj.BackColor = System.Drawing.Color.Blue;
             this.btnPhotoDodaj.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnPhotoDodaj.ForeColor = System.Drawing.Color.White;
-            this.btnPhotoDodaj.Location = new System.Drawing.Point(301, 298);
+            this.btnPhotoDodaj.Location = new System.Drawing.Point(299, 352);
             this.btnPhotoDodaj.Name = "btnPhotoDodaj";
             this.btnPhotoDodaj.Size = new System.Drawing.Size(86, 41);
             this.btnPhotoDodaj.TabIndex = 1;
@@ -166,7 +170,7 @@ namespace eBiser.WindowsUI.Osoblje
             // labelPhoto
             // 
             this.labelPhoto.AutoSize = true;
-            this.labelPhoto.Location = new System.Drawing.Point(8, 284);
+            this.labelPhoto.Location = new System.Drawing.Point(6, 338);
             this.labelPhoto.Name = "labelPhoto";
             this.labelPhoto.Size = new System.Drawing.Size(85, 20);
             this.labelPhoto.TabIndex = 10;
@@ -174,7 +178,7 @@ namespace eBiser.WindowsUI.Osoblje
             // 
             // txtFotografija
             // 
-            this.txtFotografija.Location = new System.Drawing.Point(12, 305);
+            this.txtFotografija.Location = new System.Drawing.Point(10, 359);
             this.txtFotografija.Name = "txtFotografija";
             this.txtFotografija.Size = new System.Drawing.Size(283, 26);
             this.txtFotografija.TabIndex = 9;
@@ -182,7 +186,7 @@ namespace eBiser.WindowsUI.Osoblje
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(8, 232);
+            this.label3.Location = new System.Drawing.Point(6, 286);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(206, 20);
             this.label3.TabIndex = 8;
@@ -190,7 +194,7 @@ namespace eBiser.WindowsUI.Osoblje
             // 
             // dtmDatumPocetka
             // 
-            this.dtmDatumPocetka.Location = new System.Drawing.Point(12, 255);
+            this.dtmDatumPocetka.Location = new System.Drawing.Point(10, 309);
             this.dtmDatumPocetka.Name = "dtmDatumPocetka";
             this.dtmDatumPocetka.Size = new System.Drawing.Size(281, 26);
             this.dtmDatumPocetka.TabIndex = 7;
@@ -198,7 +202,7 @@ namespace eBiser.WindowsUI.Osoblje
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(8, 178);
+            this.label2.Location = new System.Drawing.Point(6, 232);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(123, 20);
             this.label2.TabIndex = 5;
@@ -241,9 +245,9 @@ namespace eBiser.WindowsUI.Osoblje
             // groupBox2
             // 
             this.groupBox2.Controls.Add(this.dgvOsoblje);
-            this.groupBox2.Location = new System.Drawing.Point(12, 412);
+            this.groupBox2.Location = new System.Drawing.Point(12, 475);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(616, 296);
+            this.groupBox2.Size = new System.Drawing.Size(616, 233);
             this.groupBox2.TabIndex = 1;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Osoblje ";
@@ -266,7 +270,7 @@ namespace eBiser.WindowsUI.Osoblje
             this.dgvOsoblje.Name = "dgvOsoblje";
             this.dgvOsoblje.ReadOnly = true;
             this.dgvOsoblje.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvOsoblje.Size = new System.Drawing.Size(610, 271);
+            this.dgvOsoblje.Size = new System.Drawing.Size(610, 208);
             this.dgvOsoblje.TabIndex = 0;
             this.dgvOsoblje.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvOsoblje_CellClick_1);
             // 
@@ -328,6 +332,23 @@ namespace eBiser.WindowsUI.Osoblje
             // 
             this.errorProvider.ContainerControl = this;
             // 
+            // txtEmail
+            // 
+            this.txtEmail.Location = new System.Drawing.Point(12, 201);
+            this.txtEmail.Name = "txtEmail";
+            this.txtEmail.Size = new System.Drawing.Size(283, 26);
+            this.txtEmail.TabIndex = 18;
+            this.txtEmail.Validating += new System.ComponentModel.CancelEventHandler(this.txtEmail_Validating);
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(8, 178);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(48, 20);
+            this.label5.TabIndex = 17;
+            this.label5.Text = "Email";
+            // 
             // frmOsobljeUpsert
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
@@ -379,5 +400,7 @@ namespace eBiser.WindowsUI.Osoblje
         private System.Windows.Forms.TextBox txtKorisnickoIme;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.ErrorProvider errorProvider;
+        private System.Windows.Forms.TextBox txtEmail;
+        private System.Windows.Forms.Label label5;
     }
 }
