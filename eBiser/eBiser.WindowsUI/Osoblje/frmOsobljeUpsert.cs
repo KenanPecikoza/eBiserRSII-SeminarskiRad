@@ -8,6 +8,7 @@ using System.Drawing;
 using System.IO;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using static eBiser.Data.Requests.KorisniciInserttRequest;
@@ -19,6 +20,8 @@ namespace eBiser.WindowsUI.Osoblje
     {
         private readonly APIService _apiService = new APIService("Korisnik/Osoblje");
         private readonly APIService _apiServiceDjelatnost = new APIService("DjelatnostOsoblje");
+        private readonly APIService _apiServiceProvjera = new APIService("Korisnik/provjera");
+
         private int? _id = null;
         private int? _Korisnikid = null;
         private readonly PhotoHelper photoHelper = new PhotoHelper();
@@ -210,7 +213,7 @@ namespace eBiser.WindowsUI.Osoblje
         private async void txtKorisnickoIme_Validating(object sender, CancelEventArgs e)
         {
 
-            List<Data.OsobljeDTO> korisnik = await _apiService.Get<List<Data.OsobljeDTO>>(new KorisniciSearchRequest
+            Data.KorisniciSistema korisnik = await _apiServiceProvjera.Get<Data.KorisniciSistema>(new PotvrdaSearchRequest
             {
                 KorisnickoIme = txtKorisnickoIme.Text
             });
@@ -218,13 +221,13 @@ namespace eBiser.WindowsUI.Osoblje
 
             if (txtKorisnickoIme.Text.ToString().Length < 2)
             {
-                errorProvider.SetError(txtKorisnickoIme, WindowsUI.Properties.Resources.ValidationRequiredField);
+                errorProvider.SetError(txtKorisnickoIme, Properties.Resources.ValidationRequiredField);
                 e.Cancel = true;
             }
-            else if (korisnik.Count>0)
+            else if (korisnik!=null)
             {
 
-                errorProvider.SetError(txtKorisnickoIme, WindowsUI.Properties.Resources.UserNameIsUsing);
+                errorProvider.SetError(txtKorisnickoIme, Properties.Resources.UserNameIsUsing);
                 e.Cancel = true;
             }
             else
@@ -235,23 +238,25 @@ namespace eBiser.WindowsUI.Osoblje
 
         private async void txtEmail_Validating(object sender, CancelEventArgs e)
         {
-            List<Data.OsobljeDTO> korisnik = await _apiService.Get<List<Data.OsobljeDTO>>(new KorisniciSearchRequest
+            Data.KorisniciSistema korisnik = await _apiServiceProvjera.Get<Data.KorisniciSistema>(new PotvrdaSearchRequest
             {
                 Email = txtEmail.Text
             });
+            Regex regex = new Regex(@"^([\w\.\-]+)@([\w\-]+)((\.(\w){2,3})+)$");
+            Match match = regex.Match(txtEmail.Text);
             if (txtEmail.Text.ToString().Length < 2)
             {
-                errorProvider.SetError(txtEmail, WindowsUI.Properties.Resources.ValidationRequiredField);
+                errorProvider.SetError(txtEmail, Properties.Resources.ValidationRequiredField);
                 e.Cancel = true;
             }
-            else if (txtEmail.Text.IndexOf("@") == -1)
+            else if (!match.Success)
             {
-                errorProvider.SetError(txtEmail, WindowsUI.Properties.Resources.ValidationEmailField);
+                errorProvider.SetError(txtEmail, Properties.Resources.ValidationEmailField);
                 e.Cancel = true;
             }
-            else if (korisnik.Count > 0)
+            else if (korisnik!=null)
             {
-                errorProvider.SetError(txtEmail, WindowsUI.Properties.Resources.EmailIsUsing);
+                errorProvider.SetError(txtEmail, Properties.Resources.EmailIsUsing);
                 e.Cancel = true;
             }
             else

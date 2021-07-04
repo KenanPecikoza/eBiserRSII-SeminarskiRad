@@ -19,6 +19,8 @@ namespace eBiser.WindowsUI.Clanovi
     public partial class frmClanoviUpsert : Form
     {
         private readonly APIService _apiService = new APIService("Korisnik/clan");
+        private readonly APIService _apiServiceProvjera = new APIService("Korisnik/provjera");
+
         private int? _id = null;
         private int? _korisnikId = null;
         private readonly PhotoHelper photoHelper = new PhotoHelper();
@@ -212,16 +214,28 @@ namespace eBiser.WindowsUI.Clanovi
             }
         }
 
-        private void txtEmail_Validating(object sender, CancelEventArgs e)
+        private async void txtEmail_Validating(object sender, CancelEventArgs e)
         {
+            Data.KorisniciSistema korisnik = await _apiServiceProvjera.Get<Data.KorisniciSistema>(new PotvrdaSearchRequest
+            {
+                Email = txtEmail.Text
+            });
+
+            Regex regex = new Regex(@"^([\w\.\-]+)@([\w\-]+)((\.(\w){2,3})+)$");
+            Match match = regex.Match(txtEmail.Text);
             if (txtEmail.Text.ToString().Length < 2 )
             {
                 errorProvider.SetError(txtEmail, Properties.Resources.ValidationRequiredField);
                 e.Cancel = true;   
             }
-            else if (txtEmail.Text.IndexOf("@") == -1)
+            else if (!match.Success)
             {
                 errorProvider.SetError(txtEmail, Properties.Resources.ValidationEmailField);
+                e.Cancel = true;
+            }
+            else if (korisnik != null)
+            {
+                errorProvider.SetError(txtEmail, Properties.Resources.EmailIsUsing);
                 e.Cancel = true;
             }
             else
@@ -234,7 +248,6 @@ namespace eBiser.WindowsUI.Clanovi
         {
 
             Match m = Regex.Match(txtBrojTelefona.Text, @"[0-9]\d{2}\d{3}\d{3}", RegexOptions.IgnoreCase);
-
             if (txtBrojTelefona.Text.ToString().Length < 9 )
             {
                 errorProvider.SetError(txtBrojTelefona, Properties.Resources.ValidationPhoneNumberField);
@@ -265,11 +278,22 @@ namespace eBiser.WindowsUI.Clanovi
             }
         }
 
-        private void txtKorisnickoIme_Validating(object sender, CancelEventArgs e)
+        private async void txtKorisnickoIme_Validating(object sender, CancelEventArgs e)
         {
+            Data.KorisniciSistema korisnik = await _apiServiceProvjera.Get<Data.KorisniciSistema>(new PotvrdaSearchRequest
+            {
+                KorisnickoIme = txtKorisnickoIme.Text
+            });
+
             if (txtKorisnickoIme.Text.ToString().Length < 2)
             {
                 errorProvider.SetError(txtKorisnickoIme, Properties.Resources.ValidationRequiredField);
+                e.Cancel = true;
+            }
+            else if (korisnik != null)
+            {
+
+                errorProvider.SetError(txtKorisnickoIme, Properties.Resources.UserNameIsUsing);
                 e.Cancel = true;
             }
             else
