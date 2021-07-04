@@ -19,7 +19,7 @@ namespace eBiser.WindowsUI.Donatori
     public partial class frmDonatoriUpsert : Form
     {
         private readonly APIService _apiService = new APIService("Korisnik/Donatori");
-        private readonly APIService _apiServiceProvjera = new APIService("Korisnik/provjera");
+        private readonly APIService _apiServiceProvjera = new APIService("Korisnik/potvrda");
         private int? _id = null;
         private int? _korisnikId = null;
         private readonly PhotoHelper photoHelper = new PhotoHelper();

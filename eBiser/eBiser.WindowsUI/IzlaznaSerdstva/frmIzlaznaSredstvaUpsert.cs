@@ -57,6 +57,10 @@ namespace eBiser.WindowsUI.IzlaznaSerdstva
         {
             await LoadDGV();
             dgvIzlaznaSredstva.ClearSelection();
+            if (_id.HasValue)
+            {
+                await LoadForm(_id);
+            }
 
         }
         IzlaznaSredstvaUpsertRequest request = new IzlaznaSredstvaUpsertRequest();

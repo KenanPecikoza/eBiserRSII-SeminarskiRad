@@ -20,7 +20,7 @@ namespace eBiser.WindowsUI.Osoblje
     {
         private readonly APIService _apiService = new APIService("Korisnik/Osoblje");
         private readonly APIService _apiServiceDjelatnost = new APIService("DjelatnostOsoblje");
-        private readonly APIService _apiServiceProvjera = new APIService("Korisnik/provjera");
+        private readonly APIService _apiServiceProvjera = new APIService("Korisnik/potvrda");
 
         private int? _id = null;
         private int? _Korisnikid = null;
@@ -41,7 +41,7 @@ namespace eBiser.WindowsUI.Osoblje
             pictureBox.Image = photoHelper.ByteArrayToImage(result.Photo);
             pictureBox.SizeMode = PictureBoxSizeMode.StretchImage;
             txtKorisnickoIme.Text = result.KorisnickoIme;
-
+            txtEmail.Text = result.Email;
         }
         private async Task LoadDGV()
         {
@@ -188,7 +188,7 @@ namespace eBiser.WindowsUI.Osoblje
         {
             if (txtIme.Text.ToString().Length < 2)
             {
-                errorProvider.SetError(txtIme, WindowsUI.Properties.Resources.ValidationRequiredField);
+                errorProvider.SetError(txtIme,Properties.Resources.ValidationRequiredField);
                 e.Cancel = true;
             }
             else
@@ -201,7 +201,7 @@ namespace eBiser.WindowsUI.Osoblje
         {
             if (txtPrezime.Text.ToString().Length < 2)
             {
-                errorProvider.SetError(txtPrezime, WindowsUI.Properties.Resources.ValidationRequiredField);
+                errorProvider.SetError(txtPrezime, Properties.Resources.ValidationRequiredField);
                 e.Cancel = true;
             }
             else

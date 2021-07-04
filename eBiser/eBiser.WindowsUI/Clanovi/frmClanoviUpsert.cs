@@ -19,7 +19,7 @@ namespace eBiser.WindowsUI.Clanovi
     public partial class frmClanoviUpsert : Form
     {
         private readonly APIService _apiService = new APIService("Korisnik/clan");
-        private readonly APIService _apiServiceProvjera = new APIService("Korisnik/provjera");
+        private readonly APIService _apiServiceProvjera = new APIService("Korisnik/potvrda");
 
         private int? _id = null;
         private int? _korisnikId = null;

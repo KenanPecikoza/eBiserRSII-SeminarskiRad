@@ -34,7 +34,6 @@ namespace eBiser.WindowsUI.Login
                 APIService.Token = korisnik.Token;
                 APIService.KorisnikId = korisnik.KorisnikId;
                 APIService.Id = korisnik.Id;
-                //var korisnik1 = await _apiServiceOsoblje.GetById<Data.KorisniciSistema>(korisnik.KorisnikId);
                 this.Hide();
                 var form2 = new frmIndex();
                 form2.Closed += (s, args) => this.Close();
@@ -42,6 +41,8 @@ namespace eBiser.WindowsUI.Login
             }
             catch (Exception )
             {
+                MessageBox.Show("Password ili korisničko ime ne odgovaraju");
+
             }
         } 
 

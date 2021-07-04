@@ -111,7 +111,7 @@ namespace eBiser.Database
                 KorisnickoIme = "Donator",
                 KorisnikSistemaTipId = 3,
                 Aktivan = true,
-                Email = "osoblje@osoblje.com",
+                Email = "donator@donator.com",
                 DatumRodjenja = DateTime.Now,
                 DatumRegistracije = DateTime.Now,
                 Verifikovan = true,

@@ -86,10 +86,13 @@ namespace eBiser.WindowsUI.Obavijest
             // 
             // dgvObavijesti
             // 
+            this.dgvObavijesti.AllowUserToAddRows = false;
+            this.dgvObavijesti.AllowUserToDeleteRows = false;
             this.dgvObavijesti.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvObavijesti.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dgvObavijesti.Location = new System.Drawing.Point(3, 22);
             this.dgvObavijesti.Name = "dgvObavijesti";
+            this.dgvObavijesti.ReadOnly = true;
             this.dgvObavijesti.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvObavijesti.Size = new System.Drawing.Size(1085, 144);
             this.dgvObavijesti.TabIndex = 0;

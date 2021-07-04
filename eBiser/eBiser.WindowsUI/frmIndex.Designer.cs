@@ -89,9 +89,9 @@ namespace eBiser.WinUi
             // 
             this.statusStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.toolStripStatusLabel});
-            this.statusStrip.Location = new System.Drawing.Point(0, 725);
+            this.statusStrip.Location = new System.Drawing.Point(0, 912);
             this.statusStrip.Name = "statusStrip";
-            this.statusStrip.Size = new System.Drawing.Size(1072, 22);
+            this.statusStrip.Size = new System.Drawing.Size(1764, 22);
             this.statusStrip.TabIndex = 2;
             this.statusStrip.Text = "StatusStrip";
             // 
@@ -106,10 +106,10 @@ namespace eBiser.WinUi
             this.groupBox1.AutoSize = true;
             this.groupBox1.Controls.Add(this.btnClanoviPrikazi);
             this.groupBox1.Controls.Add(this.btnClanoviDodaj);
-            this.groupBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.groupBox1.Location = new System.Drawing.Point(12, 39);
+            this.groupBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 21.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.groupBox1.Location = new System.Drawing.Point(12, 12);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(315, 128);
+            this.groupBox1.Size = new System.Drawing.Size(462, 218);
             this.groupBox1.TabIndex = 4;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Članovi";
@@ -118,9 +118,9 @@ namespace eBiser.WinUi
             // 
             this.btnClanoviPrikazi.AutoSize = true;
             this.btnClanoviPrikazi.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnClanoviPrikazi.Location = new System.Drawing.Point(158, 39);
+            this.btnClanoviPrikazi.Location = new System.Drawing.Point(249, 69);
             this.btnClanoviPrikazi.Name = "btnClanoviPrikazi";
-            this.btnClanoviPrikazi.Size = new System.Drawing.Size(135, 48);
+            this.btnClanoviPrikazi.Size = new System.Drawing.Size(197, 71);
             this.btnClanoviPrikazi.TabIndex = 1;
             this.btnClanoviPrikazi.Text = "Prikaži";
             this.btnClanoviPrikazi.UseVisualStyleBackColor = true;
@@ -130,9 +130,9 @@ namespace eBiser.WinUi
             // 
             this.btnClanoviDodaj.AutoSize = true;
             this.btnClanoviDodaj.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnClanoviDodaj.Location = new System.Drawing.Point(6, 39);
+            this.btnClanoviDodaj.Location = new System.Drawing.Point(18, 69);
             this.btnClanoviDodaj.Name = "btnClanoviDodaj";
-            this.btnClanoviDodaj.Size = new System.Drawing.Size(135, 48);
+            this.btnClanoviDodaj.Size = new System.Drawing.Size(197, 71);
             this.btnClanoviDodaj.TabIndex = 0;
             this.btnClanoviDodaj.Text = "Dodaj";
             this.btnClanoviDodaj.UseVisualStyleBackColor = true;
@@ -142,10 +142,10 @@ namespace eBiser.WinUi
             // 
             this.Clanarine.Controls.Add(this.btnClanarinePrikazi);
             this.Clanarine.Controls.Add(this.btnClanarineDodaj);
-            this.Clanarine.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Clanarine.Location = new System.Drawing.Point(12, 173);
+            this.Clanarine.Font = new System.Drawing.Font("Microsoft Sans Serif", 21.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Clanarine.Location = new System.Drawing.Point(12, 236);
             this.Clanarine.Name = "Clanarine";
-            this.Clanarine.Size = new System.Drawing.Size(315, 128);
+            this.Clanarine.Size = new System.Drawing.Size(462, 218);
             this.Clanarine.TabIndex = 6;
             this.Clanarine.TabStop = false;
             this.Clanarine.Text = "Članarine";
@@ -154,9 +154,9 @@ namespace eBiser.WinUi
             // 
             this.btnClanarinePrikazi.AutoSize = true;
             this.btnClanarinePrikazi.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnClanarinePrikazi.Location = new System.Drawing.Point(158, 42);
+            this.btnClanarinePrikazi.Location = new System.Drawing.Point(249, 71);
             this.btnClanarinePrikazi.Name = "btnClanarinePrikazi";
-            this.btnClanarinePrikazi.Size = new System.Drawing.Size(135, 48);
+            this.btnClanarinePrikazi.Size = new System.Drawing.Size(197, 71);
             this.btnClanarinePrikazi.TabIndex = 3;
             this.btnClanarinePrikazi.Text = "Prikaži";
             this.btnClanarinePrikazi.UseVisualStyleBackColor = true;
@@ -166,9 +166,9 @@ namespace eBiser.WinUi
             // 
             this.btnClanarineDodaj.AutoSize = true;
             this.btnClanarineDodaj.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnClanarineDodaj.Location = new System.Drawing.Point(6, 42);
+            this.btnClanarineDodaj.Location = new System.Drawing.Point(18, 71);
             this.btnClanarineDodaj.Name = "btnClanarineDodaj";
-            this.btnClanarineDodaj.Size = new System.Drawing.Size(135, 48);
+            this.btnClanarineDodaj.Size = new System.Drawing.Size(197, 71);
             this.btnClanarineDodaj.TabIndex = 2;
             this.btnClanarineDodaj.Text = "Dodaj";
             this.btnClanarineDodaj.UseVisualStyleBackColor = true;
@@ -178,10 +178,10 @@ namespace eBiser.WinUi
             // 
             this.groupBox2.Controls.Add(this.btnObavijestiPrikaži);
             this.groupBox2.Controls.Add(this.btnObavijestiDodaj);
-            this.groupBox2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.groupBox2.Location = new System.Drawing.Point(12, 307);
+            this.groupBox2.Font = new System.Drawing.Font("Microsoft Sans Serif", 21.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.groupBox2.Location = new System.Drawing.Point(480, 236);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(315, 128);
+            this.groupBox2.Size = new System.Drawing.Size(462, 218);
             this.groupBox2.TabIndex = 7;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Obavijesti";
@@ -190,9 +190,9 @@ namespace eBiser.WinUi
             // 
             this.btnObavijestiPrikaži.AutoSize = true;
             this.btnObavijestiPrikaži.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnObavijestiPrikaži.Location = new System.Drawing.Point(158, 42);
+            this.btnObavijestiPrikaži.Location = new System.Drawing.Point(248, 71);
             this.btnObavijestiPrikaži.Name = "btnObavijestiPrikaži";
-            this.btnObavijestiPrikaži.Size = new System.Drawing.Size(135, 48);
+            this.btnObavijestiPrikaži.Size = new System.Drawing.Size(197, 71);
             this.btnObavijestiPrikaži.TabIndex = 3;
             this.btnObavijestiPrikaži.Text = "Prikaži";
             this.btnObavijestiPrikaži.UseVisualStyleBackColor = true;
@@ -202,9 +202,9 @@ namespace eBiser.WinUi
             // 
             this.btnObavijestiDodaj.AutoSize = true;
             this.btnObavijestiDodaj.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnObavijestiDodaj.Location = new System.Drawing.Point(6, 42);
+            this.btnObavijestiDodaj.Location = new System.Drawing.Point(21, 71);
             this.btnObavijestiDodaj.Name = "btnObavijestiDodaj";
-            this.btnObavijestiDodaj.Size = new System.Drawing.Size(135, 48);
+            this.btnObavijestiDodaj.Size = new System.Drawing.Size(197, 71);
             this.btnObavijestiDodaj.TabIndex = 2;
             this.btnObavijestiDodaj.Text = "Dodaj";
             this.btnObavijestiDodaj.UseVisualStyleBackColor = true;
@@ -214,10 +214,10 @@ namespace eBiser.WinUi
             // 
             this.groupBox3.Controls.Add(this.btnAkcijePomociPrikazi);
             this.groupBox3.Controls.Add(this.btnAkcijePomoćiDodaj);
-            this.groupBox3.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.groupBox3.Location = new System.Drawing.Point(12, 441);
+            this.groupBox3.Font = new System.Drawing.Font("Microsoft Sans Serif", 21.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.groupBox3.Location = new System.Drawing.Point(12, 460);
             this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Size = new System.Drawing.Size(315, 128);
+            this.groupBox3.Size = new System.Drawing.Size(462, 218);
             this.groupBox3.TabIndex = 8;
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "Akcije pomoći";
@@ -226,9 +226,9 @@ namespace eBiser.WinUi
             // 
             this.btnAkcijePomociPrikazi.AutoSize = true;
             this.btnAkcijePomociPrikazi.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnAkcijePomociPrikazi.Location = new System.Drawing.Point(158, 42);
+            this.btnAkcijePomociPrikazi.Location = new System.Drawing.Point(249, 67);
             this.btnAkcijePomociPrikazi.Name = "btnAkcijePomociPrikazi";
-            this.btnAkcijePomociPrikazi.Size = new System.Drawing.Size(135, 48);
+            this.btnAkcijePomociPrikazi.Size = new System.Drawing.Size(197, 71);
             this.btnAkcijePomociPrikazi.TabIndex = 3;
             this.btnAkcijePomociPrikazi.Text = "Prikaži";
             this.btnAkcijePomociPrikazi.UseVisualStyleBackColor = true;
@@ -238,9 +238,9 @@ namespace eBiser.WinUi
             // 
             this.btnAkcijePomoćiDodaj.AutoSize = true;
             this.btnAkcijePomoćiDodaj.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnAkcijePomoćiDodaj.Location = new System.Drawing.Point(6, 42);
+            this.btnAkcijePomoćiDodaj.Location = new System.Drawing.Point(18, 67);
             this.btnAkcijePomoćiDodaj.Name = "btnAkcijePomoćiDodaj";
-            this.btnAkcijePomoćiDodaj.Size = new System.Drawing.Size(135, 48);
+            this.btnAkcijePomoćiDodaj.Size = new System.Drawing.Size(197, 71);
             this.btnAkcijePomoćiDodaj.TabIndex = 2;
             this.btnAkcijePomoćiDodaj.Text = "Dodaj";
             this.btnAkcijePomoćiDodaj.UseVisualStyleBackColor = true;
@@ -250,10 +250,10 @@ namespace eBiser.WinUi
             // 
             this.groupBox4.Controls.Add(this.btnIzlaznaSredstvaPrikazi);
             this.groupBox4.Controls.Add(this.btnIzlaznaSredstvaDodaj);
-            this.groupBox4.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.groupBox4.Location = new System.Drawing.Point(339, 441);
+            this.groupBox4.Font = new System.Drawing.Font("Microsoft Sans Serif", 21.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.groupBox4.Location = new System.Drawing.Point(12, 684);
             this.groupBox4.Name = "groupBox4";
-            this.groupBox4.Size = new System.Drawing.Size(315, 128);
+            this.groupBox4.Size = new System.Drawing.Size(462, 218);
             this.groupBox4.TabIndex = 9;
             this.groupBox4.TabStop = false;
             this.groupBox4.Text = "Izlazna sredstva";
@@ -262,9 +262,9 @@ namespace eBiser.WinUi
             // 
             this.btnIzlaznaSredstvaPrikazi.AutoSize = true;
             this.btnIzlaznaSredstvaPrikazi.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnIzlaznaSredstvaPrikazi.Location = new System.Drawing.Point(158, 42);
+            this.btnIzlaznaSredstvaPrikazi.Location = new System.Drawing.Point(249, 70);
             this.btnIzlaznaSredstvaPrikazi.Name = "btnIzlaznaSredstvaPrikazi";
-            this.btnIzlaznaSredstvaPrikazi.Size = new System.Drawing.Size(135, 48);
+            this.btnIzlaznaSredstvaPrikazi.Size = new System.Drawing.Size(197, 71);
             this.btnIzlaznaSredstvaPrikazi.TabIndex = 3;
             this.btnIzlaznaSredstvaPrikazi.Text = "Prikaži";
             this.btnIzlaznaSredstvaPrikazi.UseVisualStyleBackColor = true;
@@ -274,9 +274,9 @@ namespace eBiser.WinUi
             // 
             this.btnIzlaznaSredstvaDodaj.AutoSize = true;
             this.btnIzlaznaSredstvaDodaj.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnIzlaznaSredstvaDodaj.Location = new System.Drawing.Point(6, 42);
+            this.btnIzlaznaSredstvaDodaj.Location = new System.Drawing.Point(6, 70);
             this.btnIzlaznaSredstvaDodaj.Name = "btnIzlaznaSredstvaDodaj";
-            this.btnIzlaznaSredstvaDodaj.Size = new System.Drawing.Size(135, 48);
+            this.btnIzlaznaSredstvaDodaj.Size = new System.Drawing.Size(197, 71);
             this.btnIzlaznaSredstvaDodaj.TabIndex = 2;
             this.btnIzlaznaSredstvaDodaj.Text = "Dodaj";
             this.btnIzlaznaSredstvaDodaj.UseVisualStyleBackColor = true;
@@ -286,10 +286,10 @@ namespace eBiser.WinUi
             // 
             this.groupBox5.Controls.Add(this.btnUlaznaSredstvaPrikazi);
             this.groupBox5.Controls.Add(this.btnUlaznaSredstvaDodaj);
-            this.groupBox5.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.groupBox5.Location = new System.Drawing.Point(333, 307);
+            this.groupBox5.Font = new System.Drawing.Font("Microsoft Sans Serif", 21.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.groupBox5.Location = new System.Drawing.Point(480, 684);
             this.groupBox5.Name = "groupBox5";
-            this.groupBox5.Size = new System.Drawing.Size(315, 128);
+            this.groupBox5.Size = new System.Drawing.Size(462, 218);
             this.groupBox5.TabIndex = 10;
             this.groupBox5.TabStop = false;
             this.groupBox5.Text = "Ulazna Sredstva";
@@ -299,9 +299,9 @@ namespace eBiser.WinUi
             // 
             this.btnUlaznaSredstvaPrikazi.AutoSize = true;
             this.btnUlaznaSredstvaPrikazi.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnUlaznaSredstvaPrikazi.Location = new System.Drawing.Point(158, 42);
+            this.btnUlaznaSredstvaPrikazi.Location = new System.Drawing.Point(242, 70);
             this.btnUlaznaSredstvaPrikazi.Name = "btnUlaznaSredstvaPrikazi";
-            this.btnUlaznaSredstvaPrikazi.Size = new System.Drawing.Size(135, 48);
+            this.btnUlaznaSredstvaPrikazi.Size = new System.Drawing.Size(197, 71);
             this.btnUlaznaSredstvaPrikazi.TabIndex = 3;
             this.btnUlaznaSredstvaPrikazi.Text = "Prikaži";
             this.btnUlaznaSredstvaPrikazi.UseVisualStyleBackColor = true;
@@ -311,9 +311,9 @@ namespace eBiser.WinUi
             // 
             this.btnUlaznaSredstvaDodaj.AutoSize = true;
             this.btnUlaznaSredstvaDodaj.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnUlaznaSredstvaDodaj.Location = new System.Drawing.Point(6, 42);
+            this.btnUlaznaSredstvaDodaj.Location = new System.Drawing.Point(15, 70);
             this.btnUlaznaSredstvaDodaj.Name = "btnUlaznaSredstvaDodaj";
-            this.btnUlaznaSredstvaDodaj.Size = new System.Drawing.Size(135, 48);
+            this.btnUlaznaSredstvaDodaj.Size = new System.Drawing.Size(197, 71);
             this.btnUlaznaSredstvaDodaj.TabIndex = 2;
             this.btnUlaznaSredstvaDodaj.Text = "Dodaj";
             this.btnUlaznaSredstvaDodaj.UseVisualStyleBackColor = true;
@@ -324,10 +324,10 @@ namespace eBiser.WinUi
             this.groupBox6.AutoSize = true;
             this.groupBox6.Controls.Add(this.BtnOsobljePrikazi);
             this.groupBox6.Controls.Add(this.btnOsobljeDodaj);
-            this.groupBox6.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.groupBox6.Location = new System.Drawing.Point(333, 39);
+            this.groupBox6.Font = new System.Drawing.Font("Microsoft Sans Serif", 21.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.groupBox6.Location = new System.Drawing.Point(480, 12);
             this.groupBox6.Name = "groupBox6";
-            this.groupBox6.Size = new System.Drawing.Size(321, 128);
+            this.groupBox6.Size = new System.Drawing.Size(462, 218);
             this.groupBox6.TabIndex = 5;
             this.groupBox6.TabStop = false;
             this.groupBox6.Text = "Osoblje";
@@ -336,9 +336,9 @@ namespace eBiser.WinUi
             // 
             this.BtnOsobljePrikazi.AutoSize = true;
             this.BtnOsobljePrikazi.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.BtnOsobljePrikazi.Location = new System.Drawing.Point(158, 39);
+            this.BtnOsobljePrikazi.Location = new System.Drawing.Point(248, 69);
             this.BtnOsobljePrikazi.Name = "BtnOsobljePrikazi";
-            this.BtnOsobljePrikazi.Size = new System.Drawing.Size(135, 48);
+            this.BtnOsobljePrikazi.Size = new System.Drawing.Size(197, 71);
             this.BtnOsobljePrikazi.TabIndex = 1;
             this.BtnOsobljePrikazi.Text = "Prikaži";
             this.BtnOsobljePrikazi.UseVisualStyleBackColor = true;
@@ -348,9 +348,9 @@ namespace eBiser.WinUi
             // 
             this.btnOsobljeDodaj.AutoSize = true;
             this.btnOsobljeDodaj.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnOsobljeDodaj.Location = new System.Drawing.Point(6, 39);
+            this.btnOsobljeDodaj.Location = new System.Drawing.Point(21, 69);
             this.btnOsobljeDodaj.Name = "btnOsobljeDodaj";
-            this.btnOsobljeDodaj.Size = new System.Drawing.Size(135, 48);
+            this.btnOsobljeDodaj.Size = new System.Drawing.Size(197, 71);
             this.btnOsobljeDodaj.TabIndex = 0;
             this.btnOsobljeDodaj.Text = "Dodaj";
             this.btnOsobljeDodaj.UseVisualStyleBackColor = true;
@@ -362,10 +362,10 @@ namespace eBiser.WinUi
             this.groupBox7.Controls.Add(this.btnZakazi);
             this.groupBox7.Controls.Add(this.btnSastanakPrikaži);
             this.groupBox7.Controls.Add(this.btnSastanakDodaj);
-            this.groupBox7.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.groupBox7.Location = new System.Drawing.Point(12, 575);
+            this.groupBox7.Font = new System.Drawing.Font("Microsoft Sans Serif", 21.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.groupBox7.Location = new System.Drawing.Point(948, 684);
             this.groupBox7.Name = "groupBox7";
-            this.groupBox7.Size = new System.Drawing.Size(453, 128);
+            this.groupBox7.Size = new System.Drawing.Size(729, 218);
             this.groupBox7.TabIndex = 6;
             this.groupBox7.TabStop = false;
             this.groupBox7.Text = "Sastanak";
@@ -374,9 +374,9 @@ namespace eBiser.WinUi
             // 
             this.btnZakazi.AutoSize = true;
             this.btnZakazi.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnZakazi.Location = new System.Drawing.Point(302, 39);
+            this.btnZakazi.Location = new System.Drawing.Point(492, 70);
             this.btnZakazi.Name = "btnZakazi";
-            this.btnZakazi.Size = new System.Drawing.Size(135, 48);
+            this.btnZakazi.Size = new System.Drawing.Size(197, 71);
             this.btnZakazi.TabIndex = 2;
             this.btnZakazi.Text = "Zakaži";
             this.btnZakazi.UseVisualStyleBackColor = true;
@@ -386,9 +386,9 @@ namespace eBiser.WinUi
             // 
             this.btnSastanakPrikaži.AutoSize = true;
             this.btnSastanakPrikaži.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnSastanakPrikaži.Location = new System.Drawing.Point(158, 39);
+            this.btnSastanakPrikaži.Location = new System.Drawing.Point(265, 70);
             this.btnSastanakPrikaži.Name = "btnSastanakPrikaži";
-            this.btnSastanakPrikaži.Size = new System.Drawing.Size(135, 48);
+            this.btnSastanakPrikaži.Size = new System.Drawing.Size(197, 71);
             this.btnSastanakPrikaži.TabIndex = 1;
             this.btnSastanakPrikaži.Text = "Prikaži";
             this.btnSastanakPrikaži.UseVisualStyleBackColor = true;
@@ -398,9 +398,9 @@ namespace eBiser.WinUi
             // 
             this.btnSastanakDodaj.AutoSize = true;
             this.btnSastanakDodaj.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnSastanakDodaj.Location = new System.Drawing.Point(6, 39);
+            this.btnSastanakDodaj.Location = new System.Drawing.Point(26, 70);
             this.btnSastanakDodaj.Name = "btnSastanakDodaj";
-            this.btnSastanakDodaj.Size = new System.Drawing.Size(135, 48);
+            this.btnSastanakDodaj.Size = new System.Drawing.Size(197, 71);
             this.btnSastanakDodaj.TabIndex = 0;
             this.btnSastanakDodaj.Text = "Dodaj";
             this.btnSastanakDodaj.UseVisualStyleBackColor = true;
@@ -409,11 +409,11 @@ namespace eBiser.WinUi
             // btnLogOut
             // 
             this.btnLogOut.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnLogOut.Location = new System.Drawing.Point(491, 614);
+            this.btnLogOut.Location = new System.Drawing.Point(1470, 81);
             this.btnLogOut.Name = "btnLogOut";
-            this.btnLogOut.Size = new System.Drawing.Size(139, 56);
+            this.btnLogOut.Size = new System.Drawing.Size(197, 71);
             this.btnLogOut.TabIndex = 12;
-            this.btnLogOut.Text = "OdjaviSe";
+            this.btnLogOut.Text = "Odjavi se";
             this.btnLogOut.UseVisualStyleBackColor = true;
             this.btnLogOut.Click += new System.EventHandler(this.btnLogOut_Click);
             // 
@@ -422,10 +422,10 @@ namespace eBiser.WinUi
             this.groupBox8.AutoSize = true;
             this.groupBox8.Controls.Add(this.btnDonacijePrikazi);
             this.groupBox8.Controls.Add(this.btnDonacijeDodaj);
-            this.groupBox8.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.groupBox8.Location = new System.Drawing.Point(337, 173);
+            this.groupBox8.Font = new System.Drawing.Font("Microsoft Sans Serif", 21.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.groupBox8.Location = new System.Drawing.Point(480, 460);
             this.groupBox8.Name = "groupBox8";
-            this.groupBox8.Size = new System.Drawing.Size(315, 128);
+            this.groupBox8.Size = new System.Drawing.Size(462, 218);
             this.groupBox8.TabIndex = 7;
             this.groupBox8.TabStop = false;
             this.groupBox8.Text = "Donacije";
@@ -434,9 +434,9 @@ namespace eBiser.WinUi
             // 
             this.btnDonacijePrikazi.AutoSize = true;
             this.btnDonacijePrikazi.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnDonacijePrikazi.Location = new System.Drawing.Point(158, 39);
+            this.btnDonacijePrikazi.Location = new System.Drawing.Point(248, 67);
             this.btnDonacijePrikazi.Name = "btnDonacijePrikazi";
-            this.btnDonacijePrikazi.Size = new System.Drawing.Size(135, 48);
+            this.btnDonacijePrikazi.Size = new System.Drawing.Size(197, 71);
             this.btnDonacijePrikazi.TabIndex = 1;
             this.btnDonacijePrikazi.Text = "Prikaži";
             this.btnDonacijePrikazi.UseVisualStyleBackColor = true;
@@ -446,9 +446,9 @@ namespace eBiser.WinUi
             // 
             this.btnDonacijeDodaj.AutoSize = true;
             this.btnDonacijeDodaj.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnDonacijeDodaj.Location = new System.Drawing.Point(6, 39);
+            this.btnDonacijeDodaj.Location = new System.Drawing.Point(21, 67);
             this.btnDonacijeDodaj.Name = "btnDonacijeDodaj";
-            this.btnDonacijeDodaj.Size = new System.Drawing.Size(135, 48);
+            this.btnDonacijeDodaj.Size = new System.Drawing.Size(197, 71);
             this.btnDonacijeDodaj.TabIndex = 0;
             this.btnDonacijeDodaj.Text = "Dodaj";
             this.btnDonacijeDodaj.UseVisualStyleBackColor = true;
@@ -459,10 +459,10 @@ namespace eBiser.WinUi
             this.groupBox9.AutoSize = true;
             this.groupBox9.Controls.Add(this.btnDonatoriPrikazi);
             this.groupBox9.Controls.Add(this.btnDonatoriDodaj);
-            this.groupBox9.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.groupBox9.Location = new System.Drawing.Point(666, 39);
+            this.groupBox9.Font = new System.Drawing.Font("Microsoft Sans Serif", 21.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.groupBox9.Location = new System.Drawing.Point(948, 12);
             this.groupBox9.Name = "groupBox9";
-            this.groupBox9.Size = new System.Drawing.Size(309, 128);
+            this.groupBox9.Size = new System.Drawing.Size(462, 218);
             this.groupBox9.TabIndex = 5;
             this.groupBox9.TabStop = false;
             this.groupBox9.Text = "Donatori";
@@ -471,9 +471,9 @@ namespace eBiser.WinUi
             // 
             this.btnDonatoriPrikazi.AutoSize = true;
             this.btnDonatoriPrikazi.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnDonatoriPrikazi.Location = new System.Drawing.Point(158, 39);
+            this.btnDonatoriPrikazi.Location = new System.Drawing.Point(244, 69);
             this.btnDonatoriPrikazi.Name = "btnDonatoriPrikazi";
-            this.btnDonatoriPrikazi.Size = new System.Drawing.Size(135, 48);
+            this.btnDonatoriPrikazi.Size = new System.Drawing.Size(197, 71);
             this.btnDonatoriPrikazi.TabIndex = 1;
             this.btnDonatoriPrikazi.Text = "Prikaži";
             this.btnDonatoriPrikazi.UseVisualStyleBackColor = true;
@@ -483,9 +483,9 @@ namespace eBiser.WinUi
             // 
             this.btnDonatoriDodaj.AutoSize = true;
             this.btnDonatoriDodaj.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnDonatoriDodaj.Location = new System.Drawing.Point(6, 39);
+            this.btnDonatoriDodaj.Location = new System.Drawing.Point(26, 69);
             this.btnDonatoriDodaj.Name = "btnDonatoriDodaj";
-            this.btnDonatoriDodaj.Size = new System.Drawing.Size(135, 48);
+            this.btnDonatoriDodaj.Size = new System.Drawing.Size(197, 71);
             this.btnDonatoriDodaj.TabIndex = 0;
             this.btnDonatoriDodaj.Text = "Dodaj";
             this.btnDonatoriDodaj.UseVisualStyleBackColor = true;
@@ -495,10 +495,10 @@ namespace eBiser.WinUi
             // 
             this.groupBox10.AutoSize = true;
             this.groupBox10.Controls.Add(this.btnPrikazi);
-            this.groupBox10.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.groupBox10.Location = new System.Drawing.Point(666, 173);
+            this.groupBox10.Font = new System.Drawing.Font("Microsoft Sans Serif", 21.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.groupBox10.Location = new System.Drawing.Point(948, 460);
             this.groupBox10.Name = "groupBox10";
-            this.groupBox10.Size = new System.Drawing.Size(309, 128);
+            this.groupBox10.Size = new System.Drawing.Size(462, 218);
             this.groupBox10.TabIndex = 6;
             this.groupBox10.TabStop = false;
             this.groupBox10.Text = "Ocjene obavijesti";
@@ -507,9 +507,9 @@ namespace eBiser.WinUi
             // 
             this.btnPrikazi.AutoSize = true;
             this.btnPrikazi.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnPrikazi.Location = new System.Drawing.Point(88, 39);
+            this.btnPrikazi.Location = new System.Drawing.Point(130, 67);
             this.btnPrikazi.Name = "btnPrikazi";
-            this.btnPrikazi.Size = new System.Drawing.Size(135, 48);
+            this.btnPrikazi.Size = new System.Drawing.Size(197, 71);
             this.btnPrikazi.TabIndex = 1;
             this.btnPrikazi.Text = "Prikaži";
             this.btnPrikazi.UseVisualStyleBackColor = true;
@@ -519,10 +519,10 @@ namespace eBiser.WinUi
             // 
             this.groupBox11.AutoSize = true;
             this.groupBox11.Controls.Add(this.btnFinansijskiIzvještajPrikaži);
-            this.groupBox11.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.groupBox11.Location = new System.Drawing.Point(660, 307);
+            this.groupBox11.Font = new System.Drawing.Font("Microsoft Sans Serif", 21.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.groupBox11.Location = new System.Drawing.Point(948, 236);
             this.groupBox11.Name = "groupBox11";
-            this.groupBox11.Size = new System.Drawing.Size(315, 128);
+            this.groupBox11.Size = new System.Drawing.Size(462, 218);
             this.groupBox11.TabIndex = 7;
             this.groupBox11.TabStop = false;
             this.groupBox11.Text = "Finansijski Izvještaj";
@@ -531,9 +531,9 @@ namespace eBiser.WinUi
             // 
             this.btnFinansijskiIzvještajPrikaži.AutoSize = true;
             this.btnFinansijskiIzvještajPrikaži.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnFinansijskiIzvještajPrikaži.Location = new System.Drawing.Point(88, 39);
+            this.btnFinansijskiIzvještajPrikaži.Location = new System.Drawing.Point(130, 71);
             this.btnFinansijskiIzvještajPrikaži.Name = "btnFinansijskiIzvještajPrikaži";
-            this.btnFinansijskiIzvještajPrikaži.Size = new System.Drawing.Size(135, 48);
+            this.btnFinansijskiIzvještajPrikaži.Size = new System.Drawing.Size(197, 71);
             this.btnFinansijskiIzvještajPrikaži.TabIndex = 1;
             this.btnFinansijskiIzvještajPrikaži.Text = "Prikaži";
             this.btnFinansijskiIzvještajPrikaži.UseVisualStyleBackColor = true;
@@ -543,7 +543,7 @@ namespace eBiser.WinUi
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1072, 747);
+            this.ClientSize = new System.Drawing.Size(1764, 934);
             this.Controls.Add(this.groupBox11);
             this.Controls.Add(this.groupBox10);
             this.Controls.Add(this.groupBox9);

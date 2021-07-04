@@ -52,6 +52,10 @@ namespace eBiser.WindowsUI.UlaznaSredstva
         {
             await LoadDGV();
             dgvUlaznaSredstva.ClearSelection();
+            if (_id.HasValue)
+            {
+                await LoadForm(_id);
+            }
         }
         UlaznaSredstvaUpsertRequest request = new UlaznaSredstvaUpsertRequest();
 
