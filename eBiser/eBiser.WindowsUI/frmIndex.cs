@@ -8,6 +8,7 @@ using eBiser.WindowsUI.IzlaznaSerdstva;
 using eBiser.WindowsUI.Login;
 using eBiser.WindowsUI.Obavijest;
 using eBiser.WindowsUI.Osoblje;
+using eBiser.WindowsUI.Projekti;
 using eBiser.WindowsUI.Report;
 using eBiser.WindowsUI.Sastanak;
 using eBiser.WindowsUI.UlaznaSredstva;
@@ -230,6 +231,12 @@ namespace eBiser.WinUi
         {
             frmIzvjestaj frmObavijestiOcjene = new frmIzvjestaj();
             frmObavijestiOcjene.Show();
+        }
+
+        private void btnPrikaziProjekte_Click(object sender, EventArgs e)
+        {
+            frmProjekti projekti = new frmProjekti();
+            projekti.Show();
         }
     }
 }

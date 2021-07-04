@@ -70,6 +70,8 @@ namespace eBiser.WinUi
             this.btnPrikazi = new System.Windows.Forms.Button();
             this.groupBox11 = new System.Windows.Forms.GroupBox();
             this.btnFinansijskiIzvještajPrikaži = new System.Windows.Forms.Button();
+            this.btnPrikaziProjekte = new System.Windows.Forms.Button();
+            this.button2 = new System.Windows.Forms.Button();
             this.statusStrip.SuspendLayout();
             this.groupBox1.SuspendLayout();
             this.Clanarine.SuspendLayout();
@@ -539,11 +541,36 @@ namespace eBiser.WinUi
             this.btnFinansijskiIzvještajPrikaži.UseVisualStyleBackColor = true;
             this.btnFinansijskiIzvještajPrikaži.Click += new System.EventHandler(this.btnFinansijskiIzvještajPrikaži_Click);
             // 
+            // btnPrikaziProjekte
+            // 
+            this.btnPrikaziProjekte.AutoSize = true;
+            this.btnPrikaziProjekte.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnPrikaziProjekte.Location = new System.Drawing.Point(1493, 427);
+            this.btnPrikaziProjekte.Name = "btnPrikaziProjekte";
+            this.btnPrikaziProjekte.Size = new System.Drawing.Size(197, 71);
+            this.btnPrikaziProjekte.TabIndex = 14;
+            this.btnPrikaziProjekte.Text = "Prikaži";
+            this.btnPrikaziProjekte.UseVisualStyleBackColor = true;
+            this.btnPrikaziProjekte.Click += new System.EventHandler(this.btnPrikaziProjekte_Click);
+            // 
+            // button2
+            // 
+            this.button2.AutoSize = true;
+            this.button2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button2.Location = new System.Drawing.Point(1493, 325);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(197, 71);
+            this.button2.TabIndex = 2;
+            this.button2.Text = "Dodaj";
+            this.button2.UseVisualStyleBackColor = true;
+            // 
             // frmIndex
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1764, 934);
+            this.Controls.Add(this.button2);
+            this.Controls.Add(this.btnPrikaziProjekte);
             this.Controls.Add(this.groupBox11);
             this.Controls.Add(this.groupBox10);
             this.Controls.Add(this.groupBox9);
@@ -634,6 +661,8 @@ namespace eBiser.WinUi
         private System.Windows.Forms.Button btnPrikazi;
         private System.Windows.Forms.GroupBox groupBox11;
         private System.Windows.Forms.Button btnFinansijskiIzvještajPrikaži;
+        private System.Windows.Forms.Button btnPrikaziProjekte;
+        private System.Windows.Forms.Button button2;
     }
 }
 

@@ -229,6 +229,18 @@
       <DependentUpon>frmOsobljeUpsert.cs</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
+    <Compile Include="Projekti\frmProjekti.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Projekti\frmProjekti.Designer.cs">
+      <DependentUpon>frmProjekti.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Projekti\frmProjektiUpsert.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Projekti\frmProjektiUpsert.Designer.cs">
+      <DependentUpon>frmProjektiUpsert.cs</DependentUpon>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Report\frmIzvjestaj.cs">
       <SubType>Form</SubType>
@@ -333,6 +345,12 @@
     <EmbeddedResource Include="Osoblje\frmOsobljeUpsert.resx">
       <DependentUpon>frmOsobljeUpsert.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Projekti\frmProjekti.resx">
+      <DependentUpon>frmProjekti.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Projekti\frmProjektiUpsert.resx">
+      <DependentUpon>frmProjektiUpsert.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
@@ -416,5 +434,6 @@
       <Name>eBiser.Data</Name>
     </ProjectReference>
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
