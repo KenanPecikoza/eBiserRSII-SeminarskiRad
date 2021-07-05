@@ -38,6 +38,8 @@ namespace eBiser.WindowsUI.Sastanak
             txtZapisnik.Text = result.Zapisnik;
             cBoxZapisnicar.SelectedValue = result.OsobljeId;
             dtmDatumOdzavanja.Value = result.DatumOdrzavanja;
+            txtNaslov.Text = result.Naslov;
+
         }
         private async Task LoadDGV()
         {
@@ -64,6 +66,7 @@ namespace eBiser.WindowsUI.Sastanak
             request.Zapisnik = txtZapisnik.Text;
             request.OsobljeId = Int32.Parse(cBoxZapisnicar.SelectedValue.ToString());
             request.DatumOdrzavanja = dtmDatumOdzavanja.Value;
+            request.Naslov = txtNaslov.Text;
             if (_id.HasValue)
             {
                 await _apiService.Update<Data.Sastanak>(_id ?? 0, request);
@@ -82,6 +85,8 @@ namespace eBiser.WindowsUI.Sastanak
             cBoxZapisnicar.SelectedIndex = 0;
             txtZapisnik.Text = "";
             dtmDatumOdzavanja.Value = DateTime.Now;
+            txtNaslov.Text = "";
+            _id = null;
         }
 
         private async void dgvSastanci_CellClick(object sender, DataGridViewCellEventArgs e)
@@ -101,7 +106,7 @@ namespace eBiser.WindowsUI.Sastanak
         {
             if (txtZapisnik.Text.ToString().Length < 2)
             {
-                errorProvider.SetError(txtZapisnik, WindowsUI.Properties.Resources.ValidationRequiredField);
+                errorProvider.SetError(txtZapisnik, Properties.Resources.ValidationRequiredField);
                 e.Cancel = true;
             }
             else

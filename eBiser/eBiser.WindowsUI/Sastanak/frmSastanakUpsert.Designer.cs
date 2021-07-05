@@ -42,7 +42,10 @@ namespace eBiser.WindowsUI.Sastanak
             this.dtmDatumOdzavanja = new System.Windows.Forms.DateTimePicker();
             this.label1 = new System.Windows.Forms.Label();
             this.errorProvider = new System.Windows.Forms.ErrorProvider(this.components);
+            this.txtNaslov = new System.Windows.Forms.TextBox();
+            this.label4 = new System.Windows.Forms.Label();
             this.Id = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Naslov = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.DatumOdrzavanja = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ImeIPrezime = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Odrzan = new System.Windows.Forms.DataGridViewCheckBoxColumn();
@@ -73,6 +76,7 @@ namespace eBiser.WindowsUI.Sastanak
             this.dgvSastanci.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvSastanci.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.Id,
+            this.Naslov,
             this.DatumOdrzavanja,
             this.ImeIPrezime,
             this.Odrzan,
@@ -88,6 +92,8 @@ namespace eBiser.WindowsUI.Sastanak
             // 
             // groupBox2
             // 
+            this.groupBox2.Controls.Add(this.txtNaslov);
+            this.groupBox2.Controls.Add(this.label4);
             this.groupBox2.Controls.Add(this.btnPonisti);
             this.groupBox2.Controls.Add(this.btnSnimi);
             this.groupBox2.Controls.Add(this.label3);
@@ -131,7 +137,7 @@ namespace eBiser.WindowsUI.Sastanak
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(2, 128);
+            this.label3.Location = new System.Drawing.Point(6, 177);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(68, 20);
             this.label3.TabIndex = 8;
@@ -139,10 +145,10 @@ namespace eBiser.WindowsUI.Sastanak
             // 
             // txtZapisnik
             // 
-            this.txtZapisnik.Location = new System.Drawing.Point(6, 151);
+            this.txtZapisnik.Location = new System.Drawing.Point(8, 200);
             this.txtZapisnik.Multiline = true;
             this.txtZapisnik.Name = "txtZapisnik";
-            this.txtZapisnik.Size = new System.Drawing.Size(797, 198);
+            this.txtZapisnik.Size = new System.Drawing.Size(797, 149);
             this.txtZapisnik.TabIndex = 7;
             this.txtZapisnik.Validating += new System.ComponentModel.CancelEventHandler(this.txtZapisnik_Validating);
             // 
@@ -150,7 +156,7 @@ namespace eBiser.WindowsUI.Sastanak
             // 
             this.cBoxZapisnicar.DisplayMember = "Id";
             this.cBoxZapisnicar.FormattingEnabled = true;
-            this.cBoxZapisnicar.Location = new System.Drawing.Point(6, 97);
+            this.cBoxZapisnicar.Location = new System.Drawing.Point(10, 146);
             this.cBoxZapisnicar.Name = "cBoxZapisnicar";
             this.cBoxZapisnicar.Size = new System.Drawing.Size(284, 28);
             this.cBoxZapisnicar.TabIndex = 6;
@@ -159,7 +165,7 @@ namespace eBiser.WindowsUI.Sastanak
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(2, 74);
+            this.label2.Location = new System.Drawing.Point(6, 123);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(82, 20);
             this.label2.TabIndex = 5;
@@ -167,7 +173,7 @@ namespace eBiser.WindowsUI.Sastanak
             // 
             // dtmDatumOdzavanja
             // 
-            this.dtmDatumOdzavanja.Location = new System.Drawing.Point(6, 45);
+            this.dtmDatumOdzavanja.Location = new System.Drawing.Point(10, 94);
             this.dtmDatumOdzavanja.Name = "dtmDatumOdzavanja";
             this.dtmDatumOdzavanja.Size = new System.Drawing.Size(284, 26);
             this.dtmDatumOdzavanja.TabIndex = 4;
@@ -175,7 +181,7 @@ namespace eBiser.WindowsUI.Sastanak
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(2, 22);
+            this.label1.Location = new System.Drawing.Point(6, 71);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(138, 20);
             this.label1.TabIndex = 3;
@@ -185,6 +191,22 @@ namespace eBiser.WindowsUI.Sastanak
             // 
             this.errorProvider.ContainerControl = this;
             // 
+            // txtNaslov
+            // 
+            this.txtNaslov.Location = new System.Drawing.Point(10, 42);
+            this.txtNaslov.Name = "txtNaslov";
+            this.txtNaslov.Size = new System.Drawing.Size(284, 26);
+            this.txtNaslov.TabIndex = 12;
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(6, 19);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(60, 20);
+            this.label4.TabIndex = 11;
+            this.label4.Text = "Naslov ";
+            // 
             // Id
             // 
             this.Id.DataPropertyName = "Id";
@@ -193,6 +215,14 @@ namespace eBiser.WindowsUI.Sastanak
             this.Id.ReadOnly = true;
             this.Id.Visible = false;
             this.Id.Width = 48;
+            // 
+            // Naslov
+            // 
+            this.Naslov.DataPropertyName = "Naslov";
+            this.Naslov.HeaderText = "Naslov";
+            this.Naslov.Name = "Naslov";
+            this.Naslov.ReadOnly = true;
+            this.Naslov.Width = 81;
             // 
             // DatumOdrzavanja
             // 
@@ -261,7 +291,10 @@ namespace eBiser.WindowsUI.Sastanak
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Button btnPonisti;
         private System.Windows.Forms.ErrorProvider errorProvider;
+        private System.Windows.Forms.TextBox txtNaslov;
+        private System.Windows.Forms.Label label4;
         private System.Windows.Forms.DataGridViewTextBoxColumn Id;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Naslov;
         private System.Windows.Forms.DataGridViewTextBoxColumn DatumOdrzavanja;
         private System.Windows.Forms.DataGridViewTextBoxColumn ImeIPrezime;
         private System.Windows.Forms.DataGridViewCheckBoxColumn Odrzan;

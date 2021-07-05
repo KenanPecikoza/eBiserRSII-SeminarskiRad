@@ -244,5 +244,10 @@ namespace eBiser.WinUi
             frmProjektiUpsert frmProjektiUpsert = new frmProjektiUpsert();
             frmProjektiUpsert.Show();
         }
+
+        private void groupBox10_Enter(object sender, EventArgs e)
+        {
+
+        }
     }
 }

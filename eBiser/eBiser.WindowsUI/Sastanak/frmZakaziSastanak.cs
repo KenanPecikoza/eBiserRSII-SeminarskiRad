@@ -28,7 +28,15 @@ namespace eBiser.WindowsUI.Sastanak
             upsertRequest.OsobljeId = APIService.Id;
             upsertRequest.Zakazan = true;
             upsertRequest.Naslov = txtNalov.Text;
-            await _apiService.Insert<Data.Sastanak>(upsertRequest);
+            try
+            {
+                await _apiService.Insert<Data.Sastanak>(upsertRequest);
+                MessageBox.Show("Uspješno zakazn sastanak");
+            }
+            catch (Exception)
+            {
+
+            }
         }
 
         private void btnCancel_Click(object sender, EventArgs e)

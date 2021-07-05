@@ -413,6 +413,7 @@ namespace eBiser.Database
                 DatumOdrzavanja = DateTime.Now,
                 Zakazan = true,
                 Odrzan = true,
+                Naslov="Naslov sastanka",
                 Zapisnik = "Zapisnik sa sastanka održanog ....",
             });
 
@@ -422,7 +423,8 @@ namespace eBiser.Database
                 OsobljeId = 1,
                 DatumOdrzavanja = DateTime.Now,
                 Zakazan = true,
-                Odrzan = true,
+                Odrzan = false,
+                Naslov="Zakazani sastanak",
                 Zapisnik = "",
             });
 

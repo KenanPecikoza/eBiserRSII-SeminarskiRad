@@ -97,5 +97,31 @@ namespace eBiser.WindowsUI.Projekti
 
                 await LoadDGV();
         }
+
+        private void txtNazivProjekta_Validating(object sender, CancelEventArgs e)
+        {
+            if (txtNazivProjekta.Text.ToString().Length < 2)
+            {
+                errorProvider.SetError(txtNazivProjekta, Properties.Resources.ValidationRequiredField);
+                e.Cancel = true;
+            }
+            else
+            {
+                errorProvider.SetError(txtNazivProjekta, null);
+            }
+        }
+
+        private void numCijena_Validating(object sender, CancelEventArgs e)
+        {
+            if (numCijena.Value<=0)
+            {
+                errorProvider.SetError(numCijena, Properties.Resources.ValidationRequiredField);
+                e.Cancel = true;
+            }
+            else
+            {
+                errorProvider.SetError(numCijena, null);
+            }
+        }
     }
 }

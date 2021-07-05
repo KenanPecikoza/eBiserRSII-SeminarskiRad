@@ -39,7 +39,6 @@ namespace eBiser.WindowsUI.Obavijest
             this.txtNaslov = new System.Windows.Forms.TextBox();
             this.btnSnimi = new System.Windows.Forms.Button();
             this.dtmPocetak = new System.Windows.Forms.DateTimePicker();
-            this.btnIzadji = new System.Windows.Forms.Button();
             this.cbxAktivna = new System.Windows.Forms.CheckBox();
             this.txtSadržaj = new System.Windows.Forms.TextBox();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
@@ -54,6 +53,7 @@ namespace eBiser.WindowsUI.Obavijest
             this.btnAddPhoto = new System.Windows.Forms.Button();
             this.label4 = new System.Windows.Forms.Label();
             this.errorProvider = new System.Windows.Forms.ErrorProvider(this.components);
+            this.btnPonisti = new System.Windows.Forms.Button();
             this.Obavijesti.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvObavijesti)).BeginInit();
             this.groupBox1.SuspendLayout();
@@ -147,19 +147,6 @@ namespace eBiser.WindowsUI.Obavijest
             this.dtmPocetak.Size = new System.Drawing.Size(283, 26);
             this.dtmPocetak.TabIndex = 2;
             // 
-            // btnIzadji
-            // 
-            this.btnIzadji.BackColor = System.Drawing.Color.Red;
-            this.btnIzadji.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnIzadji.ForeColor = System.Drawing.Color.White;
-            this.btnIzadji.Location = new System.Drawing.Point(28, 455);
-            this.btnIzadji.Name = "btnIzadji";
-            this.btnIzadji.Size = new System.Drawing.Size(86, 41);
-            this.btnIzadji.TabIndex = 1;
-            this.btnIzadji.Text = "Izađi";
-            this.btnIzadji.UseVisualStyleBackColor = false;
-            this.btnIzadji.Click += new System.EventHandler(this.btnIzadji_Click);
-            // 
             // cbxAktivna
             // 
             this.cbxAktivna.AutoSize = true;
@@ -182,6 +169,7 @@ namespace eBiser.WindowsUI.Obavijest
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.btnPonisti);
             this.groupBox1.Controls.Add(this.btnOcjene);
             this.groupBox1.Controls.Add(this.label6);
             this.groupBox1.Controls.Add(this.label5);
@@ -189,7 +177,6 @@ namespace eBiser.WindowsUI.Obavijest
             this.groupBox1.Controls.Add(this.txtPhoto);
             this.groupBox1.Controls.Add(this.txtSadržaj);
             this.groupBox1.Controls.Add(this.cbxAktivna);
-            this.groupBox1.Controls.Add(this.btnIzadji);
             this.groupBox1.Controls.Add(this.dtmPocetak);
             this.groupBox1.Controls.Add(this.btnSnimi);
             this.groupBox1.Controls.Add(this.txtNaslov);
@@ -310,6 +297,19 @@ namespace eBiser.WindowsUI.Obavijest
             // 
             this.errorProvider.ContainerControl = this;
             // 
+            // btnPonisti
+            // 
+            this.btnPonisti.BackColor = System.Drawing.Color.DeepSkyBlue;
+            this.btnPonisti.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnPonisti.ForeColor = System.Drawing.Color.White;
+            this.btnPonisti.Location = new System.Drawing.Point(28, 455);
+            this.btnPonisti.Name = "btnPonisti";
+            this.btnPonisti.Size = new System.Drawing.Size(86, 41);
+            this.btnPonisti.TabIndex = 19;
+            this.btnPonisti.Text = "Poništi";
+            this.btnPonisti.UseVisualStyleBackColor = false;
+            this.btnPonisti.Click += new System.EventHandler(this.btnPonisti_Click);
+            // 
             // frmObavijestUpsert
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
@@ -342,7 +342,6 @@ namespace eBiser.WindowsUI.Obavijest
         private System.Windows.Forms.TextBox txtNaslov;
         private System.Windows.Forms.Button btnSnimi;
         private System.Windows.Forms.DateTimePicker dtmPocetak;
-        private System.Windows.Forms.Button btnIzadji;
         private System.Windows.Forms.CheckBox cbxAktivna;
         private System.Windows.Forms.TextBox txtSadržaj;
         private System.Windows.Forms.GroupBox groupBox1;
@@ -357,5 +356,6 @@ namespace eBiser.WindowsUI.Obavijest
         private System.Windows.Forms.ErrorProvider errorProvider;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Button btnOcjene;
+        private System.Windows.Forms.Button btnPonisti;
     }
 }

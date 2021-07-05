@@ -95,14 +95,12 @@ namespace eBiser.WindowsUI.Obavijest
             {
                 await _apiService.Update<ObavijestInsertRequest>(_id ?? 0, request);
                 MessageBox.Show("Uspjesno uređena obavijest");
-                this.Close();
 
             }
             else
             {
                 await _apiService.Insert<ObavijestInsertRequest>(request);
                 MessageBox.Show("Uspjesno dodana obavijest");
-                this.Close();
             }
             await LoadDGVObavijesti();
         }
@@ -170,6 +168,20 @@ namespace eBiser.WindowsUI.Obavijest
             frmObavijestiOcjene frmObavijestiOcjene = new frmObavijestiOcjene(_id);
             frmObavijestiOcjene.Show();
 
+        }
+
+        private void btnPonisti_Click(object sender, EventArgs e)
+        {
+            txtNaslov.Text = "";
+            _id = null;
+            dtmPocetak.Value = DateTime.Now.Date;
+            dtmKraj.Value = DateTime.Now.Date;
+            txtPhoto.Text = "";
+            cBoxKategorija.SelectedIndex = 1;
+            cbxAktivna.Checked = false;
+            txtSadržaj.Text = "";
+            flowLayoutPanel1.Controls.Clear();
+            dgvObavijesti.ClearSelection();
         }
     }
 }

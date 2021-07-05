@@ -12,5 +12,6 @@ namespace eBiser.Data
         public string Zapisnik { get; set; }
         public int OsobljeId { get; set; }
         public bool Odrzan { get; set; }
+        public string Naslov { get; set; }
     }
 }

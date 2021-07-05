@@ -42,6 +42,7 @@ namespace eBiser.WindowsUI.Sastanak
             this.btnDodaj = new System.Windows.Forms.Button();
             this.button1 = new System.Windows.Forms.Button();
             this.Id = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Naslov = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.DatumOdrzavanja = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ImeIPrezime = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Odrzan = new System.Windows.Forms.DataGridViewCheckBoxColumn();
@@ -74,6 +75,7 @@ namespace eBiser.WindowsUI.Sastanak
             this.dgvSastanci.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvSastanci.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.Id,
+            this.Naslov,
             this.DatumOdrzavanja,
             this.ImeIPrezime,
             this.Odrzan,
@@ -219,6 +221,14 @@ namespace eBiser.WindowsUI.Sastanak
             this.Id.Visible = false;
             this.Id.Width = 48;
             // 
+            // Naslov
+            // 
+            this.Naslov.DataPropertyName = "Naslov";
+            this.Naslov.HeaderText = "Naslov";
+            this.Naslov.Name = "Naslov";
+            this.Naslov.ReadOnly = true;
+            this.Naslov.Width = 81;
+            // 
             // DatumOdrzavanja
             // 
             this.DatumOdrzavanja.DataPropertyName = "DatumOdrzavanja";
@@ -291,6 +301,7 @@ namespace eBiser.WindowsUI.Sastanak
         private System.Windows.Forms.NumericUpDown numDan;
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.DataGridViewTextBoxColumn Id;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Naslov;
         private System.Windows.Forms.DataGridViewTextBoxColumn DatumOdrzavanja;
         private System.Windows.Forms.DataGridViewTextBoxColumn ImeIPrezime;
         private System.Windows.Forms.DataGridViewCheckBoxColumn Odrzan;

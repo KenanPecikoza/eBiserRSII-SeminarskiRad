@@ -29,6 +29,7 @@ namespace eBiser.WindowsUI.Projekti
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.dgvProjekti = new System.Windows.Forms.DataGridView();
             this.Id = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -55,11 +56,13 @@ namespace eBiser.WindowsUI.Projekti
             this.dtmPrijave = new System.Windows.Forms.DateTimePicker();
             this.txtNazivProjekta = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
+            this.errorProvider = new System.Windows.Forms.ErrorProvider(this.components);
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvProjekti)).BeginInit();
             this.Projekt.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numOdobrenaSredstva)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numCijena)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.errorProvider)).BeginInit();
             this.SuspendLayout();
             // 
             // groupBox1
@@ -287,6 +290,7 @@ namespace eBiser.WindowsUI.Projekti
             this.numCijena.Name = "numCijena";
             this.numCijena.Size = new System.Drawing.Size(174, 26);
             this.numCijena.TabIndex = 4;
+            this.numCijena.Validating += new System.ComponentModel.CancelEventHandler(this.numCijena_Validating);
             // 
             // label2
             // 
@@ -310,6 +314,7 @@ namespace eBiser.WindowsUI.Projekti
             this.txtNazivProjekta.Name = "txtNazivProjekta";
             this.txtNazivProjekta.Size = new System.Drawing.Size(276, 26);
             this.txtNazivProjekta.TabIndex = 1;
+            this.txtNazivProjekta.Validating += new System.ComponentModel.CancelEventHandler(this.txtNazivProjekta_Validating);
             // 
             // label1
             // 
@@ -319,6 +324,10 @@ namespace eBiser.WindowsUI.Projekti
             this.label1.Size = new System.Drawing.Size(108, 20);
             this.label1.TabIndex = 0;
             this.label1.Text = "Naziv projekta";
+            // 
+            // errorProvider
+            // 
+            this.errorProvider.ContainerControl = this;
             // 
             // frmProjektiUpsert
             // 
@@ -338,6 +347,7 @@ namespace eBiser.WindowsUI.Projekti
             this.Projekt.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numOdobrenaSredstva)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.numCijena)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.errorProvider)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -370,5 +380,6 @@ namespace eBiser.WindowsUI.Projekti
         private System.Windows.Forms.CheckBox checkBox1;
         private System.Windows.Forms.Button btnPonisti;
         private System.Windows.Forms.Button btnSacuvaj;
+        private System.Windows.Forms.ErrorProvider errorProvider;
     }
 }

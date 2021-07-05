@@ -12,7 +12,7 @@ namespace eBiser.Database
         public bool Odrzan { get; set; }
         public int OsobljeId { get; set; }
         public bool? Zakazan { get; set; }
-
+        public string Naslov { get; set; }
         public virtual Osoblje Osoblje { get; set; }
     }
 }
