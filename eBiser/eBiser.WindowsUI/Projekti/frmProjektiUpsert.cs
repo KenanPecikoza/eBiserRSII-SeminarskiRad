@@ -15,6 +15,7 @@ namespace eBiser.WindowsUI.Projekti
     {
         private int? _id = null;
         private readonly APIService _APIService = new APIService("Projekti");
+        private readonly APIService _APIServiceOsoblje = new APIService("Korisnik/Osoblje");
 
         public frmProjektiUpsert(int? id=null)
         {
@@ -32,6 +33,7 @@ namespace eBiser.WindowsUI.Projekti
             numCijena.Value =(decimal)result.CijenaProjekta;
             numOdobrenaSredstva.Value =(decimal)result.OdobrenaSredstva;
             checkBox1.Checked = result.Prihvaćen;
+            cBoxKreatori.SelectedValue = result.OsobljeId;
         }
         private async Task LoadDGV()
         {
@@ -40,7 +42,19 @@ namespace eBiser.WindowsUI.Projekti
             dgvProjekti.DataSource = result;
             dgvProjekti.ClearSelection();
             dgvProjekti.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCells;
+            
         }
+        private async Task LoadComboBox() 
+        {
+            var result = await _APIServiceOsoblje.Get<List<Data.OsobljeDTO>>(null);
+            cBoxKreatori.DataSource = result;
+            cBoxKreatori.DisplayMember = "ImeIPrezime";
+            cBoxKreatori.ValueMember = "Id";
+
+        }
+
+
+
 
         private async void dgvProjekti_CellClick(object sender, DataGridViewCellEventArgs e)
         {
@@ -66,11 +80,13 @@ namespace eBiser.WindowsUI.Projekti
             numOdobrenaSredstva.Value = 0;
             checkBox1.Checked = false;
             _id = null;
+            cBoxKreatori.SelectedIndex = 0;
         }
 
         private async void frmProjektiUpsert_Load(object sender, EventArgs e)
         {
             await LoadDGV();
+            await LoadComboBox();
         }
         ProjektiUpsertRequest upsertRequest = new ProjektiUpsertRequest();
 
@@ -79,7 +95,7 @@ namespace eBiser.WindowsUI.Projekti
             upsertRequest.CijenaProjekta = (double)numCijena.Value;
             upsertRequest.OdobrenaSredstva = (double)numOdobrenaSredstva.Value;
             upsertRequest.NazivProjekta = txtNazivProjekta.Text;
-            upsertRequest.OsobljeId = APIService.Id;
+            upsertRequest.OsobljeId = Int32.Parse(cBoxKreatori.SelectedValue.ToString());
             upsertRequest.Prihvaćen = checkBox1.Checked;
             upsertRequest.RokIzvrsenja = txtRokIzvršenja.Text;
             upsertRequest.DatumIzvrsenja = dtmIzvrsenja.Value.Date;

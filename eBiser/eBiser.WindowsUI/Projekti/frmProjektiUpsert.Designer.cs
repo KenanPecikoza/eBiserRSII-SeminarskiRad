@@ -41,6 +41,8 @@ namespace eBiser.WindowsUI.Projekti
             this.DatumIzvrsenja = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.KreatorProjekta = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Projekt = new System.Windows.Forms.GroupBox();
+            this.cBoxKreatori = new System.Windows.Forms.ComboBox();
+            this.label7 = new System.Windows.Forms.Label();
             this.btnPonisti = new System.Windows.Forms.Button();
             this.btnSacuvaj = new System.Windows.Forms.Button();
             this.checkBox1 = new System.Windows.Forms.CheckBox();
@@ -68,9 +70,9 @@ namespace eBiser.WindowsUI.Projekti
             // groupBox1
             // 
             this.groupBox1.Controls.Add(this.dgvProjekti);
-            this.groupBox1.Location = new System.Drawing.Point(12, 445);
+            this.groupBox1.Location = new System.Drawing.Point(15, 497);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(635, 338);
+            this.groupBox1.Size = new System.Drawing.Size(635, 330);
             this.groupBox1.TabIndex = 1;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Projekti";
@@ -94,7 +96,7 @@ namespace eBiser.WindowsUI.Projekti
             this.dgvProjekti.Name = "dgvProjekti";
             this.dgvProjekti.ReadOnly = true;
             this.dgvProjekti.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvProjekti.Size = new System.Drawing.Size(629, 313);
+            this.dgvProjekti.Size = new System.Drawing.Size(629, 305);
             this.dgvProjekti.TabIndex = 0;
             this.dgvProjekti.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvProjekti_CellClick);
             // 
@@ -159,6 +161,8 @@ namespace eBiser.WindowsUI.Projekti
             // 
             // Projekt
             // 
+            this.Projekt.Controls.Add(this.cBoxKreatori);
+            this.Projekt.Controls.Add(this.label7);
             this.Projekt.Controls.Add(this.btnPonisti);
             this.Projekt.Controls.Add(this.btnSacuvaj);
             this.Projekt.Controls.Add(this.checkBox1);
@@ -176,17 +180,34 @@ namespace eBiser.WindowsUI.Projekti
             this.Projekt.Controls.Add(this.label1);
             this.Projekt.Location = new System.Drawing.Point(15, 12);
             this.Projekt.Name = "Projekt";
-            this.Projekt.Size = new System.Drawing.Size(632, 427);
+            this.Projekt.Size = new System.Drawing.Size(632, 479);
             this.Projekt.TabIndex = 2;
             this.Projekt.TabStop = false;
             this.Projekt.Text = "Projekt";
+            // 
+            // cBoxKreatori
+            // 
+            this.cBoxKreatori.FormattingEnabled = true;
+            this.cBoxKreatori.Location = new System.Drawing.Point(10, 149);
+            this.cBoxKreatori.Name = "cBoxKreatori";
+            this.cBoxKreatori.Size = new System.Drawing.Size(276, 28);
+            this.cBoxKreatori.TabIndex = 24;
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Location = new System.Drawing.Point(6, 126);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(122, 20);
+            this.label7.TabIndex = 23;
+            this.label7.Text = "Kreator projekta";
             // 
             // btnPonisti
             // 
             this.btnPonisti.BackColor = System.Drawing.Color.DeepSkyBlue;
             this.btnPonisti.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnPonisti.ForeColor = System.Drawing.Color.White;
-            this.btnPonisti.Location = new System.Drawing.Point(10, 370);
+            this.btnPonisti.Location = new System.Drawing.Point(8, 424);
             this.btnPonisti.Name = "btnPonisti";
             this.btnPonisti.Size = new System.Drawing.Size(86, 41);
             this.btnPonisti.TabIndex = 22;
@@ -199,7 +220,7 @@ namespace eBiser.WindowsUI.Projekti
             this.btnSacuvaj.BackColor = System.Drawing.Color.Green;
             this.btnSacuvaj.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnSacuvaj.ForeColor = System.Drawing.Color.White;
-            this.btnSacuvaj.Location = new System.Drawing.Point(540, 370);
+            this.btnSacuvaj.Location = new System.Drawing.Point(538, 424);
             this.btnSacuvaj.Name = "btnSacuvaj";
             this.btnSacuvaj.Size = new System.Drawing.Size(86, 41);
             this.btnSacuvaj.TabIndex = 21;
@@ -210,7 +231,7 @@ namespace eBiser.WindowsUI.Projekti
             // checkBox1
             // 
             this.checkBox1.AutoSize = true;
-            this.checkBox1.Location = new System.Drawing.Point(12, 340);
+            this.checkBox1.Location = new System.Drawing.Point(10, 394);
             this.checkBox1.Name = "checkBox1";
             this.checkBox1.Size = new System.Drawing.Size(97, 24);
             this.checkBox1.TabIndex = 12;
@@ -220,7 +241,7 @@ namespace eBiser.WindowsUI.Projekti
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(8, 284);
+            this.label6.Location = new System.Drawing.Point(6, 338);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(122, 20);
             this.label6.TabIndex = 11;
@@ -228,14 +249,14 @@ namespace eBiser.WindowsUI.Projekti
             // 
             // dtmIzvrsenja
             // 
-            this.dtmIzvrsenja.Location = new System.Drawing.Point(12, 307);
+            this.dtmIzvrsenja.Location = new System.Drawing.Point(10, 361);
             this.dtmIzvrsenja.Name = "dtmIzvrsenja";
             this.dtmIzvrsenja.Size = new System.Drawing.Size(276, 26);
             this.dtmIzvrsenja.TabIndex = 10;
             // 
             // txtRokIzvršenja
             // 
-            this.txtRokIzvršenja.Location = new System.Drawing.Point(12, 203);
+            this.txtRokIzvršenja.Location = new System.Drawing.Point(10, 257);
             this.txtRokIzvršenja.Name = "txtRokIzvršenja";
             this.txtRokIzvršenja.Size = new System.Drawing.Size(276, 26);
             this.txtRokIzvršenja.TabIndex = 9;
@@ -243,7 +264,7 @@ namespace eBiser.WindowsUI.Projekti
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(8, 180);
+            this.label5.Location = new System.Drawing.Point(6, 234);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(98, 20);
             this.label5.TabIndex = 8;
@@ -252,7 +273,7 @@ namespace eBiser.WindowsUI.Projekti
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(8, 232);
+            this.label4.Location = new System.Drawing.Point(6, 286);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(144, 20);
             this.label4.TabIndex = 7;
@@ -260,7 +281,7 @@ namespace eBiser.WindowsUI.Projekti
             // 
             // numOdobrenaSredstva
             // 
-            this.numOdobrenaSredstva.Location = new System.Drawing.Point(12, 255);
+            this.numOdobrenaSredstva.Location = new System.Drawing.Point(10, 309);
             this.numOdobrenaSredstva.Maximum = new decimal(new int[] {
             1000000,
             0,
@@ -273,7 +294,7 @@ namespace eBiser.WindowsUI.Projekti
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(8, 126);
+            this.label3.Location = new System.Drawing.Point(6, 180);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(114, 20);
             this.label3.TabIndex = 5;
@@ -281,7 +302,7 @@ namespace eBiser.WindowsUI.Projekti
             // 
             // numCijena
             // 
-            this.numCijena.Location = new System.Drawing.Point(10, 151);
+            this.numCijena.Location = new System.Drawing.Point(8, 205);
             this.numCijena.Maximum = new decimal(new int[] {
             1000000,
             0,
@@ -333,7 +354,7 @@ namespace eBiser.WindowsUI.Projekti
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(659, 795);
+            this.ClientSize = new System.Drawing.Size(655, 839);
             this.Controls.Add(this.Projekt);
             this.Controls.Add(this.groupBox1);
             this.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -381,5 +402,7 @@ namespace eBiser.WindowsUI.Projekti
         private System.Windows.Forms.Button btnPonisti;
         private System.Windows.Forms.Button btnSacuvaj;
         private System.Windows.Forms.ErrorProvider errorProvider;
+        private System.Windows.Forms.ComboBox cBoxKreatori;
+        private System.Windows.Forms.Label label7;
     }
 }

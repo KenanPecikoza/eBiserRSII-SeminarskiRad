@@ -15,5 +15,6 @@ namespace eBiser.Data
         public double OdobrenaSredstva { get; set; }
         public string RokIzvrsenja { get; set; }
         public string ImeIPrezime { get; set; }
+        public int OsobljeId { get; set; }
     }
 }
