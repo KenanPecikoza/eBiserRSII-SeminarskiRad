@@ -89,8 +89,8 @@ namespace eBiser.Database
                 Verifikovan = true,
                 Ime = "OsobljeIme",
                 Prezime = "OsobljePrezime",
-                Photo = File.ReadAllBytes("TestPhoto/Racun1.jpg"),
-                PhotoThumb = File.ReadAllBytes("TestPhoto/Racun1.jpg"),
+                Photo = File.ReadAllBytes("TestPhoto/racun2.jpg"),
+                PhotoThumb = File.ReadAllBytes("TestPhoto/racun2.jpg"),
                 PasswordSalt = HashGenerator.GenerateSalt()
             };
             osoblje.PasswordHash = HashGenerator.GenerateHash(osoblje.PasswordSalt, "Osoblje");

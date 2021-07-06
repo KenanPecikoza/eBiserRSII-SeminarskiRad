@@ -34,58 +34,73 @@
                         </StackLayout>
                     </StackLayout>
                     <StackLayout>
-                        <Label VerticalOptions="Center" 
-                   HorizontalOptions="Start"
-                   Text="Ime" />
+                        <Label 
+                            VerticalOptions="Center" 
+                            HorizontalOptions="Start"
+                            Text="Ime" />
                         <Entry 
-                    Text="{Binding Ime}"
-                    Placeholder="Ime"
-                    >
-                            
+                            Text="{Binding Ime}"
+                            Placeholder="Ime"
+                            >
                         </Entry>
-                        <Label VerticalOptions="Center" 
-                   HorizontalOptions="Start"
-                   Text="Prezime" />
+                        <Label Text="{Binding MinBrojKaraterka2}"  IsVisible="{Binding ImeIsTrue}" Style="{StaticResource ErrorTextStyle}"/>
+
+                        
+                        <Label 
+                            VerticalOptions="Center" 
+                            HorizontalOptions="Start"
+                            Text="Prezime" />
                         <Entry 
-                    Text="{Binding Prezime}"
-                    Placeholder="Prezime"
-                    >
+                            Text="{Binding Prezime}"
+                            Placeholder="Prezime"
+                            >
                         </Entry>
-                        <Label VerticalOptions="Center" 
-                   HorizontalOptions="Start"
-                   Text="Korisnicko ime" />
+                        <Label Text="{Binding MinBrojKaraterka2}"  IsVisible="{Binding PrezimeIstrue}" Style="{StaticResource ErrorTextStyle}"/>
+
+
+                        <Label 
+                            VerticalOptions="Center" 
+                            HorizontalOptions="Start"
+                            Text="Korisnicko ime" />
                         <Entry 
-                    Text="{Binding KorisnickoIme}"
-                    Placeholder="Korisnicko ime"
-                    IsEnabled="False"
-                    >
+                            Text="{Binding KorisnickoIme}"
+                            Placeholder="Korisnicko ime"
+                            IsEnabled="False"
+                            >
                         </Entry>
-                        <Label VerticalOptions="Center" 
-                               HorizontalOptions="Start"
-                               Text="Datum rođenja" />
+                        <Label 
+                            VerticalOptions="Center" 
+                            HorizontalOptions="Start"
+                            Text="Datum rođenja" />
                         <DatePicker
                                Date="{Binding DatumRodjenja}">
                         </DatePicker>
 
                         <StackLayout IsVisible="{Binding IsDonator}">
 
-                            <Label VerticalOptions="Center" 
-                                    HorizontalOptions="Start"
-                                    Text="Broj telefona" />
+                            <Label 
+                                VerticalOptions="Center" 
+                                HorizontalOptions="Start"
+                                Text="Broj telefona" />
                             <Entry 
                                 Text="{Binding BrojTelefona}"
                                 Placeholder="Broj telefona"
                                 IsEnabled="True"
                                 >
                             </Entry>
-                            <Label VerticalOptions="Center" 
-                                    HorizontalOptions="Start"
-                                    Text="Opis profila" />
-                            <Entry 
-                        Text="{Binding OpisProfila}"
-                        Placeholder="OpisProfila"
-                        >
+                            <Label Text="{Binding BrojTelefonaMessage }"  IsVisible="{Binding BrojTelefonaIsTrue }" Style="{StaticResource ErrorTextStyle}"/>
+
+                            <Label 
+                                VerticalOptions="Center" 
+                                HorizontalOptions="Start"
+                                Text="Opis profila" />
+                            <Entry
+                                Text="{Binding OpisProfila}"
+                                Placeholder="OpisProfila"
+                                >
                             </Entry>
+                            <Label Text="{Binding MinBrojKaraterka2}"  IsVisible="{Binding OpisProfilaIsTrue}" Style="{StaticResource ErrorTextStyle}"/>
+
                         </StackLayout>
 
                         <StackLayout IsVisible="{Binding IsClanarine}">
@@ -99,7 +114,8 @@
                                 IsEnabled="True"
                                 >
                             </Entry>
-                            
+                            <Label Text="{Binding BrojTelefonaMessage }"  IsVisible="{Binding BrojTelefonaIsTrue }" Style="{StaticResource ErrorTextStyle}"/>
+
                             <Label VerticalOptions="Center" 
                                     HorizontalOptions="Start"
                                     Text="Dijagnoza" />
@@ -109,6 +125,8 @@
                                 IsEnabled="True"
                                 >
                             </Entry>
+                            <Label Text="{Binding MinBrojKaraterka2}"  IsVisible="{Binding DijagnozaIsTrue}" Style="{StaticResource ErrorTextStyle}"/>
+
                         </StackLayout>
 
                         <StackLayout IsVisible="{Binding IsOsoblje}">
@@ -132,15 +150,16 @@
                         </StackLayout>
 
 
-                        <Label VerticalOptions="Center" 
-                   HorizontalOptions="Start"
-                   Text="Email" />
+                        <Label 
+                            VerticalOptions="Center" 
+                            HorizontalOptions="Start"
+                            Text="Email" />
                     
                         <Entry 
-                    Text="{Binding Email}"
-                    Placeholder="Email"
-                    IsEnabled="False"
-                    >
+                            Text="{Binding Email}"
+                            Placeholder="Email"
+                            IsEnabled="False"
+                            >
                         </Entry>
                         
                     </StackLayout >

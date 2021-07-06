@@ -1,9 +1,7 @@
 ﻿using eBiser.Data;
-using eBiser.Data.Requests;
 using eBiserMobileApp.Views;
 using System;
-using System.Collections.Generic;
-using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows.Input;
 using Xamarin.Forms;
@@ -134,13 +132,59 @@ namespace eBiserMobileApp.ViewModels
             set { SetProperty(ref _datumAngazmana, value); }
         }
 
+        // validacija 
+        string _minBrojKaraterka2 = string.Empty;
+        public string MinBrojKaraterka2
+        {
+            get { return _minBrojKaraterka2; }
+            set { SetProperty(ref _minBrojKaraterka2, value); }
+        }
 
-        // verifikovan i datum rođenja
+        bool _imeIsTrue = false;
+        public bool ImeIsTrue
+        {
+            get { return _imeIsTrue; }
+            set { SetProperty(ref _imeIsTrue, value); }
+        }
+        bool _prezimeIstrue = false;
+        public bool PrezimeIstrue
+        {
+            get { return _prezimeIstrue; }
+            set { SetProperty(ref _prezimeIstrue, value); }
+        }
 
+        bool _BrojTelefonaTrue = false;
+        public bool BrojTelefonaIsTrue
+        {
+            get { return _BrojTelefonaTrue; }
+            set { SetProperty(ref _BrojTelefonaTrue, value); }
+        }
+
+        bool _dijagnozaIsTrue = false;
+        public bool DijagnozaIsTrue
+        {
+            get { return _dijagnozaIsTrue; }
+            set { SetProperty(ref _dijagnozaIsTrue, value); }
+        }
+
+        bool _OpisProfilaIsTrue = false;
+        public bool OpisProfilaIsTrue
+        {
+            get { return _OpisProfilaIsTrue; }
+            set { SetProperty(ref _OpisProfilaIsTrue, value); }
+        }
+
+        string _brojTelefonaMessage = string.Empty;
+        public string BrojTelefonaMessage
+        {
+            get { return _brojTelefonaMessage; }
+            set { SetProperty(ref _brojTelefonaMessage, value); }
+        }
 
 
         async Task ShowDetails()
         {
+            bool NeTacan = false;
             try
             {
                 var korisnik =  await _apiServiceKorisnik.GetById<KorisniciSistema>(APIService.Id);
@@ -160,7 +204,6 @@ namespace eBiserMobileApp.ViewModels
                         IsClanarine = true;
                         BrojTelefona = clan.BrojTelefona;
                         Dijagnoza = clan.Dijagnoza;
-
                     }
                 }
                 catch (Exception)
@@ -174,7 +217,6 @@ namespace eBiserMobileApp.ViewModels
                         IsOsoblje = true;
                         NazivDjelatnosti = Osoblje.NazivDjelatnosti;
                         DatumAngazmana = Osoblje.DatumPocetkaAngazmana;
-
                     }
                 }
                 catch (Exception)
@@ -187,8 +229,7 @@ namespace eBiserMobileApp.ViewModels
                     {
                         IsDonator = true;
                         BrojTelefona = donatori.BrojTelefona;
-                        OpisProfila = donatori.OpisProfila;
-                        
+                        OpisProfila = donatori.OpisProfila;                   
                     }
                 }
                 catch (Exception)
@@ -205,6 +246,8 @@ namespace eBiserMobileApp.ViewModels
 
         async Task IzmjeniProfil()
         {
+            bool NeTacan = false;
+
             if (IsClanarine)
             {
                 try
@@ -216,24 +259,86 @@ namespace eBiserMobileApp.ViewModels
                 {
 
                 }
-                ClanUpdate.Ime = Ime;
-                ClanUpdate.Prezime = Prezime;
-                ClanUpdate.Photo = Fotografija;
-                ClanUpdate.PhotoThumb = Fotografija;
-                ClanUpdate.KorisnickoIme = KorisnickoIme;
-                ClanUpdate.Email = Email;
-                ClanUpdate.DatumRodjenja = DatumRodjenja;
-                ClanUpdate.BrojTelefona = BrojTelefona;
-                ClanUpdate.Dijagnoza = Dijagnoza;
+
                 try
                 {
-                    await _apiServiceKorisnikClan.Update<ClanDTO>(APIService.Id, ClanUpdate);
-                    await Application.Current.MainPage.DisplayAlert("Uspješno", "Uspješno izmjenili lične podatke", "OK");
+                    ClanUpdate.Ime = Ime;
+                    ClanUpdate.Prezime = Prezime;
+                    ClanUpdate.Photo = Fotografija;
+                    ClanUpdate.PhotoThumb = Fotografija;
+                    ClanUpdate.KorisnickoIme = KorisnickoIme;
+                    ClanUpdate.Email = Email;
+                    ClanUpdate.DatumRodjenja = DatumRodjenja;
+                    ClanUpdate.BrojTelefona = BrojTelefona;
+                    ClanUpdate.Dijagnoza = Dijagnoza;
+
+                    if (Ime.Length < 2)
+                    {
+                        ImeIsTrue = true;
+                        MinBrojKaraterka2 = "Minimalan broj karaktera je 2";
+                        NeTacan = true;
+                    }
+                    else
+                    {
+                        ImeIsTrue = false;
+                    }
+
+                    if (Prezime.Length < 2)
+                    {
+                        PrezimeIstrue = true;
+                        MinBrojKaraterka2 = "Minimalan broj karaktera je 2";
+                        NeTacan = true;
+                    }
+                    else
+                    {
+                        PrezimeIstrue = false;
+                    }
+
+                    Regex regexPhone = new Regex(@"[0-9]\d{2}\d{3}\d{3,4}");
+                    Match matchPhone = regexPhone.Match(BrojTelefona);
+                    if (!matchPhone.Success)
+                    {
+                        BrojTelefonaMessage = "Format broja nije ispravan (061 111 111/1111)";
+                        BrojTelefonaIsTrue = true;
+                        NeTacan = true;
+                    }
+                    else
+                    {
+                        BrojTelefonaIsTrue = false;
+                    }
+
+                    if (Dijagnoza.Length < 2)
+                    {
+                        DijagnozaIsTrue = true;
+                        MinBrojKaraterka2 = "Minimalan broj karaktera je 2";
+                        NeTacan = true;
+                    }
+                    else
+                    {
+                        DijagnozaIsTrue = false;
+                    }
+                    if (NeTacan)
+                    {
+                        throw new Exception();
+                    }
+
+                    try
+                    {
+                        await _apiServiceKorisnikClan.Update<ClanDTO>(APIService.Id, ClanUpdate);
+                        await Application.Current.MainPage.DisplayAlert("Uspješno", "Uspješno izmjenili lične podatke", "OK");
+                    }
+                    catch (Exception)
+                    {
+
+                    }
                 }
                 catch (Exception)
                 {
 
                 }
+
+
+
             }
             else if (IsDonator)
             {
@@ -246,27 +351,85 @@ namespace eBiserMobileApp.ViewModels
                 {
 
                 }
-                DonatorUpdate.Ime = Ime;
-                DonatorUpdate.Prezime = Prezime;
-                DonatorUpdate.Photo = Fotografija;
-                DonatorUpdate.PhotoThumb = Fotografija;
-                DonatorUpdate.KorisnickoIme = KorisnickoIme;
-                DonatorUpdate.Email = Email;
-                DonatorUpdate.DatumRodjenja = DatumRodjenja;
-                DonatorUpdate.BrojTelefona = BrojTelefona;
-                DonatorUpdate.OpisProfila = OpisProfila;
                 try
                 {
-                    await _apiServiceKorisnikDonator.Update<DonatorDTO>(APIService.Id, DonatorUpdate);
-                    await Application.Current.MainPage.DisplayAlert("Uspješno", "Uspješno izmjenili lične podatke", "OK");
+                    DonatorUpdate.Ime = Ime;
+                    DonatorUpdate.Prezime = Prezime;
+                    DonatorUpdate.Photo = Fotografija;
+                    DonatorUpdate.PhotoThumb = Fotografija;
+                    DonatorUpdate.KorisnickoIme = KorisnickoIme;
+                    DonatorUpdate.Email = Email;
+                    DonatorUpdate.DatumRodjenja = DatumRodjenja;
+                    DonatorUpdate.BrojTelefona = BrojTelefona;
+                    DonatorUpdate.OpisProfila = OpisProfila;
+
+                    if (Ime.Length < 2)
+                    {
+                        ImeIsTrue = true;
+                        MinBrojKaraterka2 = "Minimalan broj karaktera je 2";
+                        NeTacan = true;
+                    }
+                    else
+                    {
+                        ImeIsTrue = false;
+                    }
+
+                    if (Prezime.Length < 2)
+                    {
+                        PrezimeIstrue = true;
+                        MinBrojKaraterka2 = "Minimalan broj karaktera je 2";
+                        NeTacan = true;
+                    }
+                    else
+                    {
+                        PrezimeIstrue = false;
+                    }
+
+                    Regex regexPhone = new Regex(@"[0-9]\d{2}\d{3}\d{3,4}");
+                    Match matchPhone = regexPhone.Match(BrojTelefona);
+                    if (!matchPhone.Success)
+                    {
+                        BrojTelefonaMessage = "Format broja nije ispravan (061 111 111/1111)";
+                        BrojTelefonaIsTrue = true;
+                        NeTacan = true;
+                    }
+                    else
+                    {
+                        BrojTelefonaIsTrue = false;
+                    }
+                    if (OpisProfila.Length < 2)
+                    {
+                        MinBrojKaraterka2 = "Minimalan broj karaktera je 2";
+                        OpisProfilaIsTrue = true;
+                        NeTacan = true;
+                    }
+                    else
+                    {
+                        OpisProfilaIsTrue = false;
+                    }
+
+
+                    if (NeTacan)
+                    {
+                        throw new Exception();
+                    }
+                    try
+                    {
+                        await _apiServiceKorisnikDonator.Update<DonatorDTO>(APIService.Id, DonatorUpdate);
+                        await Application.Current.MainPage.DisplayAlert("Uspješno", "Uspješno izmjenili lične podatke", "OK");
+                    }
+                    catch (Exception)
+                    {
+                    }
                 }
                 catch (Exception)
                 {
-
                 }
+             
             }
             else if (IsOsoblje)
             {
+
                 try
                 {
                     var result = await _apiServiceKorisnikOsoblje.GetById<OsobljeDTO>(APIService.Id);
@@ -277,22 +440,59 @@ namespace eBiserMobileApp.ViewModels
                 {
 
                 }
-                OsobljeUpdate.Ime = Ime;
-                OsobljeUpdate.Prezime = Prezime;
-                OsobljeUpdate.Photo = Fotografija;
-                OsobljeUpdate.PhotoThumb = Fotografija;
-                OsobljeUpdate.KorisnickoIme = KorisnickoIme;
-                OsobljeUpdate.Email = Email;
-                OsobljeUpdate.DatumRodjenja = DatumRodjenja;
-                OsobljeUpdate.DatumPocetkaAngazmana = DatumAngazmana;
+
                 try
                 {
-                    await _apiServiceKorisnikOsoblje.Update<OsobljeDTO>(APIService.Id, OsobljeUpdate);
-                    await Application.Current.MainPage.DisplayAlert("Uspješno", "Uspješno izmjenili lične podatke", "OK");
+                    OsobljeUpdate.Ime = Ime;
+                    OsobljeUpdate.Prezime = Prezime;
+                    OsobljeUpdate.Photo = Fotografija;
+                    OsobljeUpdate.PhotoThumb = Fotografija;
+                    OsobljeUpdate.KorisnickoIme = KorisnickoIme;
+                    OsobljeUpdate.Email = Email;
+                    OsobljeUpdate.DatumRodjenja = DatumRodjenja;
+                    OsobljeUpdate.DatumPocetkaAngazmana = DatumAngazmana;
+
+                    if (Ime.Length < 2)
+                    {
+                        ImeIsTrue = true;
+                        MinBrojKaraterka2 = "Minimalan broj karaktera je 2";
+                        NeTacan = true;
+                    }
+                    else
+                    {
+                        ImeIsTrue = false;
+                    }
+
+                    if (Prezime.Length < 2)
+                    {
+                        PrezimeIstrue = true;
+                        MinBrojKaraterka2 = "Minimalan broj karaktera je 2";
+                        NeTacan = true;
+                    }
+                    else
+                    {
+                        PrezimeIstrue = false;
+                    }
+
+                    if (NeTacan)
+                    {
+                        throw new Exception();
+                    }
+
+                    try
+                    {
+                        await _apiServiceKorisnikOsoblje.Update<OsobljeDTO>(APIService.Id, OsobljeUpdate);
+                        await Application.Current.MainPage.DisplayAlert("Uspješno", "Uspješno izmjenili lične podatke", "OK");
+                    }
+                    catch (Exception)
+                    {
+
+                    }
                 }
                 catch (Exception)
                 {
 
+                    throw;
                 }
             }
         }

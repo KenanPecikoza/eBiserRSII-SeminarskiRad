@@ -292,8 +292,8 @@ namespace eBiserMobileApp.ViewModels
                 upsertRequest.Email = Email;
 
                 Regex regexPhone = new Regex(@"[0-9]\d{2}\d{3}\d{3,4}");
-                Match matchPhone = regex.Match(BrojTelefona);
-                if (!match.Success)
+                Match matchPhone = regexPhone.Match(BrojTelefona);
+                if (!matchPhone.Success)
                 {
                     BrojTelefonaMessage = "Format broja nije ispravan (061 111 111/1111)";
                     BrojTelefonaIsTrue = true;
@@ -305,10 +305,6 @@ namespace eBiserMobileApp.ViewModels
                 }
 
                 upsertRequest.BrojTelefona = BrojTelefona;
-
-
-
-
 
                 upsertRequest.Password = PasswordDonator;
                 upsertRequest.PasswordPotvrda = PasswordDonatorPotvrda;
