@@ -30,7 +30,6 @@ namespace eBiser.Data.Requests
         {
             public int DjelatnostId { get; set; }
             [Required]
-
             public DateTime DatumPocetkaAngazmana { get; set; }
         }
         public class DonatorUpdateRequest : KorisniciUpdateRequest

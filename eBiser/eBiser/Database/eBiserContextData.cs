@@ -121,7 +121,7 @@ namespace eBiser.Database
                 PhotoThumb = File.ReadAllBytes("TestPhoto/donator.jpg"),
                 PasswordSalt = HashGenerator.GenerateSalt()
             };
-            donator.PasswordHash = HashGenerator.GenerateHash(donator.PasswordSalt, "donator");
+            donator.PasswordHash = HashGenerator.GenerateHash(donator.PasswordSalt, "Donator");
 
             modelBuilder.Entity<KorisniciSistema>().HasData(donator);
             modelBuilder.Entity<Donatori>().HasData(new Donatori

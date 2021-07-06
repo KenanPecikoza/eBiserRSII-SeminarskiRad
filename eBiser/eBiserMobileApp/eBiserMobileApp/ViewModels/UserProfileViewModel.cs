@@ -7,6 +7,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Input;
 using Xamarin.Forms;
+using static eBiser.Data.Requests.KorisniciUpdateRequest;
 
 namespace eBiserMobileApp.ViewModels
 {
@@ -18,11 +19,13 @@ namespace eBiserMobileApp.ViewModels
         {
             ShowDetailsCommand = new Command(async () => await ShowDetails());
             LogOutCommand = new Command( () =>  LogOut());
-
+            IzmjeniProfilCommand = new Command( () =>  IzmjeniProfil());
             ShowDetailsCommand.Execute(null);
+
         }
         public ICommand ShowDetailsCommand { get; set; }
         public ICommand LogOutCommand { get; set; }
+        public ICommand IzmjeniProfilCommand { get; set; }
 
         string _ime = string.Empty;
         public string Ime
@@ -67,12 +70,72 @@ namespace eBiserMobileApp.ViewModels
             get { return _clanarine; }
             set { SetProperty(ref _clanarine, value); }
         }
+
+        bool _verifikovan = false;
+        public bool IsVerifikovan
+        {
+            get { return _verifikovan; }
+            set { SetProperty(ref _verifikovan, value); }
+        }
+
+        bool _isDonator = false;
+        public bool IsDonator
+        {
+            get { return _isDonator; }
+            set { SetProperty(ref _isDonator, value); }
+        }
+        bool _isOsoblje = false;
+        public bool IsOsoblje
+        {
+            get { return _isOsoblje; }
+            set { SetProperty(ref _isOsoblje, value); }
+        }
         bool _isClanarine = false;
         public bool IsClanarine
         {
             get { return _isClanarine; }
             set { SetProperty(ref _isClanarine, value); }
         }
+
+        string _brojTelefona = string.Empty;
+        public string BrojTelefona
+        {
+            get { return _brojTelefona; }
+            set { SetProperty(ref _brojTelefona, value); }
+        }
+
+        string _opisProfila = string.Empty;
+        public string OpisProfila
+        {
+            get { return _opisProfila; }
+            set { SetProperty(ref _opisProfila, value); }
+        }
+
+        string _dijagnoza = string.Empty;
+        public string Dijagnoza
+        {
+            get { return _dijagnoza; }
+            set { SetProperty(ref _dijagnoza, value); }
+        }
+        string _nazivDjelatnosti = string.Empty;
+        public string NazivDjelatnosti
+        {
+            get { return _nazivDjelatnosti; }
+            set { SetProperty(ref _nazivDjelatnosti, value); }
+        }
+
+        DateTime _datumAngazmana = new DateTime();
+        public DateTime DatumAngazmana
+        {
+            get { return _datumAngazmana; }
+            set { SetProperty(ref _datumAngazmana, value); }
+        }
+
+
+        // verifikovan i datum rođenja
+
+
+
         async Task ShowDetails()
         {
             try
@@ -84,6 +147,7 @@ namespace eBiserMobileApp.ViewModels
                 DatumRodjenja = korisnik.DatumRodjenja;
                 Email = korisnik.Email;
                 Fotografija = korisnik.Photo;
+                IsVerifikovan = korisnik.Verifikovan;
                 try
                 {
                     var clan = await _apiServiceKorisnik.GetById<ClanDTO>(APIService.Id);
@@ -91,6 +155,37 @@ namespace eBiserMobileApp.ViewModels
                     {
                         Clanarine = clan.Clanarine;
                         IsClanarine = true;
+                        BrojTelefona = clan.BrojTelefona;
+                        Dijagnoza = clan.Dijagnoza;
+
+                    }
+                }
+                catch (Exception)
+                {
+                }
+                try
+                {
+                    var Osoblje = await _apiServiceKorisnik.GetById<OsobljeDTO>(APIService.Id);
+                    if (Osoblje.NazivDjelatnosti != null)
+                    {
+                        IsOsoblje = true;
+                        NazivDjelatnosti = Osoblje.NazivDjelatnosti;
+                        DatumAngazmana = Osoblje.DatumPocetkaAngazmana;
+
+                    }
+                }
+                catch (Exception)
+                {
+                }
+                try
+                {
+                    var donatori = await _apiServiceKorisnik.GetById<DonatorDTO>(APIService.Id);
+                    if (donatori.OpisProfila != null)
+                    {
+                        IsDonator = true;
+                        BrojTelefona = donatori.BrojTelefona;
+                        OpisProfila = donatori.OpisProfila;
+                        
                     }
                 }
                 catch (Exception)
@@ -101,6 +196,38 @@ namespace eBiserMobileApp.ViewModels
             {
             }
         }
+        ClanUpdateRequest ClanUpdate = new ClanUpdateRequest();
+        DonatorUpdateRequest DonatorUpdate = new DonatorUpdateRequest();
+        OsobljeUpdateRequest OsobljeUpdate = new OsobljeUpdateRequest();
+
+        async Task IzmjeniProfil()
+        {
+
+
+            if (IsClanarine)
+            {
+                ClanUpdate.Ime = Ime;
+                ClanUpdate.Prezime = Prezime;
+                ClanUpdate.Photo = Fotografija;
+                ClanUpdate.PhotoThumb = Fotografija;
+                ClanUpdate.KorisnickoIme = KorisnickoIme;
+                ClanUpdate.Email = Email;
+                ClanUpdate.Aktivan = true;
+                ClanUpdate.DatumRodjenja = DatumRodjenja;
+                ClanUpdate.BrojTelefona = BrojTelefona;
+                ClanUpdate.Dijagnoza = Dijagnoza;
+            }
+            else if (IsDonator)
+            {
+
+            }
+            else if (IsOsoblje)
+            {
+
+            }
+
+        }
+
 
         public void LogOut()
         {

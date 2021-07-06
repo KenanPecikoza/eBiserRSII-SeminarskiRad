@@ -94,7 +94,7 @@ namespace eBiser.Services
             {
                 if (i.KorisnikSistemaTipId == _db.KorisnikSistemaTips.FirstOrDefault(x=> x.Naziv=="Donator").Id)
                 {
-                    var donator = _db.Donatoris.FirstOrDefault(x => x.KorisnikId == i.KorisnikId);                  
+                    var donator = _db.Donatoris.FirstOrDefault(x => x.KorisnikId == i.KorisnikId);                
                     i.Id = donator.Id;
                 }
                 if (i.KorisnikSistemaTipId == _db.KorisnikSistemaTips.FirstOrDefault(x => x.Naziv == "Osoblje").Id)
@@ -124,7 +124,7 @@ namespace eBiser.Services
                 clan.Clanarine =  brojClanarina.ToString()+"/12" ;
                 return clan;
             }
-            var osobljeDB = _db.Osobljes.Where(x => x.KorisnikId == id).FirstOrDefault();
+            var osobljeDB = _db.Osobljes.Include(x=> x.Djelatnost).Where(x => x.KorisnikId == id).FirstOrDefault();
             if (osobljeDB!=null)
             {
                 Data.OsobljeDTO osoblje = _mapper.Map<Data.OsobljeDTO>(osobljeDB);
