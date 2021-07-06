@@ -109,7 +109,7 @@ namespace eBiser.Controllers
         {
             return Ok(_korisniciService.Update(id, request));
         }
-        [Authorize(Roles = "Osoblje")]
+        [Authorize(Roles = "Osoblje,Clan")]
         [HttpPut("clan/{id}")]
         public IActionResult Update(int id, [FromBody] ClanUpdateRequest request)
         {

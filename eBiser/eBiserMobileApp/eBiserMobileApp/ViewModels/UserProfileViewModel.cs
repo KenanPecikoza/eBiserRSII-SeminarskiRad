@@ -14,12 +14,15 @@ namespace eBiserMobileApp.ViewModels
     class UserProfileViewModel :BaseViewModel
     {
         private readonly APIService _apiServiceKorisnik = new APIService("Korisnik");
+        private readonly APIService _apiServiceKorisnikClan = new APIService("Korisnik/Clan");
+        private readonly APIService _apiServiceKorisnikDonator = new APIService("Korisnik/Donatori");
+        private readonly APIService _apiServiceKorisnikOsoblje = new APIService("Korisnik/Osoblje");
 
         public UserProfileViewModel()
         {
             ShowDetailsCommand = new Command(async () => await ShowDetails());
             LogOutCommand = new Command( () =>  LogOut());
-            IzmjeniProfilCommand = new Command( () =>  IzmjeniProfil());
+            IzmjeniProfilCommand = new Command(async () => await  IzmjeniProfil());
             ShowDetailsCommand.Execute(null);
 
         }
@@ -202,30 +205,96 @@ namespace eBiserMobileApp.ViewModels
 
         async Task IzmjeniProfil()
         {
-
-
             if (IsClanarine)
             {
+                try
+                {
+                    var result= await _apiServiceKorisnik.GetById<ClanDTO>(APIService.Id);
+                    ClanUpdate.Aktivan = result.Aktivan;
+                }
+                catch (Exception)
+                {
+
+                }
                 ClanUpdate.Ime = Ime;
                 ClanUpdate.Prezime = Prezime;
                 ClanUpdate.Photo = Fotografija;
                 ClanUpdate.PhotoThumb = Fotografija;
                 ClanUpdate.KorisnickoIme = KorisnickoIme;
                 ClanUpdate.Email = Email;
-                ClanUpdate.Aktivan = true;
                 ClanUpdate.DatumRodjenja = DatumRodjenja;
                 ClanUpdate.BrojTelefona = BrojTelefona;
                 ClanUpdate.Dijagnoza = Dijagnoza;
+                try
+                {
+                    await _apiServiceKorisnikClan.Update<ClanDTO>(APIService.Id, ClanUpdate);
+                    await Application.Current.MainPage.DisplayAlert("Uspješno", "Uspješno izmjenili lične podatke", "OK");
+                }
+                catch (Exception)
+                {
+
+                }
             }
             else if (IsDonator)
             {
+                try
+                {
+                    var result = await _apiServiceKorisnik.GetById<DonatorDTO>(APIService.Id);
+                    DonatorUpdate.Aktivan = result.Aktivan;
+                }
+                catch (Exception)
+                {
 
+                }
+                DonatorUpdate.Ime = Ime;
+                DonatorUpdate.Prezime = Prezime;
+                DonatorUpdate.Photo = Fotografija;
+                DonatorUpdate.PhotoThumb = Fotografija;
+                DonatorUpdate.KorisnickoIme = KorisnickoIme;
+                DonatorUpdate.Email = Email;
+                DonatorUpdate.DatumRodjenja = DatumRodjenja;
+                DonatorUpdate.BrojTelefona = BrojTelefona;
+                DonatorUpdate.OpisProfila = OpisProfila;
+                try
+                {
+                    await _apiServiceKorisnikDonator.Update<DonatorDTO>(APIService.Id, DonatorUpdate);
+                    await Application.Current.MainPage.DisplayAlert("Uspješno", "Uspješno izmjenili lične podatke", "OK");
+                }
+                catch (Exception)
+                {
+
+                }
             }
             else if (IsOsoblje)
             {
+                try
+                {
+                    var result = await _apiServiceKorisnikOsoblje.GetById<OsobljeDTO>(APIService.Id);
+                    OsobljeUpdate.Aktivan = true;
+                    OsobljeUpdate.DjelatnostId = result.DjelatnostId;
+                }
+                catch (Exception)
+                {
 
+                }
+                OsobljeUpdate.Ime = Ime;
+                OsobljeUpdate.Prezime = Prezime;
+                OsobljeUpdate.Photo = Fotografija;
+                OsobljeUpdate.PhotoThumb = Fotografija;
+                OsobljeUpdate.KorisnickoIme = KorisnickoIme;
+                OsobljeUpdate.Email = Email;
+                OsobljeUpdate.DatumRodjenja = DatumRodjenja;
+                OsobljeUpdate.DatumPocetkaAngazmana = DatumAngazmana;
+                try
+                {
+                    await _apiServiceKorisnikOsoblje.Update<OsobljeDTO>(APIService.Id, OsobljeUpdate);
+                    await Application.Current.MainPage.DisplayAlert("Uspješno", "Uspješno izmjenili lične podatke", "OK");
+                }
+                catch (Exception)
+                {
+
+                }
             }
-
         }
 
 
@@ -233,9 +302,8 @@ namespace eBiserMobileApp.ViewModels
         {
             APIService.Id = 0;
             APIService.Token = null;
-            APIService.TipId = 0;
+            APIService.KorisnikId = 0;
             Application.Current.MainPage = new LoginPage();
-
         }
 
     }

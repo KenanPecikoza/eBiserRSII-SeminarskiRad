@@ -40,6 +40,7 @@ namespace eBiser.Data
         public string Dijagnoza { get; set; }
         public string BrojTelefona { get; set; }
         public string Clanarine { get; set; }
+        public int DjelatnostId { get; set; }
 
     }
 

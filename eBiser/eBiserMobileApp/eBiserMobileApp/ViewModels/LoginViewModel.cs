@@ -45,7 +45,7 @@ namespace eBiserMobileApp.ViewModels
             {
                 KorisniciSistema korisnik = await _apiService.Login<KorisniciSistema>(request);
                 APIService.Token = korisnik.Token;
-                APIService.TipId = korisnik.Id;
+                APIService.KorisnikId = korisnik.Id;
                 APIService.Id = korisnik.KorisnikId;
                 Application.Current.MainPage = new MainPage();
             }

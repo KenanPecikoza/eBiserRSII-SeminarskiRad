@@ -15,7 +15,7 @@ namespace eBiserMobileApp
         public static string Token { get; set; }
         public static string KorisnikSistema { get; set; }
         public static int Id { get; set; }
-        public static int TipId { get; set; }
+        public static int KorisnikId { get; set; }
 
 
 #if DEBUG
