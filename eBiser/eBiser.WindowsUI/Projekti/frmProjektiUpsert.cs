@@ -23,9 +23,9 @@ namespace eBiser.WindowsUI.Projekti
 
             InitializeComponent();
         }
-        private async Task LoadForm(int id)
+        private async Task LoadForm()
         {
-            var result = await _APIService.GetById<Data.Projekti>(id);
+            var result = await _APIService.GetById<Data.Projekti>(_id);
             txtNazivProjekta.Text = result.NazivProjekta;
             txtRokIzvršenja.Text = result.RokIzvrsenja;
             dtmIzvrsenja.Value = result.DatumIzvrsenja;
@@ -60,9 +60,8 @@ namespace eBiser.WindowsUI.Projekti
         {
             try
             {
-                var id = Int32.Parse(dgvProjekti.SelectedRows[0].Cells[0].Value.ToString());
-                _id = id;
-                await LoadForm(_id ?? 0);
+                _id = Int32.Parse(dgvProjekti.SelectedRows[0].Cells[0].Value.ToString());
+                await LoadForm();
             }
             catch (Exception)
             {
@@ -87,6 +86,7 @@ namespace eBiser.WindowsUI.Projekti
         {
             await LoadDGV();
             await LoadComboBox();
+            await LoadForm();
         }
         ProjektiUpsertRequest upsertRequest = new ProjektiUpsertRequest();
 
