@@ -20,6 +20,8 @@ namespace eBiser.WindowsUI.Donatori
     {
         private readonly APIService _apiService = new APIService("Korisnik/Donatori");
         private readonly APIService _apiServiceProvjera = new APIService("Korisnik/potvrda");
+        private bool ValidacijaEmail;
+        private bool ValidacijaKorisnickoIme;
         private int? _id = null;
         private int? _korisnikId = null;
         private readonly PhotoHelper photoHelper = new PhotoHelper();
@@ -37,7 +39,7 @@ namespace eBiser.WindowsUI.Donatori
             dgvClanovi.DataSource = await _apiService.Get<List<Data.DonatorDTO>>(null);
             dgvClanovi.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCells;
         }
-        private async Task LoadForma(int? id)
+        private async Task LoadForma()
         {
             var entity = await _apiService.GetById<Data.DonatorDTO>(_id);
             _korisnikId = entity.KorisnikId;
@@ -62,7 +64,7 @@ namespace eBiser.WindowsUI.Donatori
             dgvClanovi.ClearSelection();
             if (_id.HasValue)
             {
-                await LoadForma(_id);
+                await LoadForma();
             }
         }
 
@@ -82,8 +84,35 @@ namespace eBiser.WindowsUI.Donatori
                 updateRequest.BrojTelefona = txtBrojTelefona.Text;
                 if (_id.HasValue && _korisnikId.HasValue)
                 {
-                    await _apiService.Update<Data.DonatorDTO>(_korisnikId ?? 0, updateRequest);
-                    MessageBox.Show("Uspjesno uređen donator profil");
+                    var korisnik = await _apiService.GetById<Data.DonatorDTO>(_id);
+                    try
+                    {
+                        if (!ValidacijaEmail && korisnik.Email != txtEmail.Text)
+                        {
+                            MessageBox.Show("Email ne odgovara");
+                            throw new Exception();
+                        }
+                        if (!ValidacijaKorisnickoIme && korisnik.KorisnickoIme != txtKorisnickoIme.Text)
+                        {
+                            MessageBox.Show("Korisničko ime ne odgovara");
+                            throw new Exception();
+                        }
+                        await _apiService.Update<Data.DonatorDTO>(_korisnikId ?? 0, updateRequest);
+                        MessageBox.Show("Uspjesno uređen donator profil");
+                    }
+                    catch (Exception)
+                    {
+                        if (ValidacijaEmail)
+                        {
+                            MessageBox.Show("Podaci ne odgovaraju");
+                        }
+                        if (ValidacijaKorisnickoIme)
+                        {
+                            MessageBox.Show("Podaci ne odgovaraju");
+                        }
+                        await LoadForma();
+                    }
+
                 }
                 else
                 {
@@ -101,13 +130,30 @@ namespace eBiser.WindowsUI.Donatori
                     insertRequest.BrojTelefona = txtBrojTelefona.Text;
                     try
                     {
+                        if (!ValidacijaEmail)
+                        {
+                            throw new Exception();
+                        }
+                        if (!ValidacijaKorisnickoIme)
+                        {
+                            throw new Exception();
+                        }
                         await _apiService.Insert<Data.DonatorDTO>(insertRequest);
                         MessageBox.Show("Uspjesno dodan donator profil");
 
                     }
                     catch (Exception)
                     {
-                        MessageBox.Show("Podaci ne odgovaraju");
+                        if (ValidacijaEmail)
+                        {
+                            MessageBox.Show("Podaci ne odgovaraju");
+                        }
+                        if (ValidacijaKorisnickoIme)
+                        {
+                            MessageBox.Show("Podaci ne odgovaraju");
+                        }
+                        await LoadForma();
+
                     }
                 }
             }
@@ -144,7 +190,7 @@ namespace eBiser.WindowsUI.Donatori
             try
             {
                 _id = Int32.Parse(dgvClanovi.SelectedRows[0].Cells[0].Value.ToString());
-                await LoadForma(_id);
+                await LoadForma();
             }
             catch (Exception)
             {
@@ -186,7 +232,7 @@ namespace eBiser.WindowsUI.Donatori
         {
             if (txtPrezime.Text.ToString().Length < 2)
             {
-                errorProvider.SetError(txtPrezime, WindowsUI.Properties.Resources.ValidationRequiredField);
+                errorProvider.SetError(txtPrezime, Properties.Resources.ValidationRequiredField);
                 e.Cancel = true;
             }
             else
@@ -219,11 +265,14 @@ namespace eBiser.WindowsUI.Donatori
             {
                 errorProvider.SetError(txtEmail, Properties.Resources.EmailIsUsing);
                 e.Cancel = true;
-            }
+                ValidacijaEmail = false;
 
+            }
             else
             {
                 errorProvider.SetError(txtEmail, null);
+                ValidacijaEmail = true;
+
             }
         }
 
@@ -232,7 +281,7 @@ namespace eBiser.WindowsUI.Donatori
 
             if (txtOpisProfila.Text.ToString().Length < 2)
             {
-                errorProvider.SetError(txtOpisProfila, WindowsUI.Properties.Resources.ValidationRequiredField);
+                errorProvider.SetError(txtOpisProfila, Properties.Resources.ValidationRequiredField);
                 e.Cancel = true;
             }
             else
@@ -258,10 +307,14 @@ namespace eBiser.WindowsUI.Donatori
 
                 errorProvider.SetError(txtKorisnickoIme, Properties.Resources.UserNameIsUsing);
                 e.Cancel = true;
+                ValidacijaKorisnickoIme = false;
+
             }
             else
             {
                 errorProvider.SetError(txtKorisnickoIme, null);
+                ValidacijaKorisnickoIme = true;
+
             }
         }
     }

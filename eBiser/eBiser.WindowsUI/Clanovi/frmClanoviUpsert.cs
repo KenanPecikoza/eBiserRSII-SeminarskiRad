@@ -21,6 +21,8 @@ namespace eBiser.WindowsUI.Clanovi
         private readonly APIService _apiService = new APIService("Korisnik/clan");
         private readonly APIService _apiServiceProvjera = new APIService("Korisnik/potvrda");
 
+        private bool ValidacijaEmail;
+        private bool ValidacijaKorisnickoIme;
         private int? _id = null;
         private int? _korisnikId = null;
         private readonly PhotoHelper photoHelper = new PhotoHelper();
@@ -40,7 +42,7 @@ namespace eBiser.WindowsUI.Clanovi
             dgvClanovi.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCells;
 
         }
-        private async Task LoadFormaClan(int? id)
+        private async Task LoadFormaClan()
         {
             var entity = await _apiService.GetById<Data.ClanDTO>(_id);
             _korisnikId = entity.KorisnikId;
@@ -65,7 +67,7 @@ namespace eBiser.WindowsUI.Clanovi
             dgvClanovi.ClearSelection();
             if (_id.HasValue)
             {
-                await LoadFormaClan(_id);
+                await LoadFormaClan();
             }
         }
 
@@ -86,8 +88,36 @@ namespace eBiser.WindowsUI.Clanovi
                 updateRequest.KorisnickoIme = txtKorisnickoIme.Text;
                 if (_id.HasValue && _korisnikId.HasValue)
                 {
-                    await _apiService.Update<Data.ClanDTO>(_korisnikId ?? 0, updateRequest);
-                    MessageBox.Show("Uspjesno uređen član");
+                   var korisnik=   await _apiService.GetById<Data.ClanDTO>(_id);
+                    try
+                    {
+                        if (!ValidacijaEmail && korisnik.Email!=txtEmail.Text)
+                        {
+                            MessageBox.Show("Email ne odgovara");
+                            throw new Exception();
+                        }
+                        if (!ValidacijaKorisnickoIme && korisnik.KorisnickoIme != txtKorisnickoIme.Text)
+                        {
+                            MessageBox.Show("Korisničko ime ne odgovara");
+                            throw new Exception();
+                        }
+                        await _apiService.Update<Data.ClanDTO>(_korisnikId ?? 0, updateRequest);
+                        MessageBox.Show("Uspjesno uređen član");
+
+
+                    }
+                    catch (Exception)
+                    {
+                        if (ValidacijaEmail)
+                        {
+                            MessageBox.Show("Podaci ne odgovaraju");
+                        }
+                        if (ValidacijaKorisnickoIme)
+                        {
+                            MessageBox.Show("Podaci ne odgovaraju");
+                        }
+                        await LoadFormaClan();
+                    }
                 }
                 else
                 {
@@ -105,13 +135,30 @@ namespace eBiser.WindowsUI.Clanovi
                     insertRequest.PasswordPotvrda = txtIme.Text + txtPrezime.Text + "1$Aa";
                     try
                     {
+                        if (!ValidacijaEmail)
+                        {
+                            MessageBox.Show("Email ne odgovara");
+                            throw new Exception();
+                        }
+                        if (!ValidacijaKorisnickoIme)
+                        {
+                            MessageBox.Show("Korisničko ime ne odgovara");
+                            throw new Exception();
+                        }
                         await _apiService.Insert<Data.ClanDTO>(insertRequest);
                         MessageBox.Show("Uspjesno dodan član");
 
                     }
                     catch (Exception)
                     {
-                        MessageBox.Show("Podaci ne odgovaraju");
+                        if (ValidacijaEmail)
+                        {
+                            MessageBox.Show("Podaci ne odgovaraju");
+                        }
+                        if (ValidacijaKorisnickoIme)
+                        {
+                            MessageBox.Show("Podaci ne odgovaraju");
+                        }
                     }
                 }
             }
@@ -156,7 +203,7 @@ namespace eBiser.WindowsUI.Clanovi
             {
 
             _id = Int32.Parse(dgvClanovi.SelectedRows[0].Cells[0].Value.ToString());
-            await LoadFormaClan(_id);
+            await LoadFormaClan();
             }
             catch (Exception)
             {
@@ -220,7 +267,6 @@ namespace eBiser.WindowsUI.Clanovi
             {
                 Email = txtEmail.Text
             });
-
             Regex regex = new Regex(@"^([\w\.\-]+)@([\w\-]+)((\.(\w){2,3})+)$");
             Match match = regex.Match(txtEmail.Text);
             if (txtEmail.Text.ToString().Length < 2 )
@@ -232,15 +278,18 @@ namespace eBiser.WindowsUI.Clanovi
             {
                 errorProvider.SetError(txtEmail, Properties.Resources.ValidationEmailField);
                 e.Cancel = true;
-            }
+            } 
             else if (korisnik != null)
             {
                 errorProvider.SetError(txtEmail, Properties.Resources.EmailIsUsing);
                 e.Cancel = true;
+                ValidacijaEmail = false;
             }
             else
             {
                 errorProvider.SetError(txtEmail, null);
+                ValidacijaEmail = true;
+
             }
         }
 
@@ -289,16 +338,20 @@ namespace eBiser.WindowsUI.Clanovi
             {
                 errorProvider.SetError(txtKorisnickoIme, Properties.Resources.ValidationRequiredField);
                 e.Cancel = true;
+
             }
             else if (korisnik != null)
             {
 
                 errorProvider.SetError(txtKorisnickoIme, Properties.Resources.UserNameIsUsing);
                 e.Cancel = true;
+                ValidacijaKorisnickoIme = false;
             }
             else
             {
                 errorProvider.SetError(txtKorisnickoIme, null);
+                ValidacijaKorisnickoIme = true;
+
             }
         }
     }

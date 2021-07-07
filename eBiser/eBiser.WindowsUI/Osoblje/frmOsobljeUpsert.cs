@@ -21,6 +21,8 @@ namespace eBiser.WindowsUI.Osoblje
         private readonly APIService _apiService = new APIService("Korisnik/Osoblje");
         private readonly APIService _apiServiceDjelatnost = new APIService("DjelatnostOsoblje");
         private readonly APIService _apiServiceProvjera = new APIService("Korisnik/potvrda");
+        private bool ValidacijaEmail;
+        private bool ValidacijaKorisnickoIme;
 
         private int? _id = null;
         private int? _Korisnikid = null;
@@ -31,9 +33,9 @@ namespace eBiser.WindowsUI.Osoblje
             _id = id;
             InitializeComponent();
         }
-        private async Task LoadForm(int id)
+        private async Task LoadForm()
         {
-            var result = await _apiService.GetById<Data.OsobljeDTO>(id);
+            var result = await _apiService.GetById<Data.OsobljeDTO>(_id);
             txtIme.Text = result.Ime;
             txtPrezime.Text = result.Prezime;
             cBoxNazivDjelatnosti.SelectedValue = result.DjelatnostId;
@@ -67,7 +69,7 @@ namespace eBiser.WindowsUI.Osoblje
             await LoadDGV();
             if (_id.HasValue)
             {
-                await LoadForm(_id??0);
+                await LoadForm();
             }
         }
         private void btnPonisti_Click(object sender, EventArgs e)
@@ -101,8 +103,36 @@ namespace eBiser.WindowsUI.Osoblje
                 updateRequest.DatumRodjenja = DateTime.Now;
                 updateRequest.DjelatnostId = Int32.Parse(cBoxNazivDjelatnosti.SelectedValue.ToString());
                 updateRequest.Email =txtEmail.Text;
-                await _apiService.Update<Data.KorisniciSistema>(_Korisnikid ?? 0, updateRequest);
-                MessageBox.Show("Uspjesno uređen član osoblja ");
+                var korisnik = await _apiService.GetById<Data.OsobljeDTO>(_id);
+
+                try
+                {
+                    if (!ValidacijaEmail && korisnik.Email != txtEmail.Text)
+                    {
+                        MessageBox.Show("Email ne odgovara");
+                        throw new Exception();
+                    }
+                    if (!ValidacijaKorisnickoIme && korisnik.KorisnickoIme != txtKorisnickoIme.Text)
+                    {
+                        MessageBox.Show("Korisničko ime ne odgovara");
+                        throw new Exception();
+                    }
+                    await _apiService.Update<Data.KorisniciSistema>(_Korisnikid ?? 0, updateRequest);
+                    MessageBox.Show("Uspjesno uređen član osoblja ");
+                }
+                catch (Exception)
+                {
+                    if (ValidacijaEmail)
+                    {
+                        MessageBox.Show("Podaci ne odgovaraju");
+                    }
+                    if (ValidacijaKorisnickoIme)
+                    {
+                        MessageBox.Show("Podaci ne odgovaraju");
+                    }
+                    await LoadForm();
+                }
+
             }
             else
             {
@@ -119,13 +149,30 @@ namespace eBiser.WindowsUI.Osoblje
                 insertRequest.DjelatnostId = Int32.Parse(cBoxNazivDjelatnosti.SelectedValue.ToString());
                 try
                 {
+                    if (!ValidacijaEmail)
+                    {
+                        MessageBox.Show("Email ne odgovara");
+                        throw new Exception();
+                    }
+                    if (!ValidacijaKorisnickoIme)
+                    {
+                        MessageBox.Show("Korisničko ime ne odgovara");
+                        throw new Exception();
+                    }
                     await _apiService.Insert<Data.ClanDTO>(insertRequest);
                     MessageBox.Show("Uspjesno dodan član osoblja");
 
                 }
                 catch (Exception)
                 {
-                    MessageBox.Show("Podaci ne odgovaraju");
+                    if (ValidacijaEmail )
+                    {
+                        MessageBox.Show("Podaci ne odgovaraju");
+                    }
+                    if (ValidacijaKorisnickoIme)
+                    {
+                        MessageBox.Show("Podaci ne odgovaraju");
+                    }
                 }
             }
             await LoadDGV();
@@ -169,7 +216,7 @@ namespace eBiser.WindowsUI.Osoblje
                 var korisnikid = Int32.Parse(dgvOsoblje.SelectedRows[0].Cells[1].Value.ToString());
                 _id = id;
                 _Korisnikid = korisnikid;
-                await LoadForm(_id??0);
+                await LoadForm();
             }
             catch (Exception)
             {
@@ -228,10 +275,14 @@ namespace eBiser.WindowsUI.Osoblje
 
                 errorProvider.SetError(txtKorisnickoIme, Properties.Resources.UserNameIsUsing);
                 e.Cancel = true;
+                ValidacijaKorisnickoIme = false;
+
             }
             else
             {
                 errorProvider.SetError(txtKorisnickoIme, null);
+                ValidacijaKorisnickoIme = true;
+
             }
         }
 
@@ -257,10 +308,14 @@ namespace eBiser.WindowsUI.Osoblje
             {
                 errorProvider.SetError(txtEmail, Properties.Resources.EmailIsUsing);
                 e.Cancel = true;
+                ValidacijaEmail = false;
+
             }
             else
             {
                 errorProvider.SetError(txtEmail, null);
+                ValidacijaEmail = true;
+
             }
         }
     }
