@@ -28,8 +28,9 @@ namespace eBiser.Services
         public List<Obavijest> RecommendProduct(int id)
         {
                 
-                var tempData= _db.ObavijestOcjenas.Include(x=> x.Obavijest).Where(x=> x.ObavijestId==id).ToList();
-                var tempdataObavijest= _mapper.Map<List<Obavijest>>( _db.Obavijestis.Include(x=> x.ObavijestOcjenas).Where(x=> x.Id!=id).ToList());
+            var tempData= _db.Obavijestis.Where(x=> x.Id==id).ToList();
+            var tempdataObavijest= _mapper.Map<List<Obavijest>>( _db.Obavijestis.Include(x=> x.ObavijestOcjenas).Include(x=> x.Kategorija).Where(x=> x.Id!=id).ToList());
+
             foreach (var i in tempdataObavijest)
             {
                 i.Fotografije = _db.ObavijestPhotos.Where(x => x.ObavijestId == i.Id).Select(x => x.Photo).ToList();
@@ -45,11 +46,11 @@ namespace eBiser.Services
                 var relatedItems = new List<ProductEntry>();
                 foreach (var i in tempData)
                 {
-                    var kategorijaId = i.Obavijest.KategorijaId;
+                    //var kategorijaId = i.KategorijaId;
                     foreach (var o in tempdataObavijest)
                     {
 
-                        if (i.Obavijest.KategorijaId== o.KategorijaId && o.Ocjena > 3)
+                        if (i.KategorijaId== o.KategorijaId && o.Ocjena > 3)
                         {
                             relatedItems.Add(new ProductEntry() { ProductID = (uint)i.Id, CoPurchaseProductID =(uint)o.Id });
                         }
