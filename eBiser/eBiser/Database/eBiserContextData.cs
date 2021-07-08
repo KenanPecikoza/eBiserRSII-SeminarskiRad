@@ -406,6 +406,122 @@ namespace eBiser.Database
             });
 
 
+            modelBuilder.Entity<Obavijesti>().HasData(new Obavijesti
+            {
+                Id = 5,
+                Naslov = "Obavijest4",
+                Aktivna = true,
+                DatumObjave = DateTime.Now,
+                VrijediDo = DateTime.Now,
+                OsobljeId = 1,
+                Sadržaj = "sadžraj pete obavijesti",
+                KategorijaId = 4,
+            });
+
+            modelBuilder.Entity<ObavijestOcjena>().HasData(new ObavijestOcjena
+            {
+                Id = 9,
+                DatumOcjene = DateTime.Now,
+                KorisniciSistemaId = 1,
+                ObavijestId = 5,
+                Ocjena = 5,
+            });
+            modelBuilder.Entity<ObavijestOcjena>().HasData(new ObavijestOcjena
+            {
+                Id = 10,
+                DatumOcjene = DateTime.Now,
+                KorisniciSistemaId = 1,
+                ObavijestId = 5,
+                Ocjena = 4,
+            });
+
+            modelBuilder.Entity<ObavijestPhoto>().HasData(new ObavijestPhoto
+            {
+                Id = 9,
+                ObavijestId = 5,
+                Photo = File.ReadAllBytes("TestPhoto/obavijes4photo1.jpg"),
+            });
+
+            modelBuilder.Entity<ObavijestPhoto>().HasData(new ObavijestPhoto
+            {
+                Id = 10,
+                ObavijestId = 5,
+                Photo = File.ReadAllBytes("TestPhoto/obavijest5photo2.jpg"),
+            });
+
+
+            modelBuilder.Entity<Obavijesti>().HasData(new Obavijesti
+            {
+                Id = 6,
+                Naslov = "Obavijest4",
+                Aktivna = true,
+                DatumObjave = DateTime.Now,
+                VrijediDo = DateTime.Now,
+                OsobljeId = 1,
+                Sadržaj = "sadžraj šeste obavijesti",
+                KategorijaId = 4,
+            });
+
+            modelBuilder.Entity<ObavijestOcjena>().HasData(new ObavijestOcjena
+            {
+                Id = 11,
+                DatumOcjene = DateTime.Now,
+                KorisniciSistemaId = 1,
+                ObavijestId = 6,
+                Ocjena = 5,
+            });
+            modelBuilder.Entity<ObavijestOcjena>().HasData(new ObavijestOcjena
+            {
+                Id = 12,
+                DatumOcjene = DateTime.Now,
+                KorisniciSistemaId = 1,
+                ObavijestId = 6,
+                Ocjena = 5,
+            });
+
+            modelBuilder.Entity<ObavijestPhoto>().HasData(new ObavijestPhoto
+            {
+                Id = 11,
+                ObavijestId = 6,
+                Photo = File.ReadAllBytes("TestPhoto/obavijes4photo1.jpg"),
+            });
+
+            modelBuilder.Entity<ObavijestPhoto>().HasData(new ObavijestPhoto
+            {
+                Id = 12,
+                ObavijestId = 6,
+                Photo = File.ReadAllBytes("TestPhoto/obavijest5photo2.jpg"),
+            });
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
             modelBuilder.Entity<Sastanak>().HasData(new Sastanak
             {
                 Id = 1,

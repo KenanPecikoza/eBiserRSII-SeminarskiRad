@@ -50,38 +50,43 @@
                     <customcontrol:RattingBar x:Name="customRattingBar" HorizontalOptions="Center"  ImageWidth="25" ImageHeight="25"   FlowDirection="LeftToRight"   SelectedStarValue="5"   FillStarImage="Images/fillstar.png" EmptyStarImage="Images/emptystar.png"   />
                     <Button Command="{Binding clickCommand}"  CommandParameter="{x:Reference Name=customRattingBar}" Text="Ocijeni" />
                 </StackLayout>
-                <CarouselView HeightRequest="190" ItemsSource="{Binding Obavijesti }">
-                    <CarouselView.ItemTemplate>
-                        <DataTemplate>
-                            <StackLayout>
-                                <Label Text="Preporuke za vas"/>
-                                <Frame HasShadow="True"
-                                    BorderColor="DarkGray"
-                                    CornerRadius="5"
-                                    Margin="0,3,0,0"
-                                    >
-                                    <StackLayout>
-                                        <StackLayout Padding="10" 
-                                                 Orientation="Horizontal">
-                                            <Image  WidthRequest="50" HeightRequest="50" HorizontalOptions="Start" VerticalOptions="Start" Source="{Binding Fotografije[0],Converter={StaticResource imgConv}}"></Image>
-                                            <Label Text="{Binding Naslov}" 
+                <StackLayout>
+                    <CarouselView HeightRequest="250" ItemsSource="{Binding Obavijesti} ">
+                        <CarouselView.ItemTemplate>
+                            <DataTemplate>
+                                <StackLayout  >
+                                    <Label Text="Preporuke za vas"/>
+                                    <Frame HasShadow="True"
+                                        BorderColor="DarkGray"
+                                        CornerRadius="5"
+                                        Margin="0,3,0,0"
+                                        Padding="1"
+                                        >
+                                        <StackLayout>
+                                            <StackLayout Padding="10" 
+                                                     Orientation="Horizontal">
+                                                <Image  WidthRequest="50" HeightRequest="50" HorizontalOptions="Start" VerticalOptions="Start" Source="{Binding Fotografije[0],Converter={StaticResource imgConv}}"></Image>
+                                                <Label Text="{Binding Naslov}" 
+                                                    LineBreakMode="NoWrap" 
+                                                    Style="{DynamicResource ListItemTextStyle}" 
+                                                    FontSize="16" VerticalOptions="Center"/>
+                                            </StackLayout>
+                                            <Label Text="{Binding Sadržaj}" 
                                                 LineBreakMode="NoWrap" 
                                                 Style="{DynamicResource ListItemTextStyle}" 
-                                                FontSize="16" VerticalOptions="Center"/>
-                                        </StackLayout>
-                                        <Label Text="{Binding Sadržaj}" 
-                                            LineBreakMode="NoWrap" 
-                                            Style="{DynamicResource ListItemTextStyle}" 
-                                            FontSize="16" />
-                                        <Label Text="Ocjena"/>
-                                        <customcontrol:RattingBar    HorizontalOptions="Start"  ImageWidth="25" ImageHeight="25"   FlowDirection="LeftToRight"  SelectedStarValue="{Binding Ocjena}"   FillStarImage="Images/fillstar.png" EmptyStarImage="Images/emptystar.png" />
-                                    </StackLayout>
+                                                FontSize="16" />
+                                            <Label Text="Ocjena"/>
+                                            <customcontrol:RattingBar    HorizontalOptions="Start"  ImageWidth="25" ImageHeight="25"   FlowDirection="LeftToRight"  SelectedStarValue="{Binding Ocjena}"   FillStarImage="Images/fillstar.png" EmptyStarImage="Images/emptystar.png" />
+                                            <Button HorizontalOptions="Center" Text="Prikaži" Clicked="Button_Clicked" BindingContext="{Binding Path=.}"></Button>
 
-                                </Frame>
-                            </StackLayout>
-                        </DataTemplate>
-                    </CarouselView.ItemTemplate>
-                </CarouselView>
+                                        </StackLayout>
+                                    </Frame>
+                                </StackLayout>
+                            </DataTemplate>
+                        </CarouselView.ItemTemplate>
+                    </CarouselView>
+                    
+                </StackLayout>
             </StackLayout>
         </ScrollView>
     </ContentPage.Content>

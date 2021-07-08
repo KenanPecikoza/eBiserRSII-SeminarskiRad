@@ -22,7 +22,13 @@ namespace eBiserMobileApp.Views
             {
                 obavijest = obavijest
             };
+            model.initCommand.Execute(null);
         }
 
+        private void Button_Clicked(object sender, EventArgs e)
+        {
+            Obavijest Obavijest = ((Button)sender).BindingContext as Obavijest;
+            Navigation.PushAsync(new ObavijestDetails(Obavijest));
+        }
     }
 }
