@@ -27,35 +27,39 @@ namespace eBiser.Services
 
         public List<Obavijest> RecommendProduct(int id)
         {
-                
-            var tempData= _db.Obavijestis.Where(x=> x.Id==id).ToList();
-            var tempdataObavijest= _mapper.Map<List<Obavijest>>( _db.Obavijestis.Include(x=> x.ObavijestOcjenas).Include(x=> x.Kategorija).Where(x=> x.Id!=id).ToList());
 
-            foreach (var i in tempdataObavijest)
+            var tempData = _db.Obavijestis.Where(x => x.Id == id).FirstOrDefault(); ;
+            var tempdataObavijest1= _mapper.Map<List<Obavijest>>( _db.Obavijestis.Include(x=> x.ObavijestOcjenas).Include(x=> x.Kategorija).Where(x=> x.Id!=id && x.KategorijaId==tempData.KategorijaId).ToList());
+
+            foreach (var i in tempdataObavijest1)
             {
-                i.Fotografije = _db.ObavijestPhotos.Where(x => x.ObavijestId == i.Id).Select(x => x.Photo).ToList();
+                //i.Fotografije = _db.ObavijestPhotos.Where(x => x.ObavijestId == i.Id).Select(x => x.Photo).ToList();
                 var ocjene = _db.ObavijestOcjenas.Where(x => x.ObavijestId == i.Id).Select(x => x.Ocjena);
                 if (ocjene.Count() > 0)
                 {
                     i.Ocjena = Int32.Parse(Math.Ceiling(ocjene.Average()).ToString());
                 }
             }
+            var tempdataObavijest= _mapper.Map<List<Obavijest>>(tempdataObavijest1.Where(x=> x.Ocjena>3));
+
+            //foreach (var i in tempData)
+            //{
+            //var kategorijaId = i.KategorijaId;
+            //}
+
             if (mlContext == null)
             {
                 mlContext = new MLContext();
                 var relatedItems = new List<ProductEntry>();
-                foreach (var i in tempData)
-                {
-                    //var kategorijaId = i.KategorijaId;
+
                     foreach (var o in tempdataObavijest)
                     {
 
-                        if (i.KategorijaId== o.KategorijaId && o.Ocjena > 3)
+                        if (tempData.KategorijaId== o.KategorijaId && o.Ocjena > 3)
                         {
-                            relatedItems.Add(new ProductEntry() { ProductID = (uint)i.Id, CoPurchaseProductID =(uint)o.Id });
+                            relatedItems.Add(new ProductEntry() { ProductID = (uint)tempData.Id, CoPurchaseProductID =(uint)o.Id });
                         }
                     }
-                }
 
                 var traindata = mlContext.Data.LoadFromEnumerable(relatedItems);
                 MatrixFactorizationTrainer.Options options = new MatrixFactorizationTrainer.Options();
