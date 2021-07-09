@@ -33,7 +33,7 @@ namespace eBiser.Services
 
             foreach (var i in tempdataObavijest1)
             {
-                //i.Fotografije = _db.ObavijestPhotos.Where(x => x.ObavijestId == i.Id).Select(x => x.Photo).ToList();
+                i.Fotografije = _db.ObavijestPhotos.Where(x => x.ObavijestId == i.Id).Select(x => x.Photo).ToList();
                 var ocjene = _db.ObavijestOcjenas.Where(x => x.ObavijestId == i.Id).Select(x => x.Ocjena);
                 if (ocjene.Count() > 0)
                 {
