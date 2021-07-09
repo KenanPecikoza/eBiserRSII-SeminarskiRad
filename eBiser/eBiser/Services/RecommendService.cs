@@ -41,25 +41,15 @@ namespace eBiser.Services
                 }
             }
             var tempdataObavijest= _mapper.Map<List<Obavijest>>(tempdataObavijest1.Where(x=> x.Ocjena>3));
-
-            //foreach (var i in tempData)
-            //{
-            //var kategorijaId = i.KategorijaId;
-            //}
-
             if (mlContext == null)
             {
                 mlContext = new MLContext();
                 var relatedItems = new List<ProductEntry>();
 
-                    foreach (var o in tempdataObavijest)
-                    {
-
-                        if (tempData.KategorijaId== o.KategorijaId && o.Ocjena > 3)
-                        {
-                            relatedItems.Add(new ProductEntry() { ProductID = (uint)tempData.Id, CoPurchaseProductID =(uint)o.Id });
-                        }
-                    }
+                foreach (var o in tempdataObavijest)
+                {
+                   relatedItems.Add(new ProductEntry() { ProductID = (uint)tempData.Id, CoPurchaseProductID =(uint)o.Id }); 
+                }
 
                 var traindata = mlContext.Data.LoadFromEnumerable(relatedItems);
                 MatrixFactorizationTrainer.Options options = new MatrixFactorizationTrainer.Options();
