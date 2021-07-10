@@ -25,14 +25,23 @@ namespace eBiser.WindowsUI.Clanarine
         }
         private async Task LoadClanarine(int ClanId)
         {
-            var data = await _apiServiceClanarina.Get<List<Data.Clanarina>>(new ClanarinaSearchRequest()
+            try
             {
-                ClanId = ClanId
-            });
-            dgvClanarine1.AutoGenerateColumns = false;
-            dgvClanarine1.DataSource = data;
-            dgvClanarine1.ClearSelection();
-            dgvClanarine1.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCells;
+                var data = await _apiServiceClanarina.Get<List<Data.Clanarina>>(new ClanarinaSearchRequest()
+                {
+                    ClanId = ClanId
+                });
+                dgvClanarine1.AutoGenerateColumns = false;
+                dgvClanarine1.DataSource = data;
+                dgvClanarine1.ClearSelection();
+                dgvClanarine1.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCells;
+
+
+            }
+            catch (Exception)
+            {
+
+            }
 
         }
         private async Task LoadForma(int id)

@@ -144,7 +144,7 @@ namespace eBiser.WindowsUI.IzlaznaSerdstva
         {
             if (txtNaslov.Text.ToString().Length < 2)
             {
-                errorProvider.SetError(txtNaslov, WindowsUI.Properties.Resources.ValidationRequiredField);
+                errorProvider.SetError(txtNaslov, Properties.Resources.ValidationRequiredField);
                 e.Cancel = true;
             }
             else
@@ -157,7 +157,7 @@ namespace eBiser.WindowsUI.IzlaznaSerdstva
         {
             if (txtOpis.Text.ToString().Length < 2)
             {
-                errorProvider.SetError(txtOpis, WindowsUI.Properties.Resources.ValidationRequiredField);
+                errorProvider.SetError(txtOpis, Properties.Resources.ValidationRequiredField);
                 e.Cancel = true;
             }
             else

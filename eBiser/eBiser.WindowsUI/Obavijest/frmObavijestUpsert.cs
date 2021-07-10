@@ -93,15 +93,32 @@ namespace eBiser.WindowsUI.Obavijest
             request.KategorijaId = Int32.Parse(cBoxKategorija.SelectedValue.ToString());
             if (_id.HasValue)
             {
-                await _apiService.Update<ObavijestInsertRequest>(_id ?? 0, request);
-                MessageBox.Show("Uspjesno uređena obavijest");
+                try
+                {
+                    await _apiService.Update<ObavijestInsertRequest>(_id ?? 0, request);
+                    MessageBox.Show("Uspjesno uređena obavijest");
+                }
+                catch (Exception)
+                {
+
+                    MessageBox.Show("Podaci ne odgovaraju");
+                }
 
             }
             else
             {
-                await _apiService.Insert<ObavijestInsertRequest>(request);
-                MessageBox.Show("Uspjesno dodana obavijest");
+                try
+                {
+                    await _apiService.Insert<ObavijestInsertRequest>(request);
+                    MessageBox.Show("Uspjesno dodana obavijest");
+                }
+                catch (Exception)
+                {
+                    MessageBox.Show("Podaci ne odgovaraju");
+                }
+
             }
+
             await LoadDGVObavijesti();
         }
 
@@ -154,12 +171,12 @@ namespace eBiser.WindowsUI.Obavijest
         {
             if (txtSadržaj.Text.ToString().Length < 2)
             {
-                errorProvider.SetError(txtNaslov, Properties.Resources.ValidationRequiredField);
+                errorProvider.SetError(txtSadržaj, Properties.Resources.ValidationRequiredField);
                 e.Cancel = true;
             }
             else
             {
-                errorProvider.SetError(txtNaslov, null);
+                errorProvider.SetError(txtSadržaj, null);
             }
         }
 
