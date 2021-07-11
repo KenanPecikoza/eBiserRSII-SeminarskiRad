@@ -28,9 +28,10 @@ namespace eBiser.WindowsUI.Obavijest
         private async Task LoadDGVObavijesti()
         {
             //dgvObavijesti.AutoGenerateColumns = false;
+            
             dgvObavijesti.DataSource = await _apiService.Get<List<Data.Obavijest>>(null);
             dgvObavijesti.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCells;
-
+            dgvObavijesti.ClearSelection();
         }
         private async Task LoadFormaObavijest(int? id)
         {

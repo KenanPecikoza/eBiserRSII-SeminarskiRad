@@ -77,7 +77,7 @@ namespace eBiser.Services
                                          });
                 predictionResult.Add(new Tuple<Obavijest, float>(item, prediction.Score));
             }
-            var finalResult = predictionResult.OrderBy(x => x.Item2).Select(x => x.Item1).ToList();
+            var finalResult = predictionResult.OrderBy(x => x.Item2).Select(x => x.Item1).Take(5).ToList();
             return finalResult;
         }
     }

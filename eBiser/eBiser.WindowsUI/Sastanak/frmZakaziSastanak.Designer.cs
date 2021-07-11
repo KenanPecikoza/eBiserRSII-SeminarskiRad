@@ -29,12 +29,15 @@ namespace eBiser.WindowsUI.Sastanak
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.label1 = new System.Windows.Forms.Label();
             this.txtNalov = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
             this.dtmDatumOdrzavanja = new System.Windows.Forms.DateTimePicker();
             this.btnCancel = new System.Windows.Forms.Button();
             this.btnZakazi = new System.Windows.Forms.Button();
+            this.errorProvider = new System.Windows.Forms.ErrorProvider(this.components);
+            ((System.ComponentModel.ISupportInitialize)(this.errorProvider)).BeginInit();
             this.SuspendLayout();
             // 
             // label1
@@ -52,6 +55,7 @@ namespace eBiser.WindowsUI.Sastanak
             this.txtNalov.Name = "txtNalov";
             this.txtNalov.Size = new System.Drawing.Size(254, 26);
             this.txtNalov.TabIndex = 1;
+            this.txtNalov.Validating += new System.ComponentModel.CancelEventHandler(this.txtNalov_Validating);
             // 
             // label2
             // 
@@ -97,6 +101,10 @@ namespace eBiser.WindowsUI.Sastanak
             this.btnZakazi.UseVisualStyleBackColor = false;
             this.btnZakazi.Click += new System.EventHandler(this.btnZakazi_Click);
             // 
+            // errorProvider
+            // 
+            this.errorProvider.ContainerControl = this;
+            // 
             // frmZakaziSastanak
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
@@ -112,6 +120,7 @@ namespace eBiser.WindowsUI.Sastanak
             this.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.Name = "frmZakaziSastanak";
             this.Text = " Zakaži sastanak";
+            ((System.ComponentModel.ISupportInitialize)(this.errorProvider)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -125,5 +134,6 @@ namespace eBiser.WindowsUI.Sastanak
         private System.Windows.Forms.DateTimePicker dtmDatumOdrzavanja;
         private System.Windows.Forms.Button btnCancel;
         private System.Windows.Forms.Button btnZakazi;
+        private System.Windows.Forms.ErrorProvider errorProvider;
     }
 }

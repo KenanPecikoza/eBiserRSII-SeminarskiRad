@@ -129,5 +129,18 @@ namespace eBiser.WindowsUI.Donacije
             DonatoriUpsert.Show();
 
         }
+
+        private void txtObrazlozenje_Validating(object sender, CancelEventArgs e)
+        {
+            if (txtObrazlozenje.Text.ToString().Length < 2)
+            {
+                errorProvider.SetError(txtObrazlozenje, Properties.Resources.ValidationRequiredField);
+                e.Cancel = true;
+            }
+            else
+            {
+                errorProvider.SetError(txtObrazlozenje, null);
+            }
+        }
     }
 }

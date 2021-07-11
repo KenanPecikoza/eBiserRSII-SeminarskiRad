@@ -43,5 +43,18 @@ namespace eBiser.WindowsUI.Sastanak
         {
             this.Close();
         }
+
+        private void txtNalov_Validating(object sender, CancelEventArgs e)
+        {
+            if (txtNalov.Text.ToString().Length < 2)
+            {
+                errorProvider.SetError(txtNalov, Properties.Resources.ValidationRequiredField);
+                e.Cancel = true;
+            }
+            else
+            {
+                errorProvider.SetError(txtNalov, null);
+            }
+        }
     }
 }

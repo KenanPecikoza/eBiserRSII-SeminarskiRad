@@ -29,6 +29,7 @@ namespace eBiser.WindowsUI.Donacije
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.chBoxNaCekanju = new System.Windows.Forms.CheckBox();
             this.cBoxDonatori = new System.Windows.Forms.ComboBox();
@@ -47,17 +48,19 @@ namespace eBiser.WindowsUI.Donacije
             this.btnOdbij = new System.Windows.Forms.Button();
             this.label3 = new System.Windows.Forms.Label();
             this.dgvDonacije = new System.Windows.Forms.DataGridView();
-            this.Obavijesti = new System.Windows.Forms.GroupBox();
-            this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.Id = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.KorisnikID = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.NaslovDonacije = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Donator = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.OpisDonacije = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Obavijesti = new System.Windows.Forms.GroupBox();
+            this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.errorProvider = new System.Windows.Forms.ErrorProvider(this.components);
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvDonacije)).BeginInit();
             this.Obavijesti.SuspendLayout();
             this.groupBox2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.errorProvider)).BeginInit();
             this.SuspendLayout();
             // 
             // groupBox1
@@ -206,6 +209,7 @@ namespace eBiser.WindowsUI.Donacije
             this.txtObrazlozenje.Name = "txtObrazlozenje";
             this.txtObrazlozenje.Size = new System.Drawing.Size(654, 91);
             this.txtObrazlozenje.TabIndex = 22;
+            this.txtObrazlozenje.Validating += new System.ComponentModel.CancelEventHandler(this.txtObrazlozenje_Validating);
             // 
             // btnPrihvati
             // 
@@ -265,29 +269,6 @@ namespace eBiser.WindowsUI.Donacije
             this.dgvDonacije.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvDonacije_CellClick);
             this.dgvDonacije.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvDonacije_CellDoubleClick);
             // 
-            // Obavijesti
-            // 
-            this.Obavijesti.Controls.Add(this.dgvDonacije);
-            this.Obavijesti.Location = new System.Drawing.Point(12, 569);
-            this.Obavijesti.Name = "Obavijesti";
-            this.Obavijesti.Size = new System.Drawing.Size(705, 203);
-            this.Obavijesti.TabIndex = 21;
-            this.Obavijesti.TabStop = false;
-            this.Obavijesti.Text = "Donacije";
-            // 
-            // groupBox2
-            // 
-            this.groupBox2.Controls.Add(this.label2);
-            this.groupBox2.Controls.Add(this.txtObrazlozenje);
-            this.groupBox2.Controls.Add(this.btnOdbij);
-            this.groupBox2.Controls.Add(this.btnPrihvati);
-            this.groupBox2.Location = new System.Drawing.Point(12, 366);
-            this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(702, 197);
-            this.groupBox2.TabIndex = 1;
-            this.groupBox2.TabStop = false;
-            this.groupBox2.Text = "Odgovor";
-            // 
             // Id
             // 
             this.Id.DataPropertyName = "Id";
@@ -325,6 +306,33 @@ namespace eBiser.WindowsUI.Donacije
             this.OpisDonacije.Name = "OpisDonacije";
             this.OpisDonacije.ReadOnly = true;
             // 
+            // Obavijesti
+            // 
+            this.Obavijesti.Controls.Add(this.dgvDonacije);
+            this.Obavijesti.Location = new System.Drawing.Point(12, 569);
+            this.Obavijesti.Name = "Obavijesti";
+            this.Obavijesti.Size = new System.Drawing.Size(705, 203);
+            this.Obavijesti.TabIndex = 21;
+            this.Obavijesti.TabStop = false;
+            this.Obavijesti.Text = "Donacije";
+            // 
+            // groupBox2
+            // 
+            this.groupBox2.Controls.Add(this.label2);
+            this.groupBox2.Controls.Add(this.txtObrazlozenje);
+            this.groupBox2.Controls.Add(this.btnOdbij);
+            this.groupBox2.Controls.Add(this.btnPrihvati);
+            this.groupBox2.Location = new System.Drawing.Point(12, 366);
+            this.groupBox2.Name = "groupBox2";
+            this.groupBox2.Size = new System.Drawing.Size(702, 197);
+            this.groupBox2.TabIndex = 1;
+            this.groupBox2.TabStop = false;
+            this.groupBox2.Text = "Odgovor";
+            // 
+            // errorProvider
+            // 
+            this.errorProvider.ContainerControl = this;
+            // 
             // frmDonacijeUpsert
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
@@ -345,6 +353,7 @@ namespace eBiser.WindowsUI.Donacije
             this.Obavijesti.ResumeLayout(false);
             this.groupBox2.ResumeLayout(false);
             this.groupBox2.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.errorProvider)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -377,5 +386,6 @@ namespace eBiser.WindowsUI.Donacije
         private System.Windows.Forms.DataGridViewTextBoxColumn NaslovDonacije;
         private System.Windows.Forms.DataGridViewTextBoxColumn Donator;
         private System.Windows.Forms.DataGridViewTextBoxColumn OpisDonacije;
+        private System.Windows.Forms.ErrorProvider errorProvider;
     }
 }
