@@ -42,6 +42,12 @@ namespace eBiser.WindowsUI.Donacije
             this.txtPretragaPoSadrzaju = new System.Windows.Forms.TextBox();
             this.button1 = new System.Windows.Forms.Button();
             this.btnDodaj = new System.Windows.Forms.Button();
+            this.Id = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Naziv = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.OpisDonacije = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ImeIPrezime = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.DatumPrijave = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.DatumOdgovora = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dgvDonacije)).BeginInit();
             this.groupBox1.SuspendLayout();
             this.groupBox3.SuspendLayout();
@@ -52,6 +58,13 @@ namespace eBiser.WindowsUI.Donacije
             this.dgvDonacije.AllowUserToAddRows = false;
             this.dgvDonacije.AllowUserToDeleteRows = false;
             this.dgvDonacije.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvDonacije.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.Id,
+            this.Naziv,
+            this.OpisDonacije,
+            this.ImeIPrezime,
+            this.DatumPrijave,
+            this.DatumOdgovora});
             this.dgvDonacije.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dgvDonacije.Location = new System.Drawing.Point(4, 24);
             this.dgvDonacije.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
@@ -195,6 +208,49 @@ namespace eBiser.WindowsUI.Donacije
             this.btnDodaj.UseVisualStyleBackColor = false;
             this.btnDodaj.Click += new System.EventHandler(this.btnDodaj_Click);
             // 
+            // Id
+            // 
+            this.Id.DataPropertyName = "Id";
+            this.Id.HeaderText = "Id";
+            this.Id.Name = "Id";
+            this.Id.ReadOnly = true;
+            this.Id.Visible = false;
+            // 
+            // Naziv
+            // 
+            this.Naziv.DataPropertyName = "Naziv";
+            this.Naziv.HeaderText = "Naslov";
+            this.Naziv.Name = "Naziv";
+            this.Naziv.ReadOnly = true;
+            // 
+            // OpisDonacije
+            // 
+            this.OpisDonacije.DataPropertyName = "OpisDonacije";
+            this.OpisDonacije.HeaderText = "Opis donacije";
+            this.OpisDonacije.Name = "OpisDonacije";
+            this.OpisDonacije.ReadOnly = true;
+            // 
+            // ImeIPrezime
+            // 
+            this.ImeIPrezime.DataPropertyName = "ImeIPrezimeDonatora";
+            this.ImeIPrezime.HeaderText = "Ime i prezime donatora";
+            this.ImeIPrezime.Name = "ImeIPrezime";
+            this.ImeIPrezime.ReadOnly = true;
+            // 
+            // DatumPrijave
+            // 
+            this.DatumPrijave.DataPropertyName = "DatumPrijave";
+            this.DatumPrijave.HeaderText = "Datum prijave";
+            this.DatumPrijave.Name = "DatumPrijave";
+            this.DatumPrijave.ReadOnly = true;
+            // 
+            // DatumOdgovora
+            // 
+            this.DatumOdgovora.DataPropertyName = "DatumOdgovra";
+            this.DatumOdgovora.HeaderText = "Datum odgovora";
+            this.DatumOdgovora.Name = "DatumOdgovora";
+            this.DatumOdgovora.ReadOnly = true;
+            // 
             // frmDonacije
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
@@ -232,5 +288,11 @@ namespace eBiser.WindowsUI.Donacije
         private System.Windows.Forms.CheckBox chBox;
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Button btnDodaj;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Id;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Naziv;
+        private System.Windows.Forms.DataGridViewTextBoxColumn OpisDonacije;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ImeIPrezime;
+        private System.Windows.Forms.DataGridViewTextBoxColumn DatumPrijave;
+        private System.Windows.Forms.DataGridViewTextBoxColumn DatumOdgovora;
     }
 }

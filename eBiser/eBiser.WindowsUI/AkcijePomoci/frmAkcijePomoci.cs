@@ -25,6 +25,7 @@ namespace eBiser.WindowsUI.AkcijePomoci
         private async void frmAkcijePomoci_Load(object sender, EventArgs e)
         {
             var result = await _apiService.Get<List<Data.AkcijePomoci>>(null);
+            dgvAkcijePomoci.AutoGenerateColumns = false;
             dgvAkcijePomoci.DataSource = result;
             dgvAkcijePomoci.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCells;
         }
@@ -33,7 +34,8 @@ namespace eBiser.WindowsUI.AkcijePomoci
         {
             try
             {
-                frmAkcijePomociUpsert frmAkcijePomoci = new frmAkcijePomociUpsert(Int32.Parse(dgvAkcijePomoci.SelectedRows[0].Cells[0].Value.ToString()));
+                var id = Int32.Parse(dgvAkcijePomoci.SelectedRows[0].Cells[0].Value.ToString());
+                frmAkcijePomociUpsert frmAkcijePomoci = new frmAkcijePomociUpsert(id);
                 frmAkcijePomoci.Show();
                 this.Close();
 

@@ -40,6 +40,13 @@ namespace eBiser.WindowsUI.AkcijePomoci
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.button2 = new System.Windows.Forms.Button();
             this.button1 = new System.Windows.Forms.Button();
+            this.Id = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Ime = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Prezime = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.TrazeniIznos = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Sakupljeno = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Aktivno = new System.Windows.Forms.DataGridViewCheckBoxColumn();
+            this.Progres = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvAkcijePomoci)).BeginInit();
             this.groupBox2.SuspendLayout();
@@ -105,6 +112,14 @@ namespace eBiser.WindowsUI.AkcijePomoci
             this.dgvAkcijePomoci.AllowUserToAddRows = false;
             this.dgvAkcijePomoci.AllowUserToDeleteRows = false;
             this.dgvAkcijePomoci.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvAkcijePomoci.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.Id,
+            this.Ime,
+            this.Prezime,
+            this.TrazeniIznos,
+            this.Sakupljeno,
+            this.Aktivno,
+            this.Progres});
             this.dgvAkcijePomoci.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dgvAkcijePomoci.Location = new System.Drawing.Point(3, 22);
             this.dgvAkcijePomoci.Name = "dgvAkcijePomoci";
@@ -168,6 +183,56 @@ namespace eBiser.WindowsUI.AkcijePomoci
             this.button1.UseVisualStyleBackColor = false;
             this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
+            // Id
+            // 
+            this.Id.DataPropertyName = "Id";
+            this.Id.HeaderText = "Id";
+            this.Id.Name = "Id";
+            this.Id.ReadOnly = true;
+            this.Id.Visible = false;
+            // 
+            // Ime
+            // 
+            this.Ime.DataPropertyName = "Ime";
+            this.Ime.HeaderText = "Ime";
+            this.Ime.Name = "Ime";
+            this.Ime.ReadOnly = true;
+            // 
+            // Prezime
+            // 
+            this.Prezime.DataPropertyName = "Prezime";
+            this.Prezime.HeaderText = "Prezime";
+            this.Prezime.Name = "Prezime";
+            this.Prezime.ReadOnly = true;
+            // 
+            // TrazeniIznos
+            // 
+            this.TrazeniIznos.DataPropertyName = "TraženaCifra";
+            this.TrazeniIznos.HeaderText = "Traženi iznos";
+            this.TrazeniIznos.Name = "TrazeniIznos";
+            this.TrazeniIznos.ReadOnly = true;
+            // 
+            // Sakupljeno
+            // 
+            this.Sakupljeno.DataPropertyName = "Skupljeno";
+            this.Sakupljeno.HeaderText = "Sakupljeno";
+            this.Sakupljeno.Name = "Sakupljeno";
+            this.Sakupljeno.ReadOnly = true;
+            // 
+            // Aktivno
+            // 
+            this.Aktivno.DataPropertyName = "Aktivno";
+            this.Aktivno.HeaderText = "Aktivno";
+            this.Aktivno.Name = "Aktivno";
+            this.Aktivno.ReadOnly = true;
+            // 
+            // Progres
+            // 
+            this.Progres.DataPropertyName = "Progres";
+            this.Progres.HeaderText = "Progres";
+            this.Progres.Name = "Progres";
+            this.Progres.ReadOnly = true;
+            // 
             // frmAkcijePomoci
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
@@ -203,5 +268,12 @@ namespace eBiser.WindowsUI.AkcijePomoci
         private System.Windows.Forms.GroupBox groupBox2;
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Id;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Ime;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Prezime;
+        private System.Windows.Forms.DataGridViewTextBoxColumn TrazeniIznos;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Sakupljeno;
+        private System.Windows.Forms.DataGridViewCheckBoxColumn Aktivno;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Progres;
     }
 }

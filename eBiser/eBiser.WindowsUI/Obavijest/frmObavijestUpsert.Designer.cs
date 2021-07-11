@@ -42,6 +42,7 @@ namespace eBiser.WindowsUI.Obavijest
             this.cbxAktivna = new System.Windows.Forms.CheckBox();
             this.txtSadržaj = new System.Windows.Forms.TextBox();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.btnPonisti = new System.Windows.Forms.Button();
             this.btnOcjene = new System.Windows.Forms.Button();
             this.label6 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
@@ -53,7 +54,14 @@ namespace eBiser.WindowsUI.Obavijest
             this.btnAddPhoto = new System.Windows.Forms.Button();
             this.label4 = new System.Windows.Forms.Label();
             this.errorProvider = new System.Windows.Forms.ErrorProvider(this.components);
-            this.btnPonisti = new System.Windows.Forms.Button();
+            this.Id = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.NaslovObavijesti = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.DatumObjave = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.VrijediDo = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Ocjena = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Aktivna = new System.Windows.Forms.DataGridViewCheckBoxColumn();
+            this.Kategorija = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Sadržaj = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Obavijesti.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvObavijesti)).BeginInit();
             this.groupBox1.SuspendLayout();
@@ -89,6 +97,15 @@ namespace eBiser.WindowsUI.Obavijest
             this.dgvObavijesti.AllowUserToAddRows = false;
             this.dgvObavijesti.AllowUserToDeleteRows = false;
             this.dgvObavijesti.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvObavijesti.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.Id,
+            this.NaslovObavijesti,
+            this.DatumObjave,
+            this.VrijediDo,
+            this.Ocjena,
+            this.Aktivna,
+            this.Kategorija,
+            this.Sadržaj});
             this.dgvObavijesti.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dgvObavijesti.Location = new System.Drawing.Point(3, 22);
             this.dgvObavijesti.Name = "dgvObavijesti";
@@ -194,6 +211,19 @@ namespace eBiser.WindowsUI.Obavijest
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Obavijest";
             // 
+            // btnPonisti
+            // 
+            this.btnPonisti.BackColor = System.Drawing.Color.DeepSkyBlue;
+            this.btnPonisti.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnPonisti.ForeColor = System.Drawing.Color.White;
+            this.btnPonisti.Location = new System.Drawing.Point(28, 455);
+            this.btnPonisti.Name = "btnPonisti";
+            this.btnPonisti.Size = new System.Drawing.Size(86, 41);
+            this.btnPonisti.TabIndex = 19;
+            this.btnPonisti.Text = "Poništi";
+            this.btnPonisti.UseVisualStyleBackColor = false;
+            this.btnPonisti.Click += new System.EventHandler(this.btnPonisti_Click);
+            // 
             // btnOcjene
             // 
             this.btnOcjene.BackColor = System.Drawing.Color.Blue;
@@ -297,18 +327,62 @@ namespace eBiser.WindowsUI.Obavijest
             // 
             this.errorProvider.ContainerControl = this;
             // 
-            // btnPonisti
+            // Id
             // 
-            this.btnPonisti.BackColor = System.Drawing.Color.DeepSkyBlue;
-            this.btnPonisti.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnPonisti.ForeColor = System.Drawing.Color.White;
-            this.btnPonisti.Location = new System.Drawing.Point(28, 455);
-            this.btnPonisti.Name = "btnPonisti";
-            this.btnPonisti.Size = new System.Drawing.Size(86, 41);
-            this.btnPonisti.TabIndex = 19;
-            this.btnPonisti.Text = "Poništi";
-            this.btnPonisti.UseVisualStyleBackColor = false;
-            this.btnPonisti.Click += new System.EventHandler(this.btnPonisti_Click);
+            this.Id.DataPropertyName = "Id";
+            this.Id.HeaderText = "Id";
+            this.Id.Name = "Id";
+            this.Id.ReadOnly = true;
+            this.Id.Visible = false;
+            // 
+            // NaslovObavijesti
+            // 
+            this.NaslovObavijesti.DataPropertyName = "Naslov";
+            this.NaslovObavijesti.HeaderText = "Naslov";
+            this.NaslovObavijesti.Name = "NaslovObavijesti";
+            this.NaslovObavijesti.ReadOnly = true;
+            // 
+            // DatumObjave
+            // 
+            this.DatumObjave.DataPropertyName = "DatumObjave";
+            this.DatumObjave.HeaderText = "Datum objave";
+            this.DatumObjave.Name = "DatumObjave";
+            this.DatumObjave.ReadOnly = true;
+            // 
+            // VrijediDo
+            // 
+            this.VrijediDo.DataPropertyName = "VrijediDo";
+            this.VrijediDo.HeaderText = "Vrijedi do ";
+            this.VrijediDo.Name = "VrijediDo";
+            this.VrijediDo.ReadOnly = true;
+            // 
+            // Ocjena
+            // 
+            this.Ocjena.DataPropertyName = "Ocjena";
+            this.Ocjena.HeaderText = "Ocjena";
+            this.Ocjena.Name = "Ocjena";
+            this.Ocjena.ReadOnly = true;
+            // 
+            // Aktivna
+            // 
+            this.Aktivna.DataPropertyName = "Aktivna";
+            this.Aktivna.HeaderText = "Aktivna";
+            this.Aktivna.Name = "Aktivna";
+            this.Aktivna.ReadOnly = true;
+            // 
+            // Kategorija
+            // 
+            this.Kategorija.DataPropertyName = "Kategorija";
+            this.Kategorija.HeaderText = "Kategorija";
+            this.Kategorija.Name = "Kategorija";
+            this.Kategorija.ReadOnly = true;
+            // 
+            // Sadržaj
+            // 
+            this.Sadržaj.DataPropertyName = "Sadržaj";
+            this.Sadržaj.HeaderText = "Sadržaj";
+            this.Sadržaj.Name = "Sadržaj";
+            this.Sadržaj.ReadOnly = true;
             // 
             // frmObavijestUpsert
             // 
@@ -357,5 +431,13 @@ namespace eBiser.WindowsUI.Obavijest
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Button btnOcjene;
         private System.Windows.Forms.Button btnPonisti;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Id;
+        private System.Windows.Forms.DataGridViewTextBoxColumn NaslovObavijesti;
+        private System.Windows.Forms.DataGridViewTextBoxColumn DatumObjave;
+        private System.Windows.Forms.DataGridViewTextBoxColumn VrijediDo;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Ocjena;
+        private System.Windows.Forms.DataGridViewCheckBoxColumn Aktivna;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Kategorija;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Sadržaj;
     }
 }

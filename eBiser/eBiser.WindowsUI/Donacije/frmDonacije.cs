@@ -23,7 +23,7 @@ namespace eBiser.WindowsUI.Donacije
         private async Task LoadDGV()
         {
             var result = await _apiService.Get<List<Data.Donacije>>(request);
-            //dgvDonacije.AutoGenerateColumns = false;
+            dgvDonacije.AutoGenerateColumns = false;
             dgvDonacije.DataSource = result;
             dgvDonacije.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCells;
         }
