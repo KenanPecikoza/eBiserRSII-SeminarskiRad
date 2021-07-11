@@ -23,20 +23,24 @@ namespace eBiser.WindowsUI.Sastanak
 
         private async void btnZakazi_Click(object sender, EventArgs e)
         {
-            upsertRequest.DatumOdrzavanja = dtmDatumOdrzavanja.Value;
-            upsertRequest.Odrzan = false;
-            upsertRequest.OsobljeId = APIService.Id;
-            upsertRequest.Zakazan = true;
-            upsertRequest.Naslov = txtNalov.Text;
-            try
+            if (this.ValidateChildren())
             {
-                await _apiService.Insert<Data.Sastanak>(upsertRequest);
-                MessageBox.Show("Uspješno zakazn sastanak");
+                upsertRequest.DatumOdrzavanja = dtmDatumOdrzavanja.Value;
+                upsertRequest.Odrzan = false;
+                upsertRequest.OsobljeId = APIService.Id;
+                upsertRequest.Zakazan = true;
+                upsertRequest.Naslov = txtNalov.Text;
+                try
+                {
+                    await _apiService.Insert<Data.Sastanak>(upsertRequest);
+                    MessageBox.Show("Uspješno zakazn sastanak");
+                }
+                catch (Exception)
+                {
+                    MessageBox.Show("Podaci ne odgovaraju");
+                }
             }
-            catch (Exception)
-            {
-
-            }
+           
         }
 
         private void btnCancel_Click(object sender, EventArgs e)

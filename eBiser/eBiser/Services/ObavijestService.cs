@@ -71,9 +71,9 @@ namespace eBiser.Services
             return entity;
         }
 
-        public override Data.Obavijest Insert(ObavijestInsertRequest request)
+        public override Obavijest Insert(ObavijestInsertRequest request)
         {
-            var entity = _mapper.Map<Database.Obavijesti>(request);
+            var entity = _mapper.Map<Obavijesti>(request);
             entity.OsobljeId = 1;// izvući id objavljivača iz http 
             _db.Add(entity);
             _db.SaveChanges();
@@ -86,9 +86,9 @@ namespace eBiser.Services
                 });     
             }
             _db.SaveChanges();
-            return _mapper.Map<Data.Obavijest>(entity);
+            return _mapper.Map<Obavijest>(entity);
         }
-        public override Data.Obavijest Update(int id, ObavijestInsertRequest request)
+        public override Obavijest Update(int id, ObavijestInsertRequest request)
         {
 
             var entity = _db.Obavijestis.Find(id);
@@ -112,7 +112,7 @@ namespace eBiser.Services
                 });
             }
             _db.SaveChanges();
-            return _mapper.Map<Data.Obavijest>(entity);
+            return _mapper.Map<Obavijest>(entity);
         }
 
     }

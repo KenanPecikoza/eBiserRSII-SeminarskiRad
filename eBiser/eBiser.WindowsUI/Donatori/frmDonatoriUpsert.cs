@@ -70,7 +70,9 @@ namespace eBiser.WindowsUI.Donatori
 
         private async void btnSave_Click(object sender, EventArgs e)
         {
-            if (this.ValidateChildren())
+ 
+
+            if (_id.HasValue && _korisnikId.HasValue)
             {
                 updateRequest.Ime = txtIme.Text;
                 updateRequest.Prezime = txtPrezime.Text;
@@ -82,39 +84,39 @@ namespace eBiser.WindowsUI.Donatori
                 updateRequest.OpisProfila = txtOpisProfila.Text;
                 updateRequest.KorisnickoIme = txtKorisnickoIme.Text;
                 updateRequest.BrojTelefona = txtBrojTelefona.Text;
-                if (_id.HasValue && _korisnikId.HasValue)
+                var korisnik = await _apiService.GetById<Data.DonatorDTO>(_id);
+                try
                 {
-                    var korisnik = await _apiService.GetById<Data.DonatorDTO>(_id);
-                    try
+                    if (!ValidacijaEmail && korisnik.Email != txtEmail.Text)
                     {
-                        if (!ValidacijaEmail && korisnik.Email != txtEmail.Text)
-                        {
-                            MessageBox.Show("Email ne odgovara");
-                            throw new Exception();
-                        }
-                        if (!ValidacijaKorisnickoIme && korisnik.KorisnickoIme != txtKorisnickoIme.Text)
-                        {
-                            MessageBox.Show("Korisničko ime ne odgovara");
-                            throw new Exception();
-                        }
-                        await _apiService.Update<Data.DonatorDTO>(_korisnikId ?? 0, updateRequest);
-                        MessageBox.Show("Uspjesno uređen donator profil");
+                        MessageBox.Show("Email ne odgovara");
+                        throw new Exception();
                     }
-                    catch (Exception)
+                    if (!ValidacijaKorisnickoIme && korisnik.KorisnickoIme != txtKorisnickoIme.Text)
                     {
-                        if (ValidacijaEmail)
-                        {
-                            MessageBox.Show("Podaci ne odgovaraju");
-                        }
-                        if (ValidacijaKorisnickoIme)
-                        {
-                            MessageBox.Show("Podaci ne odgovaraju");
-                        }
-                        await LoadForma();
+                        MessageBox.Show("Korisničko ime ne odgovara");
+                        throw new Exception();
                     }
-
+                    await _apiService.Update<Data.DonatorDTO>(_korisnikId ?? 0, updateRequest);
+                    MessageBox.Show("Uspjesno uređen donator profil");
                 }
-                else
+                catch (Exception)
+                {
+                    if (ValidacijaEmail)
+                    {
+                        MessageBox.Show("Podaci ne odgovaraju");
+                    }
+                    if (ValidacijaKorisnickoIme)
+                    {
+                        MessageBox.Show("Podaci ne odgovaraju");
+                    }
+                    await LoadForma();
+                }
+
+            }
+            else
+            {
+                if (this.ValidateChildren())
                 {
                     insertRequest.Ime = txtIme.Text;
                     insertRequest.Prezime = txtPrezime.Text;

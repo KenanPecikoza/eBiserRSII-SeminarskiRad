@@ -78,42 +78,46 @@ namespace eBiser.WindowsUI.AkcijePomoci
 
         private async void btnSnimi_Click(object sender, EventArgs e)
         {
-            request.Ime = txtIme.Text;
-            request.Prezime = txtPrezime.Text;
-            request.Skupljeno = (double)numSakupljeno.Value;
-            request.TraženaCifra = (double)numTrazenaCifra.Value;
-            request.Aktivno = chBoxAktivno.Checked;
-            request.Fotografija = photoHelper.ImageToByteArray(pictureBox1.Image);
-
-            if (_id.HasValue)
+            if (this.ValidateChildren())
             {
-                try
+                request.Ime = txtIme.Text;
+                request.Prezime = txtPrezime.Text;
+                request.Skupljeno = (double)numSakupljeno.Value;
+                request.TraženaCifra = (double)numTrazenaCifra.Value;
+                request.Aktivno = chBoxAktivno.Checked;
+                request.Fotografija = photoHelper.ImageToByteArray(pictureBox1.Image);
+
+                if (_id.HasValue)
                 {
-                    await _apiService.Update<Data.AkcijePomoci>(_id ??0, request);
-                    MessageBox.Show("Uspjesno uređena akcija pomoći");
+                    try
+                    {
+                        await _apiService.Update<Data.AkcijePomoci>(_id ??0, request);
+                        MessageBox.Show("Uspjesno uređena akcija pomoći");
+
+                    }
+                    catch (Exception)
+                    {
+                        MessageBox.Show("Nije uspjelo uređenje akcija pomoći");
+                    }
 
                 }
-                catch (Exception)
+                else
                 {
-                    MessageBox.Show("Nije uspjelo uređenje akcija pomoći");
+                    try
+                    {
+                        await _apiService.Insert<Data.AkcijePomoci>(request);
+                        MessageBox.Show("Uspjesno dodana akcija pomoći");
+
+                    }
+                    catch (Exception)
+                    {
+                        MessageBox.Show("Nije uspjelo dodavanje akcije pomoći");
+
+                    }
                 }
+                await PopuniDGV();
 
             }
-            else
-            {
-                try
-                {
-                    await _apiService.Insert<Data.AkcijePomoci>(request);
-                    MessageBox.Show("Uspjesno dodana akcija pomoći");
-
-                }
-                catch (Exception)
-                {
-                    MessageBox.Show("Nije uspjelo dodavanje akcije pomoći");
-
-                }
-            }
-            await PopuniDGV();
         }
 
         private void btnIzađi_Click(object sender, EventArgs e)

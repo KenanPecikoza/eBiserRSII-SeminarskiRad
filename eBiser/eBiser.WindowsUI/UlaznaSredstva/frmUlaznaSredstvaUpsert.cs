@@ -61,21 +61,25 @@ namespace eBiser.WindowsUI.UlaznaSredstva
 
         private async void btnSnimi_Click(object sender, EventArgs e)
         {
-            request.Datum = dtmDatum.Value;
-            request.Količina = (double)numIznos.Value;
-            request.Naslov = txtNaslov.Text;
-            request.Opis = txtOpis.Text;
-            request.OsobljeId = APIService.Id;
-            if (_id.HasValue)
+            if (this.ValidateChildren())
             {
-                await _apiService.Update<UlaznaSredstvaUpsertRequest>(_id ?? 0, request);
+                request.Datum = dtmDatum.Value;
+                request.Količina = (double)numIznos.Value;
+                request.Naslov = txtNaslov.Text;
+                request.Opis = txtOpis.Text;
+                request.OsobljeId = APIService.Id;
+                if (_id.HasValue)
+                {
+                    await _apiService.Update<UlaznaSredstvaUpsertRequest>(_id ?? 0, request);
+                }
+                else
+                {
+                    await _apiService.Insert<IzlaznaSredstvaUpsertRequest>(request);
+                }
+                await LoadDGV();
+                dgvUlaznaSredstva.ClearSelection();
             }
-            else
-            {
-                await _apiService.Insert<IzlaznaSredstvaUpsertRequest>(request);
-            }
-            await LoadDGV();
-            dgvUlaznaSredstva.ClearSelection();
+          
         }
 
         private void btnPonisti_Click(object sender, EventArgs e)

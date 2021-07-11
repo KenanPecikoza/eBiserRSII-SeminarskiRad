@@ -38,18 +38,34 @@ namespace eBiser.WindowsUI.Projekti
         private async Task LoadDGV()
         {
             dgvProjekti.AutoGenerateColumns = false;
-            var result = await _APIService.Get<List<Data.Projekti>>(null);
-            dgvProjekti.DataSource = result;
-            dgvProjekti.ClearSelection();
-            dgvProjekti.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCells;
+            try
+            {
+                var result = await _APIService.Get<List<Data.Projekti>>(null);
+                dgvProjekti.DataSource = result;
+                dgvProjekti.ClearSelection();
+                dgvProjekti.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCells;
+            }
+            catch (Exception)
+            {
+
+            }
+
             
         }
         private async Task LoadComboBox() 
         {
-            var result = await _APIServiceOsoblje.Get<List<Data.OsobljeDTO>>(null);
-            cBoxKreatori.DataSource = result;
-            cBoxKreatori.DisplayMember = "ImeIPrezime";
-            cBoxKreatori.ValueMember = "Id";
+            try
+            {
+                var result = await _APIServiceOsoblje.Get<List<Data.OsobljeDTO>>(null);
+                cBoxKreatori.DataSource = result;
+                cBoxKreatori.DisplayMember = "ImeIPrezime";
+                cBoxKreatori.ValueMember = "Id";
+            }
+            catch (Exception)
+            {
+
+            }
+
 
         }
 
@@ -86,32 +102,39 @@ namespace eBiser.WindowsUI.Projekti
         {
             await LoadDGV();
             await LoadComboBox();
-            await LoadForm();
+            if (_id.HasValue)
+            {
+                await LoadForm();
+            }
         }
         ProjektiUpsertRequest upsertRequest = new ProjektiUpsertRequest();
 
         private async void btnSacuvaj_Click(object sender, EventArgs e)
         {
-            upsertRequest.CijenaProjekta = (double)numCijena.Value;
-            upsertRequest.OdobrenaSredstva = (double)numOdobrenaSredstva.Value;
-            upsertRequest.NazivProjekta = txtNazivProjekta.Text;
-            upsertRequest.OsobljeId = Int32.Parse(cBoxKreatori.SelectedValue.ToString());
-            upsertRequest.Prihvaćen = checkBox1.Checked;
-            upsertRequest.RokIzvrsenja = txtRokIzvršenja.Text;
-            upsertRequest.DatumIzvrsenja = dtmIzvrsenja.Value.Date;
-            upsertRequest.DatumPrijave = dtmPrijave.Value.Date;
-            if (_id.HasValue)
+            if (this.ValidateChildren())
             {
-                await _APIService.Update<Data.Projekti>(_id??0,upsertRequest);
-                MessageBox.Show("Uspjesno uređeni podaci o projektu");
-            }
-            else
-            {
-                await _APIService.Insert<Data.Projekti>(upsertRequest);
-                MessageBox.Show("Uspjesno dodani podaci o projektu");
-            }
+                upsertRequest.CijenaProjekta = (double)numCijena.Value;
+                upsertRequest.OdobrenaSredstva = (double)numOdobrenaSredstva.Value;
+                upsertRequest.NazivProjekta = txtNazivProjekta.Text;
+                upsertRequest.OsobljeId = Int32.Parse(cBoxKreatori.SelectedValue.ToString());
+                upsertRequest.Prihvaćen = checkBox1.Checked;
+                upsertRequest.RokIzvrsenja = txtRokIzvršenja.Text;
+                upsertRequest.DatumIzvrsenja = dtmIzvrsenja.Value.Date;
+                upsertRequest.DatumPrijave = dtmPrijave.Value.Date;
+                if (_id.HasValue)
+                {
+                    await _APIService.Update<Data.Projekti>(_id ?? 0, upsertRequest);
+                    MessageBox.Show("Uspjesno uređeni podaci o projektu");
+                }
+                else
+                {
+                    await _APIService.Insert<Data.Projekti>(upsertRequest);
+                    MessageBox.Show("Uspjesno dodani podaci o projektu");
+                }
 
                 await LoadDGV();
+            }
+
         }
 
         private void txtNazivProjekta_Validating(object sender, CancelEventArgs e)

@@ -62,22 +62,25 @@ namespace eBiser.WindowsUI.Sastanak
         SastanakUpsertRequest request = new SastanakUpsertRequest();
         private async void btnSnimi_Click(object sender, EventArgs e)
         {
-            request.Odrzan = true;
-            request.Zapisnik = txtZapisnik.Text;
-            request.OsobljeId = Int32.Parse(cBoxZapisnicar.SelectedValue.ToString());
-            request.DatumOdrzavanja = dtmDatumOdzavanja.Value;
-            request.Naslov = txtNaslov.Text;
-            if (_id.HasValue)
+            if (this.ValidateChildren())
             {
-                await _apiService.Update<Data.Sastanak>(_id ?? 0, request);
-                MessageBox.Show("Uspjesno uređen sastanak ");
+                request.Odrzan = true;
+                request.Zapisnik = txtZapisnik.Text;
+                request.OsobljeId = Int32.Parse(cBoxZapisnicar.SelectedValue.ToString());
+                request.DatumOdrzavanja = dtmDatumOdzavanja.Value;
+                request.Naslov = txtNaslov.Text;
+                if (_id.HasValue)
+                {
+                    await _apiService.Update<Data.Sastanak>(_id ?? 0, request);
+                    MessageBox.Show("Uspjesno uređen sastanak ");
+                }
+                else
+                {
+                    await _apiService.Insert<Data.Sastanak>(request);
+                    MessageBox.Show("Uspjesno dodan sastanak");
+                }
+                await LoadDGV();
             }
-            else
-            {
-                await _apiService.Insert<Data.Sastanak>(request);
-                MessageBox.Show("Uspjesno dodan sastanak");
-            }
-            await LoadDGV();
 
         }
         private void btnPonisti_Click(object sender, EventArgs e)

@@ -102,19 +102,22 @@ namespace eBiser.WindowsUI.Donacije
 
         private async void btnOdbij_Click(object sender, EventArgs e)
         {
-            if (_id.HasValue)
+            if (this.ValidateChildren())
             {
-                NapuniRequest(false);
-                try
+                if (_id.HasValue)
                 {
-                   await _apiServiceDonacije.Update<Data.Donacije>(_id ?? 0, request);
-                    MessageBox.Show("Donacija je odbijena");
+                    NapuniRequest(false);
+                    try
+                    {
+                       await _apiServiceDonacije.Update<Data.Donacije>(_id ?? 0, request);
+                        MessageBox.Show("Donacija je odbijena");
 
-                }
-                catch (Exception)
-                {
-                    MessageBox.Show("Donacija nije odbijena");
+                    }
+                    catch (Exception)
+                    {
+                        MessageBox.Show("Donacija nije odbijena");
 
+                    }
                 }
             }
         }

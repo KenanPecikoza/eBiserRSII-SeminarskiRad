@@ -52,8 +52,6 @@ namespace eBiser.WindowsUI.Obavijest
                 flowLayoutPanel1.Controls.Add(pb);
                 flowLayoutPanel1.AutoScroll = true;
                 pb.SizeMode = PictureBoxSizeMode.StretchImage;
-                request.Fotografije.Add(p);
-                request.Fotografije.ToList();
             }
         }
 
@@ -61,21 +59,21 @@ namespace eBiser.WindowsUI.Obavijest
         private void btnAddPhoto_Click(object sender, EventArgs e)
         {
             flowLayoutPanel1.Controls.Clear();
+            OpenFileDialog openFileDialog = new OpenFileDialog();
             openFileDialog.Multiselect = true;
-            openFileDialog.Filter = "Image files|*.bmp;*.jpg;*.gif;*.png;*.tif|All files|*.*";
-            var result= openFileDialog.ShowDialog();
-            
-            if (result== DialogResult.OK)
+            openFileDialog.Filter = "JPG|*.jpg|JPEG|*.jpeg|GIF|*.gif|PNG|*.png";
+            DialogResult result = openFileDialog.ShowDialog();
+            if (result == DialogResult.OK)
             {
                 foreach (var file in openFileDialog.FileNames)
                 {
                     PictureBox pb = new PictureBox();
                     Image loadedImage = Image.FromFile(file);
                     pb.Image = loadedImage;
-                    txtPhoto.Text += file;
                     pb.SizeMode = PictureBoxSizeMode.StretchImage;
-                    flowLayoutPanel1.Controls.Add(pb);
+                    txtPhoto.Text += file;
                     flowLayoutPanel1.AutoScroll = true;
+                    flowLayoutPanel1.Controls.Add(pb);
                     var photo = File.ReadAllBytes(file);
                     request.Fotografije.Add(photo);
                     request.Fotografije.ToList();
@@ -85,42 +83,45 @@ namespace eBiser.WindowsUI.Obavijest
 
         private async void btnSnimi_Click(object sender, EventArgs e)
         {
-            request.DatumObjave = dtmPocetak.Value;
-            request.VrijediDo = dtmKraj.Value;
-            request.Sadržaj = txtSadržaj.Text;
-            request.Naslov = txtNaslov.Text;
-            request.Aktivna = cbxAktivna.Checked;
-            request.OsobljeId = APIService.Id;
-            request.KategorijaId = Int32.Parse(cBoxKategorija.SelectedValue.ToString());
-            if (_id.HasValue)
+            if (this.ValidateChildren())
             {
-                try
+                request.DatumObjave = dtmPocetak.Value;
+                request.VrijediDo = dtmKraj.Value;
+                request.Sadržaj = txtSadržaj.Text;
+                request.Naslov = txtNaslov.Text;
+                request.Aktivna = cbxAktivna.Checked;
+                request.OsobljeId = APIService.Id;
+                request.KategorijaId = Int32.Parse(cBoxKategorija.SelectedValue.ToString());
+                if (_id.HasValue)
                 {
-                    await _apiService.Update<ObavijestInsertRequest>(_id ?? 0, request);
-                    MessageBox.Show("Uspjesno uređena obavijest");
+                    try
+                    {
+                        await _apiService.Update<ObavijestInsertRequest>(_id ?? 0, request);
+                        MessageBox.Show("Uspjesno uređena obavijest");
+                    }
+                    catch (Exception)
+                    {
+                        MessageBox.Show("Podaci ne odgovaraju");
+                    }
+
                 }
-                catch (Exception)
+                else
                 {
+                    try
+                    {
+                        await _apiService.Insert<ObavijestInsertRequest>(request);
+                        MessageBox.Show("Uspjesno dodana obavijest");
+                    }
+                    catch (Exception)
+                    {
+                        MessageBox.Show("Podaci ne odgovaraju");
+                    }
 
-                    MessageBox.Show("Podaci ne odgovaraju");
                 }
 
+                await LoadDGVObavijesti();
             }
-            else
-            {
-                try
-                {
-                    await _apiService.Insert<ObavijestInsertRequest>(request);
-                    MessageBox.Show("Uspjesno dodana obavijest");
-                }
-                catch (Exception)
-                {
-                    MessageBox.Show("Podaci ne odgovaraju");
-                }
-
-            }
-
-            await LoadDGVObavijesti();
+         
         }
 
         private async void frmObavijestUpsert_Load(object sender, EventArgs e)

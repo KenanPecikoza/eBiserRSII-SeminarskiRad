@@ -67,20 +67,39 @@ namespace eBiser.WindowsUI.IzlaznaSerdstva
 
         private async void btnSnimi_Click(object sender, EventArgs e)
         {
-            request.Datum = dtmDatum.Value;
-            request.Količina = (double)numIznos.Value;
-            request.Naslov = txtNaslov.Text;
-            request.Opis = txtOpis.Text;
-            request.OsobljeId = APIService.Id;
-            if (_id.HasValue)
+            if (this.ValidateChildren())
             {
-                await _apiService.Update<IzlaznaSredstvaUpsertRequest>(_id??0 ,request);
+                request.Datum = dtmDatum.Value;
+                request.Količina = (double)numIznos.Value;
+                request.Naslov = txtNaslov.Text;
+                request.Opis = txtOpis.Text;
+                request.OsobljeId = APIService.Id;
+                if (_id.HasValue)
+                {
+                    try
+                    {
+                        await _apiService.Update<IzlaznaSredstvaUpsertRequest>(_id ?? 0, request);
+                        MessageBox.Show("Uspješno izmjenjeni podaci o izlaznim sredstvima");
+                    }
+                    catch (Exception)
+                    {
+                        MessageBox.Show("Podaci ne odgovaraju");
+                    }
+                }
+                else
+                {
+                    try
+                    {
+                        await _apiService.Insert<IzlaznaSredstvaUpsertRequest>(request);
+                        MessageBox.Show("Uspješno dodani podaci o izlaznim sredstvima");
+                    }
+                    catch (Exception)
+                    {
+                        MessageBox.Show("Podaci ne odgovaraju");
+                    }
+                }
+                await LoadDGV();
             }
-            else
-            {
-                await _apiService.Insert<IzlaznaSredstvaUpsertRequest>(request);
-            }
-            await LoadDGV();
 
         }
 

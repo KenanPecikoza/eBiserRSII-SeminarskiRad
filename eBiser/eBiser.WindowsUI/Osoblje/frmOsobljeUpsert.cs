@@ -102,7 +102,7 @@ namespace eBiser.WindowsUI.Osoblje
                 updateRequest.DatumPocetkaAngazmana = dtmDatumPocetka.Value;
                 updateRequest.DatumRodjenja = DateTime.Now;
                 updateRequest.DjelatnostId = Int32.Parse(cBoxNazivDjelatnosti.SelectedValue.ToString());
-                updateRequest.Email =txtEmail.Text;
+                updateRequest.Email = txtEmail.Text;
                 var korisnik = await _apiService.GetById<Data.OsobljeDTO>(_id);
 
                 try
@@ -122,61 +122,62 @@ namespace eBiser.WindowsUI.Osoblje
                 }
                 catch (Exception)
                 {
-                    if (ValidacijaEmail)
+                    if (ValidacijaEmail && ValidacijaKorisnickoIme)
                     {
                         MessageBox.Show("Podaci ne odgovaraju");
                     }
-                    if (ValidacijaKorisnickoIme)
-                    {
-                        MessageBox.Show("Podaci ne odgovaraju");
-                    }
+                    //if (ValidacijaKorisnickoIme)
+                    //{
+                    //    MessageBox.Show("Podaci ne odgovaraju");
+                    //}
                     await LoadForm();
                 }
-
             }
             else
             {
-                insertRequest.Ime = txtIme.Text;
-                insertRequest.Prezime = txtPrezime.Text;
-                insertRequest.Photo = photoHelper.ImageToByteArray(pictureBox.Image);
-                insertRequest.PhotoThumb = photoHelper.ImageToByteArray(pictureBox.Image);
-                insertRequest.KorisnickoIme = txtKorisnickoIme.Text;
-                insertRequest.Password = txtIme.Text + txtPrezime.Text + "1$Aa";
-                insertRequest.PasswordPotvrda = txtIme.Text + txtPrezime.Text + "1$Aa";
-                insertRequest.DatumPocetkaAngazmana = dtmDatumPocetka.Value;
-                insertRequest.Email = txtEmail.Text;
-                insertRequest.DatumRodjenja = DateTime.Now;
-                insertRequest.DjelatnostId = Int32.Parse(cBoxNazivDjelatnosti.SelectedValue.ToString());
-                try
+                if (this.ValidateChildren())
                 {
-                    if (!ValidacijaEmail)
+                    insertRequest.Ime = txtIme.Text;
+                    insertRequest.Prezime = txtPrezime.Text;
+                    insertRequest.Photo = photoHelper.ImageToByteArray(pictureBox.Image);
+                    insertRequest.PhotoThumb = photoHelper.ImageToByteArray(pictureBox.Image);
+                    insertRequest.KorisnickoIme = txtKorisnickoIme.Text;
+                    insertRequest.Password = txtIme.Text + txtPrezime.Text + "1$Aa";
+                    insertRequest.PasswordPotvrda = txtIme.Text + txtPrezime.Text + "1$Aa";
+                    insertRequest.DatumPocetkaAngazmana = dtmDatumPocetka.Value;
+                    insertRequest.Email = txtEmail.Text;
+                    insertRequest.DatumRodjenja = DateTime.Now;
+                    insertRequest.DjelatnostId = Int32.Parse(cBoxNazivDjelatnosti.SelectedValue.ToString());
+                    try
                     {
-                        MessageBox.Show("Email ne odgovara");
-                        throw new Exception();
-                    }
-                    if (!ValidacijaKorisnickoIme)
-                    {
-                        MessageBox.Show("Korisničko ime ne odgovara");
-                        throw new Exception();
-                    }
-                    await _apiService.Insert<Data.ClanDTO>(insertRequest);
-                    MessageBox.Show("Uspjesno dodan član osoblja");
+                        if (!ValidacijaEmail)
+                        {
+                            MessageBox.Show("Email ne odgovara");
+                            throw new Exception();
+                        }
+                        if (!ValidacijaKorisnickoIme)
+                        {
+                            MessageBox.Show("Korisničko ime ne odgovara");
+                            throw new Exception();
+                        }
+                        await _apiService.Insert<Data.ClanDTO>(insertRequest);
+                        MessageBox.Show("Uspjesno dodan član osoblja");
 
-                }
-                catch (Exception)
-                {
-                    if (ValidacijaEmail )
-                    {
-                        MessageBox.Show("Podaci ne odgovaraju");
                     }
-                    if (ValidacijaKorisnickoIme)
+                    catch (Exception)
                     {
-                        MessageBox.Show("Podaci ne odgovaraju");
+                        if (ValidacijaEmail)
+                        {
+                            MessageBox.Show("Podaci ne odgovaraju");
+                        }
+                        if (ValidacijaKorisnickoIme)
+                        {
+                            MessageBox.Show("Podaci ne odgovaraju");
+                        }
                     }
                 }
             }
             await LoadDGV();
-
         }
 
         private void btnPhotoDodaj_Click(object sender, EventArgs e)
