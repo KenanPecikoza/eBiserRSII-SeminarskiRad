@@ -163,6 +163,7 @@ namespace eBiser.WindowsUI.Sastanak
             this.txtNaslov.Name = "txtNaslov";
             this.txtNaslov.Size = new System.Drawing.Size(284, 26);
             this.txtNaslov.TabIndex = 12;
+            this.txtNaslov.Validating += new System.ComponentModel.CancelEventHandler(this.txtNaslov_Validating);
             // 
             // label4
             // 
@@ -191,7 +192,7 @@ namespace eBiser.WindowsUI.Sastanak
             this.btnSnimi.BackColor = System.Drawing.Color.Green;
             this.btnSnimi.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnSnimi.ForeColor = System.Drawing.Color.White;
-            this.btnSnimi.Location = new System.Drawing.Point(717, 354);
+            this.btnSnimi.Location = new System.Drawing.Point(703, 354);
             this.btnSnimi.Name = "btnSnimi";
             this.btnSnimi.Size = new System.Drawing.Size(86, 41);
             this.btnSnimi.TabIndex = 9;
@@ -213,7 +214,7 @@ namespace eBiser.WindowsUI.Sastanak
             this.txtZapisnik.Location = new System.Drawing.Point(8, 200);
             this.txtZapisnik.Multiline = true;
             this.txtZapisnik.Name = "txtZapisnik";
-            this.txtZapisnik.Size = new System.Drawing.Size(797, 149);
+            this.txtZapisnik.Size = new System.Drawing.Size(781, 149);
             this.txtZapisnik.TabIndex = 7;
             this.txtZapisnik.Validating += new System.ComponentModel.CancelEventHandler(this.txtZapisnik_Validating);
             // 

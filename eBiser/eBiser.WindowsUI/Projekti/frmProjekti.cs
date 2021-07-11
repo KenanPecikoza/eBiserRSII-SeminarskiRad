@@ -61,5 +61,17 @@ namespace eBiser.WindowsUI.Projekti
             searchRequest.Prihvaćen = checkBox1.Checked;
             await LoadDGV();
         }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
+
+        private void btnDodaj_Click(object sender, EventArgs e)
+        {
+            frmProjektiUpsert frmProjektiUpsert = new frmProjektiUpsert();
+            frmProjektiUpsert.Show();
+            this.Close();
+        }
     }
 }

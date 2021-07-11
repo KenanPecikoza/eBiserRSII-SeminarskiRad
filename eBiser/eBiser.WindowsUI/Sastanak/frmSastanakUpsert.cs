@@ -156,5 +156,18 @@ namespace eBiser.WindowsUI.Sastanak
                 errorProvider.SetError(txtZapisnik, null);
             }
         }
+
+        private void txtNaslov_Validating(object sender, CancelEventArgs e)
+        {
+            if (txtNaslov.Text.ToString().Length < 2)
+            {
+                errorProvider.SetError(txtNaslov, Properties.Resources.ValidationRequiredField);
+                e.Cancel = true;
+            }
+            else
+            {
+                errorProvider.SetError(txtNaslov, null);
+            }
+        }
     }
 }

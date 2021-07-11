@@ -197,6 +197,7 @@ namespace eBiser.WindowsUI.Donatori
             this.txtBrojTelefona.Name = "txtBrojTelefona";
             this.txtBrojTelefona.Size = new System.Drawing.Size(278, 26);
             this.txtBrojTelefona.TabIndex = 32;
+            this.txtBrojTelefona.Validating += new System.ComponentModel.CancelEventHandler(this.txtBrojTelefona_Validating);
             // 
             // label8
             // 

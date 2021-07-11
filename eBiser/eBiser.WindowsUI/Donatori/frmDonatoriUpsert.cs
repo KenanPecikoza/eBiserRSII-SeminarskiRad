@@ -335,5 +335,24 @@ namespace eBiser.WindowsUI.Donatori
 
             }
         }
+
+        private void txtBrojTelefona_Validating(object sender, CancelEventArgs e)
+        {
+            Match m = Regex.Match(txtBrojTelefona.Text, @"[0-9]\d{2}\d{3}\d{3}", RegexOptions.IgnoreCase);
+            if (txtBrojTelefona.Text.ToString().Length < 9)
+            {
+                errorProvider.SetError(txtBrojTelefona, Properties.Resources.ValidationPhoneNumberField);
+                e.Cancel = true;
+            }
+            if (!m.Success)
+            {
+                errorProvider.SetError(txtBrojTelefona, Properties.Resources.ValidationPhoneNumberTypeField);
+                e.Cancel = true;
+            }
+            else
+            {
+                errorProvider.SetError(txtBrojTelefona, null);
+            }
+        }
     }
 }

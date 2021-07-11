@@ -251,6 +251,7 @@ namespace eBiser.WindowsUI.IzlaznaSerdstva
             this.btnIzadji.TabIndex = 8;
             this.btnIzadji.Text = "Izađi";
             this.btnIzadji.UseVisualStyleBackColor = false;
+            this.btnIzadji.Click += new System.EventHandler(this.btnIzadji_Click_1);
             // 
             // btnDodaj
             // 

@@ -69,5 +69,11 @@ namespace eBiser.WindowsUI.IzlaznaSerdstva
             this.Close();
 
         }
+
+        private void btnIzadji_Click_1(object sender, EventArgs e)
+        {
+            this.Close();
+
+        }
     }
 }

@@ -239,7 +239,7 @@ namespace eBiser.WindowsUI.Donatori
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(670, 594);
+            this.ClientSize = new System.Drawing.Size(650, 548);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.btnIzadji);
             this.Controls.Add(this.btnDodaj);

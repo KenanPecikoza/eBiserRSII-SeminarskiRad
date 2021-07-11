@@ -64,6 +64,12 @@ namespace eBiser.WindowsUI.Clanarine
         {
             frmClanarineUpsert frmClanarineUpsert = new frmClanarineUpsert();
             frmClanarineUpsert.Show();
+            this.Close();
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            this.Close();
         }
     }
 }

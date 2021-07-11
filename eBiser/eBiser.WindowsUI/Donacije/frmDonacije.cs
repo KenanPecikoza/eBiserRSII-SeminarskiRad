@@ -59,5 +59,17 @@ namespace eBiser.WindowsUI.Donacije
 
             }
         }
+
+        private void btnDodaj_Click(object sender, EventArgs e)
+        {
+            frmDonacijeUpsert frmDonacijeUpsert = new frmDonacijeUpsert();
+            frmDonacijeUpsert.Show();
+            this.Close();
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
     }
 }

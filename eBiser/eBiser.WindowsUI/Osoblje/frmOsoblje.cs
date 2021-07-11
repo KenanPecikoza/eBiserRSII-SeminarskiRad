@@ -67,6 +67,7 @@ namespace eBiser.WindowsUI.Osoblje
         {
             frmOsobljeUpsert frmOsobljeUpsert = new frmOsobljeUpsert();
             frmOsobljeUpsert.Show();
+            this.Close();
 
         }
         private async void cBoxNazivDjelatnosti_SelectedIndexChanged(object sender, EventArgs e)

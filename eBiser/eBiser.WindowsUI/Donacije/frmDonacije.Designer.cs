@@ -40,6 +40,8 @@ namespace eBiser.WindowsUI.Donacije
             this.btnPretraziSadrzaj = new System.Windows.Forms.Button();
             this.PretragaPoSadrzaju = new System.Windows.Forms.Label();
             this.txtPretragaPoSadrzaju = new System.Windows.Forms.TextBox();
+            this.button1 = new System.Windows.Forms.Button();
+            this.btnDodaj = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dgvDonacije)).BeginInit();
             this.groupBox1.SuspendLayout();
             this.groupBox3.SuspendLayout();
@@ -167,11 +169,39 @@ namespace eBiser.WindowsUI.Donacije
             this.txtPretragaPoSadrzaju.Size = new System.Drawing.Size(349, 26);
             this.txtPretragaPoSadrzaju.TabIndex = 14;
             // 
+            // button1
+            // 
+            this.button1.BackColor = System.Drawing.Color.Red;
+            this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button1.ForeColor = System.Drawing.Color.White;
+            this.button1.Location = new System.Drawing.Point(13, 724);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(86, 41);
+            this.button1.TabIndex = 18;
+            this.button1.Text = "Izađi";
+            this.button1.UseVisualStyleBackColor = false;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
+            // 
+            // btnDodaj
+            // 
+            this.btnDodaj.BackColor = System.Drawing.Color.Green;
+            this.btnDodaj.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnDodaj.ForeColor = System.Drawing.Color.White;
+            this.btnDodaj.Location = new System.Drawing.Point(761, 724);
+            this.btnDodaj.Name = "btnDodaj";
+            this.btnDodaj.Size = new System.Drawing.Size(86, 41);
+            this.btnDodaj.TabIndex = 17;
+            this.btnDodaj.Text = "Dodaj";
+            this.btnDodaj.UseVisualStyleBackColor = false;
+            this.btnDodaj.Click += new System.EventHandler(this.btnDodaj_Click);
+            // 
             // frmDonacije
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(885, 774);
+            this.ClientSize = new System.Drawing.Size(861, 788);
+            this.Controls.Add(this.button1);
+            this.Controls.Add(this.btnDodaj);
             this.Controls.Add(this.groupBox3);
             this.Controls.Add(this.groupBox1);
             this.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -200,5 +230,7 @@ namespace eBiser.WindowsUI.Donacije
         private System.Windows.Forms.Label PretragaPoSadrzaju;
         private System.Windows.Forms.TextBox txtPretragaPoSadrzaju;
         private System.Windows.Forms.CheckBox chBox;
+        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button btnDodaj;
     }
 }

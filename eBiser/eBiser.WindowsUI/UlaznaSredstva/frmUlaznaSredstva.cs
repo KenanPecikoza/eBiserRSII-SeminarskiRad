@@ -65,6 +65,12 @@ namespace eBiser.WindowsUI.UlaznaSredstva
         {
             frmUlaznaSredstvaUpsert frmUlazna = new frmUlaznaSredstvaUpsert();
             frmUlazna.Show();
+            this.Close();
+        }
+
+        private void btnIzadji_Click_1(object sender, EventArgs e)
+        {
+            this.Close();
         }
     }
 }

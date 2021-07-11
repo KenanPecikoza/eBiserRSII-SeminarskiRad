@@ -36,6 +36,13 @@ namespace eBiser.WindowsUI.Obavijest
             this.btnPretraziSadrzaj = new System.Windows.Forms.Button();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.dgvObavijesti = new System.Windows.Forms.DataGridView();
+            this.Id = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Naslov = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Aktivna = new System.Windows.Forms.DataGridViewCheckBoxColumn();
+            this.DatumObjave = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.VrijediDo = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Sadržaj = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Kategorija = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.PretragaPoDatumu = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.dtmPretragaOd = new System.Windows.Forms.DateTimePicker();
@@ -49,13 +56,6 @@ namespace eBiser.WindowsUI.Obavijest
             this.label2 = new System.Windows.Forms.Label();
             this.cBoxKategorija = new System.Windows.Forms.ComboBox();
             this.button1 = new System.Windows.Forms.Button();
-            this.Id = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Naslov = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Aktivna = new System.Windows.Forms.DataGridViewCheckBoxColumn();
-            this.DatumObjave = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.VrijediDo = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Sadržaj = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Kategorija = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvObavijesti)).BeginInit();
             this.gbPretragaPoDatumu.SuspendLayout();
@@ -144,6 +144,56 @@ namespace eBiser.WindowsUI.Obavijest
             this.dgvObavijesti.Size = new System.Drawing.Size(827, 472);
             this.dgvObavijesti.TabIndex = 0;
             this.dgvObavijesti.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvObavijesti_CellDoubleClick);
+            // 
+            // Id
+            // 
+            this.Id.DataPropertyName = "Id";
+            this.Id.HeaderText = "Id";
+            this.Id.Name = "Id";
+            this.Id.ReadOnly = true;
+            this.Id.Visible = false;
+            // 
+            // Naslov
+            // 
+            this.Naslov.DataPropertyName = "Naslov";
+            this.Naslov.HeaderText = "Naslov";
+            this.Naslov.Name = "Naslov";
+            this.Naslov.ReadOnly = true;
+            // 
+            // Aktivna
+            // 
+            this.Aktivna.DataPropertyName = "Aktivna";
+            this.Aktivna.HeaderText = "Aktivna";
+            this.Aktivna.Name = "Aktivna";
+            this.Aktivna.ReadOnly = true;
+            // 
+            // DatumObjave
+            // 
+            this.DatumObjave.DataPropertyName = "DatumObjave";
+            this.DatumObjave.HeaderText = "Datum objave";
+            this.DatumObjave.Name = "DatumObjave";
+            this.DatumObjave.ReadOnly = true;
+            // 
+            // VrijediDo
+            // 
+            this.VrijediDo.DataPropertyName = "VrijediDo";
+            this.VrijediDo.HeaderText = "Vrijedi do";
+            this.VrijediDo.Name = "VrijediDo";
+            this.VrijediDo.ReadOnly = true;
+            // 
+            // Sadržaj
+            // 
+            this.Sadržaj.DataPropertyName = "Sadržaj";
+            this.Sadržaj.HeaderText = "Sadržaj";
+            this.Sadržaj.Name = "Sadržaj";
+            this.Sadržaj.ReadOnly = true;
+            // 
+            // Kategorija
+            // 
+            this.Kategorija.DataPropertyName = "Kategorija";
+            this.Kategorija.HeaderText = "Kategorija";
+            this.Kategorija.Name = "Kategorija";
+            this.Kategorija.ReadOnly = true;
             // 
             // PretragaPoDatumu
             // 
@@ -296,56 +346,7 @@ namespace eBiser.WindowsUI.Obavijest
             this.button1.TabIndex = 7;
             this.button1.Text = "Izađi";
             this.button1.UseVisualStyleBackColor = false;
-            // 
-            // Id
-            // 
-            this.Id.DataPropertyName = "Id";
-            this.Id.HeaderText = "Id";
-            this.Id.Name = "Id";
-            this.Id.ReadOnly = true;
-            this.Id.Visible = false;
-            // 
-            // Naslov
-            // 
-            this.Naslov.DataPropertyName = "Naslov";
-            this.Naslov.HeaderText = "Naslov";
-            this.Naslov.Name = "Naslov";
-            this.Naslov.ReadOnly = true;
-            // 
-            // Aktivna
-            // 
-            this.Aktivna.DataPropertyName = "Aktivna";
-            this.Aktivna.HeaderText = "Aktivna";
-            this.Aktivna.Name = "Aktivna";
-            this.Aktivna.ReadOnly = true;
-            // 
-            // DatumObjave
-            // 
-            this.DatumObjave.DataPropertyName = "DatumObjave";
-            this.DatumObjave.HeaderText = "Datum objave";
-            this.DatumObjave.Name = "DatumObjave";
-            this.DatumObjave.ReadOnly = true;
-            // 
-            // VrijediDo
-            // 
-            this.VrijediDo.DataPropertyName = "VrijediDo";
-            this.VrijediDo.HeaderText = "Vrijedi do";
-            this.VrijediDo.Name = "VrijediDo";
-            this.VrijediDo.ReadOnly = true;
-            // 
-            // Sadržaj
-            // 
-            this.Sadržaj.DataPropertyName = "Sadržaj";
-            this.Sadržaj.HeaderText = "Sadržaj";
-            this.Sadržaj.Name = "Sadržaj";
-            this.Sadržaj.ReadOnly = true;
-            // 
-            // Kategorija
-            // 
-            this.Kategorija.DataPropertyName = "Kategorija";
-            this.Kategorija.HeaderText = "Kategorija";
-            this.Kategorija.Name = "Kategorija";
-            this.Kategorija.ReadOnly = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click_1);
             // 
             // frmObavijesti
             // 
