@@ -56,6 +56,7 @@ namespace eBiser.WindowsUI.Donacije
             this.Obavijesti = new System.Windows.Forms.GroupBox();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.errorProvider = new System.Windows.Forms.ErrorProvider(this.components);
+            this.btnPonisti = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvDonacije)).BeginInit();
             this.Obavijesti.SuspendLayout();
@@ -318,6 +319,7 @@ namespace eBiser.WindowsUI.Donacije
             // 
             // groupBox2
             // 
+            this.groupBox2.Controls.Add(this.btnPonisti);
             this.groupBox2.Controls.Add(this.label2);
             this.groupBox2.Controls.Add(this.txtObrazlozenje);
             this.groupBox2.Controls.Add(this.btnOdbij);
@@ -332,6 +334,19 @@ namespace eBiser.WindowsUI.Donacije
             // errorProvider
             // 
             this.errorProvider.ContainerControl = this;
+            // 
+            // btnPonisti
+            // 
+            this.btnPonisti.BackColor = System.Drawing.Color.DeepSkyBlue;
+            this.btnPonisti.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnPonisti.ForeColor = System.Drawing.Color.White;
+            this.btnPonisti.Location = new System.Drawing.Point(299, 143);
+            this.btnPonisti.Name = "btnPonisti";
+            this.btnPonisti.Size = new System.Drawing.Size(86, 41);
+            this.btnPonisti.TabIndex = 28;
+            this.btnPonisti.Text = "Poništi";
+            this.btnPonisti.UseVisualStyleBackColor = false;
+            this.btnPonisti.Click += new System.EventHandler(this.btnPonisti_Click);
             // 
             // frmDonacijeUpsert
             // 
@@ -387,5 +402,6 @@ namespace eBiser.WindowsUI.Donacije
         private System.Windows.Forms.DataGridViewTextBoxColumn Donator;
         private System.Windows.Forms.DataGridViewTextBoxColumn OpisDonacije;
         private System.Windows.Forms.ErrorProvider errorProvider;
+        private System.Windows.Forms.Button btnPonisti;
     }
 }

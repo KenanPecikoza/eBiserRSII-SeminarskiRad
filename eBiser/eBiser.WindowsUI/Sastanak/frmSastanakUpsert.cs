@@ -26,28 +26,50 @@ namespace eBiser.WindowsUI.Sastanak
         }
         private async Task LoadOsoblje()
         {
-            var result = await _apiServiceOsoblje.Get<List<Data.OsobljeDTO>>(null);
-            cBoxZapisnicar.DataSource = result;
-            cBoxZapisnicar.DisplayMember = "KorisnickoIme";
-            cBoxZapisnicar.ValueMember = "Id";
-        }
+            try
+            {
+                var result = await _apiServiceOsoblje.Get<List<Data.OsobljeDTO>>(null);
+                cBoxZapisnicar.DataSource = result;
+                cBoxZapisnicar.DisplayMember = "KorisnickoIme";
+                cBoxZapisnicar.ValueMember = "Id";
+            }
+            catch (Exception)
+            {
 
+            }
+        }
         private async Task LoadForm(int? Id)
         {
-            var result = await _apiService.GetById<Data.Sastanak>(Id);
-            txtZapisnik.Text = result.Zapisnik;
-            cBoxZapisnicar.SelectedValue = result.OsobljeId;
-            dtmDatumOdzavanja.Value = result.DatumOdrzavanja;
-            txtNaslov.Text = result.Naslov;
+            try
+            {
+                var result = await _apiService.GetById<Data.Sastanak>(Id);
+                txtZapisnik.Text = result.Zapisnik;
+                cBoxZapisnicar.SelectedValue = result.OsobljeId;
+                dtmDatumOdzavanja.Value = result.DatumOdrzavanja;
+                txtNaslov.Text = result.Naslov;
+            }
+            catch (Exception)
+            {
+
+            }
+
 
         }
         private async Task LoadDGV()
         {
-            dgvSastanci.AutoGenerateColumns = false;
-            var result = await _apiService.Get<List<Data.Sastanak>>(null);
-            dgvSastanci.DataSource = result;
-            dgvSastanci.ClearSelection();
-            dgvSastanci.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCells;
+            try
+            {
+                dgvSastanci.AutoGenerateColumns = false;
+                var result = await _apiService.Get<List<Data.Sastanak>>(null);
+                dgvSastanci.DataSource = result;
+                dgvSastanci.ClearSelection();
+                dgvSastanci.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCells;
+            }
+            catch (Exception)
+            {
+
+            }
+
         }
 
         private async void frmSastanakUpsert_Load(object sender, EventArgs e)
@@ -71,13 +93,30 @@ namespace eBiser.WindowsUI.Sastanak
                 request.Naslov = txtNaslov.Text;
                 if (_id.HasValue)
                 {
-                    await _apiService.Update<Data.Sastanak>(_id ?? 0, request);
-                    MessageBox.Show("Uspjesno uređen sastanak ");
+                    try
+                    {
+                        await _apiService.Update<Data.Sastanak>(_id ?? 0, request);
+                        MessageBox.Show("Uspjesno uređeni podaci o sastanku sastanak ");
+
+                    }
+                    catch (Exception)
+                    {
+                        MessageBox.Show("Podaci ne odgovaraju");
+
+                    }
                 }
                 else
                 {
-                    await _apiService.Insert<Data.Sastanak>(request);
-                    MessageBox.Show("Uspjesno dodan sastanak");
+                    try
+                    {
+                        await _apiService.Insert<Data.Sastanak>(request);
+                        MessageBox.Show("Uspjesno dodan sastanak");
+                    }
+                    catch (Exception)
+                    {
+                        MessageBox.Show("Podaci ne odgovaraju");
+
+                    }
                 }
                 await LoadDGV();
             }

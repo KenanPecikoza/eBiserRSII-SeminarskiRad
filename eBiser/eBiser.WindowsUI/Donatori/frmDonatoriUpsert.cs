@@ -35,25 +35,41 @@ namespace eBiser.WindowsUI.Donatori
         DonatorUpsertRequest insertRequest = new DonatorUpsertRequest();
         private async Task LoadDGV()
         {
-            dgvClanovi.AutoGenerateColumns = false;
-            dgvClanovi.DataSource = await _apiService.Get<List<Data.DonatorDTO>>(null);
-            dgvClanovi.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCells;
+            try
+            {
+                dgvClanovi.AutoGenerateColumns = false;
+                dgvClanovi.DataSource = await _apiService.Get<List<Data.DonatorDTO>>(null);
+                dgvClanovi.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCells;
+            }
+            catch (Exception)
+            {
+
+            }
+
         }
         private async Task LoadForma()
         {
-            var entity = await _apiService.GetById<Data.DonatorDTO>(_id);
-            _korisnikId = entity.KorisnikId;
-            txtEmail.Text = entity.Email;
-            txtIme.Text = entity.Ime;
-            txtPrezime.Text = entity.Prezime;
-            cBoxAktivan.Checked = entity.Aktivan;
-            dtpDatumRodjenja.Value = entity.DatumRodjenja.Date;
-            pictureBox.Image = photoHelper.ByteArrayToImage(entity.Photo);
-            pictureBox.SizeMode = PictureBoxSizeMode.StretchImage;
-            txtPhoto.Text = "";
-            txtKorisnickoIme.Text = entity.KorisnickoIme;
-            txtOpisProfila.Text = entity.OpisProfila;
-            txtBrojTelefona.Text = entity.BrojTelefona;
+            try
+            {
+                var entity = await _apiService.GetById<Data.DonatorDTO>(_id);
+                _korisnikId = entity.KorisnikId;
+                txtEmail.Text = entity.Email;
+                txtIme.Text = entity.Ime;
+                txtPrezime.Text = entity.Prezime;
+                cBoxAktivan.Checked = entity.Aktivan;
+                dtpDatumRodjenja.Value = entity.DatumRodjenja.Date;
+                pictureBox.Image = photoHelper.ByteArrayToImage(entity.Photo);
+                pictureBox.SizeMode = PictureBoxSizeMode.StretchImage;
+                txtPhoto.Text = "";
+                txtKorisnickoIme.Text = entity.KorisnickoIme;
+                txtOpisProfila.Text = entity.OpisProfila;
+                txtBrojTelefona.Text = entity.BrojTelefona;
+            }
+            catch (Exception)
+            {
+
+            }
+
         }
 
         private async void frmDonatoriUpsert_Load(object sender, EventArgs e)

@@ -35,31 +35,55 @@ namespace eBiser.WindowsUI.Osoblje
         }
         private async Task LoadForm()
         {
-            var result = await _apiService.GetById<Data.OsobljeDTO>(_id);
-            txtIme.Text = result.Ime;
-            txtPrezime.Text = result.Prezime;
-            cBoxNazivDjelatnosti.SelectedValue = result.DjelatnostId;
-            dtmDatumPocetka.Value = result.DatumPocetkaAngazmana;
-            pictureBox.Image = photoHelper.ByteArrayToImage(result.Photo);
-            pictureBox.SizeMode = PictureBoxSizeMode.StretchImage;
-            txtKorisnickoIme.Text = result.KorisnickoIme;
-            txtEmail.Text = result.Email;
+            try
+            {
+                var result = await _apiService.GetById<Data.OsobljeDTO>(_id);
+                txtIme.Text = result.Ime;
+                txtPrezime.Text = result.Prezime;
+                cBoxNazivDjelatnosti.SelectedValue = result.DjelatnostId;
+                dtmDatumPocetka.Value = result.DatumPocetkaAngazmana;
+                pictureBox.Image = photoHelper.ByteArrayToImage(result.Photo);
+                pictureBox.SizeMode = PictureBoxSizeMode.StretchImage;
+                txtKorisnickoIme.Text = result.KorisnickoIme;
+                txtEmail.Text = result.Email;
+            }
+            catch (Exception)
+            {
+
+            }
+
         }
         private async Task LoadDGV()
         {
-            dgvOsoblje.AutoGenerateColumns = false;
-            var result = await _apiService.Get<List<Data.OsobljeDTO>>(null);
-            dgvOsoblje.DataSource = result;
-            dgvOsoblje.ClearSelection();
-            dgvOsoblje.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCells;
+            try
+            {
+                dgvOsoblje.AutoGenerateColumns = false;
+                var result = await _apiService.Get<List<Data.OsobljeDTO>>(null);
+                dgvOsoblje.DataSource = result;
+                dgvOsoblje.ClearSelection();
+                dgvOsoblje.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCells;
+            }
+            catch (Exception)
+            {
+
+            }
+
 
         }
         private async Task LoadDjelatnosti()
         {
-            var djelatnosti = await _apiServiceDjelatnost.Get<List<Data.DjelatnostOsoblje>>(null);
-            cBoxNazivDjelatnosti.DataSource = djelatnosti;
-            cBoxNazivDjelatnosti.DisplayMember = "NazivDjelatnosti";
-            cBoxNazivDjelatnosti.ValueMember = "Id";
+            try
+            {
+                var djelatnosti = await _apiServiceDjelatnost.Get<List<Data.DjelatnostOsoblje>>(null);
+                cBoxNazivDjelatnosti.DataSource = djelatnosti;
+                cBoxNazivDjelatnosti.DisplayMember = "NazivDjelatnosti";
+                cBoxNazivDjelatnosti.ValueMember = "Id";
+            }
+            catch (Exception)
+            {
+
+            }
+
         }
 
 

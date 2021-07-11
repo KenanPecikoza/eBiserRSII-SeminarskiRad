@@ -37,9 +37,16 @@ namespace eBiser.WindowsUI.Clanovi
         ClanUpsertRequest insertRequest = new ClanUpsertRequest();
         private async Task LoadDGVClanovi()
         {
-            dgvClanovi.AutoGenerateColumns = false;
-            dgvClanovi.DataSource = await _apiService.Get<List<Data.ClanDTO>>(null);
-            dgvClanovi.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCells;
+            try
+            {
+                dgvClanovi.AutoGenerateColumns = false;
+                dgvClanovi.DataSource = await _apiService.Get<List<Data.ClanDTO>>(null);
+                dgvClanovi.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCells;
+            }
+            catch (Exception)
+            {
+
+            }
 
         }
         private async Task LoadFormaClan()
@@ -73,37 +80,79 @@ namespace eBiser.WindowsUI.Clanovi
 
         private async void btnSave_Click(object sender, EventArgs e)
         {
-            
-
-
                 if (_id.HasValue && _korisnikId.HasValue)
                 {
                     updateRequest.Ime = txtIme.Text;
-                    updateRequest.Prezime = txtPrezime.Text;
-                    updateRequest.Email = txtEmail.Text;
-                    updateRequest.DatumRodjenja = dtpDatumRodjenja.Value.Date;
-                    updateRequest.BrojTelefona = txtBrojTelefona.Text;
-                    updateRequest.Aktivan = cBoxAktivan.Checked;
-                    updateRequest.Photo = photoHelper.ImageToByteArray(pictureBox.Image);
-                    updateRequest.PhotoThumb = photoHelper.ImageToByteArray(pictureBox.Image);
-                    updateRequest.Dijagnoza = txtDijagnoza.Text;
-                    updateRequest.KorisnickoIme = txtKorisnickoIme.Text;
-                    var korisnik=   await _apiService.GetById<Data.ClanDTO>(_id);
+                updateRequest.Prezime = txtPrezime.Text;
+                updateRequest.Email = txtEmail.Text;
+                updateRequest.DatumRodjenja = dtpDatumRodjenja.Value.Date;
+                updateRequest.BrojTelefona = txtBrojTelefona.Text;
+                updateRequest.Aktivan = cBoxAktivan.Checked;
+                updateRequest.Photo = photoHelper.ImageToByteArray(pictureBox.Image);
+                updateRequest.PhotoThumb = photoHelper.ImageToByteArray(pictureBox.Image);
+                updateRequest.Dijagnoza = txtDijagnoza.Text;
+                updateRequest.KorisnickoIme = txtKorisnickoIme.Text;
+                var korisnik=   await _apiService.GetById<Data.ClanDTO>(_id);
+                try
+                {
+                    if (!ValidacijaEmail && korisnik.Email!=txtEmail.Text)
+                    {
+                        MessageBox.Show("Email ne odgovara");
+                        throw new Exception();
+                    }
+                    if (!ValidacijaKorisnickoIme && korisnik.KorisnickoIme != txtKorisnickoIme.Text)
+                    {
+                        MessageBox.Show("Korisničko ime ne odgovara");
+                        throw new Exception();
+                    }
+                    await _apiService.Update<Data.ClanDTO>(_korisnikId ?? 0, updateRequest);
+                    MessageBox.Show("Uspjesno uređen član");
+
+
+                }
+                catch (Exception)
+                {
+                    if (ValidacijaEmail)
+                    {
+                        MessageBox.Show("Podaci ne odgovaraju");
+                    }
+                    if (ValidacijaKorisnickoIme)
+                    {
+                        MessageBox.Show("Podaci ne odgovaraju");
+                    }
+                    await LoadFormaClan();
+                }
+            }
+            else
+            {
+                if (this.ValidateChildren()) {
+
+                    insertRequest.Ime = txtIme.Text;
+                    insertRequest.Prezime = txtPrezime.Text;
+                    insertRequest.Email = txtEmail.Text;
+                    insertRequest.DatumRodjenja = dtpDatumRodjenja.Value.Date;
+                    insertRequest.BrojTelefona = txtBrojTelefona.Text;
+                    insertRequest.Aktivan = cBoxAktivan.Checked;
+                    insertRequest.Photo = photoHelper.ImageToByteArray(pictureBox.Image);
+                    insertRequest.PhotoThumb = photoHelper.ImageToByteArray(pictureBox.Image);
+                    insertRequest.Dijagnoza = txtDijagnoza.Text;
+                    insertRequest.KorisnickoIme = txtKorisnickoIme.Text;
+                    insertRequest.Password = txtIme.Text + txtPrezime.Text + "1$Aa";
+                    insertRequest.PasswordPotvrda = txtIme.Text + txtPrezime.Text + "1$Aa";
                     try
                     {
-                        if (!ValidacijaEmail && korisnik.Email!=txtEmail.Text)
+                        if (!ValidacijaEmail)
                         {
                             MessageBox.Show("Email ne odgovara");
                             throw new Exception();
                         }
-                        if (!ValidacijaKorisnickoIme && korisnik.KorisnickoIme != txtKorisnickoIme.Text)
+                        if (!ValidacijaKorisnickoIme)
                         {
                             MessageBox.Show("Korisničko ime ne odgovara");
                             throw new Exception();
                         }
-                        await _apiService.Update<Data.ClanDTO>(_korisnikId ?? 0, updateRequest);
-                        MessageBox.Show("Uspjesno uređen član");
-
+                        await _apiService.Insert<Data.ClanDTO>(insertRequest);
+                        MessageBox.Show("Uspjesno dodan član");
 
                     }
                     catch (Exception)
@@ -116,54 +165,9 @@ namespace eBiser.WindowsUI.Clanovi
                         {
                             MessageBox.Show("Podaci ne odgovaraju");
                         }
-                        await LoadFormaClan();
                     }
                 }
-                else
-                {
-                    if (this.ValidateChildren()) {
-
-                        insertRequest.Ime = txtIme.Text;
-                        insertRequest.Prezime = txtPrezime.Text;
-                        insertRequest.Email = txtEmail.Text;
-                        insertRequest.DatumRodjenja = dtpDatumRodjenja.Value.Date;
-                        insertRequest.BrojTelefona = txtBrojTelefona.Text;
-                        insertRequest.Aktivan = cBoxAktivan.Checked;
-                        insertRequest.Photo = photoHelper.ImageToByteArray(pictureBox.Image);
-                        insertRequest.PhotoThumb = photoHelper.ImageToByteArray(pictureBox.Image);
-                        insertRequest.Dijagnoza = txtDijagnoza.Text;
-                        insertRequest.KorisnickoIme = txtKorisnickoIme.Text;
-                        insertRequest.Password = txtIme.Text + txtPrezime.Text + "1$Aa";
-                        insertRequest.PasswordPotvrda = txtIme.Text + txtPrezime.Text + "1$Aa";
-                        try
-                        {
-                            if (!ValidacijaEmail)
-                            {
-                                MessageBox.Show("Email ne odgovara");
-                                throw new Exception();
-                            }
-                            if (!ValidacijaKorisnickoIme)
-                            {
-                                MessageBox.Show("Korisničko ime ne odgovara");
-                                throw new Exception();
-                            }
-                            await _apiService.Insert<Data.ClanDTO>(insertRequest);
-                            MessageBox.Show("Uspjesno dodan član");
-
-                        }
-                        catch (Exception)
-                        {
-                            if (ValidacijaEmail)
-                            {
-                                MessageBox.Show("Podaci ne odgovaraju");
-                            }
-                            if (ValidacijaKorisnickoIme)
-                            {
-                                MessageBox.Show("Podaci ne odgovaraju");
-                            }
-                        }
-                    }
-                }
+            }
             
             await LoadDGVClanovi();
         }
@@ -171,9 +175,6 @@ namespace eBiser.WindowsUI.Clanovi
         {
             this.Close();
         }
-
-
-
 
         private void btnDodajPhoto_Click(object sender, EventArgs e)
         {

@@ -25,28 +25,44 @@ namespace eBiser.WindowsUI.UlaznaSredstva
         }
         private async Task LoadDGV()
         {
-            var result = await _apiService.Get<List<Data.UlaznaSredstva>>(null);
-            dgvUlaznaSredstva.DataSource = result;
-            dgvUlaznaSredstva.AutoGenerateColumns = false;
-            dgvUlaznaSredstva.AutoSize = true;
+            try
+            {
+                var result = await _apiService.Get<List<Data.UlaznaSredstva>>(null);
+                dgvUlaznaSredstva.DataSource = result;
+                dgvUlaznaSredstva.AutoGenerateColumns = false;
+                dgvUlaznaSredstva.AutoSize = true;
+            }
+            catch (Exception)
+            {
+
+            }
+
 
         }
         private async Task LoadForm(int? Id)
         {
-            var result = await _apiService.GetById<Data.IzlaznaSredstva>(Id);
-            txtNaslov.Text = result.Naslov;
-            txtOpis.Text = result.Opis;
-            numIznos.Value = (decimal)result.Količina;
-            dtmDatum.Value = result.Datum;
-            flowLayoutPanel1.Controls.Clear();
-            foreach (var file in result.Fotografije)
+            try
             {
-                PictureBox pb = new PictureBox();
-                pb.Image = photoHelper.ByteArrayToImage(file);
-                pb.SizeMode = PictureBoxSizeMode.StretchImage;
-                flowLayoutPanel1.AutoScroll = true;
-                flowLayoutPanel1.Controls.Add(pb);
+                var result = await _apiService.GetById<Data.IzlaznaSredstva>(Id);
+                txtNaslov.Text = result.Naslov;
+                txtOpis.Text = result.Opis;
+                numIznos.Value = (decimal)result.Količina;
+                dtmDatum.Value = result.Datum;
+                flowLayoutPanel1.Controls.Clear();
+                foreach (var file in result.Fotografije)
+                {
+                    PictureBox pb = new PictureBox();
+                    pb.Image = photoHelper.ByteArrayToImage(file);
+                    pb.SizeMode = PictureBoxSizeMode.StretchImage;
+                    flowLayoutPanel1.AutoScroll = true;
+                    flowLayoutPanel1.Controls.Add(pb);
+                }
             }
+            catch (Exception)
+            {
+
+            }
+
         }
         private async  void frmUlaznaSredstvaUpsert_Load(object sender, EventArgs e)
         {
@@ -70,16 +86,34 @@ namespace eBiser.WindowsUI.UlaznaSredstva
                 request.OsobljeId = APIService.Id;
                 if (_id.HasValue)
                 {
-                    await _apiService.Update<UlaznaSredstvaUpsertRequest>(_id ?? 0, request);
+                    try
+                    {
+                        await _apiService.Update<UlaznaSredstvaUpsertRequest>(_id ?? 0, request);
+                        MessageBox.Show("Uspješno izmjenjeni podaci o ulaznim sredstvima");
+
+                    }
+                    catch (Exception)
+                    {
+                        MessageBox.Show("Podaci ne odgovaraju");
+
+                    }
                 }
                 else
                 {
-                    await _apiService.Insert<IzlaznaSredstvaUpsertRequest>(request);
+                    try
+                    {
+                        await _apiService.Insert<IzlaznaSredstvaUpsertRequest>(request);
+                        MessageBox.Show("Uspješno dodani podaci o ulaznim sredstvima");
+
+                    }
+                    catch (Exception)
+                    {
+                        MessageBox.Show("Podaci ne odgovaraju");
+                    }
                 }
                 await LoadDGV();
                 dgvUlaznaSredstva.ClearSelection();
-            }
-          
+            }       
         }
 
         private void btnPonisti_Click(object sender, EventArgs e)

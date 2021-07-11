@@ -25,15 +25,23 @@ namespace eBiser.WindowsUI.Projekti
         }
         private async Task LoadForm()
         {
-            var result = await _APIService.GetById<Data.Projekti>(_id);
-            txtNazivProjekta.Text = result.NazivProjekta;
-            txtRokIzvršenja.Text = result.RokIzvrsenja;
-            dtmIzvrsenja.Value = result.DatumIzvrsenja;
-            dtmPrijave.Value = result.DatumPrijave;
-            numCijena.Value =(decimal)result.CijenaProjekta;
-            numOdobrenaSredstva.Value =(decimal)result.OdobrenaSredstva;
-            checkBox1.Checked = result.Prihvaćen;
-            cBoxKreatori.SelectedValue = result.OsobljeId;
+            try
+            {
+                var result = await _APIService.GetById<Data.Projekti>(_id);
+                txtNazivProjekta.Text = result.NazivProjekta;
+                txtRokIzvršenja.Text = result.RokIzvrsenja;
+                dtmIzvrsenja.Value = result.DatumIzvrsenja;
+                dtmPrijave.Value = result.DatumPrijave;
+                numCijena.Value = (decimal)result.CijenaProjekta;
+                numOdobrenaSredstva.Value = (decimal)result.OdobrenaSredstva;
+                checkBox1.Checked = result.Prihvaćen;
+                cBoxKreatori.SelectedValue = result.OsobljeId;
+            }
+            catch (Exception)
+            {
+
+            }
+
         }
         private async Task LoadDGV()
         {
@@ -48,9 +56,7 @@ namespace eBiser.WindowsUI.Projekti
             catch (Exception)
             {
 
-            }
-
-            
+            }            
         }
         private async Task LoadComboBox() 
         {
@@ -65,13 +71,7 @@ namespace eBiser.WindowsUI.Projekti
             {
 
             }
-
-
         }
-
-
-
-
         private async void dgvProjekti_CellClick(object sender, DataGridViewCellEventArgs e)
         {
             try
@@ -123,15 +123,31 @@ namespace eBiser.WindowsUI.Projekti
                 upsertRequest.DatumPrijave = dtmPrijave.Value.Date;
                 if (_id.HasValue)
                 {
-                    await _APIService.Update<Data.Projekti>(_id ?? 0, upsertRequest);
-                    MessageBox.Show("Uspjesno uređeni podaci o projektu");
+                    try
+                    {
+                        await _APIService.Update<Data.Projekti>(_id ?? 0, upsertRequest);
+                        MessageBox.Show("Uspjesno uređeni podaci o projektu");
+                    }
+                    catch (Exception)
+                    {
+                        MessageBox.Show("Podaci ne odgovaraju");
+                    }
+
                 }
                 else
                 {
-                    await _APIService.Insert<Data.Projekti>(upsertRequest);
-                    MessageBox.Show("Uspjesno dodani podaci o projektu");
-                }
+                    try
+                    {
+                        await _APIService.Insert<Data.Projekti>(upsertRequest);
+                        MessageBox.Show("Uspjesno dodani podaci o projektu");
+                    }
+                    catch (Exception)
+                    {
+                        MessageBox.Show("Podaci ne odgovaraju");
 
+                    }
+
+                }
                 await LoadDGV();
             }
 

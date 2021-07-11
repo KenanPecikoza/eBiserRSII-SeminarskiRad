@@ -46,13 +46,21 @@ namespace eBiser.WindowsUI.Clanarine
         }
         private async Task LoadForma(int id)
         {
-            var clanarine = await _apiServiceClanarina.GetById<Data.Clanarina>(_id);
+            try
+            {
+                var clanarine = await _apiServiceClanarina.GetById<Data.Clanarina>(_id);
 
-            dtmDatumUplate.Value = clanarine.DatumUplate;
-            numGodina.Value = clanarine.Godina;
-            numMjesec.Value = clanarine.Mjesec;
-            numIznosUplate.Value = (decimal)clanarine.Iznos;
-            cBoxClan.SelectedValue = clanarine.ClanId;
+                dtmDatumUplate.Value = clanarine.DatumUplate;
+                numGodina.Value = clanarine.Godina;
+                numMjesec.Value = clanarine.Mjesec;
+                numIznosUplate.Value = (decimal)clanarine.Iznos;
+                cBoxClan.SelectedValue = clanarine.ClanId;
+            }
+            catch (Exception)
+            {
+
+            }
+
         }
 
 
@@ -78,11 +86,29 @@ namespace eBiser.WindowsUI.Clanarine
 
             if (_id.HasValue)
             {
-                await _apiServiceClanarina.Update<ClanarinaUpsertRequest>(_id??0,request);
+                try
+                {
+                    await _apiServiceClanarina.Update<ClanarinaUpsertRequest>(_id ?? 0, request);
+                    MessageBox.Show("Uspješno uređena članarina");
+                }
+                catch (Exception)
+                {
+
+                    MessageBox.Show("Pogrešni podaci");
+                }
             }
             else
             {
-                await _apiServiceClanarina.Insert<ClanarinaUpsertRequest>(request);
+                try
+                {
+                    await _apiServiceClanarina.Insert<ClanarinaUpsertRequest>(request);
+                    MessageBox.Show("Uspješno dodana članarina");
+
+                }
+                catch (Exception)
+                {
+                    MessageBox.Show("Pogrešni podaci");
+                }
             }
             await LoadClanarine(Int32.Parse(cBoxClan.SelectedValue.ToString()));
         }

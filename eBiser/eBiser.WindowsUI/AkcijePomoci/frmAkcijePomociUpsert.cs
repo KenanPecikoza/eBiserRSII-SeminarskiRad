@@ -26,28 +26,44 @@ namespace eBiser.WindowsUI.AkcijePomoci
         }
         private async Task PopuniFormu(int? id)
         {
-            var entity = await _apiService.GetById<Data.AkcijePomoci>(id);
-            txtIme.Text = entity.Ime;
-            txtPrezime.Text = entity.Prezime;
-            numTrazenaCifra.Value = (decimal)entity.TraženaCifra;
-            numSakupljeno.Value = (decimal)entity.Skupljeno;
-            chBoxAktivno.Checked = entity.Aktivno;
-            pictureBox1.Image = photoHelper.ByteArrayToImage(entity.Fotografija);
-            pictureBox1.SizeMode = PictureBoxSizeMode.StretchImage;
-            txtPhoto.Text = "";
+            try
+            {
+                var entity = await _apiService.GetById<Data.AkcijePomoci>(id);
+                txtIme.Text = entity.Ime;
+                txtPrezime.Text = entity.Prezime;
+                numTrazenaCifra.Value = (decimal)entity.TraženaCifra;
+                numSakupljeno.Value = (decimal)entity.Skupljeno;
+                chBoxAktivno.Checked = entity.Aktivno;
+                pictureBox1.Image = photoHelper.ByteArrayToImage(entity.Fotografija);
+                pictureBox1.SizeMode = PictureBoxSizeMode.StretchImage;
+                txtPhoto.Text = "";
+            }
+            catch (Exception)
+            {
+
+            }
+
         }
         private async Task PopuniDGV()
         {
-            var result = await _apiService.Get<List<Data.AkcijePomoci>>(null);
-            dgvAkcijePomoci.AutoGenerateColumns = false;
-            dgvAkcijePomoci.DataSource = result;
-            dgvAkcijePomoci.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCells;
+            try
+            {
+                var result = await _apiService.Get<List<Data.AkcijePomoci>>(null);
+                dgvAkcijePomoci.AutoGenerateColumns = false;
+                dgvAkcijePomoci.DataSource = result;
+                dgvAkcijePomoci.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCells;
+            }
+            catch (Exception)
+            {
+
+            }
+
 
         }
 
         private async void frmAkcijePomociUpsert_Load(object sender, EventArgs e)
         {
-             await PopuniDGV();
+            await PopuniDGV();
             if (_id.HasValue)
             {
                 await PopuniFormu(_id ?? 0);

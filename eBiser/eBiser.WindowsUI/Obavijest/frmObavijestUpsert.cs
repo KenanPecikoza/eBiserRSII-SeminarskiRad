@@ -28,31 +28,45 @@ namespace eBiser.WindowsUI.Obavijest
         private async Task LoadDGVObavijesti()
         {
             //dgvObavijesti.AutoGenerateColumns = false;
-            
-            dgvObavijesti.DataSource = await _apiService.Get<List<Data.Obavijest>>(null);
-            dgvObavijesti.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCells;
-            dgvObavijesti.ClearSelection();
+            try
+            {
+                dgvObavijesti.DataSource = await _apiService.Get<List<Data.Obavijest>>(null);
+                dgvObavijesti.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCells;
+                dgvObavijesti.ClearSelection();
+            }
+            catch (Exception)
+            {
+
+            }
+
         }
         private async Task LoadFormaObavijest(int? id)
         {
-
-            flowLayoutPanel1.Controls.Clear();
-            var entity = await _apiService.GetById<Data.Obavijest>(_id);
-            dtmPocetak.Value = entity.DatumObjave.Date;
-            dtmKraj.Value = entity.VrijediDo.Date;
-            txtSadržaj.Text = entity.Sadržaj;
-            txtNaslov.Text = entity.Naslov;
-            cbxAktivna.Checked = entity.Aktivna;
-            cBoxKategorija.SelectedValue = entity.KategorijaId;
-
-            foreach (var p in entity.Fotografije)
+            try
             {
-                PictureBox pb = new PictureBox();
-                pb.Image = photoHelper.ByteArrayToImage(p);
-                flowLayoutPanel1.Controls.Add(pb);
-                flowLayoutPanel1.AutoScroll = true;
-                pb.SizeMode = PictureBoxSizeMode.StretchImage;
+                flowLayoutPanel1.Controls.Clear();
+                var entity = await _apiService.GetById<Data.Obavijest>(_id);
+                dtmPocetak.Value = entity.DatumObjave.Date;
+                dtmKraj.Value = entity.VrijediDo.Date;
+                txtSadržaj.Text = entity.Sadržaj;
+                txtNaslov.Text = entity.Naslov;
+                cbxAktivna.Checked = entity.Aktivna;
+                cBoxKategorija.SelectedValue = entity.KategorijaId;
+
+                foreach (var p in entity.Fotografije)
+                {
+                    PictureBox pb = new PictureBox();
+                    pb.Image = photoHelper.ByteArrayToImage(p);
+                    flowLayoutPanel1.Controls.Add(pb);
+                    flowLayoutPanel1.AutoScroll = true;
+                    pb.SizeMode = PictureBoxSizeMode.StretchImage;
+                }
             }
+            catch (Exception)
+            {
+
+            }
+           
         }
 
         ObavijestInsertRequest request = new ObavijestInsertRequest();

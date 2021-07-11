@@ -25,31 +25,44 @@ namespace eBiser.WindowsUI.IzlaznaSerdstva
         }
         private async Task LoadDGV()
         {
-            var result = await _apiService.Get<List<Data.IzlaznaSredstva>>(null);
-            dgvIzlaznaSredstva.DataSource = result;
-            dgvIzlaznaSredstva.AutoGenerateColumns = false;
-            dgvIzlaznaSredstva.AutoSize = true;
-            dgvIzlaznaSredstva.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCells;
-
-
-        }
-        private async Task LoadForm(int? Id)
-        {
-            var result = await _apiService.GetById<Data.IzlaznaSredstva>(Id);
-            txtNaslov.Text = result.Naslov;
-            txtOpis.Text = result.Opis;
-            numIznos.Value =(decimal) result.Količina;
-            dtmDatum.Value = result.Datum;
-            dgvIzlaznaSredstva.ClearSelection();
-            flowLayoutPanel1.Controls.Clear();
-            foreach (var file in result.Fotografije)
+            try
             {
-                PictureBox pb = new PictureBox();
-                pb.Image = photoHelper.ByteArrayToImage(file);
-                pb.SizeMode = PictureBoxSizeMode.StretchImage;
-                flowLayoutPanel1.AutoScroll = true;
-                flowLayoutPanel1.Controls.Add(pb);
+                var result = await _apiService.Get<List<Data.IzlaznaSredstva>>(null);
+                dgvIzlaznaSredstva.DataSource = result;
+                dgvIzlaznaSredstva.AutoGenerateColumns = false;
+                dgvIzlaznaSredstva.AutoSize = true;
+                dgvIzlaznaSredstva.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCells;
             }
+            catch (Exception)
+            {
+
+            }
+        }
+        private async Task LoadForm()
+        {
+            try
+            {
+                var result = await _apiService.GetById<Data.IzlaznaSredstva>(_id);
+                txtNaslov.Text = result.Naslov;
+                txtOpis.Text = result.Opis;
+                numIznos.Value = (decimal)result.Količina;
+                dtmDatum.Value = result.Datum;
+                dgvIzlaznaSredstva.ClearSelection();
+                flowLayoutPanel1.Controls.Clear();
+                foreach (var file in result.Fotografije)
+                {
+                    PictureBox pb = new PictureBox();
+                    pb.Image = photoHelper.ByteArrayToImage(file);
+                    pb.SizeMode = PictureBoxSizeMode.StretchImage;
+                    flowLayoutPanel1.AutoScroll = true;
+                    flowLayoutPanel1.Controls.Add(pb);
+                }
+            }
+            catch (Exception)
+            {
+
+            }
+
         }
 
 
@@ -59,7 +72,7 @@ namespace eBiser.WindowsUI.IzlaznaSerdstva
             dgvIzlaznaSredstva.ClearSelection();
             if (_id.HasValue)
             {
-                await LoadForm(_id);
+                await LoadForm();
             }
 
         }
@@ -126,7 +139,7 @@ namespace eBiser.WindowsUI.IzlaznaSerdstva
             try
             {
                 _id = Int32.Parse(dgvIzlaznaSredstva.SelectedRows[0].Cells[0].Value.ToString());
-                await LoadForm(_id);
+                await LoadForm();
             }
             catch (Exception)
             {

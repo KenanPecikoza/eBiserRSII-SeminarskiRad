@@ -25,22 +25,38 @@ namespace eBiser.WindowsUI.Donacije
         }
         private async Task LoadDGV()
         {
-            dgvDonacije.AutoGenerateColumns=false;
-            dgvDonacije.DataSource = await _apiServiceDonacije.Get<List<Data.Donacije>>(null);
-            dgvDonacije.ClearSelection();
-            dgvDonacije.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCells;
+            try
+            {
+                dgvDonacije.AutoGenerateColumns = false;
+                dgvDonacije.DataSource = await _apiServiceDonacije.Get<List<Data.Donacije>>(null);
+                dgvDonacije.ClearSelection();
+                dgvDonacije.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCells;
+            }
+            catch (Exception)
+            {
+
+            }
+
         }
 
         private async Task LoadForma(int id)
         {
-            var donacije = await _apiServiceDonacije.GetById<Data.Donacije>(_id);
-            _id = id;
-            txtNaslov.Text = donacije.Naziv;
-            txtObrazlozenje.Text = donacije.Obrazlozenje;
-            txtOpis.Text = donacije.OpisDonacije;
-            chBoxNaCekanju.Checked = donacije.NaCekanju;
-            chBoxPrihvaćena.Checked = donacije.Prihvacena;
-            cBoxDonatori.SelectedValue = donacije.KorisniciSistemaId;
+            try
+            {
+                var donacije = await _apiServiceDonacije.GetById<Data.Donacije>(_id);
+                _id = id;
+                txtNaslov.Text = donacije.Naziv;
+                txtObrazlozenje.Text = donacije.Obrazlozenje;
+                txtOpis.Text = donacije.OpisDonacije;
+                chBoxNaCekanju.Checked = donacije.NaCekanju;
+                chBoxPrihvaćena.Checked = donacije.Prihvacena;
+                cBoxDonatori.SelectedValue = donacije.KorisniciSistemaId;
+            }
+            catch (Exception)
+            {
+
+            }
+
 
         }
         DonacijeUpsertRequest request = new DonacijeUpsertRequest();
@@ -60,9 +76,16 @@ namespace eBiser.WindowsUI.Donacije
         private async void DonacijeDetails_Load(object sender, EventArgs e)
         {
             await LoadDGV();
-            cBoxDonatori.DataSource = await _apiServiceKorisnik.Get<List<Data.KorisniciSistema>>(null);
-            cBoxDonatori.DisplayMember = "KorisnickoIme";
-            cBoxDonatori.ValueMember = "KorisnikId";// u prorertis postaviti ,
+            try
+            {
+                cBoxDonatori.DataSource = await _apiServiceKorisnik.Get<List<Data.KorisniciSistema>>(null);
+                cBoxDonatori.DisplayMember = "KorisnickoIme";
+                cBoxDonatori.ValueMember = "KorisnikId";// u prorertis postaviti ,
+            }
+            catch (Exception)
+            {
+
+            }
 
             if (_id.HasValue)
             {
@@ -115,7 +138,7 @@ namespace eBiser.WindowsUI.Donacije
                     }
                     catch (Exception)
                     {
-                        MessageBox.Show("Donacija nije odbijena");
+                        MessageBox.Show("Odbijanje donacije nije uspjelo");
 
                     }
                 }
@@ -124,12 +147,17 @@ namespace eBiser.WindowsUI.Donacije
 
         private async void dgvDonacije_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
-            int korisnikId = Int32.Parse(dgvDonacije.SelectedRows[0].Cells[1].Value.ToString());
+            try
+            {
+                int korisnikId = Int32.Parse(dgvDonacije.SelectedRows[0].Cells[1].Value.ToString());
+                var donator = await _apiServiceKorisnik.GetById<Data.DonatorDTO>(korisnikId);
+                frmDonatoriUpsert DonatoriUpsert = new frmDonatoriUpsert(donator.Id, korisnikId);
+                DonatoriUpsert.Show();
+            }
+            catch (Exception)
+            {
+            }
 
-            var donator = await _apiServiceKorisnik.GetById<Data.DonatorDTO>(korisnikId);
-
-            frmDonatoriUpsert DonatoriUpsert = new frmDonatoriUpsert(donator.Id, korisnikId);
-            DonatoriUpsert.Show();
 
         }
 
@@ -144,6 +172,16 @@ namespace eBiser.WindowsUI.Donacije
             {
                 errorProvider.SetError(txtObrazlozenje, null);
             }
+        }
+
+        private void btnPonisti_Click(object sender, EventArgs e)
+        {
+            txtNaslov.Text = "";
+            dtmPrijave.Value = DateTime.Now;
+            cBoxDonatori.SelectedIndex = 0;
+            txtOpis.Text = "";
+            txtObrazlozenje.Text = "";
+            _id = null;
         }
     }
 }
