@@ -197,5 +197,18 @@ namespace eBiser.WindowsUI.IzlaznaSerdstva
                 errorProvider.SetError(txtOpis, null);
             }
         }
+
+        private void numIznos_Validating(object sender, CancelEventArgs e)
+        {
+            if (numIznos.Value <= 0)
+            {
+                errorProvider.SetError(numIznos, Properties.Resources.ValidationRequiredField);
+                e.Cancel = true;
+            }
+            else
+            {
+                errorProvider.SetError(numIznos, null);
+            }
+        }
     }
 }

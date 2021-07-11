@@ -195,5 +195,18 @@ namespace eBiser.WindowsUI.AkcijePomoci
 
             }
         }
+
+        private void numTrazenaCifra_Validating(object sender, CancelEventArgs e)
+        {
+            if (numTrazenaCifra.Value <= 0)
+            {
+                errorProvider.SetError(numTrazenaCifra, Properties.Resources.ValidationRequiredField);
+                e.Cancel = true;
+            }
+            else
+            {
+                errorProvider.SetError(numTrazenaCifra, null);
+            }
+        }
     }
 }

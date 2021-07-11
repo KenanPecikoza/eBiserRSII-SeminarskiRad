@@ -181,7 +181,7 @@ namespace eBiser.WindowsUI.IzlaznaSerdstva
             this.btnSnimi.BackColor = System.Drawing.Color.Green;
             this.btnSnimi.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnSnimi.ForeColor = System.Drawing.Color.White;
-            this.btnSnimi.Location = new System.Drawing.Point(687, 345);
+            this.btnSnimi.Location = new System.Drawing.Point(675, 345);
             this.btnSnimi.Name = "btnSnimi";
             this.btnSnimi.Size = new System.Drawing.Size(86, 41);
             this.btnSnimi.TabIndex = 11;
@@ -223,7 +223,7 @@ namespace eBiser.WindowsUI.IzlaznaSerdstva
             this.txtOpis.Location = new System.Drawing.Point(6, 253);
             this.txtOpis.Multiline = true;
             this.txtOpis.Name = "txtOpis";
-            this.txtOpis.Size = new System.Drawing.Size(767, 86);
+            this.txtOpis.Size = new System.Drawing.Size(755, 86);
             this.txtOpis.TabIndex = 7;
             this.txtOpis.Validating += new System.ComponentModel.CancelEventHandler(this.txtOpis_Validating);
             // 
@@ -247,6 +247,7 @@ namespace eBiser.WindowsUI.IzlaznaSerdstva
             this.numIznos.Name = "numIznos";
             this.numIznos.Size = new System.Drawing.Size(120, 26);
             this.numIznos.TabIndex = 5;
+            this.numIznos.Validating += new System.ComponentModel.CancelEventHandler(this.numIznos_Validating);
             // 
             // label2
             // 

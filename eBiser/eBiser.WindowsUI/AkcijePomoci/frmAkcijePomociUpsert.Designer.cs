@@ -119,6 +119,7 @@ namespace eBiser.WindowsUI.AkcijePomoci
             this.numTrazenaCifra.Name = "numTrazenaCifra";
             this.numTrazenaCifra.Size = new System.Drawing.Size(257, 26);
             this.numTrazenaCifra.TabIndex = 5;
+            this.numTrazenaCifra.Validating += new System.ComponentModel.CancelEventHandler(this.numTrazenaCifra_Validating);
             // 
             // numSakupljeno
             // 

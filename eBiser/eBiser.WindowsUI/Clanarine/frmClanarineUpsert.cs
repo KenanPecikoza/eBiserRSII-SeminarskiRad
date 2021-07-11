@@ -17,7 +17,6 @@ namespace eBiser.WindowsUI.Clanarine
         private readonly APIService _apiServiceClanarina = new APIService("clanarina");
         private readonly APIService _apiServiceClan = new APIService("korisnik/clan");
         private int? _id = null;
-        private readonly PhotoHelper photoHelper = new PhotoHelper();
         public frmClanarineUpsert(int? id=null)
         {
             _id = id;
