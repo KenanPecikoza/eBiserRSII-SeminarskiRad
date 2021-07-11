@@ -183,7 +183,7 @@ namespace eBiser.WindowsUI.Projekti
             this.Projekt.Size = new System.Drawing.Size(632, 479);
             this.Projekt.TabIndex = 2;
             this.Projekt.TabStop = false;
-            this.Projekt.Text = "Projekt";
+            this.Projekt.Text = "Projekti";
             // 
             // cBoxKreatori
             // 
@@ -360,7 +360,7 @@ namespace eBiser.WindowsUI.Projekti
             this.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.Name = "frmProjektiUpsert";
-            this.Text = "frmProjektiUpsert";
+            this.Text = "Projekti";
             this.Load += new System.EventHandler(this.frmProjektiUpsert_Load);
             this.groupBox1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dgvProjekti)).EndInit();

@@ -246,7 +246,7 @@ namespace eBiser.WindowsUI.Clanovi
             this.Controls.Add(this.groupBox1);
             this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "frmClanovi";
-            this.Text = "Clanovi";
+            this.Text = "Clanovi pretraga";
             this.Load += new System.EventHandler(this.Form1_Load);
             this.groupBox1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dgvClanovi)).EndInit();

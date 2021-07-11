@@ -289,7 +289,7 @@ namespace eBiser.WindowsUI.Clanarine
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.groupBox1);
             this.Name = "frmClanarine";
-            this.Text = "frmClanarine";
+            this.Text = "Članarine pretraga";
             this.Load += new System.EventHandler(this.frmClanarine_Load);
             this.groupBox1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dgvClanarine)).EndInit();

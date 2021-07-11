@@ -278,7 +278,7 @@ namespace eBiser.WindowsUI.UlaznaSredstva
             this.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.Name = "frmUlaznaSredstva";
-            this.Text = "frmUlaznaSredstva";
+            this.Text = "Ulazna sredstva pretraga";
             this.Load += new System.EventHandler(this.frmUlaznaSredstva_Load);
             ((System.ComponentModel.ISupportInitialize)(this.numGodina)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.numMjesec)).EndInit();

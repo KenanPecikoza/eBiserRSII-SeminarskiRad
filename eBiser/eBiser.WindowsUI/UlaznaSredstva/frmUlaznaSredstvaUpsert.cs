@@ -112,7 +112,6 @@ namespace eBiser.WindowsUI.UlaznaSredstva
                     }
                 }
                 await LoadDGV();
-                dgvUlaznaSredstva.ClearSelection();
             }       
         }
 

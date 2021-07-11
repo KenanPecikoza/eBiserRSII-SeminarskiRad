@@ -350,7 +350,7 @@ namespace eBiser.WindowsUI.Clanarine
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.Uplate);
             this.Name = "frmClanarineUpsert";
-            this.Text = "frmClanarineUpsert";
+            this.Text = "Članarine";
             this.Load += new System.EventHandler(this.frmClanarineUpsert_Load);
             ((System.ComponentModel.ISupportInitialize)(this.numIznosUplate)).EndInit();
             this.Uplate.ResumeLayout(false);

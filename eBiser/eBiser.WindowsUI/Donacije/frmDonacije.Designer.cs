@@ -32,6 +32,7 @@ namespace eBiser.WindowsUI.Donacije
             this.dgvDonacije = new System.Windows.Forms.DataGridView();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
+            this.chBox = new System.Windows.Forms.CheckBox();
             this.dtmPretragaDatum = new System.Windows.Forms.DateTimePicker();
             this.PretragaPoDatumu = new System.Windows.Forms.Label();
             this.PretragaPoNaslovu = new System.Windows.Forms.Label();
@@ -39,7 +40,6 @@ namespace eBiser.WindowsUI.Donacije
             this.btnPretraziSadrzaj = new System.Windows.Forms.Button();
             this.PretragaPoSadrzaju = new System.Windows.Forms.Label();
             this.txtPretragaPoSadrzaju = new System.Windows.Forms.TextBox();
-            this.chBox = new System.Windows.Forms.CheckBox();
             ((System.ComponentModel.ISupportInitialize)(this.dgvDonacije)).BeginInit();
             this.groupBox1.SuspendLayout();
             this.groupBox3.SuspendLayout();
@@ -89,6 +89,16 @@ namespace eBiser.WindowsUI.Donacije
             this.groupBox3.TabIndex = 16;
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "Pretraga";
+            // 
+            // chBox
+            // 
+            this.chBox.AutoSize = true;
+            this.chBox.Location = new System.Drawing.Point(386, 105);
+            this.chBox.Name = "chBox";
+            this.chBox.Size = new System.Drawing.Size(107, 24);
+            this.chBox.TabIndex = 18;
+            this.chBox.Text = "Na čekanju";
+            this.chBox.UseVisualStyleBackColor = true;
             // 
             // dtmPretragaDatum
             // 
@@ -157,16 +167,6 @@ namespace eBiser.WindowsUI.Donacije
             this.txtPretragaPoSadrzaju.Size = new System.Drawing.Size(349, 26);
             this.txtPretragaPoSadrzaju.TabIndex = 14;
             // 
-            // chBox
-            // 
-            this.chBox.AutoSize = true;
-            this.chBox.Location = new System.Drawing.Point(386, 105);
-            this.chBox.Name = "chBox";
-            this.chBox.Size = new System.Drawing.Size(107, 24);
-            this.chBox.TabIndex = 18;
-            this.chBox.Text = "Na čekanju";
-            this.chBox.UseVisualStyleBackColor = true;
-            // 
             // frmDonacije
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
@@ -177,7 +177,7 @@ namespace eBiser.WindowsUI.Donacije
             this.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.Name = "frmDonacije";
-            this.Text = "Donacije";
+            this.Text = "Donacije pretraga";
             this.Load += new System.EventHandler(this.frmDonacije_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dgvDonacije)).EndInit();
             this.groupBox1.ResumeLayout(false);

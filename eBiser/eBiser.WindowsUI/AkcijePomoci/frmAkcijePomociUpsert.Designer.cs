@@ -42,6 +42,12 @@ namespace eBiser.WindowsUI.AkcijePomoci
             this.btnSnimi = new System.Windows.Forms.Button();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.dgvAkcijePomoci = new System.Windows.Forms.DataGridView();
+            this.Id = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Ime = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Prezime = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Potrazivanja = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Sakupljeno = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Aktivno = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.btnDodaj = new System.Windows.Forms.Button();
@@ -50,12 +56,6 @@ namespace eBiser.WindowsUI.AkcijePomoci
             this.btnPoniši = new System.Windows.Forms.Button();
             this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
             this.errorProvider = new System.Windows.Forms.ErrorProvider(this.components);
-            this.Id = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Ime = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Prezime = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Potrazivanja = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Sakupljeno = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Aktivno = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.numTrazenaCifra)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numSakupljeno)).BeginInit();
             this.groupBox1.SuspendLayout();
@@ -198,6 +198,49 @@ namespace eBiser.WindowsUI.AkcijePomoci
             this.dgvAkcijePomoci.TabIndex = 0;
             this.dgvAkcijePomoci.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvAkcijePomoci_CellClick);
             // 
+            // Id
+            // 
+            this.Id.DataPropertyName = "Id";
+            this.Id.HeaderText = "Id";
+            this.Id.Name = "Id";
+            this.Id.ReadOnly = true;
+            this.Id.Visible = false;
+            // 
+            // Ime
+            // 
+            this.Ime.DataPropertyName = "Ime";
+            this.Ime.HeaderText = "Ime";
+            this.Ime.Name = "Ime";
+            this.Ime.ReadOnly = true;
+            // 
+            // Prezime
+            // 
+            this.Prezime.DataPropertyName = "Prezime";
+            this.Prezime.HeaderText = "Prezime";
+            this.Prezime.Name = "Prezime";
+            this.Prezime.ReadOnly = true;
+            // 
+            // Potrazivanja
+            // 
+            this.Potrazivanja.DataPropertyName = "TraženaCifra";
+            this.Potrazivanja.HeaderText = "Potrazivanja";
+            this.Potrazivanja.Name = "Potrazivanja";
+            this.Potrazivanja.ReadOnly = true;
+            // 
+            // Sakupljeno
+            // 
+            this.Sakupljeno.DataPropertyName = "Skupljeno";
+            this.Sakupljeno.HeaderText = "Sakupljeno";
+            this.Sakupljeno.Name = "Sakupljeno";
+            this.Sakupljeno.ReadOnly = true;
+            // 
+            // Aktivno
+            // 
+            this.Aktivno.DataPropertyName = "Aktivno";
+            this.Aktivno.HeaderText = "Aktivno";
+            this.Aktivno.Name = "Aktivno";
+            this.Aktivno.ReadOnly = true;
+            // 
             // groupBox2
             // 
             this.groupBox2.Controls.Add(this.pictureBox1);
@@ -280,49 +323,6 @@ namespace eBiser.WindowsUI.AkcijePomoci
             // 
             this.errorProvider.ContainerControl = this;
             // 
-            // Id
-            // 
-            this.Id.DataPropertyName = "Id";
-            this.Id.HeaderText = "Id";
-            this.Id.Name = "Id";
-            this.Id.ReadOnly = true;
-            this.Id.Visible = false;
-            // 
-            // Ime
-            // 
-            this.Ime.DataPropertyName = "Ime";
-            this.Ime.HeaderText = "Ime";
-            this.Ime.Name = "Ime";
-            this.Ime.ReadOnly = true;
-            // 
-            // Prezime
-            // 
-            this.Prezime.DataPropertyName = "Prezime";
-            this.Prezime.HeaderText = "Prezime";
-            this.Prezime.Name = "Prezime";
-            this.Prezime.ReadOnly = true;
-            // 
-            // Potrazivanja
-            // 
-            this.Potrazivanja.DataPropertyName = "TraženaCifra";
-            this.Potrazivanja.HeaderText = "Potrazivanja";
-            this.Potrazivanja.Name = "Potrazivanja";
-            this.Potrazivanja.ReadOnly = true;
-            // 
-            // Sakupljeno
-            // 
-            this.Sakupljeno.DataPropertyName = "Skupljeno";
-            this.Sakupljeno.HeaderText = "Sakupljeno";
-            this.Sakupljeno.Name = "Sakupljeno";
-            this.Sakupljeno.ReadOnly = true;
-            // 
-            // Aktivno
-            // 
-            this.Aktivno.DataPropertyName = "Aktivno";
-            this.Aktivno.HeaderText = "Aktivno";
-            this.Aktivno.Name = "Aktivno";
-            this.Aktivno.ReadOnly = true;
-            // 
             // frmAkcijePomociUpsert
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
@@ -333,7 +333,7 @@ namespace eBiser.WindowsUI.AkcijePomoci
             this.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.Name = "frmAkcijePomociUpsert";
-            this.Text = "frmAkcijePomociUpsert";
+            this.Text = "Akcije pomoći";
             this.Load += new System.EventHandler(this.frmAkcijePomociUpsert_Load);
             ((System.ComponentModel.ISupportInitialize)(this.numTrazenaCifra)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.numSakupljeno)).EndInit();

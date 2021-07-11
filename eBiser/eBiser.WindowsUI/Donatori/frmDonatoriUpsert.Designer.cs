@@ -40,6 +40,8 @@ namespace eBiser.WindowsUI.Donatori
             this.DatumRodjenja = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Aktivan = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.txtBrojTelefona = new System.Windows.Forms.TextBox();
+            this.label8 = new System.Windows.Forms.Label();
             this.txtKorisnickoIme = new System.Windows.Forms.TextBox();
             this.label6 = new System.Windows.Forms.Label();
             this.txtOpisProfila = new System.Windows.Forms.TextBox();
@@ -62,8 +64,6 @@ namespace eBiser.WindowsUI.Donatori
             this.label5 = new System.Windows.Forms.Label();
             this.openFileDialog = new System.Windows.Forms.OpenFileDialog();
             this.errorProvider = new System.Windows.Forms.ErrorProvider(this.components);
-            this.txtBrojTelefona = new System.Windows.Forms.TextBox();
-            this.label8 = new System.Windows.Forms.Label();
             this.Donatori.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvClanovi)).BeginInit();
             this.groupBox1.SuspendLayout();
@@ -188,6 +188,26 @@ namespace eBiser.WindowsUI.Donatori
             this.groupBox1.TabIndex = 29;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Donator";
+            // 
+            // txtBrojTelefona
+            // 
+            this.txtBrojTelefona.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtBrojTelefona.Location = new System.Drawing.Point(13, 257);
+            this.txtBrojTelefona.Margin = new System.Windows.Forms.Padding(2);
+            this.txtBrojTelefona.Name = "txtBrojTelefona";
+            this.txtBrojTelefona.Size = new System.Drawing.Size(278, 26);
+            this.txtBrojTelefona.TabIndex = 32;
+            // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label8.Location = new System.Drawing.Point(13, 235);
+            this.label8.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(103, 20);
+            this.label8.TabIndex = 33;
+            this.label8.Text = "Broj telefona:";
             // 
             // txtKorisnickoIme
             // 
@@ -417,26 +437,6 @@ namespace eBiser.WindowsUI.Donatori
             // 
             this.errorProvider.ContainerControl = this;
             // 
-            // txtBrojTelefona
-            // 
-            this.txtBrojTelefona.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtBrojTelefona.Location = new System.Drawing.Point(13, 257);
-            this.txtBrojTelefona.Margin = new System.Windows.Forms.Padding(2);
-            this.txtBrojTelefona.Name = "txtBrojTelefona";
-            this.txtBrojTelefona.Size = new System.Drawing.Size(278, 26);
-            this.txtBrojTelefona.TabIndex = 32;
-            // 
-            // label8
-            // 
-            this.label8.AutoSize = true;
-            this.label8.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label8.Location = new System.Drawing.Point(13, 235);
-            this.label8.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(103, 20);
-            this.label8.TabIndex = 33;
-            this.label8.Text = "Broj telefona:";
-            // 
             // frmDonatoriUpsert
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
@@ -447,7 +447,7 @@ namespace eBiser.WindowsUI.Donatori
             this.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.Name = "frmDonatoriUpsert";
-            this.Text = "fmrDonatoriUpsert";
+            this.Text = "Donatori ";
             this.Load += new System.EventHandler(this.frmDonatoriUpsert_Load);
             this.Donatori.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dgvClanovi)).EndInit();

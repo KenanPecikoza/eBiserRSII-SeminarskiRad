@@ -447,7 +447,7 @@ namespace eBiser.WindowsUI.Clanovi
             this.Controls.Add(this.groupBox1);
             this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "frmClanoviUpsert";
-            this.Text = "ClanoviUpsert";
+            this.Text = "Članovi";
             this.Load += new System.EventHandler(this.ClanoviUpsert_Load);
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox)).EndInit();

@@ -29,25 +29,25 @@ namespace eBiser.WindowsUI.Report
         /// </summary>
         private void InitializeComponent()
         {
-            Microsoft.Reporting.WinForms.ReportDataSource reportDataSource3 = new Microsoft.Reporting.WinForms.ReportDataSource();
-            Microsoft.Reporting.WinForms.ReportDataSource reportDataSource4 = new Microsoft.Reporting.WinForms.ReportDataSource();
+            Microsoft.Reporting.WinForms.ReportDataSource reportDataSource1 = new Microsoft.Reporting.WinForms.ReportDataSource();
+            Microsoft.Reporting.WinForms.ReportDataSource reportDataSource2 = new Microsoft.Reporting.WinForms.ReportDataSource();
             this.reportViewer1 = new Microsoft.Reporting.WinForms.ReportViewer();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.btnOsvježi = new System.Windows.Forms.Button();
-            this.numericUpDown1 = new System.Windows.Forms.NumericUpDown();
             this.label1 = new System.Windows.Forms.Label();
+            this.numericUpDown1 = new System.Windows.Forms.NumericUpDown();
+            this.btnOsvježi = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).BeginInit();
             this.SuspendLayout();
             // 
             // reportViewer1
             // 
-            reportDataSource3.Name = "IzlaznaSredstva";
-            reportDataSource3.Value = null;
-            reportDataSource4.Name = "UlaznaSredstva";
-            reportDataSource4.Value = null;
-            this.reportViewer1.LocalReport.DataSources.Add(reportDataSource3);
-            this.reportViewer1.LocalReport.DataSources.Add(reportDataSource4);
+            reportDataSource1.Name = "IzlaznaSredstva";
+            reportDataSource1.Value = null;
+            reportDataSource2.Name = "UlaznaSredstva";
+            reportDataSource2.Value = null;
+            this.reportViewer1.LocalReport.DataSources.Add(reportDataSource1);
+            this.reportViewer1.LocalReport.DataSources.Add(reportDataSource2);
             this.reportViewer1.LocalReport.ReportEmbeddedResource = "eBiser.WindowsUI.Report.Report1.rdlc";
             this.reportViewer1.Location = new System.Drawing.Point(13, 82);
             this.reportViewer1.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
@@ -67,18 +67,14 @@ namespace eBiser.WindowsUI.Report
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Izvještaj";
             // 
-            // btnOsvježi
+            // label1
             // 
-            this.btnOsvježi.BackColor = System.Drawing.Color.Blue;
-            this.btnOsvježi.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnOsvježi.ForeColor = System.Drawing.Color.White;
-            this.btnOsvježi.Location = new System.Drawing.Point(637, 15);
-            this.btnOsvježi.Name = "btnOsvježi";
-            this.btnOsvježi.Size = new System.Drawing.Size(86, 41);
-            this.btnOsvježi.TabIndex = 2;
-            this.btnOsvježi.Text = "Osvježi";
-            this.btnOsvježi.UseVisualStyleBackColor = false;
-            this.btnOsvježi.Click += new System.EventHandler(this.btnOsvježi_Click);
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(6, 25);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(375, 20);
+            this.label1.TabIndex = 4;
+            this.label1.Text = "Izaberite godinu za koju želite da se prikaže izvještaj";
             // 
             // numericUpDown1
             // 
@@ -102,14 +98,18 @@ namespace eBiser.WindowsUI.Report
             0,
             0});
             // 
-            // label1
+            // btnOsvježi
             // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(6, 25);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(375, 20);
-            this.label1.TabIndex = 4;
-            this.label1.Text = "Izaberite godinu za koju želite da se prikaže izvještaj";
+            this.btnOsvježi.BackColor = System.Drawing.Color.Blue;
+            this.btnOsvježi.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnOsvježi.ForeColor = System.Drawing.Color.White;
+            this.btnOsvježi.Location = new System.Drawing.Point(637, 15);
+            this.btnOsvježi.Name = "btnOsvježi";
+            this.btnOsvježi.Size = new System.Drawing.Size(86, 41);
+            this.btnOsvježi.TabIndex = 2;
+            this.btnOsvježi.Text = "Osvježi";
+            this.btnOsvježi.UseVisualStyleBackColor = false;
+            this.btnOsvježi.Click += new System.EventHandler(this.btnOsvježi_Click);
             // 
             // frmIzvjestaj
             // 
@@ -121,7 +121,7 @@ namespace eBiser.WindowsUI.Report
             this.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.Name = "frmIzvjestaj";
-            this.Text = "frmIzvjestaj";
+            this.Text = "Izvještaj";
             this.Load += new System.EventHandler(this.frmIzvjestaj_Load);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();

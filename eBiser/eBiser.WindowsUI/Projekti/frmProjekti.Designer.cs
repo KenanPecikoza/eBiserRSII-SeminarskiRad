@@ -31,6 +31,14 @@ namespace eBiser.WindowsUI.Projekti
         {
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.dgvProjekti = new System.Windows.Forms.DataGridView();
+            this.Id = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.NazivProjekta = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.CijenaProjekta = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.DatumPrijave = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Prihvaćen = new System.Windows.Forms.DataGridViewCheckBoxColumn();
+            this.RokIzvršenja = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.DatumIzvrsenja = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.KreatorProjekta = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
             this.checkBox1 = new System.Windows.Forms.CheckBox();
             this.dtmIzvrsenja = new System.Windows.Forms.DateTimePicker();
@@ -40,14 +48,6 @@ namespace eBiser.WindowsUI.Projekti
             this.label2 = new System.Windows.Forms.Label();
             this.txtNazivProjekta = new System.Windows.Forms.TextBox();
             this.BtnPrikazi = new System.Windows.Forms.Button();
-            this.Id = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.NazivProjekta = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.CijenaProjekta = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.DatumPrijave = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Prihvaćen = new System.Windows.Forms.DataGridViewCheckBoxColumn();
-            this.RokIzvršenja = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.DatumIzvrsenja = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.KreatorProjekta = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvProjekti)).BeginInit();
             this.groupBox3.SuspendLayout();
@@ -85,6 +85,65 @@ namespace eBiser.WindowsUI.Projekti
             this.dgvProjekti.Size = new System.Drawing.Size(622, 418);
             this.dgvProjekti.TabIndex = 0;
             this.dgvProjekti.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvProjekti_CellDoubleClick);
+            // 
+            // Id
+            // 
+            this.Id.DataPropertyName = "Id";
+            this.Id.HeaderText = "Id";
+            this.Id.Name = "Id";
+            this.Id.ReadOnly = true;
+            this.Id.Visible = false;
+            // 
+            // NazivProjekta
+            // 
+            this.NazivProjekta.DataPropertyName = "NazivProjekta";
+            this.NazivProjekta.HeaderText = "Naziv projekta";
+            this.NazivProjekta.Name = "NazivProjekta";
+            this.NazivProjekta.ReadOnly = true;
+            // 
+            // CijenaProjekta
+            // 
+            this.CijenaProjekta.DataPropertyName = "CijenaProjekta";
+            this.CijenaProjekta.HeaderText = "Cijena projekta";
+            this.CijenaProjekta.Name = "CijenaProjekta";
+            this.CijenaProjekta.ReadOnly = true;
+            // 
+            // DatumPrijave
+            // 
+            this.DatumPrijave.DataPropertyName = "DatumPrijave";
+            this.DatumPrijave.HeaderText = "Datum prijave projekta";
+            this.DatumPrijave.Name = "DatumPrijave";
+            this.DatumPrijave.ReadOnly = true;
+            // 
+            // Prihvaćen
+            // 
+            this.Prihvaćen.DataPropertyName = "Prihvaćen";
+            this.Prihvaćen.HeaderText = "Prihvaćen";
+            this.Prihvaćen.Name = "Prihvaćen";
+            this.Prihvaćen.ReadOnly = true;
+            this.Prihvaćen.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.Prihvaćen.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
+            // 
+            // RokIzvršenja
+            // 
+            this.RokIzvršenja.DataPropertyName = "RokIzvrsenja";
+            this.RokIzvršenja.HeaderText = "Rok izvršenja";
+            this.RokIzvršenja.Name = "RokIzvršenja";
+            this.RokIzvršenja.ReadOnly = true;
+            // 
+            // DatumIzvrsenja
+            // 
+            this.DatumIzvrsenja.DataPropertyName = "DatumIzvrsenja";
+            this.DatumIzvrsenja.HeaderText = "Datum izvršenja";
+            this.DatumIzvrsenja.Name = "DatumIzvrsenja";
+            this.DatumIzvrsenja.ReadOnly = true;
+            // 
+            // KreatorProjekta
+            // 
+            this.KreatorProjekta.DataPropertyName = "ImeIPrezime";
+            this.KreatorProjekta.HeaderText = "Kreator projekta";
+            this.KreatorProjekta.Name = "KreatorProjekta";
+            this.KreatorProjekta.ReadOnly = true;
             // 
             // groupBox3
             // 
@@ -182,65 +241,6 @@ namespace eBiser.WindowsUI.Projekti
             this.BtnPrikazi.UseVisualStyleBackColor = false;
             this.BtnPrikazi.Click += new System.EventHandler(this.BtnPrikazi_Click);
             // 
-            // Id
-            // 
-            this.Id.DataPropertyName = "Id";
-            this.Id.HeaderText = "Id";
-            this.Id.Name = "Id";
-            this.Id.ReadOnly = true;
-            this.Id.Visible = false;
-            // 
-            // NazivProjekta
-            // 
-            this.NazivProjekta.DataPropertyName = "NazivProjekta";
-            this.NazivProjekta.HeaderText = "Naziv projekta";
-            this.NazivProjekta.Name = "NazivProjekta";
-            this.NazivProjekta.ReadOnly = true;
-            // 
-            // CijenaProjekta
-            // 
-            this.CijenaProjekta.DataPropertyName = "CijenaProjekta";
-            this.CijenaProjekta.HeaderText = "Cijena projekta";
-            this.CijenaProjekta.Name = "CijenaProjekta";
-            this.CijenaProjekta.ReadOnly = true;
-            // 
-            // DatumPrijave
-            // 
-            this.DatumPrijave.DataPropertyName = "DatumPrijave";
-            this.DatumPrijave.HeaderText = "Datum prijave projekta";
-            this.DatumPrijave.Name = "DatumPrijave";
-            this.DatumPrijave.ReadOnly = true;
-            // 
-            // Prihvaćen
-            // 
-            this.Prihvaćen.DataPropertyName = "Prihvaćen";
-            this.Prihvaćen.HeaderText = "Prihvaćen";
-            this.Prihvaćen.Name = "Prihvaćen";
-            this.Prihvaćen.ReadOnly = true;
-            this.Prihvaćen.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.Prihvaćen.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
-            // 
-            // RokIzvršenja
-            // 
-            this.RokIzvršenja.DataPropertyName = "RokIzvrsenja";
-            this.RokIzvršenja.HeaderText = "Rok izvršenja";
-            this.RokIzvršenja.Name = "RokIzvršenja";
-            this.RokIzvršenja.ReadOnly = true;
-            // 
-            // DatumIzvrsenja
-            // 
-            this.DatumIzvrsenja.DataPropertyName = "DatumIzvrsenja";
-            this.DatumIzvrsenja.HeaderText = "Datum izvršenja";
-            this.DatumIzvrsenja.Name = "DatumIzvrsenja";
-            this.DatumIzvrsenja.ReadOnly = true;
-            // 
-            // KreatorProjekta
-            // 
-            this.KreatorProjekta.DataPropertyName = "ImeIPrezime";
-            this.KreatorProjekta.HeaderText = "Kreator projekta";
-            this.KreatorProjekta.Name = "KreatorProjekta";
-            this.KreatorProjekta.ReadOnly = true;
-            // 
             // frmProjekti
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
@@ -251,7 +251,7 @@ namespace eBiser.WindowsUI.Projekti
             this.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.Name = "frmProjekti";
-            this.Text = "frmProjekti";
+            this.Text = "Projekti pretraga";
             this.Load += new System.EventHandler(this.frmProjekti_Load);
             this.groupBox1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dgvProjekti)).EndInit();
