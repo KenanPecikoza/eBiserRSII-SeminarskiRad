@@ -81,6 +81,8 @@ namespace eBiser.WindowsUI.AkcijePomoci
             // 
             this.chBoxAktivno.AutoSize = true;
             this.chBoxAktivno.CheckAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.chBoxAktivno.Checked = true;
+            this.chBoxAktivno.CheckState = System.Windows.Forms.CheckState.Checked;
             this.chBoxAktivno.Location = new System.Drawing.Point(517, 46);
             this.chBoxAktivno.Name = "chBoxAktivno";
             this.chBoxAktivno.Size = new System.Drawing.Size(80, 24);

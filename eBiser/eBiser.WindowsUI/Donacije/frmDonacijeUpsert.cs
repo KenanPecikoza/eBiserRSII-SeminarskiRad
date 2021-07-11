@@ -50,6 +50,7 @@ namespace eBiser.WindowsUI.Donacije
                 txtOpis.Text = donacije.OpisDonacije;
                 chBoxNaCekanju.Checked = donacije.NaCekanju;
                 chBoxPrihvaćena.Checked = donacije.Prihvacena;
+                chBoxOdbijena.Checked = donacije.Odbijena;
                 cBoxDonatori.SelectedValue = donacije.KorisniciSistemaId;
             }
             catch (Exception)
@@ -115,6 +116,7 @@ namespace eBiser.WindowsUI.Donacije
                 {
                      await _apiServiceDonacije.Update<Data.Donacije>(_id ?? 0, request);
                     MessageBox.Show("Donacija je prihvaćena");
+                    await LoadForma(_id??0);
                 }
                 catch (Exception)
                 {
@@ -134,6 +136,7 @@ namespace eBiser.WindowsUI.Donacije
                     {
                        await _apiServiceDonacije.Update<Data.Donacije>(_id ?? 0, request);
                         MessageBox.Show("Donacija je odbijena");
+                        await LoadForma(_id ?? 0);
 
                     }
                     catch (Exception)

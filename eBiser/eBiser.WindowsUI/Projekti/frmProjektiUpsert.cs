@@ -178,5 +178,19 @@ namespace eBiser.WindowsUI.Projekti
                 errorProvider.SetError(numCijena, null);
             }
         }
+
+        private void txtRokIzvršenja_Validating(object sender, CancelEventArgs e)
+        {
+            if (txtRokIzvršenja.Text.ToString().Length < 2)
+            {
+                errorProvider.SetError(txtRokIzvršenja, Properties.Resources.ValidationRequiredField);
+                e.Cancel = true;
+            }
+            else
+            {
+                errorProvider.SetError(txtRokIzvršenja, null);
+            }
+
+        }
     }
 }

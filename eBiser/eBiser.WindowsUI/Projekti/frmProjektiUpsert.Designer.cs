@@ -260,6 +260,7 @@ namespace eBiser.WindowsUI.Projekti
             this.txtRokIzvršenja.Name = "txtRokIzvršenja";
             this.txtRokIzvršenja.Size = new System.Drawing.Size(276, 26);
             this.txtRokIzvršenja.TabIndex = 9;
+            this.txtRokIzvršenja.Validating += new System.ComponentModel.CancelEventHandler(this.txtRokIzvršenja_Validating);
             // 
             // label5
             // 

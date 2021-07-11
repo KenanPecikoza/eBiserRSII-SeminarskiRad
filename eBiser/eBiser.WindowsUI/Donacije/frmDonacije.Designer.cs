@@ -116,7 +116,7 @@ namespace eBiser.WindowsUI.Donacije
             this.PretragaPoDatumu.Name = "PretragaPoDatumu";
             this.PretragaPoDatumu.Size = new System.Drawing.Size(172, 20);
             this.PretragaPoDatumu.TabIndex = 16;
-            this.PretragaPoDatumu.Text = "Pretraga po datumu od";
+            this.PretragaPoDatumu.Text = "Pretraga po datumu do";
             // 
             // PretragaPoNaslovu
             // 
